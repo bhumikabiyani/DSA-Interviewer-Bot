@@ -1,0 +1,206 @@
+[
+  {
+    "speaker": "Candidate",
+    "text": "I'm good. I just feel tired a little bit physically because we went to a hike yesterday. I hope my brain still can work."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, great. So based on the topics you mentioned, you like to get a hard problem?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I like to try hard because I don't know what kind of question I'm going to get in the real interview. So I just want to try to feel comfortable when I get a hard question in the real interview. I may not be able to solve it, but I will try my best."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, great. We can go through the code back and then let's try this out. Sure. You can choose any language. Are you using Python or?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I use Python. I prefer Python."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let me make another question. This one has a lot of things to read. Let me give the link on the top as well. So if you have hard time to understand the problem, then feel free to go to the link code. So they have visualizations graph to better understand on you. Share the link. The code backlink is in the app level. The same place you can."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, okay, let me check. Oh, I see. Is there okay? Give me the edges of the direct graph. We're at just. I I just from AI to BI in the case where is an edge between most of the and the two nodes source and destination of this graph. Okay, determining whether or not opath is starting from source eventually. Determine whether or not opath. Starting from source and mentor. And the destination that is at least one path exists from the source node to the destination node. I think I will open the."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, yeah, like you said, they have a graph."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, okay, we have visualizations easier to my side. Okay. Um, source destination source destination. So the question are same, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, the same."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I'm reading the the the least code page page. Yeah, so just to the destination. No, if a path exists from source node to another node, no, I guess, then that knows it's comes to this. The number for the possible path from source to this nation's from the member. Getting true use and only if all those from source to destination. Oh, okay. Um, okay, I will explain what I'm thinking after I read this question. So first of all, this is a graph question and there's a directed graph, right? And we're trying to see from the source to the end. And if all the path is between source and the end can lead to the to the destination, right? So which means if there is a cycle um, in the graph, then this is what we should return first, right? Because return first because if they go into the cycle, um, there's no way we can come out. We'll keep looping there, right? This is one assumption. As a second one is, um, so each path has to lead to the destination. Um, the example were, um, are you able to see the lead code or graph? Because they have example three."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So the example three returns true. But if we remove the link between two and three, then we should return for us, right? I should be stupid. I was supposed to be true."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Mm-hmm."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, but the question is says, um, or at least one path exists from the source code to the destination node. Okay, if the path exists from source node to a node, the node outgoing edges. Um, if a path exists from the source node to a node with no outgoing edges, then that node is equal to, oh, I see, it's equal to destination. Okay. So, um, but for the example one, the source is zero, destination is two, and we have a path from zero to one and zero to two, but it, it, it returns false, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Mm-hmm."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, so why this one returns false is possible to reach and get stuck on both node one and a node two. Uh, we have three nodes zero one two and the edge zero one zero two sources zero. Destination is two. We can force. Uh, uh, can you help me to understand the example one? Um, so the source is zero, destination is two. Right? And then we do have a link between zero and two, and then that is the directly connected link between zero and two. So which means we can reach two, but we still return false because if we go to one, then we stuck there. Is that correct?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. So in like case, it's a false."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In that case, it's a false, but, um, based on the, uh, the description, um, for the second condition, if a path exists from the source node to a node with no outgoing edges, then that node is equal to destination. Um, um, is this one saying that if we don't have outgoing edges, uh, from node one, so we can think node one is destination. Well, the destination needs to be based on the, uh, based on the input."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh, what do we mean based on the input?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, based on the input I see. So, okay, we still have to go there. So then which means, uh, for the example three, if we break, um, if we break a node between 23, then we should return false, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh, so you're right. You like this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, that'll be false. Yes, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So it's not the early time. Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So which means, um, yeah, I see. So which means I need to first detect if there's a cycle, if there's a cycle in the graph, I need to return false. And the second, I need to go through all the passes, um, to check if, I can reach, I can reach to, um, uh, the destination. Um, I, I want to, maybe I can share my screen. I just want to, um,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah, you can share your screen and then directly do that in a link code, but let's totally find your whiteboard."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I'm sharing my whiteboard, I can see it. Because I want to understand the completely understand the question. I don't want to code it out and, and later see that I didn't understand the problem. Okay. Sure. Yeah. Um, so, um, I have, let's see, I have a zero one two, uh, sorry, I'm able to see my, um,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I can see that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So let's see if I have this one, um, connected. One, two, three. So this is example three, right? Uh, what I'm drawing now. So this one, I need to read, I, I should return true. What if I have another link to here? Right? Now I need to return false because if I go to two and then go to four, I can now reach three, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "But if I have another one, this one, and then I need to return, um, I would say, um, true, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. And, uh, uh, will there be a duplicated, duplicated, uh, duplicates? I mean, I would say if there's a from two to three, uh, like,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yes, it's possible. It's possible."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, but this one actually doesn't matter. I, I, cause we, we go to three, also, um, so I see. Okay. And this one, what if this is the graph, uh, from three, three, still have outgoing edge and this outgoing edge going to one, there's a cycle. But I should return false. But I, I, I can reach, oh yeah, but, oh yeah, I see, it should return false, um, but from every edge, I can reach to three, cause I may go from this way, I would say. Um, I need to look at the question itself."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh-huh."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Well, uh, the, the number of possible pathways from source to destination is a finite number. Let me see. It's not happening. I, I, I get it. Okay, I see. Okay. Okay. So, yeah, so far, I'm thinking break this question to two parts. Why is it attacked a cycle in a directed graph? Um, so which means is that try to see if a graph is a dag, right? Um, that is the first thing. And the second thing is, if it is a dag, then we need to walk through all the passes and check. If, um, if the destination is reachable from all the passes, cause I have to exhaust it all the passes, right? Yeah, I have to exhaust it all the passes. Hmm. Um, so the first part, I think I know how to do it. Um, there are, um, the first, first question I know how to do it. I'm thinking about the second one, how to go through all the passes. Cause I don't want to, um, travel as graph twice. I'm thinking can I just travel as the path of once and, and the get the answer. So which means, um, so from, um, so from, um, oh, maybe let me still do this way. Like, uh, um, I will break the, the question to two parts. One is how to, um, um, check if there's, um, um, uh, the cycle for that one, I think I would just check, um, um, I would, I would just use a, a revel time and a departure time. So this is, um, this is, uh, directed, uh, directed, connected graph. So I need to check if there's, um, um, let me see. Just one second, I want to change the color of my pen so that I can, call the name change color. Okay, so if I have another, um, let's see if the destination is three, and we don't have this one. We don't have this one. Um, so this edge from, uh, four to three, that actually is a cross edge. Because I may go to, uh, from zero to two and a two three. And the three is this already. And from zero to two to four to three, but, um, the, uh, uh, the three is this already, but it doesn't mean that it's a cycle. Because this is a cross edge is from another unknown to this one. What if I have another, um, link like this, so I start from zero and I go to one and I go to three. And I go back to zero and I will, wait a little bit again, because I have a link between zero and three, but that is also fine because this is a forward edge. In the, in the DAG forward edge won't add, um, won't add, um, a cycle. So then I'm thinking, um, only the, the, the backward, at the back edge, uh, will create a cycle. So which means if I have, uh, something like this, then this is a cycle. So now I will start ascending, um, I will use a departure and a level time to solve this problem. Um, but actually for detect the cycle, I don't really need, um, a level time. I can just, I can just use the departure time. Because so which means let's see if I start ascending, um, times on one, one I, um, I just want to think. One I with this a node, um, so let's see if the departure time of this one is zero. Oh, no, no, no. So one, I'm gonna say departure time is that I visit the old, um, it's neighbors and then come back and go to, um, and leave from this node that's departure time. So when we come into this node, there, there's no departure time actually. And I come to this one, there's no departure time. And I come to this one, um, since this is the, there's no outgoing edges. Let's see if I don't have this link. And then I, I will go, go back. So the departure time for this one, I will say I ascend number. I will say like zero. And then, um, I will go back to one. And this one, the departure time is one. And this one is two. And I will number old, I mean, um, traverse all other, um, nodes. So, so this is fine. Cause this is, if I remove the green one, but the problem is that if I have the green one, okay, the problem is that if I have this green one, then, then they're gonna be problem. Cause I don't have a departure time, which is, uh, nothing, nothing, and go here, I will send a number like zero. And this one have a link back to this node, um, zero. And then just notice already visited. Cause this is the source. And then I will check the departure time of this one. If this one is already visited, and he doesn't have a departure time, I will say there's the cycle, cause this is a backage. So this is how I detect a backage, um, which is a cycle in the, in the graph. Um, right? So this is, um, gonna give me part of the answer of the question. Um, this is the one, one condition I need to check. And then the second condition, oh, okay, actually before this one, um, I will say, ready to hear, um, cycle. Uh, the second one, I cannot have, um, uh, separated, um, I can only have one components, which means I cannot have another, like two components or something in the graph. Let's see if I have another one, five, six here. Though there's no cycle, but definitely this one cannot, to cannot be should, um, um, the, the three. So this is also not a correct answer, right? I have just have a, um, one component. I'll just say one component. And the second one, sorry, and then the third one, I need to check if all the paths that I can go to the, I can reach to the three. So if I just use this two, check this two thing, and I'm thinking, um, for the third one, from zero to two, zero to one, three. Because for this two, if I see there's a separate component that I, I would return false. This one I would return false. And then I won't be, I don't need to finish the, the traverse for the whole graph. Okay, let's see now if I finish the traverse, because let's see if I don't have this one. And I don't have this, I just have something, okay, make it shorter, either to understand. Let's see if I have something to expect this. I don't have this forward I add, I don't need this one. So I start ascending, um, um, what I'm thinking is now is I am thinking, can I just do one, travel, uh, graph traversal and answer, get, get a final answer, because I could do, uh, one traverse, so to get, to finish first and a second, I'm thinking how can I do the third check? Third check is for, um, opath can lead to three. Let me write it down. Okay, this is the old pass. Oh, opath can get to, um, three. I'm thinking how can I do this, along with the same traversal, uh, for one, two, uh, three, the, because I will start ascending, uh, number, let's see, departure number is zero. This one is one and we go to two and we go to three, three is with, already, so we'll come back and this one departure number is two and this one departure number is the three. Okay, so whenever we reach to the end, we'll return. So which means I just need to, um, keep, um, keep, uh, temporary array that, uh, keep all the, um, uh, let me see. Okay. Keep all the, um, the notes along the way. Do I need to do that? But if I do a DFS, so I always go through the, the, the, the, the next one, the deepest one. So, I mean, I mean, I just need to put a chair in my, in my DFS function to see if I reach the, yeah, I think I mean, I need to keep anything, uh, temporary array. I just need to do this. So in, in my DFS, um, in my DFS function, I, I will just, um, with this old neighbor, as long as I have a neighbor, I go on the check it. And after this is kind of like post-order traversal, right? Um, after I come out from all the neighbors access, this is all the neighbors access, I check if I'm, if three is reached, right? Because this three has to be the destination. We have to go all the way down to three. So I will, uh, after this is done, I will just say if three reach, if three is not reached by any of my, um, children, or I am not at the three, then I'm going to return for us. So which means I cannot reach two, three. Yeah, I think that will work. Yeah, that's so far what, uh, that's, I'm thinking. Um, I don't know if you're okay with my algorithm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I'm pulling your face. Okay. Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, okay. Now, let me, let me write a code here. Um, oh, oh no. Uh, actually, honestly, I haven't used this IK on code, code bank. So for IK code bank, can I run my test case or I can, I can not run?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can see around. You can use a leak code editor if you like."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, but, but, but for the code, uh, code bank, they don't have a test case, right? Not like a leak code. They have, they can verify my I know. If you use a leak code, you do this problem or so."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. You're never used, because, and then I will share on my screen, then you can see how to share. Stop sharing."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, now we just do that in a leak code. Yeah, I will share my desktop. Just one second. I have many windows. I'm thinking different. Sure. Um, can you see this one? This is the question 1059, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, um, I, um, again, I will say that I'll use DFS, because, um, for, um, direct connect, connect, um, um, graph and to check a circle, is too hard to use BFS. I haven't done that yet. But I pay for DFS. Are you okay with that?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I'm okay. Sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Then now it's dark. So to, but like I said, I need to check the departure time. So I will first, um, um, departure. I will give this, um, minus one. I have unknowns for each of those. I need a departure time. Do I need a parent? Do I need to check a parent? This is a direct and direct, can direct graph. Direct graph, I don't need to check parents. So I don't need that. But I need, I do need to see if this one is busy or not. So with it, I need a, with it, with it, um, structure. Um, to assign, um, departure time, I need a temp stamp. I need a temp stamp. Okay. I will start with zero. And, uh, what else do I need? Hmm. Well, so far I will keep this. I may need more. I will add it later. And then I will say this is my DFS and start with a node. So, um, for the DFS, well, I see the node, I should capture the node already. Right. Well, um, this is such a DFS. Yeah. So whenever I get a node, I shoot mark as visited. Ted node. As, um, I have with this node. And I don't need a rebel time. I just, I only need to departure time. So I will, um, departure time. Hold, um, fine. Just die. And then I'm going to increase my temp stamp. And for this one, I just, I can just need to return true or false. If I can get to the destination, I will just return true. Otherwise, I return false. I will handle the first, um, probably I need to add some check here for the first. Okay, I will say that, um, I will say, um, actually, it doesn't matter before the departure. Well, I would put it here. Um, boss condition. I will add a code later here. And then now, here is, um, as it, whether it's a neighbor's time. Okay. And, uh, it gives me the address. I need to build the agency, um, agency list first. I will use adjacency list. Um, for this question, because I don't think other agencies, this is to me, is the best one, because I don't think I need a adjacency map. I will just build adjacency list. Um, for this one, for the list, I know to the neighbors. So what kind of do you have here? So, um, for, um, who? The sages, um, a, the, who? And we, I will just do this. So now I have my adjacency list. This is a direct photograph. I don't need to build the, um, the ad from V2U. I only get from U2V. So this is done. Okay. So now I get a neighbor in, I, the list. Um, yeah. Note. Okay. So if where's it's end? Note, it's not in, where's it's the yet. And then I should just go and visit it at. Um, okay, I will just put this here. Okay. But this one, I need, I'm going to return true or false. If this written true, I keep, I keep, I keep checking if this guy returned false already. Okay. And then I don't need, even need to keep doing anything. I will just return. Else. Here is, um, I need to check the, um, the departure time. So for the departure time, I will say, um, else. So which means there's no this. This is yet all right. It is yet captured and visited. Oh, sorry. It's already visited and captured. So. I supposed to have. I need to check the departure time for the neighbor. Okay. Here from the. Part. True. Neighbor. I don't, minus one because I give the initial, I need, initialize the, all the values to minus one, which means it's, um, it's not been done yet. If it's not done yet, and then I return false, because I saw here. Here is so. Um, back. Patch. Um, cycle. Detected. Okay. Okay. And then now I come here. So I need to check. I need to check if. The. Hmm. If I, from me, I can reach to the destination time. How can I check that? Because I'm not, um, I see if I'm not zero. What I'm not one. How can I know that I, I reach to the sky? Damn. Damn. So, what I need to do is then I give, um, global variable. I don't want to use a global variable. Looks, um, oh, do I still have time? I have to finish this. Oh. Okay. I will just do this. I think that this should be fun. Yes. Um, node. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Yeah. I think so far I will use, uh, I will return two things. One is, um, The first one is, um, No circle. And then this, um, just to fund. I will, I will do something like this. It looks a little bit like clumsy, but I will do this first. I will see if I can, um, optimize it later. Cause, um, this one I will do first. If this first actually does matter, I can always kill Foss. If this is a Foss, I don't really care. I always do Foss. Right. Am I right? Eat. And I need to check this one. We captured this one. This is, uh, ss, I will. So I said, uh, cool. And this is, um, this is, um, this is, um, this way. Uh, ss. No circle. Okay. It's just, there's no circle, okay. No, circle written, true. My head is cold. And it looks clean to me. And I All this, I will just do that like this. So no, no, no, I cannot be interested. I have to, I have to, first, first, first, first, first. Okay. So I think that said somethings. That. found it is no cycle but we have in the font just go if just not a small circle we have a circle we go here we don't have a circle but I think that this one should work let me see this destination but I didn't check the destination how come the okay I have to check okay um node 2 show me the return 2 well actually I'm just re-conforce I don't need to do this okay yeah the code looks weird because this is true true I think I can remove this let me try this further okay this looks weird okay okay so I will just run one test I just want to check if I have like like tap or um code can run what's wrong okay yeah it works for this one but may I ask good I will only get one question right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yes yes"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay okay then I will spend some time to uh clean my code a little bit I don't like it I don't think I need this I don't think I need this I will keep a copy just copy a copy piece of whole thing because I got a kind of war working code and then I um okay there I think that the initial um I think this should work we need to do that yeah because um if they you you you you you you you you you you yeah because um if we get first we return from there already anyways because this one will this one will do the magic we'll check the destination okay I think it should work I don't need this okay it works okay so then let's return this guy I don't even need this okay it's much better now and um back to what I have before hold this one what else can I make it a better I think it's clean enough this is the one it's the sure work and whoops oh okay so cool oops oh yeah okay um I don't mind I just submit to run the food test cases where you want me to cover manually cover some uh educates first because they're gonna take more time if I just manually do some test cases edge testing"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "we don't need to do that we can't submit and see it was missing"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "oh okay let's just do it oh you show the answer and why maybe because I missed this is uh I missed the first one this one well there there there may be some unveils and notes there okay uh let me show this one okay let me check we have a four notes zero one zero to one and zero to two uh one two three oh how come I written false zero to one one two three zero to two two two three oh I see I see the reason the reason that the reason is already visited so I need to change this a little better yes um really turned true okay i'm still not I think I need to one thing here. I need to add one more thing here. I need to do this. I need to check the mode for mode unit. You can now just return to the modules. I need to do one more. If it is false, I should just return. I need to check this. This is the one that covers the... The separate component is the problem first. This one is right. It is not working. I didn't break anything. I need to turn it on. I need to turn it on. This is a cycle. I need to turn it on. I need to turn it on. I need to turn it on. I need to turn it on. I need to turn it on. I need to turn it on. I need to turn it on. I need to turn it on. The number is already visited. Which one? One. Let me print and know what is it. Zero. I need to print the list. I don't have enough time now. One. Make it minus one. Give it minus one. This is not working. This is not the number. This is a cycle. The neighbor is one. Come back to the neighbor is one. We should come here first. The node is zero. The neighbor is one. Let me print it. Let me print it. Let me print it. Let me print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I don't know. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. Why is it not that? This is the right way. I need to print it. I need to print it. I need to print it. I need to print it. This one should work. I need to print it. I don't want to print it. I don't want to print it. I don't want to print it. I didn't print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I didn't print it. I don't even print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it. I need to print it."
+  }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Hello, hey guys welcome to daily DSA practice and today we are taking a mock of saga. Hey saga welcome, welcome to the channel man. Okay, so, Sagar before we start the mock at least in two minutes can you just tell about yourself what you are currently doing and what you are looking from this mock interview."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure sir, as you already know my name is Sagar and I am a B.S. Secretariat and currently I am pursuing MCA and I am looking for a software engineer rules now and I am skilled in Java language and also web technology such as game analysis is not a problem."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Awesome awesome awesome so your interviews are about to start right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, okay, okay, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I meant to say the placements your placements are going on or about to start."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir my placements are going on"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "it's going on so cool man good luck for the placements and good luck for this interview mock interview. Okay, so yeah, so you can you share your screen I will tell you the question and this would be a 40 minutes round 1 DS a question and after that I will tell you the all the feedbacks. So, for example, let's write an example example is let's say the root node is here 5 and it's left child is 4 and if you can write in a tree that would be little bit easy to visualize right just in the next line right 4 5 4 and it's right child is 5 4 left child is 1 4 right child is 1 and 5 right child is 5 no no 5 left child is null but right child is 5. Okay, so now here if you see that what we have to return given the root of a binary return the length of the line. So, the length of the longest path where each node in the path has the same value so now your path is here if you see 5 5 5 5 so this is one path right so this is one path and you have you have to return the length so what would be the output 2 the length is generally the edges the number of edges which are coming in a path right so what would be the output for its its 2 2."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, what is the example yes I got it and it is not necessarily that the path may continue the root node can also start from your own."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct correct. So, let's say for example, in the same example instead of 1 1 let's say if it is 4 4. Okay, so then also it will be 5 and this one both are and let's say instead of 5 there was another 7 so but even that then 4 4 4 would be a 1 it can create 1 path right. It should not necessary to be on the top of the root. So, it is question clear. So, it is 820 yes you can start."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I can just drive it on pen and paper."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah sure sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you. Okay. So, I thought of an approach that I can declare I can take a global variable called max and I can do a DFS on the tree and then compare this root value and its styles value. And if they are equal I can increase I will keep a current variable and I will increase that and in every traversal I will compare the max and current and I will store the max max in them."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. What should be the time complexity in there?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, time complexity will be both etching that go of the height of 3. And space complexity? The recursive stack space complexity of all which. So, the time complexity will be over and because we will be traversing to all the nodes and the space complexity will be off and because of the recursive."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. So, can you tell me how you going to do before that like let's say in the tree of this tree can you just give me like how it going to."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I will first of all I will declare and max variable to 0 and then I will first of all call an EFS method for the root node and in that moment I will compare it to its left child and also the right child. And I will also create a current variable and I will also pass that function and I will compare the roots the nodes left and right child's value and if they are equal to the node I will increase the current and pass it to the next function next call. And if not I will make it 0 again the current variable and in every call I will be checking that over the current and max I will compare them to compare them and I will take the max of them."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you do the problem? Can you, can you code for it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. It is like a longer variable and considered the tree the node of a tree is like a tree node right and it has this considered that there is one data structure which is known as tree node. Right. It has three things value tree node left tree node right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yes sir. What is that? Sir should I write it method only which I will go forward."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. No, no. Write the main method."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you are writing a main method or I mean to say the right method which you are going to implement."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So I will go to the bottom end and give one more and I will pass that over to it and turn it. Excuse me. Are you waiting?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Take hold. Okay. Okay, I will put it on again. I will bring it to the tree. Okay. Okay. Before I will be comparing this one my method only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is this root node and what would be this another variable?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir this correct variable I am passing here from 0 and every time the root is equal to this left or right I will increment it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And answer I will show in this max variable which is a global variable. Could you please little bit scroll down for the yeah now it is visible."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So you are comparing the value with the node."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I am comparing this root value with the sorry sorry sorry."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I am comparing it to the value by the same. And if it is equal root value is equal to root dot left value. Can I increment the current current passing to the next function? Else I will get 0 value. Every time I will compare blacks and the current variable. So this is my approach first I will try to try and measure it. I think it should be current but there might be some edge cases."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So here in the else part why we are going root left? Suppose if you are in 7 you are only in 12. Suppose if you are 7 then this can be the longest part right. If this is not equal to its right child then the further child can be equal. There can be a path below it which is the longest path."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Then it should be right only right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir. Root dot right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So you are not? No. No. No. In the else one. Yeah. L, D, F, F. I am over 2 degrees that I just hope it will say."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Cool. Okay. I am cool with the solution. Let's close this mark. Let's go to the feedback. I have a feedback for you. See it's been only 15 minutes right. So you have solved it but I have certain feedbacks, so let's go through it. So pros which one I can tell you is like you might be good in coding but there are certain things which I want you to improve. One thing is where is the edge cases? You haven't discussed any edge cases with me. Like what if there is no path what should be the output you have to return?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So what if and thing if tree is empty what you have to return? Like there are certain edge cases you have to find out. Right. So. Okay. So one thing is definitely this is what if there is no duplicate? All are different. Right. So can a single node? Yeah. So there are different edge cases you need to do a clarity with me. So that is the one thing biggest thing what missing. Another thing is you have to explain your approach which you have come to the interviewer. Okay. You have come up with an approach good but you have said that okay you got the approach you will do DFS. But it's very quick. See sometime interviewer is not as fast as you. Right. So you have to involve interviewer in your approach what is your approach? So take your time explain. Okay. This is the tree. Okay. I am going to the left then left then left. Okay. Now I am going up. So the see this is God equal. Okay. So I have stored into my current maximum one till now. Then it goes to here. So see visualize somethings to the interviewer. Okay. Interiors say that yes, yes, yes, where is going? Right. To be honest, I was totally not in line with what your your solution might be working fine. Right. I don't have any issue with that. The issue with I have is like I am not part of that solution. How it's going to work? I know how it's going to work because I have a solve this question. So I have pretty much know what you are doing. But as an interviewer, I can tell you that he might lost it like okay. What is the approach that I didn't know? Okay. So you have to involve before even coding. You have to involve interviewer. Hey. Let's let's take him first. Are you okay with the approach that question you have to ask. Hey, this is my approach. I have explained you are you okay. Do you have any questions? Right. So after that, only go for the coding."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So one thing is I already told you that the when you are doing a code, you have to code like a production ready code. Right. Production ready code means this code will get merge and goes to life in a company. So there are certain this required is the how clean code you write. So what is DFS here? Let's say DFS. As we are practicing in certain platform, DFS makes sense. But now you are writing a code for a company. What is DFS? What is CURR? Right. So there are certain things which you have to keep in mind when you are writing a code in an interview that your code should be production ready. Right. So give a proper naming that. So let's say instead of DFS, give a name like find longest path. Something some meaningful that okay find longest path or something else which you think it's meaningful. Right. So that is very very important. Another thing is always do dry run with the interviewer. So currently what there is one more issue which I see is you are finding a solution by yourself. You are fine. You are doing a dry run by yourself in your copy and all. This you have to start involving interviewer. Sagar. Do a dry run with interviewer. Okay. Now see let's say the input I start with the root note 5. 5 I am going with my code okay. Root equals to question all no it goes to this point. Now in the diagram okay now I am here. So you have to take to the journey of the solution. You have to take interviewer also with you. So currently I know that you are doing in your copy but this you have to involve interviewer also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So currently I work on this point. Right and also how you get the solution you worked in your copy and all. I am totally not part of the journey. Right. I know that you are a good coder as soon as you got this. This is not an easy question. But you saw it but the thing is there are a lot of things missing. Thinking of loud was missing. So these are the things even if you are a very good coder this might writ a bit backfire you. Right. So work on this man like this is really really will be helpful. So this is mock interview right. This is just for making a mistake and learning from that. So please take this feedback in a constructive manner. Right. This is all I work on this point. Right. So that's why I stop the interview like in the 16 minute itself because I know you are good in coding. But you already know what would happen with this. So I always say that even if you solve a question 100 percent right but without all the steps. There are points for all the steps. Right. So this is not important. Solvation is not important. Journey to the solution is important. So which I see is missing. So I really want you to work on this man. Discuss with the interviewer right. Find HKs tell your solution to the interviewer. Take a note. Are you okay right. Then tell yourself what is the time complexity space complexity. Start coding write a clean code after the do dry run and then. Try to find a bug by yourself in your dry run. Okay. You said that dry run will work. I told you a simple issue is also right. There could be many other issue also. Possibly. But the thing is I was not involved. I didn't took much like okay. I have already made my points. These are all things are missing. So whether even if your code is working or not, I am not very much in line with it. Right. Because the major points are missing. Right. So take that you have to. These are small spots point clean code thinking out loud. HKs is finding involvement of the interviewer with what is the solution or but they all have points. Right. So little bit work on that man. But take this in a constructive manner man. It's happened."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So this is a more contributes for learning. So. I am also make mistake. I also learn. So let's learn together. So please take it in a constructive manner."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir. Thanks for the guidance and I will surely work on this point and give you interview next time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure man. And I wish you luck for your interview man upcoming. Good luck man."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Thank you. Thanks."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I will let me stop the."
+  }
+]

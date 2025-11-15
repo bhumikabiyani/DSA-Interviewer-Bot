@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "id": "hard_trees_001",
+    "type": "question",
+    "topic": "trees",
+    "difficulty": "hard",
+    "pattern": "tree_traversal",
+    "tags": ["trees", "binary_tree", "serialization", "dfs"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(n)"
+    },
+    "related_problems": ["medium_trees_005", "hard_trees_002"],
+    "evaluation_criteria": ["tree_understanding", "recursion", "edge_cases", "serialization_logic"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Serialize and Deserialize Binary Tree",
+    "description": "Design an algorithm to serialize and deserialize a binary tree. Serialization is the process of converting a data structure into a sequence of bits so that it can be stored or transmitted and reconstructed later in the same or another computer environment.",
+    "constraints": [
+      "The number of nodes in the tree is in the range [0, 10^4]",
+      "-1000 <= Node.val <= 1000",
+      "Your serialization/deserialization algorithm should be stateless"
+    ],
+    "examples": [
+      {
+        "input": "root = [1,2,3,null,null,4,5]",
+        "output": "[1,2,3,null,null,4,5]",
+        "explanation": "The tree is serialized to a string and then deserialized back to the original tree structure."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree case."
+      },
+      {
+        "input": "root = [1]",
+        "output": "[1]",
+        "explanation": "Single node tree."
+      }
+    ],
+    "hints": [
+      "Think about tree traversal methods (preorder, inorder, postorder)",
+      "How can you represent null nodes in your serialization?",
+      "Preorder traversal with null markers can uniquely identify a tree",
+      "Consider using a delimiter to separate values"
+    ],
+    "edge_cases": [
+      "Empty tree (null root)",
+      "Single node tree",
+      "Completely unbalanced tree (linked list)",
+      "Complete binary tree",
+      "Tree with negative values",
+      "Tree with duplicate values"
+    ],
+    "follow_up_questions": [
+      "How would you optimize for space if the tree is very sparse?",
+      "What if you needed to serialize multiple trees efficiently?",
+      "How would you handle very large trees that don't fit in memory?",
+      "Can you implement this iteratively instead of recursively?"
+    ]
+  }
+}

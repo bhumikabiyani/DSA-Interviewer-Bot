@@ -1,0 +1,446 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, another same thing, the pattern would be the resume review for 5-10 minutes. Then we have some very fundamental questions. Then we go for one interview question, one DSA question, which we will try to target in 25 minutes. Then if we able to do it on time, then we might have some follow up question on top of that. Else we will go for some other questions, like if depending upon how you do it. Okay. Okay. So, let me review your resume. So, I have already gone through your resume to save the time. So, I will just share the points which you have to work on. So, first of all, in your resume, the one major thing missing is the summary. Right. So, before itself, first of summary, first put a summary of two lines. Right. Like, before reading to going through your resume, I should be able to know from your summary that, okay. So, you are in which company, how many years of experience you have in which tech stack you are working or you are comfortable with and what is the current role? This four by thing should be in your summary without even going to the, so from each, you can say that segments, you should use the summary or it should be maximum of two lines. Okay. So, that is missing. That should be the first before even education itself. Okay. So, your education is totally good. In the professional experience, the only point, the ICM misses, what is your responsibility? So, from this, I got to know that, okay, in the mind tree, you are working in this, so mind tree works in the IVR, some MUN, web technology, it is all good. What is your role? What do you do? So, let us say what I mean by your role should be, like you are managing the, you can say that the whole web application, bug fixes, right, you are mentoring or anything like feature, development, right, designing. So, these are generally the responsibilities of a software engineer, right. So, what is your responsibility in this? I know that what is the project which you are working on and what is the tech stack, but what is your responsibility, that is missing, right. And in the second one, you have mentioned the responsibility actually that you have refactor the code base, deliver the quality code on time. So, there are seems like some responsibilities you have shown. Okay. Then comes to your projects. So, projects was little good, but still the same thing. So, all the projects are, there is a sole project. It is a sole project, like, okay. It is all done by you, but if it is a group project, then you just have to mention that, so this is my role in that one, right. If it is a sole project, then it is okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, if you have plan to say that it is my solo projects, all then, okay. So, means whatever you have told, you have highlighted everything, so it does not matter. But in interview, I about to say that as a group of three team members, we build this, then please add your role in that one. Okay. Okay. So, that is the only thing and achievements is good, like, so as a part of first one year of experience, now you have, so all the achievements currently which you have, that is good. But do you have any achievements, what I would say that in your current company, like, now you have one year of experience. So, what I, what achievement can it be? So, generally what we do put in achievements, you see any extra thing you have done in your company, that is all our achievement, right. So, let us say, you have improved the efficiency, so that if you see the intern, the company, the, in which you have done an entire. So, here that you have written, delivered the quality code on time which increased client retention by 8% and profit by 70%. This is your achievement actually. Okay. Okay. So, you can say that, you got rewarded for this one. So, now this become your achievement. Okay. So, you can put this in your achievement block. Okay. Okay. So, till we are in college, so lead code, hacker rank, all these things, ranks matters, right. But now when we have one or two years of experience, we want to show some achievements based on the company which we have worked. Okay. So, this is one of your achievements which you have put into your experience. You can bring it down to the achievement at the first line. Okay. Similarly, like anything you have, you have built something which help the fellow developers, right. So, like this, you can add in the achievement. Technical skill wise, all good only thing is in your fundamentals, you have written DBMS, but in the database, you have written MongoDB. Please add my SQL also. If you know it, otherwise that is also good. Okay. So, you can add your curriculum activity, so that is all okay. And if you think that, I would say that, see, currently when I am looking at your resume right, there are lot of text, right. So, I would say that extra curriculum activity, you can remove it. But when you are going to tell your resume about right, you can always add more detail which is not there in the resume. Okay. So, the only, what I am trying to say is that, if we can save some space which is not very much important as of now. So, extra curriculum activity is like you mentored the first year students, so both are of the college seems right. So, that is kind, we can always tell our activities when we about to speak, right. But in the resume sense, we wanted to capture one page, but little bit less text. So, you can free up that bottom space. So, it could be little bit you can use little bit more space for your information. Okay. So, that is pretty much on your resume. Rest, everything is looks good. So, highlighted part is all good. You have given your project descriptions, right. That is all good. The minor minor improvement, that is all. Otherwise, resume are very classic standard format. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is on the resume part. Now, let us move on to the fundamental this thing. Okay. So, for fundamental, so currently it is time 10, 22, 23. Okay. Okay. Okay. So, let us have 5, 10 minutes for this one. So, on a can you, in one minute can you just give me an estimate value of 2 raise to power 24?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "2 raise to power 24 estimate value. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, I will give power. Around. What is the property of when you have let us say 2 raise to power 4? What is the, how you can write it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "2 raise to power 2. 2 raise to power 2, right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "2 raise to power 2, right. So, let us try to divide it. And just give me an estimate value."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. 2 raise to power 12 plus 2 raise to power 12. So, you can use your property for 1 minute."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, you can use your property for 1 minute."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. 8, 2, 1, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 5, 2, 3 again 2, 4, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, feet, 2, I meant in between okay 16, okay 128 square, 128 square,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay can you just tell me like how you are going to this problem?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So like I am breaking down with respect to the power, to RIS 1, 24 can be written as 2, RIS 1, 12 and 2, RIS 1, 12 and then similarly 2, RIS 1, 12 can be written as 2, RIS 1, 2, RIS 1, 3, and 2, RIS 1, 3, and 2, RIS 1, 3, and 2, RIS 1, 3."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, can we little bit simplify in the senses? You know right what is 2 RIS 1, 10."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "2 is about 10."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, let us move to the next question. Okay, so what is the worst case time complexity of look up in self balancing binary search tree?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Self balancing binary search tree. What is the worst case time complexity? It is a log n"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "and what about the normal BST tree?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Normal binary search tree. Okay, so only look up, right? Only look up. So, worst case time complexity. It is also log n and that also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Are you sure? Normal binary search tree, if you construct the worst case, we are looking for a worst, we are not average."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, worst case. Oh, 5th of the tree. No, it is over, it is over, big of n, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let us say binary search tree goes like in one industry at length."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, skewed trees. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what is the worst case insertion complexity in hash table?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Worst case insertion in hash table. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, it is over, fun. That could be an average, what about the worst?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so like inserting a new element or via, we can also update the present at the present peak insertion. Yeah, there can always be a collision also, right? Okay. So, okay. Then there will be over and number of elements in the hash map."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. For an unweighted graph, which algorithm should we use to find the shortest path?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Or for an unweighted graph, graph, for an unweighted graph, which elements should be used to find shortest path? BFS."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "BFS. Yes, BFS. Okay, why?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "BFS, like we can go level by level and like find the shortest path like that now and keep a visited array also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Can you just tell me with, where he just considered me like 10 year old, will I don't understand any of the technical terms? Please explain me all the oops concept."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, oops concept. Okay. So, like oops concept is a concept in computer science using which we can like like illustrate a real world object into code. Right. So, we can create the properties and illustrate it similar to like using methods and variables, which we use inside code. And yeah, like in simple words this code is,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "no, what are all the concepts which we have in the internet?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Inheritance, polymorphism, abstraction and encapsulation."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, inheritance would be taking the same properties which are parent has something like that. And polymorphism would be having the same name but doing different things. And there would be subtle differences which would like make the two methods different."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I am very new to this concept. Right. So, I am not sure what do you mean by doing the same thing two methods. So, can you give me some easy example to understand."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. So, there is one, there are two persons. Okay. One is a father and one is a son. Okay. So, both persons can write. Okay. But a father can write like in his own handwriting or something and a son can write in his own way. So, there are like two behavior of the same like two behaviors of the same function. We can say it is all the same method which is right and we can say."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. And where yes father like we overhead like we overhead the method. Okay. Okay. Okay. Can you tell me what is virtual function?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Virtual functions. So, in virtual function what we have is we define a function virtual. When like we do not do the implementation of the function at that in that class but we leave that up to the child class and how do they want to implement that. And virtual function has to be implemented by every child class."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, that is pretty much on the fundamentals part. Right. So, let us move on to the DSA question. Okay. And so, I will tell you the question what this question is. Right. And then you can take your time and I do not know why this SCL and all this coming. So, you can remove it while I will go through this. Right. Okay. So, the question is you need to design a hit counter. Right. And what does it hit counter will do is which count the number of hits receive in the last past five minutes. Okay. So, in last five minutes whatever the hits comes you have to just count it. Okay. Now, how does it work? Now, let us go to that. So, we have to implement two methods the get and the hit method. Right. Okay. So, what happens is each function accept a time stamp parameter in seconds. So, let us say it is just an integer. So, all this will come in seconds. So, let us say here if you see an example you will see that hit one two. So, these are nothing but a seconds. Oh. Okay. So, these are all seconds. So, now in this case what question says that each function accept a time stamp parameter in seconds granularity you may assume that calls are being made to the system in chronological order. So, means whenever there is a hit with a time stamp with a time stamp is in sync it you can assume that for now it is always come with one two three four five six seven. So, time stamp is in increasing order it is always come. Okay. Right. You may assume that the earlier time stamp start with at one. So, always time stamp started one not zero negative nothing. So, one two three four like this. So, now in this example if you see right. So, how it will work just see that example. So, first is hit at time stamp one. So, now what it is coming is counter dot hit one. So, what does it mean is like I have hit at time stamp one. So, one hit has come. Now, second hit at time stamp two. So, now I am calling one method counter dot hit and putting the time stamp in second two. So, means at the second time stamp I again made a hit. Now, at so, this is just repeat duplicate. So, you can remove this one. So, now, yeah this one. So, now at third line hit at time stamp three. So, we are trying to make another hit. So, we are doing counter dot hit at second third. So, at third second we make another hit. So, total three hits has been done. Right. Now, get hit at time stamp four. So, now I am trying. So, I am now calling a method counter dot get hit and I am giving a second. Like give at fourth second give me how many hits has come. Okay. So, how many hit has come till now? I hit at one hit at two hit at three. So, three hits has come. So, that is why we should return three. So, that is why it should return three. Okay. So, now let us go for the then we say that hit at time stamp three hundred. So, now let us say another hit comes at three hundred second. So, we call a method counter dot hit three hundred. Right. So, how many hit has happened now? Four. Right. One hit has happened at second one. Another hit has happened at second two. Another hit has happened at second three. Another hit has happened at second three hundred. Okay. So, now total four hit. Now, the second last line get hit hits at the time stamp three hundred. Now, I want to find all the hits by the time three hundred. So, how many hits happened total? Four. One, two, three and three hundred. Yeah. Okay. Now, at time stamp three hundred one. How many hit has come? Get hit. So, at now three hundred one times time only three. Why? Because, question says that you only need to consider the hit in last five minutes means three hundred seconds. Okay. So, now at three hundred one the first second one hit the first hit which is happened at the first second. We will get removed. Okay. Okay. So, that is why only three hits now. Okay. Okay. So, that is also possible that at one at similar second let us say you can get more than one hit. Let us say counter dot hit one another counter dot hit one. So, at the same second you can get more than one hit also. Okay. So, at one time stamp only like I can hit one two three four five. Yeah. So, counter dot hit one counter dot hit one counter dot hit one that is also a possible use case. Okay. So, you understood the question now?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, it is 10, 37. Yeah. You can start. Thank you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Okay. So, five minutes means three hundred seconds. So, okay. So, anything in the time period of three hundred seconds we need to run the amount of hits. Okay. So, should I write along with what I am saying?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let us first discuss the approach like what you are thinking. Then once we decide the approach then you can start the board."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. It is one single time. Okay. So, we are one two three. Okay. Okay. Okay. Okay. Okay. First thing what we can do is we have to like store the number of hits obviously that we can return and somehow we have to reduce it after 200 seconds. So, what we can do is obviously I will create one variable for a number of hits and for every hit counter, counter dot hit I will increase the number of hits and one two, three hundred and three hundred. Okay. So, when I reach 300 I have to identify the number of hits there. So, till 300 we have four hits."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sorry, three hits. Correct. Till 300 you have four hits because before doing a get we have hit 300 also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Till 300 we have four hits. So, when we come to 300 one we have to remove this one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Because we only need to consider five minutes and then."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, what we can do over here is if I take something like if I store this in a map like for every time stamp number of hits I can store like if at time time one there are multiple hits then also I will store like at time stamp one. We can like if I have five hits and I will store one as a key and like number of hits as value five. Okay. And what I will do is add to 301 I have to remove one from the okay. So, I have to remove one value at one from my total number of hits. So, whatever is my value like a time stamp value if it is 400 500 600 anything. So, what I will do is I will what I can do is if it is 600 or let's say it is 302. So, what I will do is I will go to I will go to two and I will go at two and remove number of hits at number two. Okay. And like remove how will I remove like I will have one variable with total number of hits minus number of hits at number two time stamp. Okay. So, I will get the number of hits at like number of hits till this like."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, let's say that the time stamp value when we are saying time stamp can be 1, 2, 3, 4, 300 let's say it can increase to 2 raise to power 10, 9 that much. Okay. So, you can get 7, 4, 4, 4, 5, 6 and something like that you know integer range only. Okay. So, just see from that perceptive itself like will you be able to whatever the solution which you are getting with HashMap will you able to take care of it. But I got your approach what you are saying is you will take a HashMap and your key would be time stamp value would be the frequency and let's say whenever you are getting a hit with a time stamp you will use time stamp as a key and put plus one whatever the value is there. And whenever you do a get so you will so what you will do when you get a let's say get hit at 4. So, what you will do how you will identify that which one you need to remove."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I was telling that if I have 4 then actually no need to remove but if I have something some value in time stamp I will go beyond like add 300 minus 4. Okay. So, at that value I will check how many hits are there previously to like at that point how many hits were completed. So, so till from 4 and from 4 till 5 minutes before 4 I only want those hits so I will remove the previous hits."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, you are you are thinking right. How many hits how so you are just trying to find out a before 300 range. So, it's not 300 minus 4 it would be 4 minus 300. So, that would become negative so you will take from 1 because time stamp is started 1 so it can never go negative. So, you know that okay 1 2 3 you have to consider till 4. So, you will now do in the get method in the hash map you will do a get of 1 get of 2 get of 3 till get of 4. But now let's say you have to remove something okay now with the formula you which you told me okay you got to know that okay until let's say you got for example for 301 you got it okay from 2 only I have to start because let's say 301 minus 300 plus 1 will give you 2. So, now you know that before 2 has to be removed right as per you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, now yeah yeah yeah. So, how you will remove in the hash map so you will go and remove all."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, I was 10 yeah 1 second let me."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I was telling you that so, so this 301 is there. So, just what I will know is 301 minus 300 so I will get to 1. So, add to add my like hash map of 1 there will be some value like it will be number of bits. So, I will return the number of bits at 301 minus this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Do you think this will work? What if like for example you got 300 let's say not consider 301 let's consider as 600. So, 600 minus 300 right so 300. So, before that you have to remove right so it is not only one value."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah so, like I will like what I will do now I will create like the value would be like a total number of bits still that point I am telling you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh like okay so you are saying add at 300 I will have the total number of bits still not add 300 okay. So, in 300 I will remove then it is much easier. So, that's what I was saying. So, you are going to add a cumulative one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So, it's like I will keep on adding and so that I don't have to like go through all the different cases again. Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What would be the time complexity? Just can you take different use cases and dry run like I am."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I will do that one second. So, yeah so if I call it add on I will create one really for over here. Total hits is equal to 0. Now add time some one I will hit. I will write H like this. So, this will go I will increase my total number of bits. Then when I increase this I will also like I will have my map. So, let me write my map on you. Okay. So, I will like map attract this. Okay. So, add time some two. So, let's say I again hit a time sample. Total number of it will be two. Again it will become two. Again I will do it one only. It will become three. It will become three. Okay. Now, let's say I will go at four. Okay. Sorry. Yeah. Okay. So, let's say it comes 55 at time 55 second. Okay. You got one hit. Yeah. So, at time 55 I got one hit. So, I will take four over here. No. How? What is the logic? So, now this is your hit method called. Yeah. So, now what you are doing here is how you will do. So, what I am doing over here is like total hits I have three. And whatever you do is I will write here four. Why? Because three plus one is four. And also I will have to check. If before five minutes I have some value or not. But because 55 is less than like less than 300 it will not have. So, after 300 value I can like start checking. Okay. Okay. Okay. So, now you will store the social in your hit method. What you have done is you just try to see that is there. We cross 300 or not. It's not. You just simply add the one. Yeah. Okay. So, let's take 100. No. Now let's come. Let's come. Yeah. I will have let's say five. It is still less than 300. So, you will add four plus one five. Okay. It will become nine. Then over here also. It will become nine. So, let's say I will take 300 directly. And when at 300 I will have one more. So, I will go down create 10 over here. Okay. Now I will create 10. Now let's say come 750 at 750. You or or let's say at 900 you got something."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Just one use case is 900 let's say."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. 900. Okay. So, now you got one hit at 900. So, what you will store here. Yeah. Okay. So, at 900 what I have like 900 minus 300 would not be there. So, I have to traverse the map and find the closest value. The 900 minus 300 is 600."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "600 there. So, you have to traverse."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Yeah. So, I think this will not work. This will work, but there will be time complexity. So, that's what I was saying right every time. The map that's what I was saying. It cannot be like in continuous, you will always find that value in a key. Yes. Can you think of a little bit better in this case?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, second. So, I have 900 over here. So, I have to traverse till 300 till I get my value. Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh, and so, you are telling to reduce the time complexity in here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, because let's say you got over and over and over and over. Like, let's say there would be so many 301, 302 like so many hit."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Now, you have to traverse each. Every time there is a, you have to store it. So, can you use something with like where you can store the value from and and remove the value of the starting? So, what you can do is can you use the property like which I told you that the time will always be in sequence. 1, 2, 3, 4, 5, 6. It will always be in sequence either not increasing order, not sequence, increasing order. 1, 2, 5, it will always be in increasing order. So, can you just use this property?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, like we can binary search."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, not binary search."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. You can use your time. Uh, if this would be in sequence, so what I can do is, I will use the property like this. Okay. So, the keys are always in sorted manner. So, if we store the keys, so the keys are always in sorted manner. So, if we store the keys and then search, I can do one thing now, like I can store the previous like just a head. So, we have another 10 minutes for this question. Okay. So, at 900, so for every like hit, I can store one thing like such as my previous, closest previous something like that, if it's more over. So, at 900, my closest, so at one, my closest previous is nothing, till 300 is nothing. But 300, one, I'll like keep my three, closest previous something like, my one would be the closest previous, till 300. And I add 300 and one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I'll give you a hint. So, let's go away from HeshMab. Can you make use of double-ended queue? Let's see if you are able to go through from here. Like, can we use double-ended queue property? Like, you can add the value from the back and you can remove the value from the front. See, if this little bit simplifies your problem, whatever you have come up with the HeshMab, that exactly correct. Only one thing which you're keeping stuck is like, in HeshMab, you have to close by a queue. So, if that queue is not there, you have to traverse. Now, you only have to resolve that. So, now, just see, the same approach, what you have told, that you have to use double-ended queue."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, if you take the queue size at 300, and obviously, we will insert till 300, and that, oh, not the size at 300, sorry. So, till the value is less than 300, you will insert in queue. And, okay, so how will that be? Like, oh, 1, if 5, 100, and 300, and then 900. Now, okay, so at 300, what we have to do is, I would have to search, what is the closest previous, this would be my, I have to use it for 5, okay, okay, at 900, I want 600, so 600 is not there. If I get a hit at 300 and 1, what will I have to do is, I will have to remove the value of 1, 100 minutes. So, 1 would be present at the starting. And, I will have to remove till I get my, like, closest variable, I think so. So, if it is 300, let's say, it is 400, I have to remove 100 from there. So, I will see if my 400 minus 1 is greater than, or sorry, 400 minus 1 is less than or equal to 300. So, it is not, till I get less than or equal to 300, and because we do not need to do the elements as a present order, and after, after that when I reach 100, I can store my 400 value over here. Something like this, okay, I have to search all the values."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay, so if 900 is there, no, to search. So, what you are making this 900, 400, 300, what is this? This is a time stamp, no, you are storing in which structure, that is, like QQ."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "How come 900 comes before? Okay, so you are storing in decreasing order?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, I am like to, storing it like, first one comes and last one first out, so I draw it like this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, last one first out, that is stack property."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry, first and first out, in Q. So, 100 comes first, and it goes out first, like it comes from here and goes out from here like this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so then 300 comes back to 100, 400 back to this one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, then I am like that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so there will be something like, once again, 100 is here, or there will be 551. So, till 300 is okay. And now if we insert something, some value like 400, so I will have to check if my, Q dot front is, Q dot front minus that value, which I want to insert, is the difference, let's not record with 300. If it is not, then I have to remove, because we don't want, these values at all, and also, if I reach 100, so like, you are right, first, let's make the, area right, so right one, so right one, then after that 55, so at first time, you got a hit, then another 55, that 300, and then you got, no, let's 1, 55, then 100, sorry, then 300, now let's say, 100, you are getting a, hit, so what you are saying is, now our thing was, 900 minus 300 plus 1, so means, whatever the index, we will get, so how many, what the index you will get is, around 600, so till 600, 1, 2, 900, you have to consider, before that, you have to remove. Yeah, so all you have to remove. All you have to remove, that's correct, right? So, you don't have to, run 1, 2, 3, 4, 5, you have to run 1, 5, 500, 300, right? Yeah, so that works fine, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What is the time complexity of this one? This whole, we will, similar to this only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, what is the time complexity of, let's say, the gate method and the hit method. This approach is totally fine, and you are using the blended queue, and the approach, which you have told me, that's work fine, but let's find out our time complexity for this one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so time complexity for, hit would be, what's the time? So, there, in worst case, we have to remove all the elements, let's say,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct, correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, the, now, of number of hits, till that point."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. So, the number of hits, till that point has come, that would be the worst case time complexity for, hit method."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what would, the, the time of third, okay, get hits."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "For gate hits, okay, so at the time of hit, also, you are removing it. So, that's okay fine. That's no problem."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, at the time of, where time removing it. So, in gate hits, I think we will have the value, because we are removing it, and then storing the value, over here directly, we are not storing the total, because after 300, so what if, what if, let's say, to five, five, four times 55, so how you, how the data is stored, get into this, double-ended tool."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, one 55, let's say, okay, will it have duplicate values, or like you are using, like this, it's going to be stored. It's microt, like we can, and we can prevent that also. Like if we use a, instead of this, we can, like, instead of this, I can use a pair in queue, and, no, that will become more complicated. It's okay, let's have, the 55, that would be easier."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so this approach works fine, and so we have very less time, five, ten minutes, five minutes more, actually we have already closed, ten minutes also. So, I just need one follow-up, what if the time stamps are not in order? Let's say, currently it's one 55, hundred, three hundred, nine hundred. What if it is one, nine hundred, then three hundred, then 55? What if this orders got jumbled? With the same approach, we'll go double-ended tool."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hmm, the one-ended tool, won't work in this case, because we are removing all the, elements still, that point."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so, the point is, we have to store this, something like this format already, and, and we have to traverse through all the elements, and remove all the unwanted ones. So, it can be anywhere in the between."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, sorry, I didn't get the approach. Could you please pardon?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, I can. Okay, I'm going to, I'm going to, I'm going to, I'm going to, I'm going to, I'm going to, I'm going to, I'm going to, please pardon. So, like, if the, tabs are not sorted, so, like, it can be in any order. So, double-ended tool is, like, if we use, then we can, we will loss the data."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. We will, okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, what we can do is, we can use something like, map only, and, also, what we will do is, we are not removing in me, like, data, like, in the queue, we are, we can traverse the whole, like, map, till we get our, desired value, and then, a minus it from, the, like, code number of it, and store it over here."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay, right. So, we have, we have, we have, we have, we have, we have, we have, we have, we have, we faced some complex concessions of, OK. Okay. So, we could have, there was, see, and, right? So, we have, so, like what, itself, you used to make this useful for you. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, do you have anywhere like that for me, with your spare,ammentout shows or, if I go, including this, please."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let's start with your feedback. So first thing is you have to work little bit on your base which I found. So like few points which are like virtual function you know it. So the way you have given the expression right that makes that you are not fully confident. So it could be like giving me a 50-50% like you might know it or it could be wrong also. So there will no confidence in that one. So another thing is you have to work really on your examples giving. For the oops what you have given right examples that was totally not you can say that considered as an example. So this is a very popular question like you have to explain something to the kids. So you have to be very good in the example. So this is actually real time you gonna use in when you are working. So you have to explain your thinking to someone let's say product owner. You have to explain the technical terms to the product owner or manager who are sometimes not getting the technical. So they should be able to understand what the technical terms you are trying to express. So this is where it is very common question very popular question. So you have to really work on your example right and it should be instantly like it's it's not something which you know before right. All you should know is the concept but you have to work like at the I have an I have everything what is it but I have to explain it right. So that should be something instead it should come up right. So that one thing another thing is in the interview never use a chop right and so you have used couple of times. So so this is okay more interviews all about this one only right but in the try to avoid this in the real interview. Sometimes interviewers are chill they don't consider this but sometimes let's try to avoid let's be professional as much as we can. And there are a few things like 10-24. This is also kind of very good questions like you can say that it's a filter question like before even the interview there is something called 4 screening mode. 4 screening interview and that we got this question like what is 10-24. So this is very common question is like I think 2-10 is 10 is 10-24 you can convert it to 10-3. Then you can just divide it like 4 2-24 into 2 rest of our 10 right. So this become around 16 10 rest of our into 10 rest of our 3 square so around 16 million right. So just we need to tell how we are dividing it at least we know that something mathematical we know right. So this is very mathematical very basic mathematical property right. So it's not that like always we got to know so even if we don't get this thing that's okay but this is they do ask right. Lot of companies you can get this question for sure. And if we have any mentality like mathematical questions cannot be asked in data sources and algorithm that is also incorrect actually which I tell like any time mathematical small method not big mathematical but small mathematical questions do ask the net right. So few things like the time complexity of DST one you balance cell balance binders to you told correct but normal binders to you was incorrect. So something has to be one the base right and I told you has to be improved. Okay now let's come to the DSA so I would say that this DSA question like first thing is you are little bit fast in deciding the approach. So why I would say that is so I was let's say interview is giving you and that this is sorted form one five three now you might know that whenever the air is in sorted form apply BST. So suddenly you jump it okay because you will be a state binders are right so binders are still nowhere is in this one we are right. So whatever the or also I have given you a hint double and two before also but you again go with the ads map so always use hint. I again give you the double and it to a hint again when so sometime interview will always give hint once but if you ignore that or you couldn't catch it. I might not give again so that so you have to listen to the interviewer very carefully also right so even if you don't give hint feel free to ask for the hint let's say you are trying to find an approach on the hash map. So let's say you if you if you think that okay this interview is for 30 minutes I I have already spent 10 minutes on this right I also need 10 minutes for my coding I I have only now 10 minutes more to find an approach and the 10 minutes just ask for the hint don't spend 20 minutes and then ask for the kid you won't get time for the coding like you today happens you don't have enough time for the coding itself. So you are you divide the 30 minutes like 10 minutes coding 20 minutes for approach and right so out of this 20 minutes 10 minutes you give it to yourself if you know that okay 10 minutes I'm not going anywhere feel free to ask the interpreter the hint even if it is not giving at least we can always ask right even if not if interviewer is sometime very friendly they can still try to help the give minor hints right so feel free to ask the hint if you think you are a star right listen to the answer. Listen to the interviewer if he is giving the hints like say sometimes not directly sometime by talking he just give hint so we have to very careful what interviewer says like in while he is talking he might be trying to tell or something right so that is this thing and this question like you have this approach is wise good you have come up with the hash map approach okay but only thing is the data structures you have to hash map right that's why you're stuck. So first thing is like the little bit work has to be done on picking the right data structures right so if you have picked something related to Q before right something hash map or Q then let's say you have come up with the benefit that would be like easy straight forward the first part of the question is done then only thing less this follow up when it's jumbled right so first thing is hash map is always good but as you think like okay it's a stuff so we have to look all little bit on the which data structure fits well right so always use first analysis right so like I have given you one example so by yourself itself you should come with some other different use cases then you have to do a dry run of your approach which you did hash map one right and then before that deciding you have to do it. Deciding you have to choose like okay just hash map never set that hash map is correct right always at that point keep that okay still I am finalizing the data structure hash map is not finalized right what I'm trying to say that don't finalize the hash map and just fully jump into that always open your mind for like okay there could be some better data structure for this not only hash map right so currently what happens today you spend around 20 minutes in hash map itself but you can also think of some different data structures I think if you think apart from hash map I think you might be the next best data structure for this you can automatically get right so that's what I'm saying once you get out like okay this can be done through hash map or stack not always stick to it always keep open for that there could be other data structure which I can use spend some time on stack if not start thinking like okay is there any better data structure with this I am stuck here in hash map is there any better data system which I can use so you are trying to improvise on the hash map putting the next best value and all that where it can be so that was something hash map is you are not able to solve it hash map that is pretty good that we will all stuck there right but the things which can be improved you are trying to improvise on hash map itself like you have finalized that I have to work it on hash map itself I have to make the solution work on hash map itself so that's where the problem is okay so don't finalize the data structure at the first which come to your mind work on it see where you stuck and see like okay is there any other data structure if not then what whatever you have worked on go back to it and try to improvise it but if let's say another data system you spend couple of more minutes yes yeah it's better let's switch it to that one okay so that is another thing but rest approach wise you are good little work on the data structure spot and speed okay so this one which I asked this the first one so this question has to part the first one which I asked you the medium one it's not easy so that's good okay so approach wise you are good only thing is data structure usage if it done you are already done with the double and it so the solution which you have given me for the double and it to that's fine the second part which making little bit difficult is the jumbo one yeah so before jumbo one I was expecting the code for the medium one right so but today what happened is we spend a lot much time on the hash map part and trying to find that so that's why this we are didn't get a time for a coding even though we have the approach okay so that's pretty much on the feedback part we are has to improve right I hope that would be helpful man"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes yes"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so yeah thanks a lot and I will stop the screen recording just a fact"
+  }
+]

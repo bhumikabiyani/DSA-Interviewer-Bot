@@ -1,0 +1,442 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Hey Praveen, I have started the recording and thanks for joining the interview, more interview. And as you know, I would be recording and uploading on the YouTube. So if you have any concern, please do let me know, Praveen."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure, it's fine. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So Praveen, so can we do you need the resume review or we can skip that like how you wanted?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "As you may review, we can go a little bit time. Uh, a funny speaking right? I used to get good calls only. Okay. Uh, like, uh, like recently, I moved to a must back. Okay. Uh, like, uh, yeah, almost eight months ago, right? I was attended interview for Amazon's VG. Okay. But, but, like, I'll not kill you, I was not selected for Amazon."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, uh, let's start with our interview process. So in just a very high level, uh, since you have five years of experience, so I will go with the leadership principle question. Right? Then we have some fundamentals. DSA fundamental. Then we have around one or two DSA question based upon how fast you do it. Okay. Okay. So, uh, let's start with the leadership principle question. So we have around 10 minutes for leadership principle questions. So keep, uh, Praveen, keep your answers in that way. Like we have to cover three questions. Okay. So one thing is, uh, first question is tell me about a time when you have to leave a task unfinished and why?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. See, uh, there are a couple of the regions, like, uh, we can, uh, we can get the same scenario. For suppose, right? Uh, there is a, uh, like, uh, I'm going to ask, uh, we, we get which is good from the speed planning. Okay. Okay. Okay. Might be, suddenly, we may get a bug from the, like, we may get a bug in the production, which is a more priority than the speed planning task. So then, uh, the, like, so we can take the, like, we can take the, uh, a bug as a priority. Sure. We can leave the, like, our time, speed planning task, we can keep as a, for the retirement of time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, but that is not like, uh, so bug is might be one day, two day, three day, right? But you will ultimately resume on it. All right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, uh, the most question is like, you have to leave the task itself unfinished."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, the, the main thing, right? Because of, uh, see, in the, that, before getting the task, manually, we go, we go through the design, a design, uh, like, design process. Okay. Might be the design process, right? Because of the stakeholder's miscommunication, might the developer, uh, understood mis, like mistakenly, he was doing, uh, like, uh, implementation part, which is not fulfilling the requirement as, as well as the stakeholder's requirement. Correct. Correct. But once, yeah, once you were generally part of the product, once he's testing the product, like, uh, might be the stakeholder change that, no, this is not the process, like, like, it's a, you're expecting, we need to do separate way. So this is like, then we have to fit tag, like, uh, we either task and if you, um, you know, right? Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So let's say, uh, if your direct manager was instructing you to do something, which you disagreed with, how would you handle it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. See, right? Uh, couple of things we can disagree and we need to handle, like, see, uh, ultimately, the, the product, the product manager, he's the key position in the select team because he's the person who takes, like, who, gather the requirements. So we can't directly be a witness to your product manager. So, like, the main thing we need to explain this, I suppose I got a like requirement, might impact the system performance, might be we may get a high, high latency, we may face a little, a low throughput. So we need to explain the internal technical issues, uh, we, we're going to win the other, the, no,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "let's say it's not product manager. Let's say it's a, uh, your manager, which sometime it would be technical manager. So he knows all the technical stuff. But, uh, whatever he's suggesting, you might not be agreed to it. So how you will handle in that case. So what I mean to say is that, let's say you're, it's a technical manager. He understands, uh, terms or technicality all those things."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I got the point. Okay. Uh, okay. Okay. And then, uh, first, I suppose right. Yeah. See, there is a case, uh, there is a case, uh, the technical manager is trying to, uh, uh, uh, know the complexity of the system. I'd be thinking to provide a high-scalable product. But, but because of this high-scalability in the, like, the design process, right? But we're not, ultimately, we're not, uh, going through towards the power, like, state, or statement. Correct. What do you all do? So, like, basically, we need to disagree the, you know, we are not, uh, providing solution to the stack wall, right? So, like, we, I just, I will explain the manager, like, though we are, we are, technically, we are good, but like, uh, ultimately, like our product should help the customer, right? So, like, we need to take care of the, we need to agree that product, uh, product management, stakeholders, requirements, and we need to make sure that the system acts, like, uh, acts based on the requirement, we need to handle the complexities. Maybe the check-out requirements is like too much complex, uh, complex, but we need to make sure we need to make, like, cut down the stuff, like, uh, complex cities, and we need to make sure, at least, uh, uh, uh, we're able to use the check-out requirement. Okay. By considering the technical air, technical air, technical air, these."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, you are saying that you will just, uh, tell about what he's missing. Maybe technical thing, and you will try to, uh, make him, uh, inline what you are with, right? Okay. Okay. So, apart from your regular project, could you please tell what else you have done extra or invented something?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. Uh, I, I, I part from, like, the, like, the professional job, right? Like, I was like working on the, uh, uh, like, things like, uh, I was trying to explore the server's applications. Okay. Because, right, now, what is, like, we are moving, like, our system was trying to move our systems to serverless. Where, like, uh, might be a, uh, a cloud, like, a cloud, uh, a deck, a, a, a, a, a, a, w, s, gcp, computer, picture, right? I was trying to, uh, like, explore, um, much more rich, uh, like, where, uh, any system is a, it can be professional, right? So, that, like, it, uh, that, let's, let's get, let's get, let's get, let's get, let's get, let's get, let's get, let's get, let's get, what's going on with us five more words. What's going on? There's that totally cool. What's up with us? So that's what we're talking about. So when you come to team,... So, before you do. I think, that's like a little, uh, you know,achi algorithm, and I really, really, I actually think, uh, like, well, the rules, the lag, and then you just take it to write your story, okay? There's the rules. Okay. Right? We'll get to the, we'll get to our conclusion first. Okay. I don't say it is completely a professional one. It is like my personal interest to learn more about serverless applications and also try to innovate something which has mean personal. And also I need to, I can keep this up proportion, I might as well keep it and get company right, each of the companies to get some benefit."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So Prasad, could you please let a bit of the chair. So yeah, that's better. Thank you. Okay, cool. So I am done with the leadership principle question. So let's jump into the fundamentals now. So we still have around 10 minutes for fundamentals. Okay. Okay. Can you tell me the quick, short space complexity?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It's a out of hand log in. But in the worst case, right? It's a part of an average."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no. So I am asking not time complexity, space complexity."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Space complexity, right? It's like, it's a part of an average. Because like we take space for like, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is the first sort of space complexity? What is the most sort of space complexity?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Merced is basically like out of hand right. Because like we try to divide it and then we just try to take sort of space."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, quick sort is log in. Okay. Can you tell me the difference between LRU versus LFU?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, you see LRU, which is least recently used. I will tell you. See, for suppose writing in an average right, if the application really heavy, we need to maintain a different cache. Okay. So the cache needs to have a, we can't keep everything in the cache right? Because it's like a memory usage very limited. So we have to make the data. So it can be LRU, it just some, the algorithm for eviction can be LRU, LFU. For suppose if I go to LRU means, I am going to remove the least recently used. Correct. Which was added early, like in the path. Correct. And I mean to least, frequently used means that data, which is not, he, he, he, he, he was like not fetching for, by the customer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So which one is more, which one is better?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "See in the, I see right. So LRU is by, I would say LRU is better because right, mostly we need, now we implement cache in really heavy applications. So for suppose, like, for suppose one, I mean might be a, which is data, you use the, like you see, which, many times is like we had a, customer's are getting fetching, like, is able, I, trying to search the data, right. So we can keep the data in redis, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Next question. Why is quick sort, preferred for areas?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I keep, it's an increase algorithm, right? So, I answered. No, answer. Let is algorithm is there. But why it is preferred for areas? What is the reason? Yeah, I'm saying in place, we are going to start in the same, same area."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, can you think something else? Yeah. Point is, area is like, because of locality of reference, because all the, if you want to, it's like, because of locality of reference, because all the, in most sort, when we do compare, so those areas are at different, you can say that the memories are at not adjacent, right? So quick sort algorithm is worth in such a way that if areas, indexes are just nearby, right? So they are just adjacent to each other. So quick sort, it was more faster because of the locality of reference. That's it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because of the memory adhesive, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Okay. Explain how you will find the hundred largest number out of an array of 1 billion number."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "See, our largest number, like, see, one thing we can do, we can implement Priya Tiki Maxi, and we can, we can try to do, like, we can remove the hundred, hundred, hundred nodes, hundred element is the, like, top 100, correct, correct. It's your right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is the difference between hash map and hash table?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hash map is a data structure, hash table is implementation, how implement hash map in the internet? Because right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, can you tell something else? No, no, no, what is it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Hash map, hash map is a data structure, we store the actual data. Hash table stores the memorators of the, like, for each key, might be the hash table contains the key at the memorators."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, hash table also stores the data. Okay. Okay. Can you, let's say, if I want you to write the test cases for a pan, pan, how you will write it? Can you just go with, one minute, let's say you have one minute, how many test cases and, how you will write the test cases for pan?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "See, right, pan, right. Two things need to test, which is like a pan with a cap, pan, okay, pan without a cap."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let's say pan with a cap only, we have to write the test cases."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. For the pan with a cap, right, first of all, we have to make sure pan is having a refill, okay. And also pan is like, we can think, two, my two-size-case here, pan is like, pan is like, which is an instant pan, which cannot be refilled again, or which, the pan which can, which can, like, we can refill again. Okay. Now, what are the test cases? So, you have like one minute, try to, tell me like, what are the test cases you will write? Hmm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. So generally, in this case, you will go with like unit test cases for each operation. So for cap is one kind of, you can write a unit test case of a cap. And now, like, what is the cap functionality? Then it's positive test cases, negative test cases. So what is the positive test cases of a cap? What is the negative test cases of a cap? Negative test cases of a cap, it's like, if you pull the, let's say it's, it will break. So all the negative test cases, similarly, all the positive, negative test cases for each unit test cases of, let's say, body part, then refill, then again, one functional test case for covering everything, like, performance, it will work for 20, let's say, 20 days non-stop after that. So just wanted to grasp the, how you just look for a particular test cases impact. Okay. Okay. So that's pretty much from the fundamental site, Praveen. So now, I have a DSA question for you. If you can share your screen, the notepad, I will tell you the question. You can write it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, this is the graph. So this is the directed graph. So we, what we have to do is, we have to find the shortest path between the two nodes. So the graph, which is given, so this is the sample. And here, if you see, if you want to find out the shortest path between two and three, so there are two paths. Two to five, I can go five to four, then four to one, one to three. That is one path. But I can also go from directly four to three. So this is the shortest path. Two, five, four, three. Correct. Correct. So I want you to return me this path. Two to five, five to four, four to three. So I want this path. Okay. So find the shortest path in a directed graph. I got it. Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So yes, your time is start now. You can take your time. Um."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Sorry. Like, I did not do much on graphs. I think. Like, if you want me to change the question, I can change the whole sample."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But I, but I, but I can approach. I can explain."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Go ahead. Please."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What we can do right? We have, we can like, yeah, we can, we can design a ray, which is adjacent matrix. Okay. So suppose, I can, I can, I can, I can, I can, I can, I can, I can, tell you what this is."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, the R. The one that is, double model is powered by test time, a test time horizon as I breed for 12 minutes by 2 to 1 of three jumps across perfectly above everything, means alpha position, along with a test time Nikon-D an Bau national. Okay. Everthing-wide every type of a plots.iker. Single in each 빼qu qu верил. That by. can be a like edges count okay. So what one suppose I will start with a sharp is 2 then I will based on the like try to write I will try to multiply then 5 to 4 like I did from 4 to 3. So here I will get the edge count is 3. This is the okay then I will keep this count like I store in my count then I will keep like 1 more path 2 to 5 4 to 1 1 2 3 this is the second one then I say every time I try to keep the minimum value. Correct. Yeah you are right actually."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So this is what this is recursion right. Yeah you are doing recursion. So currently what are the different types of recursion BFS and BFS right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, DFS. So which one you will use for this one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I will go with GFS."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. There is an right. I need to travel. I will just I need to from starting to turning on right I need to travel travel all the nodes right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What would be the time complexity."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is like order of E E plus 1. The first I think there we have E and just I mean number of it says order of E E. Okay. Order of E E E E E E E E E E E E E E E E E E E E I am thinking which is like to be like simulate to kind of E and it is an excess I am thinking."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let us say if you want to go this question via DFS of BFS. Let us go with go with the BFS right. Okay. So how you will go it like. So let us say you have a method and you got two parameters, one integer which has the value 2, another integer where you have the value 3. And you have to do it via a breadth for search, how you will gonna do it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, let us first. Okay. To the best case scenario, we try to find the one path, then this first, in terms of the list, I go, might be level 1 there, to let- Sure, clear wise."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So how you wanna implement BFS? So now the quotients, drill down to implement BFS for this. So what does happen in the BFS? So in BFS, so let's say you have a node 2. So 2 child is 5 or let's say the good example is 4. So 4 child is 1 and 4 child is 3, 2 child, right? So in BFS, we first, let's say we pick any 1 or 3, let's say we go to 1. After we visited 1, then we goes to 3, before even going further to the 1 child node, right? We go, as you said, we go layer by layer. So once we are executing 4, after we are processing 4, all its child nodes, we put something in a queue, right? So can you now go from here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Okay, what I do, right? Yeah. Okay. Okay. Okay. Here, right, I'll keep two things, 1 and 3 of queue, each other's child nodes. Okay. When I move to 1, right, I can, I'll remove the decudal element from 1. I'll try to add the next adjacent element, 1 to the queue. Mm-hmm. Correct. Okay. So for the first thing, we have initially, we added like 1 and 3 in the queue. And I tried, okay, from the queue, right, I tried to go 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let's start from the 2. Let's start from the 2. So that we can dry around all the use case also. So currently you are at 2."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I'm at 2, okay. I'll try adding the queue. Okay. Then I'll go, just add the, I'll be driving through, then removing the element to have 2, and I'll add the element 5 in the queue. Correct. Then I'll add the, like in the queue, right, I'll go to the child's adjacent element 5 is 4. I'll add the element 4 in the queue, then I'll remove 5. Okay. After 4, okay, then 1, I go to 4, right, there are 2 things in the queue. I can add 1 and I can add 3 in the queue. Correct. Let's add 1 in the queue."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Only 1?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No. 1 and 3."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. You'll 1, 3. No, you can keep it with 3. You'll 1 or 1, 3."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, no, only 1 we will keep, only out of 2, any 1 of them we will keep in the queue. No, no, no, no."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I mean to say, 3 or 3, why? 3 or 2, okay. And then, 1 has to be 3 or 3. Correct, correct, got it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. I'm keeping 4 in the queue. I'm 1, I'm at 4, I'll keep 1 and 3. Correct. Okay. I remove the element 4 at the queue, then I'll, 1 is the element. Correct. 1, I'm at the 1, I will add 1, I add 3. Correct. Okay. 3 and 3 is, like initially 3, 3 is our unknown. Okay. So, while I'm removing the queue, right, I can maintain a counter variable, a length variable."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Length variable, okay. Do you find a minimum distance, right? See here, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, but now let's say 4 has also added the 3. Now, 1 is also adding the 3. How you will gonna take care of it?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "See here, right? Yeah. Okay, I think, I am at 1, okay? I already, I passed it 4, already the element 3 in the queue, because it's a 3 is the element of 4. Correct. Okay. I'm a, I'm a 1, I need to move the 1, I need to pass the element of 1 and 3 again. But see, when I'm at 3, right, there are no more adjustments, I can, I move 1, 3 is my destination."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, but 4, when you are processing 4, you added 1 and 3, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, correct. So, after when you are going to process 1, again you're gonna put 3 into the queue, that's my question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I might put 3, okay. Okay, here I will, what else I can write? We can, we can, we can, we can, we can, we can, you may duplicate, duplicate value, because check, but the element is in the queue or not. Correct. Correct. If the element exists, right? Like, if, you know, we don't keep in the queue. Correct. You are right. Can you vote it? Like so what is the time complex it in now? So what we are doing actually here you are visiting kind of vertices edges right. So what do you think what are the time complexity for this BFS?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Number of edges like number of edges."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "R of E. Order of E only vertices not edges?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, yes I am saying edges."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Only number of time complexity we are saying is the big go of E."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Big of E correct. What about the vertices? So only edges is the one which we are traversing."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "See, for some nodes we are traversing. But see right here, like when we traverse right. Okay, because we process at the edge, but nodes are right. We keep on adding elements and keep right. So we can, yeah we can we need to add R of E plus C. E plus C because each vertices can be traversed. Each. Not can be traversed. So, but we are trying to avoid a duplicate so it's V plus C."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "V plus C correct. Can you code it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry. I am just minimizing the sorry. I am coding part right. I am going to, yeah. I do not want to, like you are not comfortable with coding part or you want to change?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I am not comfortable matching graphs. I am not comfortable. I am not comfortable with the graph."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, since you are not comfortable with the graph coding. So let's take another question. So, you are given a number N. Let's say N could be 4, 16, 64, anything, 32, 25. So, you are given a number N. You need to find out whether it's a power of 4 or not in big of 1. Okay. Let's try to improve it to big of 1, but let's first go with the brute force. What brute force approach you can come up with? Let's say it could be more time complexity, but we have to bring it out to big go of 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Big go of 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "See, one thing what I will do right, I will go with the regression approach. Okay, what I do right, I try to check first of all, based on the condition of what I will check, whether it's like N equal to 1. First of all, if I am equal to 1, it is like I am managing it for 1. It can be a... It can be a power of 1, right? So, you can return true if it is a 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "It is N equal to 1, it will be like that true, because it is like a particular value. 1 per frame is 1, right? So, it is 4, it is 0, it is 1 kind of you can... 4 power 0 is 1. Okay. Second part, right, I will check whether it is N equal to 0. Okay. Or, because a manly number G is the power of 4, as to division will be by 2, right? Correct. So, what I will check whether the number is at duty will be by 2. For suppose here N equal to 0, then I will get 1 falls. If N equal to 0 or N equal to 0, like what I will do is, he is a second case, just like I will go with the base case. He is base case, if N equal to 0, it is a... It is a... It is a N equal to 1, sorry, it is a... 1. It can be a true. 1 true. If N equal to 2, it is a second case, right? Step 2. If N equal to 0 or N mod, it is not equal to 0, then falls."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Why 2? Why not 4?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "See, the number which is the usual 4, will be 2, right? I will give."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, but then why not 4? Okay. 4, I can be equal to 4 power. See, N equal to 4 power X, N equal to 4 power X. Let us take an example of 32, let us say. So, now 32 mod 2 will always not be equals to 0, right? It will always be 0. But what is not your power of 4, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, second. Yeah, like next term, next term, what I am going to do, right? Because what I told you, right? I will check with that too. Suppose, any number, next term, what I will do, right? I will check with the particular number, but there will be a 4. Okay. Suppose, right? Here, we are considering only integer, not a, like some decimal kind of number. Correct. Okay. What I will check, right? I will check double. And the next term, right? Y double. Because here, I will, I will, like, suppose, right? Oh."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Let, let, let, let take a string number, which is, I will choose not integral 4. 32, let us say 32."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "32. See, one, I, one, I, divide 32 by 4, right? We should say, we should say it, not 34, 32."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, let, let, let us start with 32, right? I want to see like what, what to, what to, what will happen? Okay. You, you are going right actually. But only there, I see, I, I, I can understand your approach what you are trying to do. But there is some minor gap which I want to fill out. So, what you are trying to do is, now let's set 32. 32 what is the next step what is your writing?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah what I will do right I will let me say the equal to I do like N by 4 like I take 4 by 0 double here what I am trying to do for suppose if I get TZ number B, B mod 4 not equal to 0 then I am work written false this is the main case okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Now that is condition is right if D mod 4 not equals to 0 return false okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay well let's case is as go with 32 initially okay I will take that it I is not equal to 100 is goes to N mod N mod 2 here also 32 norm 2 is not equal to 0 it goes to like her okay then it goes is that the third step D equal to N by 4 because here both case gets failure right for 32 correct because here not equal to 1 here not equal to 1 let me get the main mod is 0 only so both guys of course it goes here I get 32 by 4 13 32 4 8 8 right 32 by 4 okay yeah yeah here I get 8 8 here and right upper mains thing for suppose if I keep N equal to 33 okay no no let's complete this let's say it comes in what will happen that it will come here I get that which is like N mod here okay here and D mod D is like 8 8 mod 4 equal to 0 which is also not true then what I will do right I am the caching he I will call with the D now your D is 8 yeah is more of an I call it I will make it as it is here and I will go with B okay now let's say 8 comes in 8 mod 2 not equals to 0 no it is 0 it is 0 it is 0 to 8 divide by 4 so it would be your 2 then it is a 2 mod 4 not equals to 0 no now the mod comes in so you said it and falls oh yeah it is 8 2 mod 4 it goes again 8 4 is 2 what is the purpose of N mod 2 that is I did not get it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so I actually this is correct N by 4 and 4 mod D mod 4 that is correct so only the sequence is wrong but N mod 2 is still I am not clear so D mod 4 you are also doing N mod 2 also you are doing so that is little bit confusing to me what is the purpose of doing this N mod 2 okay suppose right now it can be little bit more simplified actually if you see that if you just you are doing right actually so that is the logic so if you just replace the second N mod 2 with the just with 2 with the 4 and you just change is power of N and just pass N by 4 now that is all that is done you do not need double and all those things"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "where I am keeping double right see I think if 33 okay 33 by 4 it is a value it is if it is a right so you get the desired value suppose"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so that 33 mod 4 itself will catch it right you do not have to worry about that okay so okay so that is okay so what is the time complexity of this"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so okay let us change it okay so N mod 4 not equals to the return true you can remove this from line 7 to 10 and in the power of N you just pass N by 4 that is all so let us say it is key point recursion and we are key point dividing by 4 and every time we just check it should always be mod 4 equals to 0 what is the time complexity of this"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "it is like log for theation and now we want to further improve the efficiency can you further think of something to improve it further"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay with the order of one complexity we did say all right got it probably okay what will you right I will make a usual algorithm function log 4 okay what I will do I will I will take the given value for it is done right I will do log like log and base okay so suppose if you get the desired value exit in desired value it means it is like a power of 4 it indicates suppose right if I let take 16 N equals 16 okay log and log 16 base for is like I can make log for base for I can keep 2 as power so I can make so because the power of 2 will be like I can move to the before like I can make a 2 log for base for how it is like log for the very large function right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no but internally it might have some complexity also right let's say we can't use any library"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay can you think of something bit manipulation"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "with manipulation okay I left it can you think of loud I might be able to help you"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "what I am doing right I am just am trying to see like I can do it left sheet left sheet right right left shift of for like 4 bits I am trying to do okay"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so we are cross the limit if you need more time prevene feel free to take it but we are almost 40 minutes"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so okay let's start with the feedback first and before starting the feedback if you have any feedback for me prevene like anything need to be improved or if something was not good please let me know so that I can improve in the future"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "most sure like I got know it's very particular you are able to at least like you are understanding the candidate mindset and you are trying to like as much as possible data you are trying to get from a candidate and also right is available to be particularly like you are able to understand the question and the solution is going"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sure sure thank you thank you so let's start with the feedback and before starting the feedback guys I have a lot of messages from MOV so I might not be conducting for all it would be very difficult so if you guys wanted to be on priority like please use the membership link in the description I might be able to set up on the priority so because otherwise it might be like I missed out if somebody needs it urgently so that's why I just only kept it for at one like if you really need it use it otherwise definitely I will reach out to you guys like it just based on like sometime I missed if who needed more so that's just so just check out the description for the the membership and I can you shop recording and I talk yeah before this I can have to go through the feedback proving for you okay yeah so proving the first thing is you're let's start with the leadership principle so the first thing positive is like the first question if you remember which I asked that I wanted like where you have left the project in mid right that was to evaluate the long term vision right so that the long for the long term value or look at that for the short term result we should not overlook the long term value right so whatever the answer you gave for that one I was okay pretty much okay with that that if the project description or requirement is not cleared you will not go ahead right so sometime we might not okay whatever is clear we can deliver it we should not go it we should look the long term value right so that is on good part but the other question was other principle question which was like if you're not in line with your technical manager something right so the question answer which you have given that can be improved so the answer which I've given is you would try to bring you the manager in line with you right that would make you in a difficult position for me in my view because the best good answer what we can think is always discussion so it's not always manager come in line with you it's like a common point between you and manager so it's both has to be come together might be he knows something better than because that's why his technical manager might be he knows something which might be missing so our intention should not be to bring to our line in line with us it should be like to a common approach where both are agree right so this part is like is for you should never settle so this is the you can say that I wanted to see or any interview want to see that you should not settle like if manager said okay I will do it you should not settle until and unless it's not perfect right so just little bit modify this answer along that it's not always you are correct it's sometime it meant have to become other might have some good point also she okay and another thing which I am seeing is the good example so for all this questions leadership principles probably you need a good examples right so please keep the examples in handy with you when you will go in the interview of the big tech companies right you will get leadership principle questions right and they will always ask you like can you give an example of this use case of when you are not managers not in line with you given example then we can't say this okay I did this so you should have an example with handy so always keep some projects in handy where you can add these kind of stuff there your manager was in not in line where you have done something extra so keep two projects at least in this with your hand which you can discuss so give an example with your project which you are working on so let's coming to the fundamental the first thing is fundamental I can say that it's 60 40 60 is like kind of your district improvement right so like priority q question which you give right quick sort basic question space complexity was wrong quick sort locality of references kind of very commonly asked question like why it is used over the array so we should know like so that is present hash table and this thing hash map hash map is not synchronized hash table is synchronized so these are the basic things which we are at least fundamental we have to be aware of right so that's thing and the test cases of pen so this is the I think very recent question which I have so on as in the fan right so this is like just like how we approach to a problem like if you wanted to do so there is no correct answer for this but it's only like how we explain right how this just shows the our understanding of unit test cases and functional test cases what we mean by unit test cases what we mean by functional test cases so that we have to explain in that way so that was missing right so you start jumping on it but we always have to go with the unit test cases first and then we jump into the functional test cases right okay now so this was on fundamental and last is DSA so DSA I think you already know it graph is very much important and it's gonna be asked a lot and that is missing right so interviewer might not even even if you solve the second question also the first is gonna make you in the back front itself right you might already know it right and in the interview you already told two times that you you have not done this type of question you are not comfortable within that shows that you are laying down your weapons don't say this keep hustle until unless interview don't say okay let's move to the next question until unless you keep on asking question you try to clarify you already know right you know you you already told about priority you are in the priority you I will put this as and I will put a style that's it you have all the complete logic now it's all left is coding right try to light a causing maybe it's wrong but at least try like how you gather the requirement try to write a code but never never never say that you are not able to do it I forgot it I did it long back that's a very bad impact because let's say I am going to ask a question like which we might have done in college right but if you know the approach you should be able to code all the matter is approach right if you got the approach even if you have done it 10 years back the code part we definitely nobody remembers the code all thing is approach now you have got the approach you should be able to write the code code nobody remembers right code nobody like even if you write it now after one or you will forget now if you will write it again you will write something different new variables something new classes new method name because all we matter is approach but you got the approach for DFS but you didn't go for the coding so that was one big negative point so you should go it right all matters approach which you gave the correctly bit manipulation new little bit need hands on also right so these are the topics bit manipulation something kind of you can say that we miss this topic and we pick after later but there are some good questions so good question in the sense the complexity which can be sometime over one sometime very much efficient right these can be done through bit manipulations so these type of questions bit manipulations have a lot of good question you can say that bucket question bucket list so this is like how we work on the bit wise right so if you see that this is very small question right 1 2 4 8 16 is for power up to 1 4 16 64 means you can say that odd is for 2 no for 2 power up to is all for power of 4 it is even just we have to keep miss 111 so we have to do a left shift 2 2 wise 1 then left shift by 2 then 4 then left shift by 2 then 6 16 then left to by 2 again right so you got it so these are the small small logic of the bit manipulation which we have to be familyable right so that's all the feedback from my side Praveen I hope it will help you in your interviews and please take it in a positive manner like I am also not perfect like it's just like what I saw what I just updated so please take it in a positive manner if it's your share yeah just on listening yeah but yeah I myself was not a perfect like even if I get an interview question like I might not be able to start so please take this like something which you can think that it can also be improved right so just peer to peer just improving ourselves so you are definitely just do it sure sure so that's pretty much from side and thank you for this interview I hope you enjoyed it and hope it would be helpful"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "definitely thanks Praveen thanks a lot"
+  }
+]

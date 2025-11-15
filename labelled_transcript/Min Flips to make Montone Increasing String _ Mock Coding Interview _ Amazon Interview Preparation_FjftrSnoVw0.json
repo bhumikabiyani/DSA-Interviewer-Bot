@@ -1,0 +1,282 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Welcome to DailyDSSpractice and welcome to the small interview. And as you know that I will be recording this session for uploading on the YouTube. Do you have any concern on this part?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, I am okay with that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Cool, Arguarri. Thank you. So, Arguarri, let's start with the basic introduction of yours and then we will come up with the question and try to solve it. Cool."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Hi, myself. My name is Arhudip. I am from West Bengal, India. Currently, I am doing my B-Dec in the field of computer engineering from United Krukshetra. Currently, I am in my fourth year of my B-Dec. And my hobbies include doing practicing coding, playing chess, playing football, hockey, etc. And that's all. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Thank you. So, Arguarri, can you share your screen? I will tell you a question and generally it would be one question around 40 minutes and then after that we will go with the feedback. So, can you share your screen and we will go ahead."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, here the question is, a binary string is monotone is increasing. Right? And the binary string you know, right? Consider of zero and one. Right? Monotone increasing means all zero first and after that one. And it is a possible that all zero is still a monotone increasing string. All one is also a monotone increasing string. Right? So, what you have to do is you are given a one binary string. Right? Yes. It should not be in a monotone. It could be zero one zero like this. Right? So, what you have to do is you have to flip either zero to one or one. One to zero and make that string monotone increasing. Okay. So, what the question is, you have to find out the minimum number of flips. You have to do to make the string monotone increasing. Okay? So, for example, you can write one example. Let us say example is zero zero one one zero. Right? So, here it can be converted to zero zero one one one. The last zero can be flipped to one. So, how many number of flips? Output is one. Yeah. So, you understood the question?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah. I have to go ahead. Okay. I fully remember the question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So, for example, this is the input. So, in this case, okay. So, do I also have to output the final string or only the minimum number of flips only?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Minimum number of flips only."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, in this case, the answer will be zero right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Zero right? Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And for this case, also the answer will be zero. And let us say, okay, so all these are here. And can the input string be an empty string?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let us say that we at least have a string. It would not be an empty. Let us say that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, it will at least have only one character right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. At least."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, we have to make this string monotonically increments. So, basically what we have to do here is that we have to make. Let us say that up in a particular index, we have to make all the elements zero. And then, and then, let us say that for in this example up in the 14-text, we have made all the elements zero. And after that, we will make all the elements one. Once we have started up one, we cannot make any further element zero right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Cool."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, the initial approach, which I can think about is that the initial approach is that, let us say like I will do something like, okay. So, for each one of these, so for each one of these characters, there are two possibilities. Right. Either it can be zero or it can be one. Right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And so, since, and now if the length of the string is let us say n, so then there will be two rest, two rest to be per n, the total combinations of string rate."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, and so, if, and so what we can do is that we can generate all those combinations of string by using some recursive function. And then, we can, for each of those, we can calculate, we can first check if it is a valid monotonic string or not. And then, if it is valid, motor increasing, then we can check like the, like how many steps are required to convert this by just this simple condition. Let us say, the original string is A and the another string is B. And since both of the same length, so we will just check answer plus equal to A of i plus A of i not equal to B of i. That is, if the, what are the characters at the corresponding indices are not same, then we have to flip it. And we will do this only for these, only for those strings, which are monoconically increasing."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Sorry, I, I lost it. What is the A and B?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, okay. So, I am actually generating all possible combinations, which can be obtained for us during of length gain."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Through recursion."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, through recursion. Right. Okay, okay. Okay. And after that, what, and after that, let us say that we have obtained a final string. Okay. Let us say that after the recursion is complete, we will get us a list of strings. Right. A list of strings, we will get. Okay. And so for these list of strings, for each of the string in those list of string, we will get a first step. If that string is increasing and if it is increasing, then I will call a, then I will call a, calculate the cost required, which will give me the cost to change the original string to my current string. And we will do this for each of the strings and, and for the string, the, and for the string, which gives the minimum number of leaves, that will be our answer. And you get it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Again, okay. I got your point. But still, yeah, we can little bit optimize it also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah, yeah, yeah. So, yes, yes, yes, yes, yes, yes. I think I have got it. Like in the recursion itself, while we are, while we are making the, while we are making the transitions, we can just keep an, another variable instead of storing the string at actually, which will keep the minimum, which will keep the minimum number of leaves required up to the I mean."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Yeah. So, the time complexity which you have told, yeah, I am totally okay with this approach, recursion approach. So, time complexity you told us, storage to power n. What is the space complexity?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so, so the space complexity of this will be like, so, at max the recursive stack, the size of the recursive stack can be n. So, the space complexity is of n. Just let me think once the recursive stack and we are maintaining another, another variable to keep the count of the strings here, it is of n space complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. No, but, so see with an, so when the time complexity is to rest of our n, let us say each combination, right. So, there are two possibilities."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "For each variable, there are two possibilities. So, recursion will go into both the path."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. And as you know that, yes, yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And the recursion will use the internally stack, right. So, that is why space required, right. So, for one, one character, there are two different ways. So, recursion will go into two different paths. So, how it would be only big of n?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, okay, okay. So, just let me explain this part. Let us say that initially we have an impisting. Now, we are going to, let us, how it would be. Let us say, this is an impisting. Now, when we are going worth the recursion of one, sorry, let us say, we choose the first index as zero, right. And then we will compute the recursive part. So, after this, what will happen is that from this zero, it will go to another zero. And from this zero, it will go to another zero. I am just passing in, in example. And let us say that this is the end of this thing, right. So, up till this point, the recursive stack use is of an only, right. Now, let us say that here the screen is complete. So, from a recursive function, we will go back to this call, right. So, here, so here this zero will no longer be in the recursive stack. Right. It will pop down from the recursive stack. Right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Awesome. So, now, also tell me that two restaurant type complex, it is good. Can you just tell me like, can you little bit optimize this time complex?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. Yes. So, what we can think about is that we can think about another approach like we can fix, let us say, we can fix a particular index. Okay. Let us say we can fix a particular index. Okay. Just let me do one thing. Let us say that this is our screen. Okay. So, what we can do is that we can, what we can try to achieve is that in our, sorry, just a second, in our final answer, it will be something like, okay, it will be something like 0, 0, 0 and then 1, 1, 1 and these 0s can be, and these count of 0s can be 0 and also these count of 1s can also be 0, right. So, what I will do is that I will try to name all the characters up till a certain index 0. And I will try to find the cost required for this and all the characters from the index i plus 1 to the last index, I will try to make them 1 and I will, calculate the cost required for that and after that, I will just add those two costs and get the and let and get a value for this particular string and then we can update our global answer. Let us say for something, in this case, it is 0, 0, 1, 1, okay. Let us set that, this is our, is our right. Okay. So, let me just, for any one, so we will be better."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, initially what I will do is that, initially I will try to make all the characters 0, right. Okay. So, for that, the cost required will be 2. Okay. Now, what I will do is that I will try to make, okay. So, here, let's say we are using one best index, right. So, here, if we are, so here, do for up in 0 index, which is basically the index before the first index, right. Did you get here?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, I didn't get this, up till 0 and this. So, 2 is like you told all, you make the whole, everything 0."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, just to do this, correct for the second. Okay. So, these are the illnesses, right. One, two, three, four, three. Okay. Okay. Okay. Since I am doing one best indexing, so the answer will be 2. So, for up till 0 index, we are making all zeros. That is basically in the left of this one index, right. Okay. So, the left of one, we will, we can assume it to be of 0 and this, right. Okay. So, up till this 0 and this, the answer will be 2. Why answer this 2? Because you haven't traversed, right. Till then."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, we have a bit, yeah. So, I am just, I am just saying you the approach. And then, I will explain to you how we like, as if this, right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah, yeah. Okay. So, here up till one index, that is up till this, it is 0 and all other 0, 1. Oh, okay. Okay. Okay. So, sorry, sorry. Eight minutes, sorry. I mean, one thing. Here up till 0 index, all are 0's, right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And from the one till the end, all will be 1, right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, the answer in this case will be, okay. Only because I have to make this 0, 1, this 0, 1 and this 0, right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, why? This 0. Yeah. Why can't you make 1 1 as a 0, 0? Can you please repeat again?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, and as you see, I got confused here. Like, why the answer is 3?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. No, no. I am actually checking all possible pieces, right. So, in our final answer, it will be 0, then followed by some ones, right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, your final answer, it could be all 0 or it could be all 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, yeah, yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, here up till 0 index, all 0's. Okay. So, I am making up till 0 index, all 0's and after that, all 1. I mean the same thing, just be this thing. So, for this, for this answer will be, this is 0. Now, I have to make these 2 0's 1, right. So, the answer will be 2. Cool. So, similarly, I can check for all of the possible indices, right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, now, up till now, are you, okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah. Till now, I am with you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, now, how to achieve this? Name this function has minimum states, liquid and let's pass it. Okay. So, we have to pass it the string. And, we have to pass the string as reference. So, that string, don't get a bit. So, here, whatever to use that, since the string, so first of all, what I have to use that, I will find the name of the string. In the info base.Lin. Since the string is always 0 based indexing, and I am going into C plus plus. So, for that, we will also keep our soft one carry as. We know based indexing, right. And now, what I will do is that I will have us in the array from the front, or from the right, towards the left. And because here we can do one thing, right. Instead of regularly calculating the. Instead of calculating the number of ones in a suffix again and again. Let's say that up till this index, that will be it's better. Let's say that I have my answer that it is a soft one of. This is 1 to 3, 4 like I have soft one of 3, right. So, I can update soft one of 2 equal to if soft. If, if, if soft 2 equal to 2. If it is 0, then this value will be 1 is equal to 0 plus soft. Are you okay with this?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This will be soft one. So, we can do something like this. Like soft one of I equal to S of I equal to 1 equal to 0. Because if it is 0, then it needs to be updated. From the group of the system to the system to the system. I am actually wrong in this. We are just calculating the number of ones, right. So, I am actually wrong here. So, here the only thing is to be able to do is 1 plus soft of 3. Because if it is because we are soft is storing only the amount of ones in a suffix. So, if this is 1, then only it should get incremented and we will just add it with the suffix of the I plus 1 index. So, here it will be S of I equal to 2, 1 plus let's say if I plus 1 is less than n. We can use it here or we can do it in soft one of I plus 1 L. So, after calculating this whole thing, we can just run another for loop. Let's say from 0 to index in the I index. And, and the next main thing one answer. Since the maximum maximum number of all the things before we will be able to move in. So, let's initialize our answer with n only. The answer is what we will do n. And here what I will do is pair. So, here what I am trying to do is that up in I minus 1 all 0s and from I to 2 in minus 1 all. Are you okay with this?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, currently I am okay with that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Cool. And we will also maintain a pair and 0s. Okay, next name it, but if 0s. Right. Let's name it, press the loss. And this press 0s will give me the number of 0s up in the index I minus 1. Okay. When I am at index I. So, here I am at index 0. So, press 0s is giving me the number of 0s up in the index I minus 1. Okay. So, here we can calculate to achieve this kind of a structure. So, what will be the minimum steps equal? Min steps equal to equal to equal to we can do that will be f 0s plus. It should be n minus I that will be the length of the suffix starting an index I minus. And those are one of I. So, this is actually okay let's do it. Let's keep another variable to that will be 0. So, suff 0s will be this thing. And suff 0s will be this thing. And also in a ref once will be I plus. So, it will be I minus ref 0s. Right. So, answer the minimum steps required. Which since we are making up to I minus 1 all 0s so we have to make all the we have to convert all the preforms to 0s. So, we will be ref once and we have to convert all the soft 0s to once. So, soft 0s. Right. And we will just forget our answer. Answer equal to. Answer equal to the minimum of answer on our main steps. And then after that what we have to do is that we have to update the preforms 0s. Because for the next index this our this current I index we also we also be able to. So, press 0s plus equal to base of I equal to 1 0. So, if it is 0 then we will increment it otherwise more. And then final three in our answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, I will go the like I am good with that. So, can we stop sharing the stream. So, we can discuss."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Just one second the the space complexity of this will be who of n. So, since we are requiring another soft array for stoding the count of once. And the time quantity will be who of n. Since we are just using our two for and each containing in either instance."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Right. That I am in like."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Let's I have. So, let's go on the feedback part. So, first of all on the positive part part. I would say the use cases are the way you have found out right. H cases and all. That's very good. Like. So, no. Like very good on that part. The brute force recursion approach you explained the time complexity and the space complexity the way you have explained is also very good. Right. So, that's all perfect. And I can definitely tell that you are a very good code. Right. But here the one thing I want you to improve is you don't do not spend too much time on explanation. Right. See today. See, you to be honest at one after one point of time I got totally lost it to be honest. It's a fun what I J right. And I know that you are trying to explain me harder. Right. And I was as an interviewer. I was also trying to understand it. But after a one point I totally missed it up. Right. So, what I want you to do is that you do not waste too much time your valuable time on over explaining to the interviewer. Interview should know should understand it. So, you have to a bit little bit optimize this explanation part come up you can create one sub fun array and show how it is filling. Finish. Right. Because I also have a follow up question can you do it without even time complex space complexity over one. Right. But if you see that we are already for timidance we couldn't ask it. Right. From interview side you take on more time. But if you are if you are from front of you you are taking more time in explanation to interviewer. This is not a good to understand. So, you are also right. Interviewed also right. So, what I am trying to say is that don't try to explain too much try to keep it little bit shorter. Come up with a just create one array sub fun and explain with that visually. Rather than writing and explaining another thing is the coding which you are doing definitely you are a good coder. But try avoiding take variables name like S and I like this one. Right. So, give proper name index array index and all right and instead of as take a proper like it is a which string input string right and what was that and I don't know what is N. So, the length of the string."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, say that like this N I doesn't means anything into the when you go goes to the production thing from the production way. So, this is all right. That is pretty much from my side and I am thank you very much Argo Deep of the recording here."
+  }
+]

@@ -1,0 +1,430 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "So I will tell you the pattern of this interview. It would be very similar if you have seen the previous box which I have uploaded. So since you are also a fresher so no leadership principle question for you right. So I will be having 10 minutes basic DSA questions and DPMS OAP's basic questions very basics and after that we will be moving to one coding question for 40 minutes. Say it is a little bit so we will also plan for the complete coding of this that I am looking for only one question for 40 minutes right. And after that 5-10 minutes we will be discussing your feedback like where all places you can be improved and where all places you are good which you need to keep the same. So that is the overall view so it is currently 10 exec 1001 so it would be 4 totally 1 or around 1.5. Yes. So, Prenka so let us start with your basic introduction."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hello everybody my name is Priyanka and I am from Nepal currently I am studying in IT on the British and I am pursuing BITEC in Computer Science and Engineering. Talking about my interest in technology and IT specifically I started coding back in 11th grade when we had to choose our streams and since then I have had like an interest in this field and I have worked on certain projects since then and then I got to attend the NIT on the British where I have networked with good engineers and since then I am trying to be a better software engineer by coding and then making projects to making projects like for some college related projects basically to create better solutions."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, what all stacks you know?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I know Java and SQL and Django. Java is great HTML, CSS and I also have like an interest towards ML."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Nice. That is very nice. Thank you Priyanka for the introduction and it is good like you are started coding at the 11th standard itself. So you might be very good then coding then. Okay. Like it takes time to improve your problem for new skills."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Correct. Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So next let us go to the basic DSAC questions and all and DBMS. So can you tell me what is the asset property like each one if you can explain me in one line. Asset. Asset property of DBMS."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, asset process. Asset. A stands for atomicity. C stands for consistency. I stands for isolation and D stands for I believe durability. So this property generally states that whenever we have a transaction which is basically a set of operations. So all the transactions should be performed goalie or it should not be performed like all the steps should operations should be done or else it should not be done that actually the atomic property and then we have consistency. For example, we have multiple transactions going on. So if you were accessing a data variable which is like you know shared amongst multiple transactions. For example, account balance if you make multiple transactions. So the variables values after and before the operation like the whole value should be consistent. If we reducing 50 from other side, 50 should be added on the other side as well. And then we have isolation which states that all transactions should be performed unaware of how the other transaction is performing and then we have durability which means that the in case of rollback or something like in case of failure, all the like you know the transaction rules back."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. No, sorry durability I did not get it like if there is any failure what?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If there is any failure and the transaction is not committed then it should roll back."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. Cool. And what do you mean by DB normalization?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Database normalization. We have in for example if we take example of table for a relation. So we may have multiple keys in it. I believe to make the maybe the table easier to access or something."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Like I know I can for example say for example you can tell me what is one and what is two and a one and a."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So what for example there is a university database and we have for a student it is like you know they can take multiple courses. So for example we have a column name course and then we can have multiple values like computer networks or oops or DBM. So what we do in one and F is we have this property which states that one column should have only one. Correct. So either we can split make multiple columns or either we can have multiple reports. And what is two and F?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Two and F is two and F the database should be in one and F form. And that right. There is like these certain properties are added for two and F's, three and F's."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And I believe something related to I am not able to like the political moment."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No problem actually you are right. So okay. So can you tell me like why in hash you know right hashing hash map. So why searching is over one and hash map what is the reason?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What we do in hashing basically is for example if we don't do hashing we have like array of multiple elements. So what we do in hashing is basically for all the elements we have a key which identifies it. So that is the basic concept of hashing is we will have a number and we will hash it. For example we can take the modulus of it with like you know prime number. And then what can happen is like we have an array which will like have for example case are prime numbers. So we will have k minus 1 slots. And whatever the key we have will get mapped to a certain slot. So for example if we have to access a data element what we will do is we will basically take its mod with the whatever is our prime number or hash function and then we will get the we will be able to access the element."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But in that case what will happen if let us say you have a 10 numbers right and you are finding a key first you are inserting that into the hash map what if there is a collision and all the 10 goes into the same place will it still be over phone?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It will not be over one then it would be over and say all of these key values are getting mapped to the same key. So for example we will have to search for whatever key it will take at worst bigos and then we will find how hash map is maintaining over phone in today."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "There are first of all we will be using a prime number for if we have a like hash function and then we have the yeah we have a pro we have chaining in that issue where like certain values will get mapped to one key like we discussed and then what we will do is we will have a probing for example if we go to one key and it is already okay but so we will try to get the next available position in the hash map which is empty which means to work with. So we have a single. Have you heard of load factor in hash map?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Load factor yet load factor is how many plots we have? Alpha is the load factor we represent gendered alpha as load factor."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So actually load factor is the reason why search in hash map is bigo of one because load factor is actually has the constant value right. So because it is a constant value always searching it will not allow hash map to grow in a single list. So always whenever it gets filled a new larger size hash map get created with new hash keys. So load factor is the reason why we have a constant or this thing but whatever you said is also you can say that contribute in the searching but load factor is the one which contribute bigger I would say."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I remember now when we were being taught this in the class in case it exceeds the load factor we will again like create a bigger hash map."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Okay okay so we still have couple of more minutes so we can have more questions. Can you tell me two or three disadvantages of linked list?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Two disadvantages of linked list. Two disadvantages of linked list. So in linked list we have these data student like a struct maybe and they will have pointers pointing to next. So one disadvantage we can think of it insertion and deletion is okay however if we have to search for an element sort the linked list. So since linked list does not allow like no random access so sorting could be one of the problems and again when we have to when we have to search we will generally take we cannot implement bindery search again on it. So for sorting maybe and searching means random access is not allowed in a linked list."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What do you mean by strict bindery versus complete bindery?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Strict and complete bindery. So binary trainings anode can have either anode can have 0, 1 or 2 children so what we what complete binary training is it should have either a 0 or 2 children and the three should be fed like you know the left most the leaves should be left most."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay and what is strict bindery?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Strict is all should have two children. Only two children? Yeah. I just two or zero. Two or zero yes"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "and what are the properties of heap?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what can it be used for?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. So let's say you want so there are two types of heap right main heap and max heap right. So whenever you are trying to create a heap so it should have certain properties defined for a heap that every whether may not main heap or max heap whatever you are going to create at least it should maintain those properties of a heap right. So there are some you can say the rules for creating a heap. So what are those two rules?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "For example if we take a max heap so the parent should always be a greater than its children like for example in a max heap we are more should have the highest value and then it is the children. So this is first property that the the parent node should be greater than equals to the child whether it's a min or max depending upon what is the second property?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Maybe a in case of it should be a complete binary."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But yeah little bit get more confidence we are right. Okay. So we are ten minutes past and let's switch to our main coding question. So Prinker can you write the question or share your screen also the with the node pack? I will tell you the question you can write it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So shall I go ahead with the question now?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh yes sir is my screen visible?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah your screen is visible and you can call me Sri Ash."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Shall I go ahead?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So question is so you are given a let's say m by m matrix right? Okay. And the input you will get is like i comma j what is the particular cell right? Oh j. And the color which you have to color that cell? Okay. Now what you have to do is like let's say I have given a 3 comma 2 let's say put green color. Right. So what you have to do is you have to make its neighbor green also up down left right diagonals also. And when you will stop when you will reach the border and what is the border is when you find some different color. Then it's a border for you. Okay. Call me Sri Ash. So in this case you got the question right? So you are given a matrix and for let's say m by m matrix and input would be i and j the particular cell and the color. Like what color you have to put into that cell? And what it has to do is it has to make its neighbor with the same color until and unless it won't find a border. And you can consider border is either a end of the matrix or the different color cells it form. So then it should stop. Is question clear pinker?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So it's 10 or 15. So yeah we will start over for 10 minutes from now. I will keep you remind for the time."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir like could you give an example for this?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah it's a very simple example. Take 3 by 3 matrix in this case."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So 3 by 3 in the sense should I fill it with 0s or can we represent the colors with numbers or?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. Like any example we have about 3 cross 3 matrix. So 3 by 3 matrix and let's say you are getting ij which I wanted to color with a green color is let's say 1 comma 1. So 1 comma 1 or 1 comma 2 is also okay. So 1 comma 2 I wanted to put a green color right? Yes. Now what you have to do is all its neighbor it would be a cascading effect like so 1 comma 2. And now it will go left right top down diagonals and it will try to make everyone with the green color until unless it won't find a border. And border is something different color. Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So for yeah even also what I am like I will try explaining this example and I will take let's have this represent our 3 by 3 matrix. So we have that 1 comma 2 should be green. And it should continue filling its neighbor until and unless it encounters a different colored color. Different color cell or if for example it encounters it boundary boundary. So in this year we have talking neighbors in the sense could you define neighbors to be what all cells can this icon which they have neighbors."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "It would be you can say recursive right top left it can go on."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay so like this cell for example this cell can have 4 neighbors top right down bottom."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And we have 8 neighbors. 8 neighbors so we will also include the diagonal cells."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in this case since we don't have any other colored neighbors so we will fill all of this with green."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct correct correct. Yeah that would be an example."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what basically should the program return."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And just to end more thing then it's a recursive then those which you have made a green then they will also go forward. So right it's not only this cell. Not only the neighbor of this cell let's say you have make another cell green. So now it's it's neighbor also till it will stop till all it there is a border encounter."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what we will basically be given is like the dimension m cross n and we will also have this value i j and the color that we should take."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right right. So since i and j is like a single query. Single query in the sense yeah just assume that you are having a method in this I will be given i n t i comma i n t j. And some character like what g or anything whichever color is."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The color is yeah and it can happen that the matrix is tell is previously filled with some colors."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct that's a good question. So let's assume that previously the matrix is filled with all white."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we have all white and eight neighbors we should fill in. So, I would like to share my approach that I am getting on the question is what we can do is we have this traversal in we can represent this matrix as a graph. Which has like you know eight neighbors top down bottom and the diagonals and whenever we whenever this function is called what we will do basically is we will keep on going to the neighbor. Neighbor of the cell and we'll keep filling it with the given color until and unless we have either boundary or else we'll encounter cell which is not the color which is given to us. So."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let's make it one more differ here is so instead of all white what you asked was right can it have colors so let's say it can have some white already some different colors already so let's go with that way so let's say what I'm going to say not all white somebody might have some different color."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So maybe we can see we have this function for fill and we'll be given this grid and I and J and color. So this grid that we're given sorry is represented as like a 2D matrix m cross and matrix correct m cross m matrix so let's say I have. So from the given i and J cell what we'll do is we'll perform DFS which would mean our text first or so what this will do is it will explore its children until a boundary is encountered okay okay. So let's have this function. Color as well to access the like all these more directions what I'm doing is I'm initializing this or the x matrix which will like help me actually neighbor's basically. Yeah so minus. What is this DX minus so like I am to access the access the neighbor I am basically creating this. So I will be adding which will help me go to like you know top like which will make me access all the eight neighbors top bottom left right and these more diagonals like I'll explain this when I get to the code I'll first initialize all the. I think I need for the implementation. So our boundary condition would also be so when we're performing the DSS we need to have like a visited. Oh let's see if we have a visit that. Oh. So also what I'm doing is I'm maintaining like a visited array which is of the same dimension of the matrix that we've been given and in case. This will help me for my DFS function in case I've already visited that cell so I'll not want to visit it again so what I'll do now is for all the neighbors we have for the cell we try to see if it is not colored and in case it has not reached the boundary then we try coloring it and then we try filling it's neighbor basically I believe it is like a question based upon a flood film that we have."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right so let me have like an X2 represent a neighbor to be i plus EX also can I like switch my editor to"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah sure like because I cannot see the course that I don't use this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah please feel free to do it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Is this okay?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah let's better."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we have a let's. Okay so we have an X to be the cell that we are accessing and let and why we also be that cell or these values I. And now we reject the conditions if an X is. These are basically that time and chance of the matrix will help me like in checking my boundary conditions we will see that the cell NX and NY to be a let NX and NYB the neighbors of I and J so what this TX and DY matrix would do is it will help me like access all of these neighbors so for example if we are at if this is represented as I. So then the neighbor we can represent it as I comma J plus 1 like with switching columns there and then to represent it's less neighbor maybe we can have something like I comma J minus 1 these are the indexes which will help me to visit all the neighbors and then again for this we can have. This is like why I'm using these DX and BY columns at the X and NY matrix which will help me like access these all the a turn neighboring cells water. And then again for the bottom we can have I plus 1 comma J and this can be represented as. So these are the values that the X and D will help me get and NX and NY to be the neighbors we'll see if like the cell first the police within the boundary right so the I'm taking the grid to be zero index so I'm seeing if the cell has a value of greater than NX to be the row and also it is less than the less than M and then we can take like wise or Y as well. And NY to also be less than and which is the time in some of the matrix and we can see how when we proceed ahead to color it if the if the neighbor does not already have a color so for example let's say that the color is white like I'm representing a hand three of NX and NY which is basically the cell is white. Let like maybe we can represent this green matrix that we have here to be like a string. Yeah and initially all of it is white and so we'll see if this is with the amount initially all of cannot be white also as we decided it they can be of different colors also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So maybe what I'm so initially we'll have the matrix as okay let there be no color so it will be like a entry string is that okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No no so let's assume that we have already have an M into N matrix with some different colors. Some colors are already fillers are already there now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So when we proceed filling is in case it is in case a cell is not filled and it is a neighbor of I and J. Then we can fill the cell correct if it is not filled yeah then definitely. So let me represent if it is not filled as some empty like you know empty string if in case it had some color then maybe we could have represented it as white or blue or red. So in case so first of all we'll see if it is within our boundaries and in case the neighbor which we have right now does not have any color then we can go on and fill it. So then what we'll do is what about the use case where the index which I gave you I comma J that's a green. Right so let's say 1 comma 2 is green what if green is already there in that or what if red is there."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay let's say let's say it already has a color yeah if what if already has a color."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So if it already has a color so we should not be filling that"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no we should override the color we should be okay we should override it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And when can we proceed filling its neighbor is when the neighbor has no color"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no color plus the same color the red let's say it was red now you overred it with green. So empty so red also it will override it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Like for example initially we have three let's say we have all the matrix is filled with red color. Okay and we give 1 comma 2 to be green so what this function will do is it will have RRR which will represent this and G would be the color that we fill. So in this case this would be the final matrix"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no no so it was so before what where you have maintained a G it was RRRR. So we have given okay put green color over that picture so now we have override the R color so we are allowed to change to all the colors red colors also. Then we will change all neighbor with the over it over it over it over it color the color which we have override empty plus override."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so over it. So basically we are able to access all the elements right now and we are saying so we will have to modify this. Just a gentle reminder we have 20 minutes more."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So initially what I can do is I can have a variable which will store the original color of that cell before we change the color to the given color let me create a variable called original which will store the color. So the color of the cell that it originally was here in case of that example this original will store the value red. So what we will do is we will iterate to all of its neighbor and we will see if we will see if either the 3D is empty or the grid has color as original. So what we have here is basically and we will be doing an all operation with these two values either it should be empty or either it should have an original color. So then what we will do is then we can go on and call this function fill again on the neighbor and the color should be passed to be color itself. So what we are doing is we are initially we will call this function fill and we will have given originally I and J and color. So we are storing the original color of that grid. So then after that we are coloring the grid as well. So maybe now we don't need a visited function because we have this concept of the overwriting work then we will color the grid with the color that we are given and then we will go on and visit its neighbor as NXN and why we will check if they are in the boundary conditions and either the neighbor should be empty or it should have the original color then only we will go on and fill the neighbor."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you will call the fill method again will it not change the original will it not change the original way of reading. And then on new like NX when we are changing the color here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, so here you are calling a fill method right grid NX and Y color. So original equals to grid IJ. So now IJ you have already pointed to NXN and Y. But we are changing it here so that color could be maintained I think. For example RNG itself for let's say we are calling on this now. 2 1,2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, what if it blue was there? It will open it. What if in the right side of green let's say blue was there. You have blue and all of these are red."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, now let's say initially this was also red."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So we have given 1,1 as a green."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in the original you have taken out the original color. So in the original it was to be red."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Original will be red."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And now then you have overreddened the color. Now you have changed the R to G. So now after that what you have done is you will try to iterate all the 8 side. Let's say we reached to the right hand side 1 where it was blue. So now original equals to grid I, so original will become blue now. But we have already stored original here. That value will not be changed. Okay, I might be conscious that you are calling this fill method only right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I am calling this fill method original will become okay. Original will become blue. But we need a green."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, we need red. We need red. So obviously this condition would pass which would say an X and an Y is original. So let me copy this entire green and let. Yeah, let me pass a parameter as original color itself. Like when we are calling this fill function. For example, you will call this fill function. We should perform this operation. So what I will do is I will instead I will make one more function or. EFS with an additional parameter called original which will not be changed. Okay, like I. Color which is being given an original. And let the operation which is to our DSS. And what to do is it will call the F and it would pass the parameters. And it would also pass color and it would pass 3D of I engine. To this parameter will never change original will. Okay, and we don't need to take the original pure now. Okay. Does that work?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, let's so can you do a dry run once. Now let's do a dry run."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We have initially we'll have this main function called fill which would be called given giving us the grid and the index. And the color that you should be refilled with or in case it is not filled then give this the color. So what this fill function is doing is it is calling a TFS function where it will pass the parameters the matrix I and J index is the color. And it is also passing grid of I and J in case which would be the original color. And it also original color. Which would be the original color here. Like for if it was red then red would itself be passed. So this would become a string. So what we're doing here is we're picking out first the let's do a dry run on this example. So let's say initially all of this is the given color and let me represent this cell as 1 comma 1 is that okay. Like picking up one index area and one comma to one comma. What is the type of grid? What is the type of I? What is the type of J? I and J is index and the integer character what? Ping. Oh, I is okay. I and J are the indexes and it is a string which would maybe initially we can have M or N whatever parameters we want. And initially it is maybe we can say it is M or N. Can you use the proper syntax that if we copy pasted into some ID it should run. So this would be our back this would be how we'll represent grid. Okay. Vector of a string and I believe this would be given to me like a vector of vector grid and it would have initially it would have all the null values. So let's say we can take input of the cell we can have in high comma J and then we can have a string C and then we can take in input I and J. Yeah, yeah that's okay. So let's from the method which you have written right. Yeah. Fill and DFS. So let's define the type of whatever you have taken right. So let's just define for that one that would be okay. We are ever missing out. So last 10 minutes we have. Thank you. Oh yes sir. And... Ring color yeah. So let's do a dry run on the example that we have so initially it would be called on or two comma to. Okay. Let's say this color to be a change to green. So what we'll do is we'll record the color and then we'll change the color to green which would be the color. And then we'll explore its neighbor it it a neighbors that we have which will buy this NX and NY and we'll see if it is in the boundary conditions and then. Let it go to and we'll see if it is empty or the color is original which was. So what is the if condition if N of X is greater than equals to 0. And so N of X is like it should be greater than equals to 0. N of X is should be less than N. Okay. It should be less than N. And N of Y should be greater than equals to 0. So now we are talking about the NY. Okay. And N of Y is should be less than N. Okay. Okay. So it should be less than N. Now N grid of N of X and N of Y whatever the new column which we are talking about if it is empty or it is the original one right. Then we have to go ahead at this point itself. Okay. So it will go to this point. Okay. So let's say when we are making this function call it comes on blue let NX and NY come on blue. So the case the cases would be satisfied that it is within the boundary. These four cases would be satisfied because it is like the index is greater than 0 or I and they both. Row and column now you see if the grid is empty no it is a colored blue or if it is the original color which was passed and here on it original color was red. I remember you also took the visited area what happened to that one"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so I remove the visited area because here we have this concept of overwriting it as well."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. What is the time complexity of this?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "When we like exploring all the neighbors so what we can have is for example in case the area is not filled with any neighbors then it would visit all of these cells then it could be a m cross n."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Correct. Space complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Space complexity we are not taking any additional space except for this string color. So maybe the space complexity would be constant."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Cool. Okay. So yeah there could be I am not sure like we haven't tried running on entire gym but this code looks good. Right. And almost we are on the time also. So yeah that is pretty much from my side PENCA. So can we start like before starting the feedback do you have anything for me like something need to be improved or something was not cleared anything any feedback."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No sir first of all I am thankful for the interview. This reminds me like the very first interview I had it was a graph question as well that was given to me and like it was for Google somewhere in the chip. And then I had to interview both of them have a graph question so maybe I have something like you know an inclination to always get a graph question for interviews but I like the question a lot which is like an application of maybe we can say DFS like I have this. So the question related to that in flux. Like in paint we have this paint application in real world correct. It like drag and drop and the colors to whatever the boundaries like we draw circles. I like the question also and also in between you are like you know giving me hints and where I where I miss the case that the original would be over it. So that helps."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay so let's start with the feedback. So here the first thing is like. So from your introduction perceptive right the introduction which you have given was good right so but I just want to add like in your introduction just add some one at least one project if you have done like what is the stack you have used right. So just on that project itself just say that what are the stack you are comfortable with. That because many time what happened is so let's say if you are not comfortable with see purpose let's say and you said that I am comfortable with Java. So if my further question can be changed and I might ask Java question instead of going into see purpose right. So very basic in not basic introduction should not be a big short and crispy what you had today but at minimum information about the project on which language you are comfortable with just give the tell the interview that okay these are my I am good at this Java I am good at this springboard anything right. So that if I don't know anything there is no point of asking me that right so just set up like which stack you are comfortable with data sexism algorithm I'm good in that is just algorithm and Java as an object oriented language I made projects into that right so that is just one feedback on the basic introduction as it was very good right. Second thing is your communication is good you are thinking of loud all the time so that was very very nice but I want like you need to be little bit more practice on the core part right. So core part the basics right so if you see today like the disadvantage of linguist that the one which you have told like that is not a disadvantage if you see the major disadvantage of lingers is take more reference yeah it's a pointer right so we need a more space right. So that is one of the disadvantage and the deletion is one of the disadvantage because when you are deleting an element in an area it's very fast when you're deleting an element in an linked list you have to take the case of the pointer okay I'm deleting the pointer as the chain so there is some extra effort so like this adds more more clarinet point okay in this thing second thing is there are certain points at the basics which you need to be clear like in normalization one was one point right. So it was basic right even let's say even today when I'm giving the interview this normalization as it was asked to me right even though I am not a DBA person I just work in a back end we use the API is right for the DBA all companies generally have but it's still this question question as well but since you are a fresher definitely these are the DBA questions are very very DBS is kind of very very important how much is data sector is also important so one and have to one of the and I should be on your tip at least right so this as it was good and has thing load factor you you are saying about this thing and one thing is also today I haven't seen this but one thing I want to say that if you don't know any answer right just say that okay I am not sure about it that is much better than giving answer revolving around it right so that is one thing right okay so rest all good so basically say you are able to give the answer but only from my side is since you are just a fresher and your placement let's is going to start your more basic questions are can be asked so this should be your on the top much okay now okay come to the coding part right so I would say that okay let's first say the positive part which you have so first thing I have already told you were thinking out loud which I like the most another thing is the complexity which you told and the you are the coding the way you are coding with confidence is good right but the major improvement has to be done is like first of all use case finding is not you didn't find all the use case right you started the coding right that is one major drawback right I was I wanted you to think before you are starting like so you ask one question what is all color of there right yeah so then the second question should be like once we have come up that it can have different colors so your issue you should know ask that okay what if read read is there then I am putting a green right what if the green and one more thing one use cases let's say when we are reaching to the next next next what if I encounter a green shall I overwrite it with the green and go ahead is boundary or shall I stop it there yes right so we haven't discussed those use cases yes so based on the coding I can change what happened to the green one so if you clarify with me and at the start itself like what is the exactly border right can the same color be a border also or can only be different colors of border right so some use cases were missing right so this question can be actually make more complicated like if you don't ask the question yes sir yeah if you just simply start the coding without even this what is the exact border what are the colors existing this question become very difficult what if I change the scenario in the mid your time is gone right yes so that's why I was saying use case what totally missed in this part so which you need to clarify before itself right second thing is the coding was not clean right so not clean in the sense means there what I wanted to say syntax should be followed right which very much actually you can say the interview see that right so you are writing a coding right I am just assuming like this is how you are going to work when you join the company when you write the code right so I am very much interested so I am very much interested in the approach and all the same way I have all the same I have also trusted in how you are writing the code so you haven't taken the like what is the type like a matrix right and I am not sure if in C++ does and or will work or because in Java we have a symbol for and we have a symbol for or we have a pipe but that works and on you symbol and later is okay later as well okay so yeah so that is one thing so I want to syntax use proper syntax is yes like in case you are familiar with Java mode and I am familiar with C++ so this case also came with like the symbol you asked me correct yeah like the code I should have written all the variable like what are the data types how much yeah with the exact because what I am doing is like since you are not following the syntax at the above I also assume that in the if condition also you are more like right should about and if you follow the same manner right okay you are writing the proper way I know that it might be a syntax only even though let's say somebody writing in Python I don't know Python but if I know that is following the syntax is then I know that might be a syntax also right second thing is the change the variable names right never use nx I got controls nx and y IJ if you if you go back and see the code like if you see you will find lot of like IJ original what is made of original right original color like what is been by color like the new color like something give a meaningful name nx and y IJ see avoided totally avoided like never use it okay so variable names we have covered use this is we have covered clean coding we have covered like syntax should be followed proper like when you are writing a coding like you are writing a company right proper spacing line spacing right just see some basic coding standards like what generally the basic they are not much right I won't be able to cover in this because it would be larger feedback what I want to say that just see file six basic coding standards right so follow that but that will really help when you will write a code because first impression it comes is like okay coding is better it will give in the two way positive ones I am able to understand your code very easily right second is like I will be once I'm able to understand easily I would be able to give you more yes sometime I have don't able to understand the code I will just ignore it like okay I will ask for the third what is happening right so right a proper clean coding just see the basic coding standard five six coding standard and follow those this one right so yeah variable time missing I have already told so this is on the mostly coding part rest like if you know the use cases I think you won't be able to code it so you are writing the code properly right but now if you see right the way we found the use case suddenly you have to write a new method right that is have to be done the use case is important like now I can change like if I had one more use case which is missing the code will again get changed yes right so this is the most important part which I want you to improve because your communication and think about the way you are smiling the whole time the it shows the confidence right so it shows the confidence and it gives some positive vibes also right but I want you to want this part because even if you are good at coding right if you are not taking the consideration of use cases proper coding right it will go against you for sure right so yeah that's pretty much from my side like these are the points which I wanted to get rest all totally okay so you understand the question easily like properly and you are going you you are able to get the use cases but not fully right yes coding also you were comfortable with is going from the start like how is it has to be done I was totally able to code it like what you are going to do what you're going to do next so that was pretty good but yeah just improve this small small things it will help you a lot yeah that's pretty much from my side I think nothing much more"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sure sir thank you so far taking the mock interview"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah no problem I hope for this will help you in your placements right so I'm very much confident with today's one if you resolve this one right have some basics like I'm very much confident like it could be a very good interview which you will okay thank you"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "cool I hope you will enjoy it and thank you again bring up"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "thank you bye"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "thank you bye"
+  }
+]

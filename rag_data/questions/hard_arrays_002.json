@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "hard_arrays_002",
+    "type": "question",
+    "topic": "arrays",
+    "difficulty": "hard",
+    "pattern": "index_manipulation",
+    "tags": ["arrays", "in_place", "index_manipulation", "cyclic_sort"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["medium_arrays_003", "hard_arrays_003"],
+    "evaluation_criteria": ["space_optimization", "in_place_algorithm", "index_understanding"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Find First Missing Positive",
+    "description": "Given an unsorted integer array nums, return the smallest missing positive integer. You must implement an algorithm that runs in O(n) time and uses constant extra space.",
+    "constraints": [
+      "1 <= nums.length <= 5 * 10^5",
+      "-2^31 <= nums[i] <= 2^31 - 1"
+    ],
+    "examples": [
+      {
+        "input": "[1,2,0]",
+        "output": "3",
+        "explanation": "The numbers in the range [1,2] are all in the array."
+      },
+      {
+        "input": "[3,4,-1,1]",
+        "output": "2",
+        "explanation": "1 is in the array but 2 is missing."
+      },
+      {
+        "input": "[7,8,9,11,12]",
+        "output": "1",
+        "explanation": "The smallest positive integer 1 is missing."
+      }
+    ],
+    "hints": [
+      "I think we can use a hash set to track numbers",
+      "That works but uses extra space. Can you think of a way to do it in-place using index placement?",
+      "Think about using the array itself as a hash table by placing each number at its corresponding index",
+      "The key insight is that for an array of length n, the answer must be in the range [1, n+1]"
+    ],
+    "edge_cases": [
+      "Array with all negative numbers",
+      "Array with all numbers greater than array length",
+      "Array already containing consecutive positive integers",
+      "Single element array",
+      "Array with duplicates"
+    ],
+    "follow_up_questions": [
+      "What if you were allowed to use O(n) extra space?",
+      "How would you find the first k missing positive integers?",
+      "What if the array could contain very large numbers?"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "id": "medium_graphs_001",
+    "type": "question",
+    "topic": "graphs",
+    "difficulty": "medium",
+    "pattern": "bfs",
+    "tags": ["graphs", "bfs", "shortest_path", "matrix"],
+    "complexity": {
+      "time": "O(m*n)",
+      "space": "O(m*n)"
+    },
+    "related_problems": ["medium_graphs_002", "hard_graphs_001"],
+    "evaluation_criteria": ["graph_understanding", "bfs_implementation", "matrix_traversal", "edge_cases"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Rotting Oranges",
+    "description": "You are given an m x n grid where each cell can have one of three values: 0 representing an empty cell, 1 representing a fresh orange, or 2 representing a rotten orange. Every minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.",
+    "constraints": [
+      "m == grid.length",
+      "n == grid[i].length",
+      "1 <= m, n <= 10",
+      "grid[i][j] is 0, 1, or 2"
+    ],
+    "examples": [
+      {
+        "input": "grid = [[2,1,1],[1,1,0],[0,1,1]]",
+        "output": "4",
+        "explanation": "Initially, grid = [[2,1,1],[1,1,0],[0,1,1]]. After 1 minute: [[2,2,1],[2,1,0],[0,1,1]]. After 2 minutes: [[2,2,2],[2,2,0],[0,1,1]]. After 3 minutes: [[2,2,2],[2,2,0],[0,2,1]]. After 4 minutes: [[2,2,2],[2,2,0],[0,2,2]]."
+      },
+      {
+        "input": "grid = [[2,1,1],[0,1,1],[1,0,1]]",
+        "output": "-1",
+        "explanation": "The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally."
+      },
+      {
+        "input": "grid = [[0,2]]",
+        "output": "0",
+        "explanation": "Since there are already no fresh oranges at minute 0, the answer is 0."
+      }
+    ],
+    "hints": [
+      "Think of this as a multi-source BFS problem",
+      "Start BFS from all initially rotten oranges simultaneously",
+      "How do you track the time/level in BFS?",
+      "What if some fresh oranges are unreachable?"
+    ],
+    "edge_cases": [
+      "No fresh oranges initially",
+      "No rotten oranges initially",
+      "All cells are empty",
+      "Single cell grid",
+      "Fresh oranges unreachable from any rotten orange",
+      "Grid with only fresh oranges"
+    ],
+    "follow_up_questions": [
+      "How would you modify this for 8-directional spread?",
+      "What if different oranges had different rotting speeds?",
+      "How would you track the actual path of infection?"
+    ]
+  }
+}

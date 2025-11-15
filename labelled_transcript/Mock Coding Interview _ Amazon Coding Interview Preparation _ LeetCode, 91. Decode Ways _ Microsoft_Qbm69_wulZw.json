@@ -1,0 +1,366 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so it would be 40 round interview, 1DS a question, right? So let me also let's start it, it's 7 out 10. So let me tell you a question, if you can write a question in any screen and all."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I'm sharing my screen just now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So the question is you have to find, so let's say the input is given as let's say 1,2. Okay. Okay, it's a string without any space. Let's say you are given a string, 1,2, 12, let's say the string equals to 12. So now and also you have, so each number is represented as let a is equals to 1, b is equals to 2 and similarly z is equivalent to 26. Okay, okay, right? So yeah, and z is equivalent to 26. So you have to find out the number of ways this string can be decoded, right? So let's say what would be the output of this one? So output of this one would be 2. Why? The first way you can decode is as small a and small b because one can be translated to small a, two can be translated to small b. So this is one way, another way is 12, 12 can be translated to L, right? Okay. So that is another way. So you can decode it in two way to decode this string, right? So your output should be what is the number of ways a string can be decoded."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So that's the question and yes you can go ahead if you have any doubt or you want to clarify up, this is why."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. So the given input is a string. So it will be containing like numbers from 0 to 9."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "129. Okay. Okay. Yeah, yeah. A string can also contain 0 to 9. Yeah. You are right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So basically string can contain 0 to 9 but I guess the first letter won't be 0 any time. The first row index and the element at index 0 won't be 0 because there is no possibility of having 0 in the first index."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "0 will exist only in the case of 10 and 20."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Correct. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So this is one possibility and let's say I am taking one or two more sample inputs. So let's say given string is 1 2 3."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let's say 1 2 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So possibilities are we can consider one only so it will become a."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So let it be anything. Let's say you don't have to just count and come up with them just so that just to be faster. Let's say 12 become M just consider that anything. Yeah. So that we don't have to count."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So one possibility is I am taking single single digits. Okay. Okay. A, B, B. Yeah. Yeah. That's one possible. And let's say I am taking B and then let's say 22 is something. Yeah. So this is one possibility and another case can be I am taking 12. Let's say it is N and that is B. Yeah. So the possible output for this should be 3 I guess only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Hmm. It should be the output for this one. Okay. And you told that starting zero is not around what can zero be used in the bit right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Zero can be used in media."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I will think of that test case is also so test case 2 can be let's say I am taking zero in bit way. Let's say 1, 2, 0. Or let's say 1, 0, 2. Let's take little bit simple 1, 0, 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So let's say where it is 0. Okay. To like for making this zero as safe we have to take one previous digit for sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let's say 1, 0 we have to maintain it. Let's say 1, 0 is L or something and the remaining one will be 2. So there is only one possibility of this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. In one way we can record this. Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "For me, any point you will get zero in bit you have to take only previous one not the next one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, not the next one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. No, but here in the case also let's say what if it is 302."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let me think of that also. So here can you take a previous one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Nothing. So the possibility is this is 302. Sorry. 302. In this case, yeah. So we can't take the previous digit and given we can't take the digit as mentioned by you. So what should be the let's so we should which I will give minus 1 or 0. So for this type of test case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Zero waste to decoded. Zero waste to decoded. So we will we should return generally zero in this case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Got it got it got it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So zero is not only to keep out I am going to find out let me think of anything else. Let's say. Yeah. So if. Let's say. Is. 4. Let's say this is 3. 3. 2. Okay. So. For considering. Any two digit. Two digit number. The first digit should be either 1 or 2 only because our range is from 1 to 26."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Either 1 or 26. Now 1 or 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. First digit should be either 1 or 2. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In case of element greater than 2 we should only. Okay. For. 30 coating point. So in this case like 3 so we are mentally we have to take. This is only in every case. And in the second. And then to we should only consider one digit for 30 coating point. So in this case like 3 so we. We are mentally we have to take. This is only in every case. And in the second position at index 1 there is 3 again so we will be taking C again. And for the last remaining one it will be. So there is only one way to record this one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So that looks good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I guess these are the possible test cases. So at the approach that is coming to my mind is like. We can use recursion to solve this problem like let's say. If currently I am at any particular index. So let's say I am at index 0. Okay. So either I can take one digit or I can take two digits. Okay. Correct. So even this place but while doing any operation I will be checking about the next digit. Let's say I am standing at index 0 and I will be also checking that index 1. Is there 0 over there? So if there is 0 then I have to consider the whole 10 as my."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no I didn't get it. So let's say you have at index 0 then you will check with index 0 plus 1 like whatever the index you will check plus 1 and if it is 0 you will consider it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Means I won't let's say I am at index 0. So I will check for index 1. There is 0. So I can't take the one as single like I can't use A over there. I can't take it to A. The first."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. I can't take it to A."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is what it is to be the digit that is at index 0."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Right. It's a bit just a step. So shall I write my truth? Can I go? You can go but I am thinking like if you have this approach let's say. No, I am just thinking like do you really need to check for 0? If you are currently at index I do you specifically need to check I plus 1 whether I plus 1 is 0 or not?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I guess it is not. Because if you are doing a recursion shouldn't it be properly handled automatically?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So how recursion you are going to let's see let's discuss on the recursion part. What is your recursion strategy? Let's say first. So right let's say 1 2 1 or let's say 1 0 2 itself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let's write 1 0 2. 0 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Can you explain me your recursion strategy like as first recursion what?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "0 2 and I am having I am telling on index 5. It is a variable is 0. Okay. Okay. So when I will be at the first 0 index and I will check for the first index also over there. Okay. If it is 0 then I will be considering this one also for 1 0. The entire 1 0 I will be considering and I will be making the recursion call 2 1 0 2 is my string and I will be directly going to index 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So you are incrementing it 2 times. Okay. And if it is let's say 1 2 2 then you would be what would be the strategy then let's say if it is 1 2 2."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So let's say 1 2 2 and currently my index is 0. Okay. So there are two possibilities. So I will be considering only the 1. So it will be 1 2 2. I am a first index and I will be also considering two digits. You want to that is 12. Okay. So 1 2 2. I am on 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. What is the time complexity of this one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let me think of the time complexity and also the space complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Just thinking."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "1 2 2 looks like my string. So I will say n is my size. Okay. So if any size, one particular operation, either I will be going to nema. So just a second. Yeah. So according to me, the time complexity will be big of n only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "How come? Little bit of space."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let's say if I am at any particular index, so either I will be going one step, I will be going 2 step. Correct. Similarly, for all the possible cases, either I will be going one step or two step. So in this way, I will be iterating over all the index for 102."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, no. You are not iterating index only one. See, what would be the height of your tree? The height of your tree would be, so see, you have two condition. I plus 1 and I plus 2. What would be your tree height? Worst case, it would be O of n because I plus 1, I plus 1, I plus 1. And at every step, you have two possibilities."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So it is two rows to power n."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So can you optimize it little bit?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. O of n is not the correct time complexity for the solution to this. I got confused with this concept of height and complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what is the space complexity?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Space complexity will be O of n."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Due to the recursive stair, the recursive stair. So can you make it little bit efficient?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. I guess. I can store the answer for the state particular state. Let's say, again, when I will be making the recursive call from this 1 to 2, what will be happening is 1, 2, 2, comma 2, second index. I will be calling again. Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So that's what I wanted to tell you that earlier, you were saying that every index we are going once."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. See here, you will see now duplicate, right? 1, 2, 2, and this one. Yeah. So it's a duplicate."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So that's why it was 2 raised to power n. We got it. And now what you are trying to say, you will store what?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Store the answer for particular state, like form from this index to n, how many possibilities are there?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So you store based upon the index, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. How many possibilities? And now after that, what would be the time complexity? Now it would be go of n."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Be go of n. Correct. Okay. I am good with the approach now. Let's, can we code for now?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So shall I use the... No, no, you can write it here in that segment."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In this, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "In this, okay. Just write a method, which is getting an string. And we have to return, yeah. Integer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I will be creating one helper function also. So, viewing with I will be performing the recursion point. Okay. The first base case is linked. I will try to keep writing the size. So it will be... Okay. Okay. So, it is equal to world of size. Okay. So if my current index is at the end, X is equal to 2 is equal to size. Then there are no possible ways. So, I will be returning 0 directly. Okay. And that's equal to 2 size. 1. Return 0. So, I am... Yeah. Yes. So, there will be one base case also, like... Yeah. So, if the world at index... World at index... plus 1... if index plus 1 is less than size. And... So, it will be written one, so here. Because whenever I am reaching at the end, I am returning like... This is what is possible way. I will let it know one. Yes. The word at index plus 1 is equal to 0. Okay. And... The word... index... minus 0... is greater than 2. Then in this case, I will be returning 0. So, what I am doing is... I am... if my index index is 0... and... my current index value is greater than 2. It is either 3, 4, 5 or something. In that case, I will return 0. Now, again, I will write the recursive calls. If... Next... Next, plus 1 is less than size. And... word... Next, plus 1... I will be returning 0. This is what I am doing is directly... all the recursive functions. Return... call... is... the self-wise word... and... next, next 2. Yeah. And that test case will be linked... to the data emission I think, to 0. Okay. So, first part of I will make is total... this plus is equal to... the code... this... here... the word... in this plus 1... here. And that call will be... condition-based... like... next time, here, in the... where do you... it is equal to... the word... x... and this is... here... and... plus... the word... and... plus... plus 1. This is the case... when an index transfer means a possibility. Yeah. So... this is the value... if the... value is less than... 226... in the case, what I have to list to... is... this is equal to... and it can say... that is... the code... is... the word... x... plus 2. Yeah. So now what I will do in this... is... open... this... and this function... I will be directly taking... if the word... is equal to 0... and directly again... 0... and this word... is... where comma... and next... plus 1. Sorry. 0. 0. 0. 0. 0. 0. 0. 0. 0. Not a question, I will just... I will just..."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, like... this code is now... and now it's... So, see... this thing, right? I am a little bit concerned for this thing. The way you are checking the 0th index, right? It made. That can be improved. I am just saying that... instead of above doing index plus 1... and checking for index plus 1 equals to 0... What to do? Check is... You can keep... You can... You can simply do right... if word of index equals to 0... return 0. There is no way. Now my follow question... So here the space complexity is... or of n. Can you make it to a space complexity bigger one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Just up... the approach... Space complexity. If I am at... particular index, if I want to calculate the answer for Dp8 index... So, what I need is... Dp8 index plus 1... and... Dp8 index plus 2... and or plus... some of these two way. Yeah. So... for calculating this... let's say... and... Yeah. So let's say I am having two variables... let's say in variable... value 1... So... if I am... having the answer for Dp8 index plus 1 in this... I am just explaining how I will be doing. So... plus... and variable 2 is holding the answer for Dp8... index plus 2. So... in the next call what I will do is... I will update my... variable 2 to... variable 1... and... I will be shifting the value of variable 1 into variable 2... and... I will be making... let's say variable 1 is variable 2... right... variable 1... and I will be... updating the variable 1 with... variable 2... plus variable 1... so I will be using a 10 variable 1 for... storing the previous variable of... So with those two variables... this can be done without the space complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. So can we stop the screen sharing?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, you can go on the share."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I have... I will just provide the feedback... so first of all, any feedback for me like... anything question was not clear or... anything which can be improved for the further one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, no, everything was fine. Like it was a good, slow interview."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure, sure thing. So... so you have already given more before but I will tell you... the certain good things which you are good at... and this is... the edge cases you are trying to find out. Right? That's really good. And one thing I like is... let's say even if you know the question... if you have done this question before... I didn't feel like a single... second that you already know this. The way you are trying to come up from the brute force to this one right... it makes me feel that you have taken me to the journey... or how you solved it. If you are directly coming up with an efficient approach... without even like... then I can pretty much even if you solved it... I would give you... like not in a... your favor. Right? So that's what I say even... Yes sir. If anybody know... always take the interview to the journey... like you are doing it for the first time. And you are thinking about loud... very well, right? You are thinking about loud very well... you come up with the brute force... you have... after a brute force... you have tell the efficient... you have write the clean coding... the variable names... I am all okay with that. So these are all good points. Like... and always remember this... when we do so many questions... you might find a question which I have already done... but always go like... you are doing for the first time. Right? But there are certain things... like time complexity part. Always... double concentrate on the time complexity... because the interviewer takes time complexity more seriously. Companies... there are certain set of companies... which do not even like... negotiate on the time complexity... your coding part is good... but time complexity part is bad... they do not even negotiate on that one... it's okay. So right? So time complexity... you have to little bit work upon on this... recursion and all these things. Right? And... rest all are good men. Like... yeah... I think I am... Thank you for joining... and I am stopping the recording here."
+  }
+]

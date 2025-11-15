@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "id": "real_interview_feedback",
+    "type": "feedback",
+    "topic": "feedback",
+    "difficulty": "all",
+    "pattern": "constructive_feedback",
+    "tags": ["real_feedback", "improvement_areas", "strengths", "actionable_advice"],
+    "evaluation_criteria": ["feedback_quality", "actionability"],
+    "source": "real_interview_transcripts",
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "feedback_categories": {
+      "resume_and_presentation": {
+        "positive_examples": [
+          "Your resume is very clean. The blue and the black and the bold, it is very good. So, giving it a quick glance, it is good.",
+          "I think you have a very, very strong project lineup. So, the two projects which one I am very, very much interested in is one is video chat web app and another is infinite to do list.",
+          "Your project lineup is very good. As a fresher college, it's a very strong resume."
+        ],
+        "improvement_areas": [
+          "In your introduction just add some one at least one project if you have done like what is the stack you have used right. So just on that project itself just say that what are the stack you are comfortable with.",
+          "Just tell the scope. So, here what I can see is develop a video chat using these all tech stack. User can create a call and also reject the call. If it is an individual means you have built everything. Then there is a lot of scope of asking.",
+          "Whenever before going to the interview, go through your resume. Whatever you have mentioned, at least know about it. Otherwise that would be an excuse like, okay, I have made this project two years back. Now I don't know that."
+        ],
+        "actionable_advice": [
+          "Set up like which stack you are comfortable with data structures algorithm I'm good in that is just algorithm and Java as an object oriented language I made projects into that right so that if I don't know anything there is no point of asking me that",
+          "If it is a group project, then what is your role in that. You can mention that one. If it is an individual, just say that it is an individual project and I have done this.",
+          "You can put video web app and to do list first two in the projects and also can you skip the projects little bit top. And once you get the experience in the company, you can bring experience at top."
+        ]
+      },
+      "technical_fundamentals": {
+        "improvement_areas": [
+          "You need to be little bit more practice on the core part right. So core part the basics right so if you see today like the disadvantage of linked list that the one which you have told like that is not a disadvantage if you see the major disadvantage of linked list is take more reference yeah it's a pointer right so we need a more space right.",
+          "There are certain points at the basics which you need to be clear like in normalization one was one point right. So it was basic right even let's say even today when I'm giving the interview this normalization as it was asked to me right even though I am not a DBA person",
+          "Load factor you you are saying about this thing and one thing is also today I haven't seen this but one thing I want to say that if you don't know any answer right just say that okay I am not sure about it that is much better than giving answer revolving around it"
+        ],
+        "specific_gaps": [
+          "Disadvantages of linked list: deletion complexity, extra memory for pointers",
+          "Database normalization: 1NF, 2NF, 3NF should be on your tip",
+          "Hash map load factor: reason for O(1) search complexity",
+          "Binary tree types: strict vs complete binary tree definitions",
+          "Heap properties: parent-child relationship and complete binary tree structure"
+        ],
+        "study_recommendations": [
+          "Since you are just a fresher and your placement is going to start your more basic questions can be asked so this should be your on the top much",
+          "DBMS is kind of very very important how much is data structure is also important so one and have to one of the and I should be on your tip at least right"
+        ]
+      },
+      "problem_solving_approach": {
+        "positive_aspects": [
+          "Your communication is good you are thinking out loud all the time so that was very very nice",
+          "The complexity which you told and the you are the coding the way you are coding with confidence is good right",
+          "You understand the question easily like properly and you are going you you are able to get the use cases but not fully right"
+        ],
+        "critical_improvements": [
+          "Use case finding is not you didn't find all the use case right you started the coding right that is one major drawback right I was I wanted you to think before you are starting",
+          "Some use cases were missing right so this question can be actually make more complicated like if you don't ask the question if you just simply start the coding without even this what is the exact border what are the colors existing this question become very difficult",
+          "You should know ask that okay what if red red is there then I am putting a green right what if the green and one more thing one use cases let's say when we are reaching to the next next next what if I encounter a green shall I overwrite it with the green and go ahead is boundary or shall I stop it there"
+        ],
+        "process_improvement": [
+          "Use case what totally missed in this part so which you need to clarify before itself right",
+          "Based on the coding I can change what happened to the green one so if you clarify with me and at the start itself like what is the exactly border right can the same color be a border also or can only be different colors of border right",
+          "What if I change the scenario in the mid your time is gone right yes so that's why I was saying use case"
+        ]
+      },
+      "coding_standards": {
+        "major_issues": [
+          "The coding was not clean right so not clean in the sense means there what I wanted to say syntax should be followed right which very much actually you can say the interview see that right",
+          "You haven't taken the like what is the type like a matrix right and I am not sure if in C++ does and or will work or because in Java we have a symbol for and we have a symbol for or we have a pipe but that works",
+          "Change the variable names right never use nx I got controls nx and y IJ if you if you go back and see the code like if you see you will find lot of like IJ original what is made of original right original color like what is been by color like the new color like something give a meaningful name"
+        ],
+        "specific_fixes": [
+          "Variable names we have covered use this is we have covered clean coding we have covered like syntax should be followed proper like when you are writing a coding like you are writing a company right proper spacing line spacing",
+          "nx and y IJ see avoided totally avoided like never use it okay so variable names",
+          "Just see file six basic coding standards right so follow that but that will really help when you will write a code because first impression it comes is like okay coding is better"
+        ],
+        "impact_explanation": [
+          "I am very much interested in the approach and all the same way I have all the same I have also trusted in how you are writing the code",
+          "When you are writing a coding right I am just assuming like this is how you are going to work when you join the company when you write the code right so I am very much interested so I am very much interested in the approach",
+          "First impression it comes is like okay coding is better it will give in the two way positive ones I am able to understand your code very easily right second is like I will be once I'm able to understand easily I would be able to give you more"
+        ]
+      },
+      "positive_reinforcement": {
+        "communication_strengths": [
+          "Your communication is good you are thinking out loud all the time so that was very very nice",
+          "The way you are smiling the whole time the it shows the confidence right so it shows the confidence and it gives some positive vibes also right"
+        ],
+        "technical_positives": [
+          "You understand the question easily like properly",
+          "You are able to code it like what you are going to do what you're going to do next so that was pretty good",
+          "Coding also you were comfortable with is going from the start like how is it has to be done I was totally able to code it"
+        ],
+        "encouragement": [
+          "I hope for this will help you in your placements right so I'm very much confident with today's one if you resolve this one right have some basics like I'm very much confident like it could be a very good interview",
+          "Rest like if you know the use cases I think you won't be able to code it so you are writing the code properly right"
+        ]
+      }
+    },
+    "structured_feedback_template": {
+      "opening": "Let's start with the feedback. So here the first thing is like...",
+      "positive_first": "From your [area] perspective right the [specific aspect] which you have given was good right so but I just want to add like...",
+      "improvement_with_reasoning": "I want you to want this part because even if you are good at [skill] right if you are not taking the consideration of [missing element] proper [skill] right it will go against you for sure right",
+      "specific_examples": "So if you see today like the [specific example] that the one which you have told like that is not a [correct classification] if you see the major [correct answer] is [explanation]",
+      "actionable_next_steps": "Just improve this small small things it will help you a lot yeah that's pretty much from my side I think nothing much more",
+      "encouraging_close": "I hope you will enjoy it and thank you again"
+    }
+  }
+}

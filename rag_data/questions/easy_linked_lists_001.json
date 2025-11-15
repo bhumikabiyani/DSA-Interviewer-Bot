@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "id": "easy_linked_lists_001",
+    "type": "question",
+    "topic": "linked_lists",
+    "difficulty": "easy",
+    "pattern": "iterative_reversal",
+    "tags": ["linked_lists", "pointers", "reversal"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["medium_linked_lists_001", "hard_linked_lists_001"],
+    "evaluation_criteria": ["pointer_manipulation", "iterative_vs_recursive", "space_optimization"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Reverse Linked List",
+    "description": "Given the head of a singly linked list, reverse the list and return the reversed list.",
+    "constraints": [
+      "The number of nodes in the list is the range [0, 5000]",
+      "-5000 <= Node.val <= 5000"
+    ],
+    "examples": [
+      {
+        "input": "head = [1,2,3,4,5]",
+        "output": "[5,4,3,2,1]",
+        "explanation": "The linked list is reversed."
+      },
+      {
+        "input": "head = [1,2]",
+        "output": "[2,1]",
+        "explanation": "Two node list reversed."
+      },
+      {
+        "input": "head = []",
+        "output": "[]",
+        "explanation": "Empty list remains empty."
+      }
+    ],
+    "hints": [
+      "I'll use three pointers: prev, curr, and next, to reverse links iteratively",
+      "Great approach! That's O(n) time and O(1) space. Can you also think about a recursive solution?",
+      "Think about what happens to the links between nodes as you traverse"
+    ],
+    "edge_cases": [
+      "Empty list (null head)",
+      "Single node list",
+      "Two node list",
+      "Very long list"
+    ],
+    "follow_up_questions": [
+      "How would you reverse only a portion of the linked list?",
+      "What if this was a doubly linked list?",
+      "Can you implement this recursively and what would be the space complexity?"
+    ]
+  }
+}

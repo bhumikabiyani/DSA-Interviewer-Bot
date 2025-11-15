@@ -1,0 +1,546 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, thanks so much for being here with us today, Parth. Would you quickly introduce yourself to our viewers?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hi, yeah, thanks for having me Angie. So I'm Parth. I recently graduated from McGill University. I am an SD-100 Amazon. And yeah, that's about me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, awesome. I'm so excited to see you do this interview today. Okay, so let's get right into it. So the question today is, given two sorted arrays of different sizes, return the median of the two sorted arrays."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "All right, okay, so given two sorted arrays, have we after return the median of like Buddhist arrays combined? I'm guessing or do you want like two mediums? Okay, okay. A single medium. All right, all right. So and they're sorted. I know that already."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep, so essentially I want like a bigger array that has all the elements of these two arrays sorted and then by my median, the definition of a median is like the middle element, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And yeah, do you know what happens if it's an even number of elements?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right, so that would be like a case I'll have to take into account. So I think when it's an even number of elements, a median would be the mean of the middle two elements because we have two medals. And if it's an odd number of like elements, then it's going to be the middle element. So"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "exactly."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "All right, so I guess that helps. The only thing is that it's a sorted, there's both sorted arrays, right? So I think maybe we can do something there. But in general, I think I know what would achieve the solution of this. I think we can simply just add all the elements into one big array and then essentially look at the middle element, look at the length of it, if it's odd, then just return the middle element of that bigger array or actually, you know, that was first sorted. So when we, so we first add both, add all the elements of both the arrays into this one big array so that we could call that a merge step. Then we sort that. So that's a sort step. Then we basically find the middle element, if it's odd or the mean of the two middle elements, if it's even length. That would give us what we want. Correct?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so it sounds like you're doing another sort step even though the initial two arrays are ready sorted. Is there some way you might be able to take advantage of that?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Yeah, so I think that's a good color because when I do a sorting, it's going to basically be, if I say lentile one arrays M and the other array is length of length n, then it's going to be M plus n times log of M plus n because that's a sorting complexity and we're going to basically be bottlenecked by that. So I guess to make it more optimal, since the port sorted, we can take advantage of that. Let me think. So I guess when I said merge, it kind of clicked me. So I think what we can do is kind of do what happens in merge sort in a way a little bit. So we'll have two pointers at the start of both the arrays and then basically keep adding the smaller of the two elements in the array. And so when we increment the one that's smaller. So essentially, we're doing a more step from the merge or algorithm. That's something familiar with you. So we can just do that and we can have our whole array populated. And now by default, it will be a sorted array. We don't have to do the like the additional source step. And using that, I think we can avoid the extra M plus n log M plus n complexity. And instead, we can just have and we can have like an M plus n complexity because now we're kind of filling them up. So just by doing an M plus n, like just one scan of both the arrays. And then we're just kind of giving the middle element or the mean of the two middle elements visual length."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Because you already know the sizes of each array. So you know, we're doing this. Okay. All right. So it sounds like then you're combining everything into a new array, which is taking up extra space. I'm wondering if you can make this even more efficient."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. So, okay. Let's see. Yeah. We do take up M plus n space as because we are supposed to add them up and then find the middle element. Sorry. I add them up. You mean like a pen to the same one. All right. Right. Okay. Yeah. Sorry for my language. I think, but Adam, I mean just like appending them in the bigger array. So yes, then without the additional array. Yeah. I believe I guess we don't we don't have any use of the additional arrays. So I guess we can avoid that because what we want is the median, right? So and the median is just a number. We don't really care about that whole extra space that we use. Yeah. So basically if we if we can find the overlap between the two arrays just by going over over over over. We can we can simply say the median would be the middle of the middle element of that overlap essentially. So once we have something sorted, then basically we don't really need to have the whole array. We just want the middle element and the middle element is basically at m plus n divided by two or two middle that's basically m plus n divided by two minus one and that m plus n divided by two. So both those elements, right? So we only care about this number. So what we can do is we do the same thing. We basically iterate two pointers over it. And then once we reach at the point where our count is basically that when we have those two pointers, we can simply return the mean of that or just return that one thing."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So you're saying you're keeping count of how many elements you've scanned already with those two pointers, right? And then when you reach n plus m over two elements, scan, then that's the median."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yep."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Great. Yeah. That makes sense to me. And then you don't have to store everything again in a giant in a new list. Basically."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. Yeah, I should have asked this before, but I believe that there can be duplicates in this array, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, there can be."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And other any cases of empty areas or"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah, there can be."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, okay. In which case, just return like a null."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Fair, fair, fair. Okay. So then, um, and null, okay. So then, okay, I can throw an exception in that case, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, yeah, that works too."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So I'm just going to turn like, basically double. Okay. Then I'm going to do it. This is actually so never mind. So it's otherwise the index is going to be two, right? Yeah. So it's going to be. Okay. That makes me think if I need this variable, actually. But okay, let's just call it boolean and say it's even a rod because that I need, and this is is even, right? Yeah, I'm going to use this. So now, we can check this once we reach that endpoint, when we reach our points, reach those steps and those indices in the race, we can use this condition to actually determine if you need one or two. And now, while I'll have a value here, basically, so while, um, eight pointer is less than eight or two length, and B pointer is less than B dot length. We want to basically keep iterating them and checking them, right? So we just say that if a point or is less than B and B pointer, then we want to, uh, we want to plus plus the A pointer because we know that that cannot be the median because it's a smaller one. So we just do that plus plus. We do a pointer plus plus."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Well, we're basically trying to traverse through the elements like in sorted order, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Yep. So if this is smaller, then we basically just do this plus plus because it can't be the smaller element, obviously, it's B is already bigger than that. Yeah. So we equate our pointer. Yeah. And then else, we, um, are gonna, if it is, it could be equal also, all right? So, else if they both equal, then that would be, um, okay, so we have to think about where our middle element is and that's something. Um, so I'm going to take another pointer essentially. And I'm going to keep, I'm going to keep implementing that for either of these increments. So I'm going to find the median pointer. I'm just going to call it a median pointer equals zero as well. And this is going to go until one of these hits the, um, until it hits the middle element essentially. And, um, I'm going to, so I'm going to basically do this media point of plus plus at every, any, every given point. Um, if they're both equal, that's an interesting case, then I'm going to have to, I think I can add any one of them. I'm just plus plus because if they're equal, then, uh, it doesn't necessarily mean it could, one of them could be the median still, right? So, um, I can just let's just say I'm going to, uh, make my first one increment essentially, right? So I'm putting the first one in that sorted list. That's the imaginary list that we have."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, exactly."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And otherwise, I'm going to do the b point of plus plus in which, which basically means this. And in either of these cases, I'm going to do a median pointer plus plus, right? And so I guess the one condition here that just missing in the while loop is that the median pointer must be uh, less than, so that would be the middle element. So in middle element, this is not the middle element. Exactly. It's like the first middle element basically. So if it's even, which is our two middle, it's going to be the first middle essentially."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So it's going to be, um, so let's say if we have a length of five, it's going to be two. And, but if we have a length of six, it's going to be the middle element. It's going to be, um, so two and three, the indices, the mean of two and three. So it's actually the second one in the middle, right? Because six divided by two is three."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you know how for an even length array, um, there will be two elements that are next surrounding the median. So the one that you will get from this computation would actually be the second one, the greater one. So three instead of two."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, essentially, yeah. So we just kind of trying to find one element. And then if it's even then we're going to return the one before that also. But this one would just be like the one number. And let's just say this one would be, um, combined length divided by, um, two basically, yeah. And so in the case of even it's going to be this. And, um, so we have this and we want to do less than, um, middle element like that. And so, uh, would it be less than or less than or equal to? I think less than is fine, right? Because less than breaks the condition. We get out."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, yeah. If you're fine with stopping at the second, um, mean index for the even case, then yeah, that makes sense."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Okay. I mean, in this case, it'll stop at three though, right? Because once it's three, it's going to come up and it's going to not fit the condition. It's going to break."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So that would be the second, um, like if the indices that you want are two and three, that would be the second one, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah, it would be, it would be a third index. Mm hmm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Sorry. I meant of the two elements. Yeah. It's the second one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. No, no, yeah. That was confusing. I got that. All right. So I guess once we have this, we just simply check if it's even a rod, right? And we simply return. That's even length. We will do. Um, so for this one, we need a previous element, but for odd, we know where this is, right? So we can simply."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Well, when you are exiting the while loop, the A pointer and B pointer are like at the previous two elements, right? So you actually do know what the previous one is."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. Yeah. So, so yeah. So in this case, it's going to be, um, we're going to think though, like in the case of odd, we just want one number, right? And we've already, uh, at least that element. So, yeah. We're meeting pointer exactly lies. This mean pointer is it going to be an A or is it going to be in B? And, um, that's what we return here, right? So yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Maybe do you want to have some variable that keeps track of whether the last pointer incremented was A or B?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. That would help, I guess. So, uh, we can have like another variable. Just drag the previous one. So into previous increment. Then, um, just have it zero and simply just, um, update that on each of this. So we just say, um, the value of A pointer. Um, and I guess before this actually, oh, oops. So that. And then, uh,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "would it be easier to just set as like a Boolean variable? It's like, is a last increment was an A, for example, because otherwise right now, if you set it equal to an integer, you still have the compare it to both the values of A pointer and B pointer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yep. Yep. That's a what call. So I'm just going to say a Boolean and it's going to be a false for A and proof for B. Let's say. Yeah. That makes sense. It's A. Let's say. And then let's say, um, is A equals true here basically. And then it's true here as well. And then basically it's going to be. It's B is going to be, uh, sorry, it's going to be false. In here. And we simply do that. And then if it's is, if it's of even length, then, uh, for this one, we will do is a. And if it's is a, then we get a turn, um, just like the A. So we'll do a comma a pointer. Otherwise, we return B comma B pointer. And in the length, in the case of, um, is even a length. We're going to have to find the middle of these, right? So we'll have, um, okay, this is going to be easier. And if actually there will be more readable."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. That makes sense."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, let me just quickly say that. So this. And then if say, is A you do that? Else, you want to return again, it's the, is there a thing basically? If it's, um, the last pointer is at A, then you return. Okay. So in this case, we actually need to have like the two previous indices right now. So I think I'm just kind of going all over the border. We need one more previous index. Yeah. Give drag off. So, um,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "that's I was wondering if you might want to stop at the previous for the event case, if you might want to stop at like the middle element that's less than the median. But I don't know if that's more complicated to implement or simpler."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I see. Um, so you're saying that instead of the middle element, I, like, I do well as an equal to you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh, I don't know that that would be necessarily correct. Yeah. I don't think that would fix that. I'm just saying, you know, how like if you have like an array of six elements, then the median would be the average of the second, the, the elements that index two and three. If you could stop at index two instead, it might be easier."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I see, I see. Oh, I see. Okay. Uh, may not always. Yeah, because we're going with two arrays, right? So it's going to be a little, it's not going to be always plus one that. Yeah. So yeah, maybe you just need to keep track of two of these one more previous one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Um, okay. So then it's going to be that just call it previous two and previous one, I guess. And now they're both going to be ends. Um, maybe we can analyze a later on for how we can reduce the verbosity. But for now, I think we can finish it up. It looks like it's almost there."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, um, it's going to be previous one is going to be, a pointer. And then, so it's going to be pointer. And then once we have this, uh, previous two will simply be the value of previous one in the next, in the next iteration. So previous two equals previous one, essentially. And so we're basically switching things up. We're giving a pointer to previous one and previous one, so I did two previous two. And that's how we're rotating every single time. And, uh, so yeah, we'll have to start with a value for previous one that's not in the array itself. So we could just give it integer dot max or something like that, which is basically, uh, a value that we can assume. It's not there like, uh, previous one is not there basically. Um, and now once we have this for the case of, um, even if, if it's not off length even, then we should return, um, previous one. But then if it's even, then what do you want to do with, you know, do previous one plus previous two divided by, um, and these are indices, actually, sorry. So it's going to be, um, interesting. Uh, okay. Okay. One sec. So I think previous, previous will be tracking not the indices, but the values itself, right? So that makes more sense."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So it should basically be just this. And then, um, yeah. So now we have, we don't previous one for when the length is odd, but we return previous one plus previous two divided by two. So now, previous two is also like the element itself. It's not the index. So that's going to be the mean of the two middle elements. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yep. And this should work. Okay. Yeah. Do you want to run it on a couple cases maybe?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. Um, let's see. So then you remove this and simply, let's, uh, and equals one, two, three, let's say, and int b equals two, three, and four. And now in this case, our, um, answers should be one, like the, the, the resultant array of both of these things combined would be one, two, two, three, three, and then four. And the answer of this one would be between two and three. So it's going to be two point five. Yeah. If let's say we just change this array slightly, let's just have one to here, then the answer is going to be three. Right. So now, um, when I'm gonna, oh, you know, just call this method here, with, um, k, v. And let's see, it's going to be from this takes, I'm sure. Okay. It's compiler error. Uh, yeah, we have, we've thrown an exception, but this one isn't actually throw anything. So, throw is, exception, let's call this. And then there's also one more error, um, must be called or declared to be through. I think they're both, uh, the exception related ones, right. So, um, I think it's going to still give it a problem that it's not catching it. So let me just do it in the dry catch."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What can I just, uh, kind of comment it out for now?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, sure. Yeah, because we're going to do manual exception, right. So, okay, so it's returning me to, okay, this actually worked. So this is running me to the first one when I'm expecting 2.5. And I think that makes sense because we are, when you do that with ints and Java, it's going to convert into an integer itself. So I think if I do 2.0, it should probably give me, uh, yeah, so it's need to point five. So that works. Right. And now if I test my odd scenario where I remove this to, uh, simple case, in that case, when I run my code, it's going to give me two, which is not expected. Um, so I think my odds in either is wrong right now."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, where now, why are you returning the value of the previous one rather than where?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I think previous, previous one, um, um, I'm sorry, uh, what are you saying?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So when have you have five elements, you're returning like the second element instead of the third element. Right. Because you're returning the previous one rather than where the median pointer currently is."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, yeah. Okay. So I think by definition, I was just doing it completely wrong. When I have five elements, I should be returning the third element, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So this is the second index."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "All right. So it should have done me the second index. I think this is logical flaw in the code itself because, uh, we are trying to get the second index. That's the two indexed, right? Three just have the third element index two."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. So because when we have five, we, the middle element is at two, right? So, um, yeah, but currently the previous pointer points to the first index one index one second element."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, because the value of the previous, yeah, but the current pointer is at like exactly the element that you need the median."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, well, I think that's because, yeah, so my pointer here is actually wrong. I should be point, I think I just missed it by going to be missed. Oh, there we go. Yeah. Sorry about that. Oh, no, it's still written the same thing."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You could also just print out what proof one is at every iteration."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Um, yes, um, just simply now. So, so, um, so yeah, so we're going over one and then we're going over, um, the second iteration is two. And then so what previous one remains at two basically and then we're finishing our, um, count."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, because so we go at one. That's the first element because less than three. Then we, plus plus this, we go to two. This is the second element. It's less than three. Then, um, and it's exerting at this point with the previous value being set here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, right. It never updates a previous pointer once it reaches the medium, right? Because it just breaks at that point. It doesn't go in like run the rest of the code and the loop."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Yeah. Okay. Okay. That's true. So I think this is going to be another for loop here basically that basically says that if, you know, I haven't reached the end of it. So what is going to happen is that it's going to be two more wild loops here, which are basically based on the lens of these, right? So once you have this, um, so this is the condition. These are the loops that I'll be run when we've reached the end of fun array, but we still have elements to kind of go through in the secondary. So let's say, uh, in this case, we have kind of reached be we've reached the end of, you know, be, but we still have things in a, right? So that's what's happening. That's what's missing. So we basically keep going on and this, this condition will be run. Obviously went a pointer is less than eight length, and this one will be a element B pointer is less than B length. So by default, like, uh, if we get out of this loop, it's either that we've already, uh, you know, a pointer is kind of, uh, greater than a length, or B pointer is greater than B length. And so these two will basically be skipped if those two conditions are true. So, um, does that make sense?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, it does."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And so, um, now I guess what we have to do is we simply, uh, do the same thing here. We basically,"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "you could probably also get away with just checking conditions in the original wild loop rather than adding two more wild loops. Um, like in the if else conditions above, you could simply check whether or not, like, a pointer is still less than or equal to eight odd length. And if it is, then it'll just automatically skip that condition and, um, increment the other pointer instead."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. So you only put like an all over here and then just do it inside, uh, inside of this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, it might be easier than adding two more wild loops."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. Yeah. The time we have complexity will be the same though. It'll just be like, uh, kind of,"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Of course, yeah. So then yeah, the condition is going to be basically this and then we will, uh, be checking the, yeah, anytime we reference these things, we're just going to be checking the, um, and, uh, yeah, if they both are, the both exist or not, right? So, um, we'll simply say, a pointer is still less than, you know, eight odd length. And this. And there'll be B pointer less than p dot length. Right. So this is like a condition we have to check every single time. But now, um, yeah, the thing is that we have to also add into the counter where one of them is actually null, but the other one exists. So that's also something that needs to be covered for. And that's why I was kind of going for our, like loops outside this thing. Because otherwise this code becomes too robust."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh, I just met like in the if conditions here, you can probably just check first whether one or of them is null, right? In each of like the if else if."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, I'm not sure I understood what you mean by that. So like, for example, the, um, like,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so actually you could just put it in the beginning of this like wild loop. If like, uh, if a pointer equals null, then you only increment the B pointer, and then you could skip, you can continue onto the rest of the wild loop. Or if B pointer equals null, then you only increment the A pointer, continue on in the loop."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, okay. But then that would also miss the points, right? Where, uh, we basically have only one thing left. Um,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What do you mean when you basically only have one thing left?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, I wasn't just change that one, but, um, like, for example, this one takes to go on both the arrays, right? We pointed and like A and B, but then if we have, if you only left with A, then, uh, you know, this thing will, uh, like the condition itself will become, you know, futile, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "The condition, yeah. So you wouldn't run that condition. Like, uh, you would put the code before it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Here, I can actually, I'd like to do more of statements, basically."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And then you can just put, like, continue there so that it doesn't even run the rest of the wild loop."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, fair enough. Yeah. Okay. So you're saying that if it, um, greater than equal to eight out of length, um, just like, um, continue this?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. Uh, well, you still have to increment the B pointer, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. Yeah. Yeah. So, um, hmm, you know, in this case, that the B pointer has to be non-null because we still pass the original wild loop."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, um, and, and this case, then we simply do this step, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Mm-hmm. And then we can have like these things in the else condition, essentially. And, um, do the same thing with the B pointer as well."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Similarly with the B pointer, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep. L's B pointer is for then equal to B dot length. And then, um,"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "and this is nice because now you can tell that you can actually combine some of the if statements together so that you have fewer if else statements."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep. And so now, um, yep. Um, this is opposite."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. Yeah. So, for example, you could combine the if else statements from lines, uh, if you can, like 31 through 35 can be combined with like 43 and 247 because they have the same procedure. And then your if else statement, which is like short circuit, like, yeah, exactly. Yeah. So it wouldn't try to evaluate like the, yeah, whole pointer, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sounds great. Yeah. That would, yeah, this will basically avoid the null point exceptions."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. So"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "exactly. Yep. And then did I copy them correctly? A pointer is less than this. You just do plus plus. Yes. And then exactly. If a pointer is greater than a point, you want to do B plus plus. And that is the same quota as this one, right? So this one is essentially when B is greater. So I'll just prefer to inverse this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "You don't even need that one. The right. Because that should be the last case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. But it's fine. I guess like, uh, just for like readability, we can just have these things."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Yeah. Sounds good."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And then I think you actually don't need the rest of those statements. Those cases."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yep. Um, you will have to change the, the first L statement should be less than or equal to a to handle that last. If a of a pointer is less than B of B pointer, that should be less than or equal to so that you can remove the last."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Nice. Yeah. Okay. So that's a lot cleaner now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Yep. So I can just remove these two loops now, essentially. Yeah. And if you run the same code again, um, it's still giving us two. Okay. Um, okay. So I think the reason why is because, um, when you're, uh, yeah. I think, um, yeah, I do think it should be less than or equal to. Yeah. I think you don't want to run the code inside the while loop once it hits the middle element."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Cause the element starts with zero. So as soon as it becomes. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. Uh, I think yeah, that makes sense then. Yeah. Should we start with the even case as well."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Um, now this one should be giving us. Okay. Yeah. I think that's the problem with it. In big three-hour bonds for length three. I'm just gonna move this. So it's zero zero one zero two zero one three zero. And interesting. We're not, we're never actually incrementing the B-bondering."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, I see."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No. Okay. Okay. I think, um, yes, you what's happening. So essentially, uh, we have one two three three four five right. So we're traversing the A array completely before actually traversing the B array. And so, and so when we, um, so we never really had this we every time we come here, we just do A plus plus. And then, uh, sorry. Yeah, that should be fine. Yeah, once a three once the pointer is three, it's gonna hit this case, right? Because, um, um, um, it's not this and a pointer. Oh, I see. Okay. Oh, because it's still like, uh, it's the reference. That's right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. So you could just mess that in condition, I guess."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I can just work. You couldn't mess it like that, uh, the second operandum."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "All right. So this would make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, I think so. Let's, let's try it again."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah. This makes sense. Yeah. Oh, wait, um, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So right now, you'll only go into those if conditions. If, um, one of the pointers is out of bounds. That's not quite right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Okay. Yeah. So I think the way to solve the problem that we had previously was to like, for the second operand of the, um, or you have to check that eight point. You saw the check that eight pointer is not no. So if the works is just like a slightly more complicated expression."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Yeah. So for that second operand, you still have to check that like, um, eight pointer is less than eight all links."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If I just simply make this condition or another, another condition to this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Exactly. Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Great. Okay. We test the odd case again, just to make sure it didn't break."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And this should be, um, three. Yeah. It should be three."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yep. It's three."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Great. Congratulations."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you. Um, sorry. Can we check one more case that it finds like the average of the two? Because right now it's like, um, basically return the same amount as one of them in the event case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So let's say this to two and this three three. So that's going to be two and, uh, average of two and three."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So two and five. Yeah. Great."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Congrats. Um, okay. So I think this is a great place to pause. Um, I'd love to hear from you. What you thought of this interview. Um, what do you think went well? And what do you think you would want to improve on?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I think, um, I was terribly underprepared for this one. And, uh, I think I definitely did not do a very good job of kind of outlining the crux of the problem first, which is like, you know, having the conditions kind of fleshed out before actually diving in the code. So I should have first, you know, like a lot of a kind of a pseudo code and comments or something and talked about, you know, like the, the cases where I'm trying to, uh, you know, add the conditions on. And the cases where the point is actually increment. I think that would have been, that would have made it my life way simpler, uh, going into coding actually. So, um, yeah. Um, I think that's a good experience."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. That makes a lot of sense. Um, I actually thought there was plenty that you did really well though, because you mostly just kind of sized yourself. Um, so for example, like you did a great job of asking about edge cases. Like what happens if you have to duplicate elements or if you have like empty lists, for example, and you considered both the cases of like even an odd size arrays for which like the logic is different, right. And it's significantly so. Um, and you also did a great job of like you started out with a brute force solution. And you gradually identified different inefficiencies in that solution to come up with the eventual like optimal solution. So, for example, um, you identified that initially you weren't using the property that the arrays are sorted. And then second of all, you identified that the solution was using more space in it. Didn't need it to. So this final solution ended up being a big improvement over the initial brute force solution. Um, yeah, and I agree. Like I think like one of the tricky parts of this problem is not even necessarily the algorithm itself, but like all the complicated if else condition. So yeah, a little bit of pseudo code might have helped with clarifying that first. And like working through a couple of examples with the indexes before lunging into the coding. And then last quick thing that I thought I would mention before we wrap up and we don't have to go into this in detail is that like one additional thing to consider is that anytime you are doing a search in amongst sorted elements. Binary search is like a way to sort to do the search, right. And like obviously this is in a traditional setting because we have two arrays instead. But there are often ways to modify the binary search so that we can still use it and then make it more efficient. But otherwise, you did a fantastic job. Thank you for joining us today, part."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thanks so much, Andrew. Thanks a lot for the help."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "All right. Great. And thanks everybody for watching and good luck with your upcoming interviews. Bye, everyone."
+  }
+]

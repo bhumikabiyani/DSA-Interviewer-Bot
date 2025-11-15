@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "id": "algorithms_sliding_window",
+    "type": "concept",
+    "topic": "algorithms",
+    "difficulty": "medium",
+    "pattern": "sliding_window",
+    "tags": ["sliding_window", "two_pointers", "optimization", "subarray"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["medium_arrays_001", "medium_strings_003"],
+    "evaluation_criteria": ["pattern_recognition", "implementation", "optimization"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "concept_name": "Sliding Window Technique",
+    "definition": "A computational technique that reduces the time complexity of problems involving contiguous subarrays or substrings by maintaining a window of elements and sliding it across the data structure.",
+    "when_to_use": [
+      "Finding optimal subarray/substring with specific properties",
+      "Problems involving contiguous elements",
+      "When brute force would require nested loops",
+      "Optimization problems on arrays/strings"
+    ],
+    "key_characteristics": [
+      "Maintains a window of elements",
+      "Expands and contracts window based on conditions",
+      "Processes each element at most twice (once when entering, once when leaving)",
+      "Often uses two pointers (left and right boundaries)"
+    ],
+    "types": {
+      "fixed_size": {
+        "description": "Window size remains constant",
+        "example": "Maximum sum of k consecutive elements",
+        "approach": "Slide window by removing leftmost and adding rightmost element"
+      },
+      "variable_size": {
+        "description": "Window size changes based on conditions",
+        "example": "Longest subarray with sum <= k",
+        "approach": "Expand window when condition allows, contract when violated"
+      }
+    },
+    "implementation_template": {
+      "python": "def sliding_window_template(arr, condition):\n    left = 0\n    result = 0\n    window_state = initialize_window_state()\n    \n    for right in range(len(arr)):\n        # Expand window: add arr[right]\n        update_window_state(window_state, arr[right])\n        \n        # Contract window while condition is violated\n        while not is_valid(window_state, condition):\n            remove_from_window(window_state, arr[left])\n            left += 1\n        \n        # Update result with current valid window\n        result = update_result(result, window_state, right - left + 1)\n    \n    return result",
+      "java": "public int slidingWindow(int[] arr, int condition) {\n    int left = 0, result = 0;\n    // Initialize window state\n    \n    for (int right = 0; right < arr.length; right++) {\n        // Expand window\n        addToWindow(arr[right]);\n        \n        // Contract window while invalid\n        while (!isValid(condition)) {\n            removeFromWindow(arr[left]);\n            left++;\n        }\n        \n        // Update result\n        result = Math.max(result, right - left + 1);\n    }\n    \n    return result;\n}"
+    },
+    "common_patterns": [
+      {
+        "name": "Maximum/Minimum Window",
+        "description": "Find the optimal window satisfying constraints",
+        "examples": ["Longest substring without repeating characters", "Minimum window substring"]
+      },
+      {
+        "name": "Fixed Window Sum/Average",
+        "description": "Calculate metrics for fixed-size windows",
+        "examples": ["Maximum sum of k elements", "Average of subarrays of size k"]
+      },
+      {
+        "name": "Condition-Based Window",
+        "description": "Window size varies based on conditions",
+        "examples": ["Subarray with sum <= k", "String with at most k distinct characters"]
+      }
+    ],
+    "optimization_techniques": [
+      "Use hash maps for character/element frequency tracking",
+      "Maintain running sums instead of recalculating",
+      "Use deques for maintaining window extremes",
+      "Combine with other techniques like binary search"
+    ],
+    "common_mistakes": [
+      "Forgetting to update window state when contracting",
+      "Not handling edge cases (empty array, single element)",
+      "Incorrect window size calculation (off-by-one errors)",
+      "Not resetting window state properly between iterations"
+    ],
+    "complexity_analysis": {
+      "time": "O(n) - each element processed at most twice",
+      "space": "O(k) where k is the size of auxiliary data structures (hash maps, etc.)",
+      "improvement": "Reduces O(n²) or O(n³) brute force to O(n)"
+    },
+    "interview_tips": [
+      "Identify if the problem involves contiguous elements",
+      "Look for keywords: 'subarray', 'substring', 'consecutive', 'window'",
+      "Start with brute force, then optimize with sliding window",
+      "Clearly define what constitutes a valid window",
+      "Handle edge cases: empty input, single element, no valid window"
+    ]
+  }
+}

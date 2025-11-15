@@ -1,0 +1,308 @@
+{
+  "metadata": {
+    "id": "vector_store_schema",
+    "type": "configuration",
+    "topic": "vector_store",
+    "difficulty": "all",
+    "pattern": "data_schema",
+    "tags": ["vector_store", "schema", "embeddings", "metadata"],
+    "evaluation_criteria": ["schema_completeness"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "schema_name": "DSA Interviewer RAG Vector Store Schema",
+    "description": "Complete schema definition for storing and retrieving DSA interview content",
+    "vector_store_configuration": {
+      "embedding_model": "text-embedding-3-large",
+      "vector_dimension": 3072,
+      "similarity_metric": "cosine",
+      "index_type": "HNSW",
+      "index_parameters": {
+        "m": 16,
+        "ef_construction": 200,
+        "ef_search": 100
+      }
+    },
+    "document_schema": {
+      "required_fields": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the document chunk",
+          "format": "{document_type}_{topic}_{difficulty}_{sequence}",
+          "example": "question_arrays_medium_001_chunk_1"
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual text content to be embedded",
+          "max_length": 8000,
+          "preprocessing": ["normalize_whitespace", "preserve_code_formatting"]
+        },
+        "embedding": {
+          "type": "vector",
+          "dimension": 3072,
+          "description": "Dense vector representation of the content"
+        },
+        "document_type": {
+          "type": "enum",
+          "values": ["question", "solution", "brute_force", "concept", "transcript", "rubric", "feedback", "followup", "interviewer_style"],
+          "description": "Type of document for filtering and routing"
+        },
+        "chunk_type": {
+          "type": "enum",
+          "values": ["problem_statement", "implementation", "concept_definition", "exchange", "evaluation_criteria", "feedback_template"],
+          "description": "Specific type of chunk within document"
+        }
+      },
+      "content_metadata": {
+        "topic": {
+          "type": "enum",
+          "values": ["arrays", "strings", "trees", "graphs", "dynamic_programming", "greedy", "backtracking", "sorting", "searching", "linked_lists", "stacks", "queues", "heaps", "tries", "math", "bit_manipulation"],
+          "description": "Primary algorithmic topic"
+        },
+        "difficulty": {
+          "type": "enum",
+          "values": ["easy", "medium", "hard"],
+          "description": "Problem difficulty level"
+        },
+        "pattern": {
+          "type": "enum",
+          "values": ["sliding_window", "two_pointers", "binary_search", "dfs", "bfs", "dynamic_programming", "greedy", "backtracking", "divide_conquer", "topological_sort", "union_find"],
+          "description": "Algorithmic pattern or technique"
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "description": "Additional descriptive tags for flexible filtering"
+        },
+        "complexity": {
+          "type": "object",
+          "properties": {
+            "time": {"type": "string", "example": "O(n)"},
+            "space": {"type": "string", "example": "O(1)"}
+          },
+          "description": "Time and space complexity information"
+        }
+      },
+      "interview_metadata": {
+        "interview_phase": {
+          "type": "enum",
+          "values": ["problem_introduction", "clarification", "approach_discussion", "implementation", "optimization", "testing", "evaluation", "feedback"],
+          "description": "Phase of interview where content is relevant"
+        },
+        "speaker_role": {
+          "type": "enum",
+          "values": ["interviewer", "candidate", "system"],
+          "description": "Who is speaking or providing the content"
+        },
+        "interaction_type": {
+          "type": "enum",
+          "values": ["question", "answer", "hint", "explanation", "clarification", "feedback", "encouragement", "redirection"],
+          "description": "Type of interaction or communication"
+        },
+        "candidate_level": {
+          "type": "enum",
+          "values": ["entry", "mid", "senior", "staff"],
+          "description": "Target candidate experience level"
+        },
+        "evaluation_criteria": {
+          "type": "array",
+          "items": "string",
+          "description": "What aspects this content helps evaluate"
+        }
+      },
+      "retrieval_metadata": {
+        "priority": {
+          "type": "integer",
+          "range": [1, 10],
+          "description": "Retrieval priority (10 = highest)"
+        },
+        "context_window_position": {
+          "type": "enum",
+          "values": ["primary", "supporting", "background"],
+          "description": "Preferred position in context window"
+        },
+        "related_documents": {
+          "type": "array",
+          "items": "string",
+          "description": "IDs of related documents for cross-referencing"
+        },
+        "prerequisite_concepts": {
+          "type": "array",
+          "items": "string",
+          "description": "Concepts that should be understood first"
+        },
+        "follow_up_topics": {
+          "type": "array",
+          "items": "string",
+          "description": "Natural follow-up topics or questions"
+        }
+      },
+      "quality_metadata": {
+        "created_at": {
+          "type": "datetime",
+          "description": "When the document was created"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "description": "When the document was last updated"
+        },
+        "version": {
+          "type": "string",
+          "description": "Document version for tracking changes"
+        },
+        "quality_score": {
+          "type": "float",
+          "range": [0.0, 1.0],
+          "description": "Content quality score"
+        },
+        "review_status": {
+          "type": "enum",
+          "values": ["draft", "reviewed", "approved", "deprecated"],
+          "description": "Review and approval status"
+        }
+      }
+    },
+    "index_configurations": {
+      "primary_index": {
+        "name": "content_semantic",
+        "description": "Main semantic search index",
+        "fields": ["embedding"],
+        "filters": ["document_type", "topic", "difficulty", "interview_phase"]
+      },
+      "metadata_indexes": {
+        "topic_difficulty": {
+          "fields": ["topic", "difficulty"],
+          "description": "Fast filtering by topic and difficulty"
+        },
+        "interview_phase": {
+          "fields": ["interview_phase", "speaker_role"],
+          "description": "Filter by interview context"
+        },
+        "pattern_complexity": {
+          "fields": ["pattern", "complexity.time"],
+          "description": "Algorithm pattern and complexity filtering"
+        },
+        "evaluation_criteria": {
+          "fields": ["evaluation_criteria", "candidate_level"],
+          "description": "Assessment and level-based filtering"
+        }
+      }
+    },
+    "retrieval_strategies": {
+      "semantic_search": {
+        "description": "Primary embedding-based similarity search",
+        "parameters": {
+          "top_k": 20,
+          "similarity_threshold": 0.7,
+          "rerank": true
+        }
+      },
+      "hybrid_search": {
+        "description": "Combination of semantic and keyword search",
+        "weights": {
+          "semantic": 0.7,
+          "keyword": 0.3
+        }
+      },
+      "filtered_search": {
+        "description": "Metadata-filtered semantic search",
+        "common_filters": [
+          {"field": "document_type", "operator": "in", "values": ["question", "solution"]},
+          {"field": "difficulty", "operator": "eq", "value": "medium"},
+          {"field": "interview_phase", "operator": "eq", "value": "implementation"}
+        ]
+      },
+      "contextual_search": {
+        "description": "Search based on current interview context",
+        "context_factors": [
+          "current_problem_topic",
+          "candidate_performance_level",
+          "interview_phase",
+          "previous_interactions"
+        ]
+      }
+    },
+    "example_documents": {
+      "question_chunk": {
+        "id": "question_arrays_medium_001_problem_statement",
+        "content": "Given an array of positive integers nums and a positive integer k, return the length of the longest subarray whose sum is less than or equal to k...",
+        "document_type": "question",
+        "chunk_type": "problem_statement",
+        "topic": "arrays",
+        "difficulty": "medium",
+        "pattern": "sliding_window",
+        "tags": ["subarray", "sum", "optimization"],
+        "complexity": {"time": "O(n)", "space": "O(1)"},
+        "interview_phase": "problem_introduction",
+        "evaluation_criteria": ["problem_understanding", "algorithm_choice"],
+        "priority": 9
+      },
+      "solution_chunk": {
+        "id": "solution_arrays_medium_001_implementation",
+        "content": "def longestSubarray(nums, k):\n    left = 0\n    current_sum = 0\n    max_length = 0\n    \n    for right in range(len(nums)):\n        current_sum += nums[right]\n        \n        while current_sum > k:\n            current_sum -= nums[left]\n            left += 1\n        \n        max_length = max(max_length, right - left + 1)\n    \n    return max_length",
+        "document_type": "solution",
+        "chunk_type": "implementation",
+        "topic": "arrays",
+        "difficulty": "medium",
+        "pattern": "sliding_window",
+        "tags": ["python", "two_pointers", "optimal"],
+        "complexity": {"time": "O(n)", "space": "O(1)"},
+        "interview_phase": "implementation",
+        "evaluation_criteria": ["implementation", "optimization"],
+        "priority": 8
+      },
+      "transcript_chunk": {
+        "id": "transcript_medium_001_exchange_3",
+        "content": "Interviewer: 'Great job recognizing the [pattern] and applying it effectively to solve the problem.' Candidate: 'Thank you! I think the key insight was realizing that since all numbers are positive, if I have a window that's too large, I can shrink it from the left.'",
+        "document_type": "transcript",
+        "chunk_type": "exchange",
+        "topic": "arrays",
+        "difficulty": "medium",
+        "pattern": "sliding_window",
+        "tags": ["positive_feedback", "insight_recognition"],
+        "interview_phase": "approach_discussion",
+        "speaker_role": "both",
+        "interaction_type": "explanation",
+        "candidate_level": "mid",
+        "priority": 6
+      }
+    },
+    "performance_optimization": {
+      "caching_strategy": {
+        "frequent_queries": "Cache results for common topic/difficulty combinations",
+        "embedding_cache": "Cache embeddings for frequently accessed content",
+        "metadata_cache": "Cache filtered result sets for common filter combinations"
+      },
+      "batch_operations": {
+        "embedding_generation": "Process multiple documents in batches",
+        "index_updates": "Batch index updates for better performance",
+        "similarity_computation": "Vectorized similarity calculations"
+      },
+      "memory_management": {
+        "lazy_loading": "Load full content only when needed",
+        "compression": "Compress stored embeddings when possible",
+        "cleanup": "Regular cleanup of unused cached data"
+      }
+    },
+    "monitoring_and_analytics": {
+      "retrieval_metrics": [
+        "Query response time",
+        "Retrieval accuracy",
+        "Cache hit rate",
+        "Index utilization"
+      ],
+      "content_metrics": [
+        "Document coverage by topic",
+        "Quality score distribution",
+        "Update frequency",
+        "Usage patterns"
+      ],
+      "system_metrics": [
+        "Memory usage",
+        "Disk usage",
+        "Query throughput",
+        "Error rates"
+      ]
+    }
+  }
+}

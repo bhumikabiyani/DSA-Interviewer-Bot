@@ -1,0 +1,306 @@
+{
+  "metadata": {
+    "id": "technical_evaluation_rubric",
+    "type": "rubric",
+    "topic": "evaluation",
+    "difficulty": "all",
+    "pattern": "assessment",
+    "tags": ["evaluation", "rubric", "technical_assessment", "scoring"],
+    "evaluation_criteria": ["comprehensive_assessment"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "rubric_name": "Technical Interview Evaluation Rubric",
+    "description": "Comprehensive scoring framework for DSA technical interviews",
+    "scoring_scale": {
+      "range": "1-5",
+      "descriptions": {
+        "5": "Exceptional - Exceeds expectations significantly",
+        "4": "Strong - Meets expectations with some excellence",
+        "3": "Satisfactory - Meets basic expectations",
+        "2": "Below Expectations - Needs improvement",
+        "1": "Poor - Significant gaps"
+      }
+    },
+    "evaluation_categories": {
+      "problem_understanding": {
+        "weight": 15,
+        "description": "Ability to comprehend and clarify problem requirements",
+        "criteria": {
+          "5": [
+            "Immediately grasps problem nuances",
+            "Asks insightful clarifying questions",
+            "Identifies edge cases proactively",
+            "Demonstrates deep understanding through examples"
+          ],
+          "4": [
+            "Understands problem with minimal clarification",
+            "Asks relevant questions",
+            "Identifies most edge cases",
+            "Shows good comprehension"
+          ],
+          "3": [
+            "Understands basic problem statement",
+            "Asks some clarifying questions",
+            "Identifies obvious edge cases",
+            "Adequate comprehension"
+          ],
+          "2": [
+            "Needs guidance to understand problem",
+            "Asks few or irrelevant questions",
+            "Misses important edge cases",
+            "Unclear understanding"
+          ],
+          "1": [
+            "Struggles to understand basic problem",
+            "Doesn't ask clarifying questions",
+            "Completely misses edge cases",
+            "Poor comprehension"
+          ]
+        }
+      },
+      "algorithm_design": {
+        "weight": 25,
+        "description": "Quality of algorithmic approach and problem-solving strategy",
+        "criteria": {
+          "5": [
+            "Identifies optimal solution immediately",
+            "Explains multiple approaches",
+            "Demonstrates pattern recognition mastery",
+            "Shows creative problem-solving"
+          ],
+          "4": [
+            "Finds optimal solution with minimal hints",
+            "Considers alternative approaches",
+            "Good pattern recognition",
+            "Solid problem-solving skills"
+          ],
+          "3": [
+            "Arrives at working solution",
+            "May need some guidance",
+            "Basic pattern recognition",
+            "Adequate problem-solving"
+          ],
+          "2": [
+            "Struggles with approach",
+            "Needs significant hints",
+            "Limited pattern recognition",
+            "Weak problem-solving"
+          ],
+          "1": [
+            "Cannot develop working approach",
+            "Requires extensive guidance",
+            "No pattern recognition",
+            "Poor problem-solving"
+          ]
+        }
+      },
+      "implementation": {
+        "weight": 20,
+        "description": "Code quality, correctness, and implementation skills",
+        "criteria": {
+          "5": [
+            "Clean, bug-free code",
+            "Excellent variable naming",
+            "Proper error handling",
+            "Optimal implementation choices"
+          ],
+          "4": [
+            "Mostly correct code with minor issues",
+            "Good coding style",
+            "Handles most edge cases",
+            "Good implementation practices"
+          ],
+          "3": [
+            "Working code with some bugs",
+            "Acceptable coding style",
+            "Basic error handling",
+            "Standard implementation"
+          ],
+          "2": [
+            "Code has significant bugs",
+            "Poor coding style",
+            "Minimal error handling",
+            "Suboptimal implementation"
+          ],
+          "1": [
+            "Code doesn't work",
+            "Very poor style",
+            "No error handling",
+            "Cannot implement solution"
+          ]
+        }
+      },
+      "optimization": {
+        "weight": 20,
+        "description": "Ability to analyze and optimize time/space complexity",
+        "criteria": {
+          "5": [
+            "Immediately identifies optimal complexity",
+            "Explains trade-offs clearly",
+            "Optimizes both time and space",
+            "Discusses advanced optimizations"
+          ],
+          "4": [
+            "Finds good optimization with guidance",
+            "Understands complexity trade-offs",
+            "Optimizes primary bottleneck",
+            "Good complexity analysis"
+          ],
+          "3": [
+            "Basic optimization awareness",
+            "Can analyze given solution",
+            "Makes simple optimizations",
+            "Adequate complexity understanding"
+          ],
+          "2": [
+            "Limited optimization thinking",
+            "Struggles with complexity analysis",
+            "Misses obvious optimizations",
+            "Weak complexity understanding"
+          ],
+          "1": [
+            "No optimization consideration",
+            "Cannot analyze complexity",
+            "No awareness of efficiency",
+            "Poor complexity understanding"
+          ]
+        }
+      },
+      "communication": {
+        "weight": 15,
+        "description": "Clarity of explanation and collaborative problem-solving",
+        "criteria": {
+          "5": [
+            "Crystal clear explanations",
+            "Excellent thought process verbalization",
+            "Engages interviewer effectively",
+            "Teaching-quality communication"
+          ],
+          "4": [
+            "Clear explanations",
+            "Good thought process sharing",
+            "Responds well to questions",
+            "Strong communication skills"
+          ],
+          "3": [
+            "Generally clear communication",
+            "Shares basic thought process",
+            "Adequate interaction",
+            "Satisfactory communication"
+          ],
+          "2": [
+            "Unclear explanations",
+            "Limited thought sharing",
+            "Poor interaction",
+            "Weak communication"
+          ],
+          "1": [
+            "Very unclear communication",
+            "No thought process sharing",
+            "Minimal interaction",
+            "Poor communication skills"
+          ]
+        }
+      },
+      "debugging_testing": {
+        "weight": 5,
+        "description": "Ability to test, debug, and validate solutions",
+        "criteria": {
+          "5": [
+            "Proactively tests with edge cases",
+            "Excellent debugging skills",
+            "Validates solution thoroughly",
+            "Anticipates potential issues"
+          ],
+          "4": [
+            "Tests with good examples",
+            "Good debugging approach",
+            "Validates key scenarios",
+            "Catches most issues"
+          ],
+          "3": [
+            "Basic testing approach",
+            "Can debug with guidance",
+            "Tests obvious cases",
+            "Adequate validation"
+          ],
+          "2": [
+            "Limited testing",
+            "Struggles with debugging",
+            "Misses important test cases",
+            "Poor validation"
+          ],
+          "1": [
+            "No testing consideration",
+            "Cannot debug effectively",
+            "No validation attempt",
+            "No quality assurance"
+          ]
+        }
+      }
+    },
+    "overall_assessment_guidelines": {
+      "strong_pass": {
+        "score_range": "4.0-5.0",
+        "description": "Candidate demonstrates strong technical skills and would be successful in the role",
+        "characteristics": [
+          "Solves problem efficiently with minimal guidance",
+          "Shows strong algorithmic thinking",
+          "Communicates clearly and effectively",
+          "Demonstrates good engineering practices"
+        ]
+      },
+      "pass": {
+        "score_range": "3.0-3.9",
+        "description": "Candidate meets technical requirements with some areas for growth",
+        "characteristics": [
+          "Solves problem with some guidance",
+          "Shows adequate technical skills",
+          "Communication is generally clear",
+          "Has potential for growth"
+        ]
+      },
+      "borderline": {
+        "score_range": "2.5-2.9",
+        "description": "Candidate shows potential but has significant gaps",
+        "characteristics": [
+          "Struggles with problem but shows learning ability",
+          "Needs substantial guidance",
+          "Has basic technical foundation",
+          "May succeed with mentoring"
+        ]
+      },
+      "no_pass": {
+        "score_range": "1.0-2.4",
+        "description": "Candidate does not meet technical requirements",
+        "characteristics": [
+          "Cannot solve problem even with extensive help",
+          "Lacks fundamental technical skills",
+          "Poor communication and collaboration",
+          "Not ready for the role"
+        ]
+      }
+    },
+    "special_considerations": {
+      "junior_candidates": [
+        "Focus more on learning ability and potential",
+        "Weight communication and problem-solving approach higher",
+        "Be more lenient on optimization and advanced techniques",
+        "Look for growth mindset and curiosity"
+      ],
+      "senior_candidates": [
+        "Expect optimal solutions with minimal guidance",
+        "Higher standards for code quality and best practices",
+        "Should demonstrate leadership in problem-solving",
+        "Expected to teach and guide interviewer through solution"
+      ],
+      "domain_specific": [
+        "Adjust expectations based on candidate's background",
+        "Consider relevant experience in similar problems",
+        "Account for nervousness and interview pressure",
+        "Focus on problem-solving process over memorized solutions"
+      ]
+    }
+  }
+}

@@ -1,0 +1,390 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, I have started the recording and let us start the interview. Good luck. So, even first I will tell you the format. So, what we will have the format as you are already aware of that we will first go with the basic introduction of our G yourself. Then we will have some basic data structure question for 5-10 minutes and since you are fresher I will be skipping the leadership question, right. Then we will move it to the question part. So for now I am targeting one question around 40 minutes, right. But if you able to solve it quicker then I also go with the second question also. But the level of the question is such that that is why I am okay with the one question complete proper in the 40 minutes. And then last 5-10 minutes we will go with the detailed feedback where you can improve in your interview. What went well and what can be done better?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, let us start with the interview, I want so can you please tell me a little bit about yourself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I am Avand Kanathra, person in the middle science in 40, I started my career in tech when I created an implemented and stack based algorithm in embedded C to create an automated means-solving line for which was being implemented, it was being, which I also participated in competition, one of the competition of tech society. So that was my first application intent. Then after that I created two coding competition namely, codecation and codecation 2.2, which had over 700 people participating in it and it was hosted on 4 chapatmas. Then after that I started participating in hackathons and then I was the winner of a national code you know, hackathon of 2021 in which I created and product recommendation system, which majorly was used to analyze and according to the preferences of the user, select the best of best priority products which has to be delivered to the user. So that was my first project. Then in another hackathon, I started brainstorming on the problem statement and after the hackathon 4 over 1, we continued working on it and created Medici which is an application that is used to connect the medicinal stores with the customers. So if it was a direct connection and through it the customers were able to directly, able to get the latest medicines. So it was implemented in the COVID times. So it was one of our project. Then after this I also have completed one internship in hackathons and hot pack system in which I created plugins for enterprises to connect with the shipping services. So after that talking about my achievements, I have secured 100 top 500 rank in global coding challenge of credit shoes and 6401 rank in 620. Also, I secured 173 all in their rank in hash code out in the same way it served. So yeah, this was a brief about me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, thanks for the information. So let's pretty much go with the basic data structure, second part of the interview. So one, can you tell me and also one more request, so could you be a bit more louder? Okay so can you tell me what do you mean by stable sorting?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Stables, okay. So whenever we are sorting and array of elements, we want that and if we want that the equal elements should be at the same position before sorting and in the same position after sorting. So for this kind of implementation, we added the idea of stable and in stable or global algorithms and we compare every algorithm according to this property."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So what all algorithms, sorting algorithms are stable and what all algorithms are unstable? Can you give a couple of names?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What do you mean by the selection sorting is ordered or not ordered?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Can you give the answer of that previous question? I was just thinking about it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, we will go through the solutions. So what does selection sort is a stable or unstable? How does selection sort works?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. What is the time complexity of selection sort? So like selection sort works such as it takes out the minimum element, it selects the minimum element and places the element at the first position. I think I don't remember exactly that it is a selection sort but yeah it takes the minimum element places it at the first position and according to it it picks up minimum element each time and places it at its correct position."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So the time complexity of this algorithm is over and square if the first case time complexity is it a in place algorithm or required space?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is a in place algorithm because we just pick up an element store it in a variable and then move it to the first place. So there is no another array is not required and it can be neglected in the constant way."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So it is a stable or unstable?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. So let us suppose I have been array and I have two elements please. So I pick up the minimum element. Let us suppose it is from the starting I iterate and if I pick up the first minimum element I will move it to the first position and the second minimum element will not be selected. So I think it is stable algorithm. If we pick up the first minimum element it will be stable."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So can you tell me like the asymptotic notations which we have?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Assumptotic notations. Okay. So asymptotic notations are basically the concept words are as long we wanted to implement algorithms like we wanted to find out the time complexity of algorithms and there is a large amount of it. So for that we use asymptotic notations. Now we have three kind of notations the first one is big of and then it is omega then it is theta. So these three are the asymptotic notations."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is omega? What does omega tell us?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. I am a bit confused between omega and theta. So big of notations gives us the worst case time complexity. One of the notations between omega and theta gives us the best case time complexity and another case time complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Can you tell me the approach of implementing a stack using a queue? We do not have to quote just like let us say you want to implement a stack using a queue how you will do it? Can you please tell me?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This just thought like very simple right. So what is a stack? What is stack property? So in stack let suppose we have a box like it is closed from the bottom it is opened from the top. So I place the numbers from the top and it is first and first up so this is last in first up. So the last element that I insert in the stack it will be taken out from the top. So in various in the queue or if I put an element first click then it will be taken out from the queue from the last position."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Now if you need to implement the stack using a queue what you need it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. I need a way so that I can take out the top must element. Okay. So if I want to implement stack using queue one of the ways is I put out I put all the elements in the queue first up. So I put 1, 2, 3, 4 and 5. Let suppose I put 1, 2, 3, 4 and 5. And if I want to pop out an element so what I will do I will create another queue. I will create terribly another queue take all elements 1, 2, 3 and 4 and the 5 will be popped out. So it will be given as an answer and this queue will be again stuck to this position."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes you are right. And with this we can implement the pop operation and her push operation will be correct. So using a toe queue we can do this operation. So they are generally pop heavy and push heavy with both ways. So what you have explained is generally pop heavy. So yeah but actually with the toe queue we can do that. Can you tell me what is the difference between static polymorphism and dynamic polymorphism?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So polyphotism occurs when polymorphism means that a same function that suppose is been implemented in multiple bits. So like I want to add two numbers. So I have two integers I can add two integers. What if I want to add integer and add double? So for this should I create a new method which says that it is an add integer or it is an add double. So if I do not want to do this whatever to is create a polyphonic function which will say that if there is a different parameter the function different function will be executed but having this unit. So this is a polymorphism. Now I am talking about static and dynamic polymorphism. Static polymorphism others at a compile time where this dynamic polymorphism occurs in the render."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And so there is one keyword which like you can say that it is an example of static polymorphism and dynamic polymorphism. So is it possible that can you call the base class method without creating an instance? Is it possible?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So you have a base class right? So you also have an add integer chai with love also. So is it possible to initiate a base to call a method of base class without even creating an object? Is it possible?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I am a bit not clear with the question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let us say you have a base class and your base class has certain methods. Method 1 method 2 method 3. Is it possible to call the method without even creating an object? Of the base class?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is not possible to call any method of any class or any object without creating its instance. So like if I have a derived class and I am calling in from derived class I have to call the constructor of the base class and the constructor bit initialize everything. And after that I can use the functions of the base class."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What if the class I can define as a static?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In that case I should be able to call the method right because the static is not tied up with the object."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let us move to another part of the interview, the coding question. So even could you please share your screen and you can open the note pad. I will tell you the question you can write it up and then you can take your time to do the coding."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And plain visible."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, it is visible. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you please, yeah, little bit zoom. Thank you. Can you write the question? So the question is let us say you are given an array. So just create an array and write the value 1, 10, 3, 1, 10, 3, 10, 2, 2, yeah. Then you are given one more variable f equals to 1, let us say f equals to 1. And one more variable let us say b equals to 3. Okay. Now what this question, what is this question is? So what does this array is? So this array is like 1, 2, 3, 4, 5. So there are five elements in an array, right? Correct. And you mean that these are the five flowers and the number of values 1, 10, 3, 10, it is like the number of days these flowers required to get, you can say that to get a blossom, right? So this many days of particular flower needed to get blossom, right? So let us say the flower, third flower takes three days, right? To get the blossom. And the second flower takes 10 days to get the blossom, right? So now what you have to do is you have to make a bouquet, right? So you need to give to bouquet. So how many bouquet you have to give? So here b equals to 3. So means you have to give 3 bouquet, right? And the bouquet, how many flower can be? So f equals to 1. So in each bouquet you can have one flower, right? So what you have to find out right? The minimum number of days you have to wait so that you can create this 3 bouquet. So for example, in this case, can you write in the bottom like day 1? So in the day 1, what all flowers get bloom? So it is flower 1. So it would be, yeah, one would be get bloom. So 10 will know, so 3 will know 10. So only first flower will get bloom, right? So on day 2, what all flowers get bloom? So one is already get bloom. So 10 still know. So only the last flower will get bloom, right? 1 and 5, right? So on day 3, what all flowers get bloom, right? So 1 comma, so 1, 3 and 5. 1, 3 and 5, these 3 flowers get bloom by the day 3, right? So now if you see, I need to create a 3 bouquet and each bouquet can have only one flower. So by the end of 3 days, I can create 3 bouquet, right? In one bouquet, I can put the flower 1. In second bouquet, I can put the flower 3. In third bouquet, I can put the flower 5. Okay. Right? So what are the minimum number of days you have to wait 3 days? Okay? And the flowers, which you have to use in a bouquet, it should be adjacent, right? So what does that mean is, so let's take another example, let's say or we can use the same example. So let's say in this case, you can change the 10 to, let's say 2, the second 10, you can change it to 2. And you can change, F equals to 2, let's say. F equals to 2 and B equals to, you can also change it to 2. Okay? So now for this example, on the day 1, what flowers, what all flowers will get bloom, only 1, on day 2, water flower will get bloom, 1, 2 and 5, right? So here till, if you see that on the day 2, I can create 1 bouquet in long, right? Because a particular bouquet can have 2 flower. So if you see, I can use adjacent flower, so 1 and 2, 1 and 2, I can put into the 1 bouquet, right? Okay. So like, I am having 5 flowers. So that all 5 flowers should be adjacent to each other, right? Yeah, correct. So when, all the flowers which you are putting in a bouquet, one particular bouquet, so that should be used adjacent one. So it should not be like 1 and 5 we can use, even though in a bouquet, I can put 2 flowers and I have 2 flowers bloom 1 and 5. So it, it, it cannot be used because they are not constant. Not, not adjacent, sorry. Okay. Right? So you got it, the constraint also. So it should be adjacent flowers, right? Now what you have to find out is the minimum number of days you have to wait to complete all the bouquet. So you have to deliver this, so consider this, this is an order for you, right? So how many days you have to wait to deliver this order? This many bouquet."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah. I am clear with the question."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You are clear with any, any doubt in the question please feel free to clarify anyone."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Okay. So let me try and, I will ask."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. Take your time. So just a general reminder, it's 10, 0, 7, 11, 0, 7. I will, so it's, I will keep you reminding with the time. So yeah. So 40 minutes for this question starts."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Okay. Okay. Okay. So just a minute out that I believe that any of the bouquet is not conflicted means that of the flower each flower should be different. In each flower should be present in only one bouquet only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct, correct, correct. You are right. Each flower would be in one bouquet."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Okay. Okay. Think from the bouquet for chapter, right? Go from the book. Yes. So in road force, I would say that I will, for every day, I would, I will rate on every day. In each day, I will find out all the like, okay. So I want to find out a sub-barring, which is, which is of length, D. So it, which means that it will have, okay, once again. Yeah. I need to find out a sub-barring, which is having F amount of numbers. So, okay. So in each day, whatever you need to do is find out number of possible sub-barries that are created like this. Which are having F amount of numbers. So I will be rate from day 1, day 2, day 3, day 4, day 5. So let us suppose for day 1, I have, I am not able to create any bouquet."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I got your point, what you are trying to say. Each day wise, you are trying to create as much sub-barries so that it will equivalent to the bouquet. So the sub-barries size would be you are trying to keep of, of flower, number of flowers required. And how many sub-barries the amount of bouquet?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That is what I meant. And I like that. Here the bouquet 1, 2 with the gate. And 5 is not present in any of the bouquets. And in the day 3, what I have is 1, 2, 3. Okay. 1, 2, 3. I am currently able to create one or one bouquet. So I will iterate every time. And whenever I found a bouquet from the start, that suppose I have found a bouquet. That will be created. And if I have a break in between where I am able to, I am able to find out a bouquet. That suppose from 3, I am not able to find out 4. So that means that I am not able to create the bouquet from 3. So I will iterate from 5 and find out that new bouquet that can be created. So I will iterate each day and find out the number of bouquets possible. If it is greater than the number of bouquets, that is why I did not get that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sorry for interrupting you one. I did not get that point. So after 3, how you will iterate from 5?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you have an array. And let us say you have set that after 3, 1 or 2, okay. It makes 1 bouquet sub array. And it can be used in bouquet 1. Now you reach till 3. So, okay. So on day 3, 3 will get blue."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, it will get blue."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now you will go to 4. So now, so here, please help me understand here what you will do from this point."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Let me give you one more. 3, 5, 6, 7, 9. So what do you mean by 3, 5, 6, 7, 9, 10? What are these? These are the index of the flowers or the days required to bloom."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What is it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah, these are the indexes of the flowers. Okay. So we want all the continuous indexes to be present in a bouquet. So here, I will see that 3 is not having any adjacent bouquet available. 1 end to our already in a bouquet. 3 is not in any bouquet. So I will stop iterating at 3 and I will create 5 as a first index. And it will start checking from 5. So after 5, I found out that 6 is available. So I will create another bouquet."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no. Please help me understand from the above array. So this is like, so 1, 2, 3, 5, 6, 7, 9, 10. It's not in sequence. So where is 4? So I am not able to get from here. So just take an array complete array like we have right? 1, 2, 3, 10, 2. In this case, how you will iterate? From 3, how you directly goes to the 5 or like how you are skipping the variables? That logic I am interested in."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. 1 second."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So just ahead, so we are 15 minutes passed. Okay. One, the 5 minutes passed."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So let me take this example. I have also 3 present you. So I have 3, 1. I will say that 1 is present, 2 is not present, 3 is not present. And F and B are we are keeping the same right? Same example we are taking."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "F equals to 2, B equals to 2. Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So here I will say that 5 is not present. Okay. It is different. Day 1, totally agree. Similarly, I have. Okay. So this is the scenario of day 2. For day 3, I have. For day 4, I have. For day 5, I have. But day 6, I will be having similarly, single advantage. So for day 1, I will check whether from the starting, I will check whether I am creating any area or not. So here, any sub area or not. So here, I will be able to create a clear bookcase. Then on the tree book, if I start creating, then the first value will be, the first book will be created here. So it will have valuable. And then on the day 3, two bookcase will be created here. And then after that, I will go to 3. And I will assume that this is the first, the first value of the bookcase. And then I will take the two elements. And I will see that 3 and 5, T and 5 are though adjacent, but only one of them is awesome. So I am not able to take this. I will go to 5 and check whether 5 and 2 are able to make any blossom or not. Make any bookcase or not. So here also, they are not able to create. So now, I will take 2 and 3 as a first element and try to create a bookcase. So here, I will be able to create 2 bookcase."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And how you are creating this 1 0 0? So are you creating a separate space memory?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This is just for example, to show how the root force entered will work."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Got it, got it. And that may also think about any optimized solution as well. Yeah, thanks. So what is the time complexity of this root force approach?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So time complexity will be number of elements into the maximum size of the maximum time taken to blossom or any flower. So I will have that amount of tails. Let's suppose 5 is taking most of the time. So the 5, I have to trade for 5 days and then I have elements available. So for traversing each thing, it's end time complexity and metric time will be the maximum time to blossom. It will be end into and correct which is the next time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So please try to see how we can make it a little bit more efficient."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so I will, I think there is a recursive approach to this problem as well, where I can implement it recursively."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so you are sharing the approach."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so recursively I will try to first make a book. Okay. Okay. So there are two things that I can do for the first level. Adel my first power is present in my answer for book use or my first level is not present in the answer. Okay. So let's suppose for the first example of the first because in example I took two, I considered two elements first. So I imagine that one and two will blossom and there one and two will be end, one and two will become one of my book. Then I will because I will find out what is the minimum time in three, five, two and three, two, create one book. Just one book I have created. I am recursively finding out in other elements whether I am able to create one book with number of flowers, number of flowers required are two. So I will find out with these two conditions I will find out what is the minimum time required to create minimum time required to create book from the recursive value and then I will find out the maximum value required in book."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "How it is different from the book force? And here what I can see is you just divided the, let's say one comma two you will. So what I am getting is you are taking so here the number of flowers is two that is why you are taking two to this thing. So currently you have taken first one comma two and the other three, five, two, three it's for the other part of the recursion. Now for one comma two what you will do is again how many day one, day two right. So I think that is the same thing you want to learn like how many days you need to blossom this thing to get this adjacent right. So it would be like day one day two how you so that logic I am to understand after dividing what you are going to do."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So first I have to one and two. I will say that if I took two elements I will take out the maximum element which is two. It means that this book will be created in two days. And from the recursive solution I know that from this summary if I know that from this summary I need to create two bookcase the F value is fit and I need to create two cases from the recursive solution. So what I can do is I can memorize this solution as well. So that from this part of the if I require two bookcase then what will be I will save that value and use every time I ask for the same. So this recursive solution can also be converted into an memorize JP solution which can be I think implemented with the help of two D of loans."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now what about the so let us say one first you take one comma two then you will take two comma three then three comma five comma two then two comma three. So all possible use combinations you have to take right. So now in the second part when you take two comma three then you are another the other part of the recursion would be five comma two comma three then you have to take three comma five."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let me see first I will take one comma two and at the place of one I can do this one comma two and divide it into G five two comma G and at the second place I could do I can skip one and start from two comma three and divide the rain two by comma two comma three. Similarly I can skip two I can skip two as well and start from three comma five and divide the rain two by comma three. So here in this array I want one one bookcase to be created in this array I want one bookcase to be created similarly here I want one bookcase to be created. So there are two values that I can store here. So if you want I can write down the recursive solution to explain more clearly."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure, go ahead and what is the time complexity you have to for this approach or the recursive solution? So please take care of H cases like all the take all proper H cases into your consideration and make sure that this recursive approach will work or not. And from this how you will require how you will find out the minimum number of days. So let us say you will take out a maximum from this. So here you got two. So from the next iteration you got let us say something three somewhere you got two. How you will find out ok it is the minimum now."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in my initial let us say the left side of the array I require two number of days on the right side of the sub array I require three days. So I have to create two I need to create two bookcase. So for that I will combine and find out the maximum time required to create any bookcase. So I want all the bookcase to be created. So the time will be the maximum amount of time to create any bookcase."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Ok, if you are confident can you go for the coding. So we already are done with so we have around 15 minutes more."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure, you can use you can write the code on the node pen that copy paste in your ID and let us test for some of the solution in the course."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure, sure. So are you going to write it here in the node pen?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So this is again writing the code. What is the time complexity you set for this one? Recursive approach."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "For recursive approach time complexity would be I am not clear with the time complexity So I am going to write the code on the node pen. So I am going to write the code on the node pen. Ok, so I believe I have 15, 10 to 15 months more. Ok. Ok, you can ignore the hash in truth. So we can directly start from the method."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Can I pick right now variable to 5 last time? Like I can I will be able to write down to 4."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sorry, I didn't get it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like just assume that you are given and so write one method that method accept an input let us say an array then the number of the f and f and the b variable which we have discussed. So let us say the method receive all these three things."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So I will be returning an objective function. As a function in which I will be passing on the array, I will be passing on both the array and the array. I could take in the first index which is initial 0 and then I will be taking form. I will say that whenever in my recursive function, I will be passing on the array. I will say that whenever in my recursive function, if my focus are created, then I will say that I will be passing on the array. So let us suppose I have a array before creating all the book use and I will say that with this method, I would not be able to create all the book use. Then for then I will take for all the next indexes. It will be currently showing the default value that if I skip this, if I skip taking this lower, what will happen is I will create with the next index and take the variable. And else what I can do is it will create for each of the element in this array. So first be elements that will be. So I will say that I will be passing on the array. So I will be passing on the array. So I will be passing on the array. So I will say that I will be passing on the array. So I will be passing on the array. So I will be passing on the array. So here what I am doing is I am creating a recursive function in which I say that each time I receive all the book use, if I am able to create all the book use, then I will get the answer. And before that if my index gets terminated, then it will put it an intments which means that no solution is available for this. And for storing that, only if my answer exists, I will take it into the solution. Then I will return I will turn the answer like I will for every index I will delete and then I will find out the first be elements that will be giving me the maximum time. And I will I created a sub array of F lovers. I created a sub array of F elements and then I find out the maximum time required to blossom a flower here. Then for the recursive approach from recursive answer, I find out the maximum solution for the scene. I think I am not clear with my explanation part. Can I try to to make it in a cool?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. Just give it a copy. Okay. Rage bank dimension. Do you have a local India system? Do you have any ID? Currently I am on a different app. So it is actually we are almost on time. It is 11.40. So that is exactly over time also. So we can stop presenting also. You want?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. Sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So yeah, that is pretty much from my side. So let's go with the shall we start with the feedback given?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So before going your feedback, do you have any feedback for me? Like something can be improved."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "The only thing is that implementing the code in all that is really different. I am sorry. Implementing the code in all that is a bit difficult."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, actually in real interview you have to write in what pad. So we should be working more comfortable with this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Anything else like question clarity or something more thing you needed?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, the questions were here. I will take care of this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Thank you. Okay. So even let's go with your feedback. Okay. So let's start with the first. Tell me about yourself part. So there if you see right, I got a little bit confused. So I want you to little bit first make your about yourself a little bit shorter. You told me about five four I'm not sure four five projects you told me. But the major point which I was looking for in your project is what stack you used. I couldn't clearly understand that you were telling about me the project. But what exactly the project in one liner and what stack you used that only I'm interested in. Right. Okay. So that was pretty much not clear. So you have to little bit work on your about yourself make it short and crispy. Right. So generally how what should be telling about yourself like okay so about your projects which you have done. So if you have six seven projects, I think we all six seven we don't have to tell. Take the most important one. Right. So you have to tell me about your project right which covers the stack which you are very strong. Okay. So tell use the time because about yourself is like two minutes at interval will not wait for much time. So try that use two minutes to give the important project only in one line. Okay. This is the project what you are trying to solve in that project right what was your role. What is the project what is your role what stack you use. Simple right. Don't if you have six project let's avoid giving all the projects right. Interval will somehow either will stop you in mid okay let's go to the next part. So that is like try to make something short and crisp about yourself. Sure. So if you want to cover the projects again cover only the important projects which has the stacks which you are in comfortable with. If we both further into that level. Sure. Okay. So that is on one on the about yourself. Second thing is you told me something about internship right. In internship again the stack was missing what stack you have also you told me something about plugin. You plugin with some other third party service provider. But what stack you use what is your responsibility I don't know. Okay. Okay. So at that point like okay in internship you worked here so this is the task so plugin again what is what is your role in that right and what is your stack use. Okay. So keep this in your about yourself. Now let's come to the DSN so DSA even I would say that you have to little bit work on it like why you know the answer. But you are very slow right. Okay. So like what happening is take it as a positive like something to improve so you want what happened is I asked you some DSA question very basic right. What is table algorithm sorting algorithm right you know the answer you told me but you take you took your time you waited. So in that time I thought okay this he doesn't know might be I was also started to prepare the next question okay what I'll let me ask this. Then you give the answer then I give the next question then you again thing very basic so what I'm trying to say is that the basic DSA should be on table. Okay. So otherwise I got a lot of time in my head that okay he doesn't know this question but again you come up with an answer. So if you see the video this again when I will upload you if you see it back you will see lot of silence time in that. And for the basic one so that I want you to improve like for the basic one if you know then give the answer so the basic DSA should be on table. Okay. So if you are thinking something and then you are speaking so you are taking your own time which give me an impression that you are not very much. Right. If you know the answer so DSA should be on table right you should not wait that much thing for the very basic question. So today it can be an impression that you are very less confidence on the basic DSA question. Okay. And yeah I have already covered that there is a lot of silence in the interview right so lot of silence in the interview is not good. Right. So that one thing you have to work on it like how to keep the interviewer engaged right even in the basic DSA there was a silence. So that you need to work on it right okay. Okay. So that's a basic DSA question was how you will implement a stack versus Q right why a Q. So this is very very easy right you told me that by using two Q right but see interviews only for lasted for 45-50 minutes. But in this question itself which is of one or two minutes question you took five minutes. Okay. This will harm you in your the coding part right. So if you see the overall DSA question which I have asked around eight ten questions. So around you have taken a lot more time which could you have saved it right. And another point you can see that I have another four five more questions to ask but I didn't ask because you already took a lot of time in that. So it's a two perceptive negative one is I wanted to ask more because it's very base but I couldn't ask because you are slow. Second thing is you were taking more time so I will take those time from the next the coding part somewhere I so time is limited right. So if you take a more time here I will somehow give less time to the next part right. So at least on the base you should be on tip right. Assumption like you told me about this thing. Cheetah omega big go but you are not sure like okay omega is the best case one. Cheetah is the your average right. So these are very basic if you see the data structure question this is the first chapter right. So even if you prepare the difficult questions the DP and greedy and all these things your base should be on tip right. So based on this base DSS question I would say that you are very less confident and there was little bit preparation required right. Okay. Again OOPS concept should be on tip so you told me about the static and dynamic polymorphism but you should tell me about the overloading and overriding. Overloading concept overriding or that over loading concept is static polymorphism overriding is something called dynamic polymorphism right. So if you see the OOPS concept this is the very basic part right. So basic OOPS basic DSS partially you know the answer so for on them you have to make sure that it should be on tip. Partially you something is missing so you need to prepare on that right. So that is on the DSS part now comes to the coding part. Yeah also one more thing in the DSS is like the base class can be created on static concept right that was also missing. So I would definitely say that there is a lot of you can say that retouch or again you have to go through little bit basics. Okay. Okay. So now let's come to the question. The first thing is there is a lack of discussion you want. So you were thinking but what I'm saying is think out loud right. So if you see my previous interview feedback also I always say that think out loud is very very important. Like why you were thinking right I was checking my phone I was checking what messages come right. Why so because there was a silence I know the answer of this question right that's why I asked you right. Now you are thinking if you are not keeping me engaged what would I do right. So I so interview will do check his mails check in his messages right. So that should not be done so you need to keep the interview engaged. Okay. Right. What happened is if you keep me engaged right I would have given you the hint. So brute force one good thing is you come up with the correct brute force you go with day one day two day three day four day five day six till one day you will go till the maximum day is present in an array right. If you keep me engaged right I will give you a hint like can't be used by any search here why one two three four so you know right even before going one two three four five six seven. Bindy search can like okay I will take so now you have a low range day one maximum ranges the number of highest day in an array. So in the brute force you have can correctly explain me day one day two day three day four day five and let's say maximum is hundred so by research help us is like go to 50 then day 25 then go either that side or that side right. So if you keep me engaged then I would definitely have given the hint also all interviewer want take the interview from the perspective of hiring not rejecting right. So I was fully prepared to give you a hint okay if you ask me that okay some hint would be given if you keep me engaged but since you didn't keep me engaged right you there was no discussion right I was not connecting with you like you were going initially what you have done so that's why didn't give the hint. So take it as a this thing like whatever you are thinking and your mind right okay so try to just speak out loud so this is one skill I would say that thinking loud is a skill whatever you are thinking you are not expecting anything from my side you are just thinking okay shall I use recursion what happened in the recursion I will take to you are not expecting any input from my side but you are thinking about I'm just listening so I will be in in power with you okay where you are going I can stop you there itself like where you are going wrong okay okay so that is on one thing so and another case is I have given you a use case you have didn't come with the different use cases so okay coming up with the different use cases very very much important so you should have taken some couple of more use cases if possible what will what will happen if I use some days zero what will all the are same numbers like or any let's say any other possible use case so you won't only on that use case which I have given okay so mostly you have to come up with different possible more five six use cases and run on top of that okay okay sure and another thing is the recursion approach which you have come up with that is also I don't think it's an efficient one right so before coming and writing the code so even one more thing I wanted to improve is see is it better than the brute force right and the time complexity also you are not clear in this so you have to little bit more you can say that that is on the time complexity whatever approach you are thinking at the you should be able to tell the time complexity of that okay okay so work on this one one so there is lot of scope for improvement right and I tell you from like all those places I want for an so there is no harm going with the recursion approach I am totally okay with that right but the if you see the small small small small part which are missing right that make the overall thing goes into a position against you right if everything else finds right I I am not sure this problem can be solved by a recursion also there can be different way I know by any such approach but definitely there could be a recursion approach I cannot say right but if you are confident then definitely there would be an approach also right but then you should be able to convey the interview then this is you so you should so today if you see you yourself yourself said you are not able to explain to me right so you should be very very clear that you should be able to explain your thoughts and what time complexity so that there many time happens that where you would not get sufficient time to code or where you didn't get time to run but how you have explained to me I will buy that okay no no and then I want to say correctly explain me correctly so this could be another approach right so all things comes out it's right sometimes you are even wrong your approach is wrong but how you have expressed your thought that this will work this is the time that the capacity is better sometimes that also also how confident you are sharing your thought that how will this work or not right so that take as another input that if you are sharing like any approach so be confident that the recursion you should be able to convince me that there is this recursion but today you are not able to convince me like you are not itself clear that how this regression will work right so this is the overall feedback I want you to improve right so there are small not big thing but small small things which will help you in your placement you want yes sure so your screen got squeezed out so I'm not able to so it got stuck yeah I hope you are able to get my voice clearly and my feedback properly or should I have to rebuild okay one I hope this will help you in your interview so please work on this one right so there is a lot of gap I can see and definitely you need some improvements at this point okay take this as a positive feedback like somewhere you now know where can be improved right so don't take it like why I'm saying a lot of feedbacks like which has to be improved because it's only for your good only I'm saying so no personal like I have to give so many things so just take it as a positive one right and feel free to ping me once you think that you have improved here on this point feel free to ping me I will take another session also another mock also before your placement right sure so I don't have any problem in that just make sure that you work on this right and feel free to ping me that yes yes Shriant I have out on this and I think I have improved on this part right I would be happy to take your more to man no no issues in that I am probably okay sure I will convey this yeah yeah okay one good luck for your placements and please take this as a positive feedback from my side sure sure say okay one thank you thank you for joining"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "thank you bye yeah yeah yeah bye"
+  }
+]

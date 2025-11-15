@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "easy_strings_001",
+    "type": "question",
+    "topic": "strings",
+    "difficulty": "easy",
+    "pattern": "two_pointers",
+    "tags": ["strings", "two_pointers", "palindrome"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["easy_strings_002", "medium_strings_001"],
+    "evaluation_criteria": ["string_manipulation", "two_pointers", "case_handling", "character_filtering"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Valid Palindrome",
+    "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers. Given a string s, return true if it is a palindrome, or false otherwise.",
+    "constraints": [
+      "1 <= s.length <= 2 * 10^5",
+      "s consists only of printable ASCII characters"
+    ],
+    "examples": [
+      {
+        "input": "s = \"A man, a plan, a canal: Panama\"",
+        "output": "true",
+        "explanation": "\"amanaplanacanalpanama\" is a palindrome."
+      },
+      {
+        "input": "s = \"race a car\"",
+        "output": "false",
+        "explanation": "\"raceacar\" is not a palindrome."
+      },
+      {
+        "input": "s = \" \"",
+        "output": "true",
+        "explanation": "After removing non-alphanumeric characters, s becomes an empty string \"\", which is a palindrome."
+      }
+    ],
+    "hints": [
+      "Use two pointers from both ends of the string",
+      "Skip non-alphanumeric characters",
+      "Convert to lowercase for comparison",
+      "What happens when pointers meet or cross?"
+    ],
+    "edge_cases": [
+      "Empty string or only spaces/punctuation",
+      "Single character",
+      "All uppercase or mixed case",
+      "String with only numbers",
+      "String with special characters only"
+    ],
+    "follow_up_questions": [
+      "How would you handle Unicode characters?",
+      "What if you needed to preserve the original string?",
+      "How would you find the longest palindromic substring?"
+    ]
+  }
+}

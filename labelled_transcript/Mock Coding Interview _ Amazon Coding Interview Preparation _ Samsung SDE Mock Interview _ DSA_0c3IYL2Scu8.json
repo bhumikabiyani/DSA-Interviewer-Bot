@@ -1,0 +1,222 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Hello, hey guys welcome to concept and coding and today I add daily DSPetition. This is the first mock with Jagannath. So welcome Jagannath in this mock interview. So are you ready with that?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So Jagannath before starting I just want on heads up with you that I will be uploading this on YouTube so you don't have any concern right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh yeah. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So you are starting it. Can you just give a brief about you like tell me about yourself?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So yeah. Currently coming to me, my name is Jagannath. I have graduated in 2022 from the 90th century and currently I am working as an engineer at Samsung. No idea."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Awesome. Yeah. Okay. So you have around six months of experience?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Awesome. So Jagannath, this would be around 40 minutes off from, right? So I have one DSA question with you. So let's go ahead with you like if you have any pad or something which you can share and you can where you can also write the code also. So can you share your screen and write the code?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh. Yeah. Yeah. Yeah. Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. I think you are never to see my screen now. Yeah, I am able to see a screen. Please any pad where you want to write."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, yeah. Cool."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So the question is you are given a list of integers, right? The order of the elements would be increasing and then decreasing. Okay. Right. So what you have to do is you have to find the peak. So order of the element would be increasing and after a particular peak it would be decreasing. So what is the output we want? You have to find the peak. Okay. Right. So like for example, I will give you an example. Let's say example is 136 420. So here if you see the first it is increasing 136 and after a peak it is decreasing 420. So output should be 6 because this is the peak. Okay. So are you clear with the question?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. So I have one clarification I need here. So it is like it is guaranteeing the answer will exist, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. There is definitely a peak. Means yeah definitely if the values are present definitely there would be a peak."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. So what I mean to say is for example if the array is strictly increasing or strictly decreasing then you would not be able to like it will point to the last element in the increase of increasing. So that is what the problem is."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So what your point is let's say if it is totally decreasing you are saying. Hmm. Like example 4321. So here peak would be 4. Okay. Okay. Okay. Right. And if the array is empty your output should be minus 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Hmm. Okay. Okay. So let me comment this out. Okay. Hmm. So I would be coding in C++ is it okay with that?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. I am totally okay with that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So for example let me take an example 136210. So yeah. Yeah. It is increasing and decreasing. That means one part of the array is sorted and remaining part of the array is like array was sorted. So most probably I think I will be using binary search. Hmm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And also can you a little bit zoom in this part so that whoever will see they will able to let me let me. Whatever you are writing or whatever you are doing."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like how do I zoom in? Can you do control plus plus or something?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Control plus plus."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Ah yeah. Okay. Yeah. Cool man. The thanks a lot. Yeah. So let me tell you the execution first 13621210. So for example I find the array sorted. So I think first the intuition that comes to my mind is I will try using binary search whether it is possible or not. So see for example here if I take this as start and this as end my middle element will be six in this case. Okay. So I will compare mid to mid plus one. For example. Okay. So if mid is greater than mid plus one that means it is if mid is greater than mid plus one that means mid plus one till end is in the right side of the peak. So most probably my answer would be existing in the left side. Okay. Okay. So what I will do is I will take end as mid and one more thing is there for example in this case this is your answer. There might be possible that for example there is seven here. So the answer might exist in the left side right. So what I will be doing is I will be I will be taking this to I will consider this. This is not my final answer. I will be taking this as my potential answer and I am going to proceed to the left side of it. Okay. Okay. I will be putting end here. So I am going to try like that. Uh huh. Yeah. So that is my intuition. If mid uh if mid is greater than mid plus one that means answer exists in the left side. If mid is less than mid plus one that means a peak is to the right side. So I will do start equal to mid plus one. Okay. I will try like that. So I will be putting in C plus plus."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you are you sure like you are not missing any edge cases?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. I will look at the edge cases of a while writing in the end."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. What about the use case? How you will handle for the duplicates?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Oh yeah. I didn't come through that right? Okay. Uh let me take duplicates also. For example, if there are uh can you give me an example like that will be instead of me writing."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. For example, let's say with the example which you have taken like one three let's say uh one three seven. Hmm. Uh let's say 6666 and then let's say 4321 something or another example you can take is let's say one three uh 66666 and then seven and then 4321 and let's say in both the cases you have mid come as uh six where it's left and right both are six. Uh left and right uh the here peak will be seven right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Huh. But let's say the mid which comes you as a six where it's left one is also six right one is also six. So mid plus one and mid minus one both are six. How you will handle that use case?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Uh okay. Hmm. Hmm."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "For example, if if it is equal no then I think uh hmm. For example, if for example if here if I find my mid to me this particular element I find mid is equal to mid plus one that means oh I am not sure whether answer. Hmm. Okay. Uh this case I need to skip elements here if I want to move my design. Hmm. Uh yeah let me think. Hmm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now whatever you are doing by research is a correct way. Okay. You have to little bit uh enhance the solution just think in that first update."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. Yeah. Hmm. So what I was thinking previously was uh if mid is greater than mid plus one that means my answer would exist in the left otherwise it would exist in the right but here if mid is equal to mid plus one. Um. Uh okay. For example if I am here if I am here mid is equal to mid plus one so there is a possibility for example let me make an inclusion for example it looks like this. It is what I am trying to do is for if it is like this the array is like this basically. Uh so uh so it is it is increasing uh and then uh flattened up it and then decreasing. Um. Uh. Uh. Uh. Uh. Uh. Uh. How do I go?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So the time complexity you require is overflog and only right using by research and you need to do it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No I am not requiring you uh propose like what best you can think of. Uh uh."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This is the brute force. Yeah yeah yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The brute force will be just uh to uh traverse the whole array and uh first the first thing that I will be doing is coming to the brute force solution. Uh in O of N what I will be doing is I will be traversing first I will be inserting um initializing my answer to uh um in minimum and then traversing each element and uh update the maximum and finally return the maximum that will be taking off and time. But, yeah, oh, a final solution is simple. I think it can be improved because some part of the array is sorted and the two parts are different parts of the array. One is sorted and increasing what is one is reverse sorted. So I think we can make use of band research. Yeah, yeah, but, yeah. How do I handle this edge care?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, see, whatever you were thinking of doing a band research, like let us say what your initial approach was. If my mid plus one is lesser, then it is possible that it would be at a left side. Left side, I mean the mid can be the possible answer or the left side. So all you have to do is just little bit modify this criteria. Right? Right? When you have to do left, when you have to do right, when you have to do both. So just go in that direction."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah, okay. Okay. If, yeah, if it is strictly, yeah, yeah, if it is strictly greater, then I will be making an end made. If it is strictly lesser, then I will be making start equal to mid plus one. But if it is equal, if mid is equal to mid plus one and mid is also equal to mid minus one, this case, okay. Okay, right? Yeah. So let me take one more case. I might get an idea. For example, 1, 3, 1, 3, 5, 6, 6, L2, 1. For example, here my mid will be 6 and mid plus one is also 6. If it is equal, then I cannot make a decision here, whether to go on the right or. What the, so, make a choice. Yeah create things all that need flowing. I think while coding I will be able to, can I take new things in the normal case and then improve it? First I will be writing the code."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, can you first let's come up with an approach because we need approach first, right? And what is the time complexity for that one? That's because otherwise coding might have certain gaps. So let's take some more time. Let's take another whatever time you want. Let's try to first come up the approach. You are going right, only slight modification, right? So all those need is that's what that's what the equal case need to handle. If it is strictly increasing or strictly decreasing then those both cases are handled. If it is okay, let's come one by one. What is the first condition?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "First condition what I am doing is if element at mid is greater than element at mid is 1 then possible answer and we found the left and we found from start to mid. So you are saying if mid is greater than mid plus 1. So definitely means otherwise it would be, so it is let's say 9 and if it is 8 definitely there cannot be higher than this. So you are start to mid okay that's the first condition. For example if mid is less than strictly less than mid plus 1 then what I am going to do is if mid is less than mid plus 1 that means answer would exist from mid plus 1 to end. We will contain the answer. Now here for example yeah that's what if this 6 is not there and if we are landing it for example if we take one more 7 for example if we are at this 6 here this is the mid and mid is less than mid plus 1 that means answer might exist in this part of the array for this case. So I will be making my start to mid plus 1 and then my end is this one so answer then later my mid will become 3 and mid is greater than mid plus 1. So this might be the possible answer so I will be taking this part of the array. Here then what will happen is here mid is greater than mid plus 1 and start is this one end is this one so answer might exist in this part of the array when I am going to break when start becomes equal to mid so that is the possible answer. So here 7 is possible so these cases I need to handle for example. This mid is equal to mid plus 1. Okay this is the mid. Okay this is the mid. This is the mid. Then tell me, we have another 20 minutes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah let me think how am I going to handle this case? 135 6 6 3 2 1. Mid is equal to mid plus 1 and for example there is a 7 here that means answer might exist here for example if my for example this is one case I am going to take and the same with a little bit modification 1 5 6 7 3 2 1 right 7 6 3 2 1. Here my mid is this one and here also this is an ordinary case. Anything could be this case but this is the mid. Here definitely my answer will be there for example by the different case. See one of the use cases is okay so here you are very close we are very close. So see in a particular very normal use case let us say 1 2 3 right 1 2 3 and let us say 6 and then it is decreasing. So in the example which you have taken let us say 1 3 7 and then it is a decreasing. Let us say there is no duplicate 1 3 7 6 4 3 2 1. Now here let us say if our mid is let us say in this case we can say that mid is 7. So because that is our particular p so when we can say that what should be the right answer. So when we say that so currently as what you have said is so if mid plus 1 is greater than whatever our mid is so definitely our output would be on the writer part right. So our index would be as you said mid plus 1 2 n right and one of the thing which you have written it is the same thing but it is different way of saying if mid minus 1 is greater than mid mean over it is IS would be at the left side start to mid minus 1 right. But if there are duplicate means you cannot decide at this side that is where you are facing the challenge right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah that means that case would be mid is greater mid is equal to mid plus 1 and mid minus 1 is also equal to mid possible right. So we have to search at both sides."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah both sides yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay okay okay for example in this case this would be my mid. Mid is equal to equal to mid plus 1 and mid minus 1 is also equal to equal to mid that means I will be searching in this part of the array as well as this part of the array. Okay okay okay then first I will be searching at this part of the array and this part of the array and whichever has the maximum value that I am going to take out of these both. For example 1 3 7 6 6 this is my array I am going to search in this part of the array first. This is the mid okay okay. So isn't right for example in this case this is my mid and I am finding mid is equal to equal to mid plus 1 as well as mid minus 1 is also equal to mid then what I am going to do is I am going to search from start to mid minus 1 and then mid plus 1 to end and which returns the maximum answer out of these both. Correct. That will be my answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah yeah go ahead now with that approach at least we can see. Okay okay go ahead now if you die call it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So I am in this frame is twembiras. Oh no sorry this curve a short�� 하고. So going through the array I would be taking your second round he Now what I am going to do is to find a peak or what I am going to do is by the research and index index is equal to now the this bindings of function will be returning me the index I am trying to know what exactly is happening I need to pass any airing ok, now I am going to write it sorry So I'm going to introduce a little bit start to 0 and end in minus 1. Got it. Whatever. I'm already adding Las Carolina closed. terrace down. Hey. wasn't this. the answer my translation right put up there. Oh sorry sorry. No. Oh sorry sorry. I want to say, if it is minute then it may be. Yes, one. Condition is right only start and. What change? Sorry sorry sorry sorry. What I have done? End is made and. Sorry. If the console made. The middle element. If the middle minus one is. So why I have I have to keep it in the case of what. I mean. This is the last time. It may be the first one. Yeah, this. This will be the first time. We did less than we put some done. Starting with the last one. Now here comes the case. Elteva. Nonsense made. Equal to Nonsense. And I have plus one. What I will be doing is. Nonsense made equal to make press one. For example, in this case. This will be the main. If it is. If it is equal to. Then what I am going to do is. I am going to do. I am going to do. There is one more case which I am going to take. For example. Here my middle will be this one. And if there is one more six. It is equal to equal to. It may be plus one. I am going to. I am going to. I am going to. It is equal to. I am going to press one. As in this case. I am going to. I am going to. The idea of equal to. I am going to. Elbe finding. I am going to. I am going to. In this part as well as in this part and take the maximum possible. Med is less than 1.5 meters. For example if you find this case then you will be doing fine research in the left side. Start will be start and 1.1. For example if I take this case then here it is."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Last 10 minutes. Let's see if you are done let's try to would you be able to compile it from here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "1 second I did not write this one when it will break it will bring when start left and end."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What would be the time complexity of this one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I will take more log in overall."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "We are almost time but I just need 5 minutes just for the feedback also. You want couple of more minutes?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I was too hurry."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I will talk on your good part then we will discuss on the part where you can improve it. There are some good things which I like but there are certain things which I think can be improved. I was expecting you to ask for strictly decreasing that use case you have identified. In the interview you will get questions like this only very simple input but a major portion which can impact or make this question little bit tricky. Another thing is you told me the brute force in the mid after so like the brute force approach should be the first and that is it now you are trying to little bit more efficient approach. I will take a proper method name variable name. I will give the interview the time for coding. That was the question and certain things which can be improved but it is a medium level question."
+  }
+]

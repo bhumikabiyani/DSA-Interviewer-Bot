@@ -1,0 +1,162 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Hey Anubur, welcome."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hi, hi, Shenzhen. Good evening."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good evening. Hi, Anubur. Before we start, just in a two-liner, would you like to just introduce yourself so that everybody knows and after that we can start with the mock interview?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, so hi guys, I'm Anubur. I am currently working as a back-and-engineer in your dynamics and I'm working with the Beam Team. Beam Team."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "How many years of experience you have generally?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I have two years of experience."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Awesome. Cool, cool, cool. Nice man. Nice to meet you. So Anubur, could you please share your screen and so that I can tell you a question. The question is, let's say you are given an N, let's say N equals to 3 for example, you have to create a spiral matrix out of it. Now, if you would be given N equals to 3 which will differ like what would be the N by N matrix. So, and you have to create a spiral matrix out of it 1, 2, 3 and if you see 4, 5, 6, 7, 8, 9. So, it's a spiral form. So, that's the simplest question. Like, there are no explanation much so that's the only one-line question. Yeah, so it's all yours so we have around 40 minutes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, the idea of a series nothing difficult like it's more of an implementation question. The idea is that when it's since it's an N, it's an N matrix. So, you start from the left on the top. So, you just give your pointed direction that first you need to go to the left then down then, sorry, first to the right then down then left and then to the top. Yeah, and you just keep going it and you just have to take care of the boundary conditions that you're not violating the boundary conditions because let's say that first when you are going to the right it's fine. But when you are going to the bottom you have to make sure that you are starting from the second column and like this, like basically you're not starting from the same so that duplicate printing is not correct. And yeah, then you go ahead for it and what would be the time complexity for it? Time since we are visiting each element only once it would be over n square, where n is the size of the each over column."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you implement this part?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, should I do it over here only?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, no, here itself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so let's assume that we have been given an n and let's say we take it as an input. Okay, since we only have to print it right, let's take as a direction which is left to right. And come to bottom. So these values over here we would be assigning it as a zero initially. And the possible values over here can be zero more and here also zero. So first we again want to left it right so we can be. And start with the zero and we will be n minus one and call start once we can zero and call n. And ahead is. There is. So here in that case we will do, see out. And click size here. Okay, once this is done, mainly change. Left right blue on here. Move to the bottom. So basically what I've done here is that I will start from the row which is ST which is the starting row. And if my left right is 0, that is which means that I have to go to the right. So I'll start from the column start which is right now 0 and whichever is the end column and start printing it. And once this is done, from the left to right, go and do it one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, okay. So once you are first from start to end, okay. So, okay, the whole rows you are covering first. So now let's say you are at row one. So if left to right is equals to equals to 0 means for the let's say row one, you have to go to the right. Okay. Now for that right, what you're doing is you are now iterating over a column start to end. Okay. And you are just what you're doing, see out. Like why you're doing see out. Yeah, I'm just printing that element. No, no, no, that's what we don't have to print the element. We have to fill the matrix. Like that's the question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, I'm not looking at the. Okay, I'm not looking at the. Okay, I'm not looking at the. I'm filled with the. This is fine. So, I beat this covers my going from left to right and my going from right to left. I beat I'll do one more thing is. That is going from top to bottom and bottom to top. I cover those cases as well. Okay, so left to right become 0. So, okay, you have filled up the first row. Now you make left to right equals to one because you have to go now to the left side. That's okay. And in the else part what you are doing right now. Elspartman covering left to right. That going from right to left. This is I'm okay. Okay, okay, left to right and right to left. Okay, okay. Okay. Does it make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, let's. Yeah, I'll just I'll just also. So, when you are going from left to right, you have also have to make sure that you are increasing. You know, the start row. By one. Yes. When you're going from right to left. So, with this approach, which you are currently going, can you just think of little bit optimizing it? Love it. There's a lot of four conditions. Yeah, four conditions. Like, can you try thinking that can we remove this many if this many for loops? Can you optimize your code a bit?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I mean, we could do two things. First, what I feel is, is that instead of giving it two directions, top to bottom left to right, I could have just used only one pointer, which is going, you know, first from left to right and top to bottom. Like the same thing is and we are just using one for like within two loops only like instead of appreciating the same code within two loops only we are doing the same thing. So, basically, what are you suggesting?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, it would be a good start from making four loops to two loops. Yeah. But can that be further optimized?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let's keep it direction variable. Yeah, good. And the value of this can be zero and two, three in clockwise method. Yeah. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you think of one, let's say, if you can create two array, let's say, I'm just giving you a hand, let's say direction of a column and direction of a row. Right? So, let array would have, let's say, direction of row would be, let's say, first, it has to be zero because it has to be how you are being left to right. So, first is zero. Then it has to go bottom. So, means row is increasing, then second value would be one. Then it has to go again zero because it has to go horizontally. Then it has to go up. So, it would be minus one. So, these are the values of direction of a rows. Similarly, there would be a direction of a column. And the variable which you have taken direction with that itself can it be done in a single for loop or not or in a more simplified manner or not. But you are in a right direction, the variable which you have bringed out direction, just see that way."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. So, in that case, if we, So, by this, I mean is that when we are going to left to right, my row is not changing so zero. Then going bottom one, it is increasing, then again zero and then minus one. And similarly, the column would get impacted with this with the respect to 0. Look 1, 0, minus 1, 0. Correct. Yeah. And if I run this loop from I to 0, I will send it to the left. So, the I and T di R equals to which you have given a value rate 0, 1, 2, 3. So, it would be like a index of this x and y 0, 1, 2, 3. So, what direction current rate is? Yes. What is x? What is y? Yes. So, yeah. Maybe switch case we can remember."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, sorry, why you are putting a switch case?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, basically I also wanted to check when to, when will I change my direction? Like after how many, like when n is equals to 3, right? Now I know that I have filled 1, 2, 3, but when do I have to go down? Okay. Yeah. That's the valid question. When you should go down."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what would your, what would your approach, what you were thinking of putting? That's before putting let's discuss when, when you will go down. What would be the condition?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, my condition would be that when I have filled let's say key, that whenever I, that difference I cannot sign. So, what is happening as of now? I equals to 0, I less than equals to n into n and we are continuously moving forward. By currently let's say direction is 0. So, my x is 0, y is 1. So, it is moving horizontally. So, now it is moving, moving, moving, moving and when it will take a wrong step, how you would know? What would be the conditions?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "That will be within the boundaries. Within the boundaries. Within the boundaries, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, anytime it reach out the boundaries, right? You, it get, right? We have to change the direction. That's one thing. Yeah. What about the inner spirals? Inner spirals may be we cannot add that same boundary condition. Correct. So, can we enhance little bit that condition boundary?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, this is what we have that. For that again we have to keep the variables like, you know, what's the row of B? What's the boundary top row, boundary bottom row, boundary left row, boundary right row? Okay. Can you think of it?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But you are in a right direction that where to all now thing left is, how, where to change, how to change? If that is done, I think we are almost done. Yes, next one. So, I am good with it. So, yeah. Can you stop the screen share? I will have cool menu. So, yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Any feedback, like I have the minor feedback for you. If you have any feedback for me, I would definitely love to hear it. Where I can improve?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no. You were very accurate into your..."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, no. The only thing I was expecting was, have you, like, I was expecting was a little bit... This is, you know, more of an implementation question, that's the confusion which I face sometimes. And, you know, the questions are mostly asked on actual data structures and how are you going about them?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You know, this is the question of which company? This is Microsoft question. It has been asked to me. Yeah. So, it has been asked to... It's a... And it's not only Microsoft, it's a FB question also. But it's okay. It's a... Do ask a lot. This is a very... Like, kind of frequently asked question. But, see, I wanted to give you a little bit of time pressure also. Right? Because that's how I actually an interview would be. Even I told 45 minutes on this, right? But in actual interview, even after 25 minutes, the interview will keep poking you and you will get a little bit of stress and all. Right? So, see, today I'll tell you where all things you have to improve first on about. Please take it as a peer and take it as a constructive feedback. Okay? One thing is, you haven't asked me what would be the HK's if any question zero. Whether I should return zero, whether I should return minus one. What you will return if any question zero. Right? So, first of all, you haven't discussed the HK's with me. Right? The second would be you are using a lot of Hindi word, take it, as ke ba, then, upya kare. So, this is... I'm not sure if this is the mock, that's why you're doing it or it's a habitual. But at least do not use this in real interview. Right? Right. So, try to be, if you're using an English, try to be proper, avoid this word."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Right? Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Another thing is, so, question can be understood properly. And mid, let's say this is the very simplest question. And even after implementing it, you change it in mid itself. Okay, we don't have to print it, we have to just take a metrics. But what if it's some other questions and if it is not properly understood then you have to change whatever you have thought process done. Your time gone already, 10-15 minutes, important minutes gone. Right? So, always double, I asked you in the starting, are you totally clarified with the question? Right? So, use initial couple of more minutes to see that with the example. Take one example, right? Use that example and see, okay, this is what I have to do, right? Right? So, use, clarify the questions properly. Right? Very, very important. Another thing is, the clean coding part you have to work a lot. See, don't use what E and ST, C, E and H O R, where is the function name? You have not even created a function name. Right? Where is the function? Okay? Later on you can go and check your code. What is the method name? You have not created a method itself. Right? So, you have to write like you are writing in a production based ready code for a company. Right? Okay. So, this really matters a lot, man. This really matters a lot. Right? First of all, also I want to say is that try to visualize thing from a diagram perceptive. You can use certain examples, okay? What if n equals to 2 or n equals to 3? You are trying to find out a edge case, like, okay, when I have to change. Right? So, you can use diagram, okay? One, I have written, okay, I have 2, I have 3. Now, it will go ahead. Okay? So, I have to stop whenever it crosses the boundary. Okay? So, let it go like this. So, at least one circle you will complete. Now, the part which you are facing an issue like how a inner circle will get filled up, when it will go. So, it just like, okay, if the value is also filled up. So, now just see that, okay, the circle is filled up and now it is already trying to go to a already filled up. Then also it has to change the direction. Right? So, it is that point which you can easily get the answer by visualizing with an example, kind of a dry running. Right? And that's very important. Another improvement I want you to is, while you are code right, even nobody is listening, please speak out. There is a lot of silent in this video you will see. Right? So, when you code right, you don't want any input from interviewer, you don't want to explain anything. You were just speak out. Okay, I am taking left to right. It will move from left to right direction. Just you, whatever you are thinking in your mind, right? Just try to get a habit of bringing those words to your mouth also. Right? Okay. A lot of silence in an interview is always not good because you will lose an opportunity of many hints from the interviewer. Right? And interviewer sometimes get follow-up question based upon the way you are thinking only. Right? They not properly and prepare for it. The way you are going, they might help you give a good direction, give you a hint. Or they sometimes try to come up, okay, change little bit, go diversion based upon the engagement. But if there is no engagement, there is a very less scope for, you can say that conversation between us. The less conversation in an interview is not good. The more the conversation, the better. Right? That's my accent. So that's seven points which I want you to improve in. Right? So I know you are a good coder, but there are certain things which I wanted to improve. It might help you in very time pressure based interviews. So this question looks very easy. Right? But actual when we are about to implement, right, it's not that easy."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And see you. And one more thing, the code which you have written the first for if like lot thing, that I think it's more like a brute force for this question. Because time complexity is of n square, but this is what you have implemented. It's a brute force. Right? And we always say that never ever code for the brute force. Right? So you have to first see that what would the best way to implement? Discuss that one. Right? If you return that for loop, if condition, let's say if you have utilized 25 minutes in that, that would not be even approved. I can say that. Because that is more like not a good way. And nobody can identify a Boolean for loops, if conditions and all this things. So you should be discussed. Okay? I will use for loop. This is kind of a brute force, but now I'm thinking how can I reduce those if condition for loop? What would be the better way? Right? So always don't code for brute force always try to optimize code. Optimize can be in time complexity, space complexity or the way we are coding. Right? I hope please take this in a constructive manner. Like I'm also learning. So this is all as an engineer we both can help each other. So take in a constructive manner."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Completely makes sense."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So that's pretty much from my side. I hope it will help you in future. And thank you for the more interview man. I'm stopping the recording."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure."
+  }
+]

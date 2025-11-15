@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "easy_arrays_001_brute",
+    "type": "solution",
+    "question_id": "easy_arrays_001",
+    "approach": "brute_force",
+    "topic": "arrays",
+    "difficulty": "easy",
+    "pattern": "nested_loops",
+    "tags": ["brute_force", "nested_loops", "suboptimal"],
+    "complexity": {
+      "time": "O(n^2)",
+      "space": "O(1)"
+    },
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "approach_name": "Nested Loops (Brute Force)",
+    "intuition": "Check every possible pair of numbers in the array to see if they sum to the target. This approach doesn't take advantage of the sorted property.",
+    "algorithm_steps": [
+      "Use outer loop to iterate through each element",
+      "Use inner loop to check all elements after the current element",
+      "For each pair, check if their sum equals the target",
+      "Return the 1-indexed positions when found"
+    ],
+    "code": {
+      "python": "def twoSum(numbers, target):\n    n = len(numbers)\n    \n    for i in range(n):\n        for j in range(i + 1, n):\n            if numbers[i] + numbers[j] == target:\n                return [i + 1, j + 1]  # 1-indexed\n    \n    return []  # Should never reach here given constraints",
+      "java": "public int[] twoSum(int[] numbers, int target) {\n    int n = numbers.length;\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (numbers[i] + numbers[j] == target) {\n                return new int[]{i + 1, j + 1};\n            }\n        }\n    }\n    \n    return new int[]{}; // Should never reach here\n}",
+      "cpp": "vector<int> twoSum(vector<int>& numbers, int target) {\n    int n = numbers.size();\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = i + 1; j < n; j++) {\n            if (numbers[i] + numbers[j] == target) {\n                return {i + 1, j + 1};\n            }\n        }\n    }\n    \n    return {}; // Should never reach here\n}"
+    },
+    "complexity_analysis": {
+      "time": {
+        "complexity": "O(n^2)",
+        "explanation": "Nested loops result in checking all possible pairs, leading to quadratic time complexity"
+      },
+      "space": {
+        "complexity": "O(1)",
+        "explanation": "Only using constant extra space for loop variables"
+      }
+    },
+    "why_suboptimal": [
+      "Doesn't utilize the sorted property of the array",
+      "Checks unnecessary pairs that can't possibly sum to target",
+      "Time complexity is worse than the optimal O(n) solution",
+      "May time out on large inputs"
+    ],
+    "when_to_use": [
+      "When the array is not sorted (though hash map would be better)",
+      "As a starting point before optimization",
+      "For very small arrays where optimization doesn't matter",
+      "When demonstrating the importance of using data structure properties"
+    ],
+    "interview_discussion_points": [
+      "Why this approach works but is inefficient",
+      "How the sorted property can be leveraged",
+      "Trade-offs between simplicity and efficiency",
+      "When brute force is acceptable vs when optimization is needed"
+    ]
+  }
+}

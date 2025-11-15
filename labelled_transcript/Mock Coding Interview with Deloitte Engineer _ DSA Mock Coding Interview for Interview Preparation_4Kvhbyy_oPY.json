@@ -1,0 +1,418 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "so I mean like let's go through your resume first so we will spend around five minutes for your resume review and if you find anything to be corrected then we will go ahead with the next our interview session right so I am going through your resume now so now you have education. So first of all by looking at this it's very clean right so that's all good and the first education you have given university of Mumbai 2021 you completed and the courses which you have that's education section is very good because we don't require your 12th 10th information so only last information is good education section is good. Let's come to that experience section so you are working currently in Deloitte you worked in this technology and you working as an analyst from September 2021 to present in which state good so developed a python based testing tool to perform various test on table improve efficiency of the testing process by 90% so that's good whatever the project you worked on what's the impact so you improve the efficiency by 90% but what test you have performed that is missing. Like various tests on table so can you add one test so I think"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I think the second point I've added like a 2 million rows has been performed."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Tested 2 million rows with 20 column in approximately 1 minute but okay so this is the testing that in how much time you can read 2 million rows or update to millions of what what test it is"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "comparing to two records with a 2 million rows and finding the different statistics so how many null and all other counts to check the data migration. Earlier there was basically manual method so it took almost a whole day or two days."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So can you add at least one liner like what is the test you did so you said tested 2 million rows what test either comparison is the some testing which you did so only that is missing but it's good one liner information is good. Refactored scholar code to snow square for migration of code this from premises to cloud that line is good so you are currently world on this project so that is good only one feedback here is please make the tech stack in the bowl. So here I see a python right and then you had you are using tincter so make this all thing bold right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "inside the description only"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah inside the description make this as a bold letter. Then you have your internship so you have few details and so you join in so this is also good so 2 times you have joined this so it's totally okay and it's a remote and you have some okay so you are well done firebase real time database just bold it right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so projects you have 1 2 3 4 5 do you really need to tell all the 5 projects can we have only top 3."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "is there any like key out of 5 6 projects just I would say that keep only top 3 see I won't be as an interviewer who he won't be able to read all the 5."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay 5 projects we never individual"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah was that team just whatever your new thing that these 2 or 3 projects are my best and I can speak on them for like if you given me a chance I can speak for even an hour like because I have done it and those see as an interviewer let's say I'm an interviewer I can never go all the 5 projects right I'll just see top 2 projects or the top I will just see 2 projects and then we will go move on. So but you have given a short short description what I will say is that the same thing make this bold letter and keep 3 maximum 3 projects right if you have more just do a top 3 and during interview if they ask you more you can add more right so that is only one feedback and then you have skills back and not just express hey I see you so here is a lot of things that you can do. So in the food ordering app use a Java Android studio but in the skills you haven't mentioned Java"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so it is basically only for the Android part I have used Java not not much of a core Java has been used."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But you have made an app on Java but it's not your skill so it's okay but that okay but I think it's difficult for interviewer to call this but I saw just one stack because Java is a front right so I thought it since I was also working on Java so interviewer might be friendly with some application some text like which you might have written right so from 7 years I'm working in Java so I my quickly quick glance was like okay you know Java but as soon as I see the skills Java is not there so that is where the question comes up you made a project in Java but it's not there in the skill. See if you know very basic Java you can add basic Java that all then you can cover up yourself that I use the basic Java only otherwise just see that learning or it's okay otherwise it's very difficult to notice so front end database you know SQL MongoDB Firebase real time so that's okay my SQL high Firebase itself is also no SQL only. So cloud you know this publication you have publication so publication I think if it's your strong right so I would say that can you make it little bit top instead of putting it last so in your resume right the major point is whatever the strong thing you have to display always put at the top right so I would say that the publication can you have after education"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "after education very less resume has the publication"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I have also done on project on this publication so can I move away from the project section"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no above project also or you can say that above project let's put up publication right so your education experience than publication then project so"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I think if you see like 100 resume if you go through 100 resume very less resume will have publication so I am not going to do that. So I think it's your advantage that you have the publication so I would say that don't put it last if you try to bring it at top it would be better for you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay sure"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so that is one thing okay and if you have any achievements or certification you can add but if it also doesn't have then it's not a mandatory thing to add but yeah achievements if you have any if you are participated any hackathon or in your company or you have built some tools for which you get awarded and like you got a star of the employee of the month like kind of anything you have like this it's good to have but it's not mandatory so it's up to you and I just one point from my side if you have any achievements and you're one year of experience and delight so please do add that okay and yeah that's your resume is pretty much cool very small small things but it's very there's no color so many colors use nothing so it's all good just small small things which I told okay but it's all look good right okay and okay so that's pretty much about your resume review so you're resume looks good only some basic thing if you can take care of it that would be okay otherwise the other is also will be considered okay right okay so now let's move on to the major part today like interview and since you have one year of experience I will include the leadership principal question also so we have around five seven minutes for leadership principal question around three questions I will ask then we will have some basic data structure question oops question for around 10 minutes so 15 minutes just for leadership plus dsa 5 plus 10 something like that and then we will have around 40 minutes for the dsa question right so it's 1138 so we will track the time okay let's start with the leadership principal question away so let's say can you give me an example of time when you did not meet the client expectation what happened and how you rectified the situation"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes so this situation actually happened very very very simply like a week ago so we had our release but the thing was since I was only one from the offshore in the testing team I was given a set of tasks in the morning that I have to complete this and I when I looked at the task inside said like okay this can be done today but but somehow since this was the most manual process or there it was dependent on the type of depending on how so queering took lot of time more than expected so basically what happened in the end in the evening I could not deliver the I mean total whatever test they have asked so basically and next day was really so basically then I had to basically explain my test later in a onshore that why actually this issue happened and but actually I was very stressed in the evening that since I told in the morning that I can complete this but somehow I missed just I miscalculated that how much time each can require and how you rectified it so in the evening so I told him that this this is the issue so whatever I have done so next day he told that don't worry so just take some more time so next day I told like I so I see even though I thought that next day it could be completed but I still I told that I need minimum two days to complete it so this is how rectified I did not and then I came to know that I don't have to instead of giving miscalculation I can put some expanded hours and put it as a buffer time buffer so that is what I learned with the recent incident"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay good so you didn't meet the deadline for the commitment and then the learning is you will add some buffer and then told them that not a hard time line right okay can you tell me about a time when you gave a simple solution to a complex problem"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so like I discussed about the testing tool that I developed so this was actually not in the plan for project so when I was presented with this problem that this whole thing so what we had to do since I was not going to do that what we had to do since there was a data migration we had to check at the source and the target so for single query let's say up to check null count so for null count let's say there are 20 columns so I have to run 20 queries on the source 20 queries on the so for single I have to run 40 queries and it took a lot of time to get the answer of those queries so initially they are two three days they continue to do but then I thought why not like this we are doing something that can be done using script so I suggested them this way like let's say initially it was not a full phase plan to develop full script okay let's have generated a simple script to just count the numbers just count the distinct so this simple thing that I suggested actually it's go increased exponentially to the point that now it is planned to deploy it all over the deloitte and also it is being talked with other people outside deloitte for this tool so the simple solution lead to the girl so it's a kind of your achievement also that's one thing which you told it's achievement and you should mention in your resume okay and"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can you tell me about something you learned recently in your role"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so yes so since I was more of a development kind of development kind of person since I started off my college and they had developed under development but here when I came to this project I was assigned into after doing some development I was assigned to a testing team because there was a requirement so first there was a kind of like I was very sad that I wanted development but I got testing but I think what I thought that testing was simple and we did not need too much effort in that it is a minor process only but here when I came into testing I learned that testing is actually more intense actually and not compared to development but it also more intense because we have to we have to know each and every system in depth to test to what what are the edge cases and all we have to find out for development what we do we we we we have a module and we focus on that particular model in testing we have to know the whole process completely so I learned this thing that no part of the development is small or insignificant so each and every part is very important in the whole process so we have to look at everyone and the table"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay so like all the we need to increase our visual you can say that we just not stick to that one that's what you are trying to say apart from whatever we are doing we have to increase the scope of vision what all changes can be done okay okay last question I have is like tell me about a time when you influence a change by asking question like what was the scenario what questions you ask like what is there any scenario happen"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so so basically scenario where my question change the approach right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah yeah so not change the question but at least you jumped in with the different question which team has to find hidden use cases not totally change the approach but find something new is something happened like this or if happened like this"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so again it is coming to that tool only so because lots of things happened this tool so what happened so there was an earlier tool that they were using since two years so that tool has a very very minor error it was basically an error of so when the two data cells were compared so the duplicate Roseware deleted and only the last row of the whole duplicate Roseware kept but this this went unnoticed for two years so everyone was in the flow that okay we will use that thing and we will directly compare but when I when I was working on this so I realized this issue so now when I propose this thing and then so basically it changed the whole flow so it was earlier decided that okay we will just go with whatever thing was there this tool so it actually changed then more focus was given to development of my tool so basically actually they that changed the whole course of the testing"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay got it okay so that's pretty much on the leadership principle questions so let's jump to our DSA questions right on basic fundamentals computer fundamentals right so okay so I will like what will happen when you type a URL and press enter can you tell me like what happens in the behind it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so initially let's say we have we are coming to the browser for the first time and we have time let's say www. let's say gigsforgigs.com so first the browser will try to understand whether it is a HTTP or a HTTP is so it will search in the browser's cache so if it I mean if there is already saved that this particular URL is HTTP or HTTP is depending on that ports will change through which port it will communicate so for HTTP is it is 443 and for HTTP it will go through 80 so first it will check in the browser then it will check in the OS there is a host file where these things are mapped so it will check there so if it's not there then it will go to the like yeah DNS from there it will try to fetch the data so once it gets to know HTTP is then it will try to since this is actually user way of representing a website so but but it was communicated that they work through IP addresses so to get the IP address it again checks into the cache so if it's there in the cache it directly DNS cache it's not there then it goes to the next level let's say it goes to the router then if it's not in the router also then it goes to the higher levels so after it gets the data so then it comes back so while coming back it stores that particular DNS in the cache so that next time whenever it is going it gets DNS directly so once it gets that particular IP address then it request that particular server so for that particular data it's kind of request so if it's a get request port request post request put so delete update what kind of request is there so with that request it so let's say since there's a get request so it will also have some headers for example of what kind of content it is trying to get so it is trying to get the HTML or some other type of JSON or some other data so it will be specified to the server and yeah so also before getting this data so it will establish a TCP connection actually so that first this our machine will send a a scene request a si sion scene and then the server will send a scene act and then our machine will send act so with this three-way handshake our session get established"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I'm okay with this so totally understand and it's a very good answer so that's awesome okay so like can you tell me about the principle of oops which we have we have five principles right so can you name them what are the principles and one liner for each"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so principle so are those like solid principles we lost that we talk about solid principles"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "solid principles so I'm not actually very sure about that"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay can we have a polymorphism without inheritance"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "polymorphism without inheritance"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so polymorphism is basically representing something in our different forms so if a function is there we can do overriding or method overriding or method what to say so do you really need a inheritance for doing the polymorphism or without inheritance also we can do polymorphism"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "we can do without inheritance also for example a method is there we can overwrote that method are there only so this is actually an example of polymorphism so it does not require to be inherited"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can construct or be a static or final why finalize method used in the oops"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so in the finalize method it is used during garbage collection so whenever a particular object is D assigned basically it's used ends so it has to be sent to garbage collection so if you want to put some message that before getting it garbage collected they are we collected that we can put in finalize"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct correct so as you mentioned in your resume whether you know MongoDB so I have a question like can you tell me one line of what is document and what is collection in MongoDB perceptible"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so if we say collection so collection is like table and table of what table of document what is document document is document it's like it's a it's a it's a rule it's it's a one single record for the for a particular table which is which is fine"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "what type of document we can have in MongoDB"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "what type of document I'm not sure about this"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so which data structure you will use for search for doing a search on strings"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay for doing search or storing the string"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "storing the strings and searching"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "then try try try to try"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay what is the data structure used for BFS breath for search"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "q"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct and for LRU what data structure will you use"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so for LRU is at least recently used so I will use a link list along with the hash map"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct and linked as you will use single or double"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "will use a double linked list because I have to delete the element so from the between also so I need a difference of the back element also"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay can you tell me the difference between truncate and delete in my sequel"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so truncate basically so truncate basically deletes all the rows but it keeps the schema of the table so table is there but delete specifically it's the table reference also table table table along with the data"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay cool so okay so I have more question but let's switch to the DSA part we are already 17 minutes past for this basic question so can you open your notepad and where I can tell you the question and you can write it so now you are given a tree like one is the root note two is the left child of root note and five is the right child of the five one and three is the left child of two and four is the right child of two and six is the right child of five and there is no child of five in the left right so this is the note tree given and each node is represented like the below I end the end the tree note left and right right now we have to convert using this notes itself we don't have to take extra notes using this notes itself of a tree we have to convert into a single linked list so output would be one then it's connected to two then two is connected to three four then five then six and then at last it's null one people five six four five six six and then also this we wanted a single linked list like this of this tree so whatever the notes you need to use of the tree notes itself don't take any extra notes right is question clarifies away"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes okay so okay this is a road node and two and three will be my next in the linked list after that for okay so one two three then four then five and six and then end okay so I'm letting a little bit noise from your back side okay yeah that's better okay so okay so it looks like a pre-order table sir sorry you know yeah one then two then three then four okay so first I have to take all those on the left then okay okay okay so once left is two and three so I will put that to as my left and then it's left is three and then I will take the next element go back and the recursion then take this four and go back take five takes six okay but I have to basically attach once once next to this and force next to this so basically if I'm at this route node so whatever I'm so okay so then I came here then from let's say we have two three and four only so so then in this case what will be generated and if it is two three four then two will be there and so it's next will be three and it's next will be four so basically left I'm sorry current then left then right so it's a pre-order so here I will get basically two three four so after converting here I will have two three four and then I have this one initially so once left was two three four so whatever is my left so I will make it my next so since this was on my left I will make it as next and so next even we go on the right so right then it will be five is there so five and now and six so it's pre-order will be first five will be there then then now is there so so okay now is there so now is there so we don't have to put but then we'll write we have to ignore that value correct okay so next in our list will be basically next level okay right so next level is basically five next level is six so basically from the right side I will have five and six once left I have two three and four and once right I have five and six so whatever is my left will my will become my next whatever is end of the left is here that that notes left I will make my right notes starting as the next node okay so it looks like this so I recurse solution so if I am here then I will somehow form the link list from my left and form my link list from the right and then I will make that where I'm wherever so let's suppose I'm here to here so I will put my next node as my left node whatever my left is there and then I will go to the last of the left so here two three four so four is the last of the left so this last I will attach it to my right node okay correct so okay so one way is this right so one way is very simple so what we can do is we can do pre-order traversal actually and store it somewhere like an area somewhere and then then convert it into a link list okay so I want two three then four it will come then five then four then five and six but this will require a lot in space extra space but since this link list is also links and here also we have links so if we actually convert like like in recursion I'm going so let's say I'm at some node root so okay so let's so let's him I'm some node root then I will go to my left and similarly I will go to my right okay and on my left I should get the first this first one so if two three four is my left so I should get that to all right so okay so I will return this to so I have if I say that I will have the left start and I'm from right I will have right start so basically here left start will be two and right here right start will be five five five right so what I will do is first I will roots actually okay I okay so I have to assign a next here but in the link list it has to be made a single link list correct so root left can be marginal okay yeah right root left I will mark as null but before that I will right I will assign the roots okay so in that case I have to assign this okay so left I will assign I have to assign it as my right right so this two three four is there so I will assign it as my right one two three four it will become but then my right reference will be lost so I have to save that reference so so I have this right this which is already saving that reference for my right node so I will do roots right I will put as left as and then I will go to the right most of the whatever left as I got so basically I will do a hole loop like I got the left one so I will go to the end so for example here I've got two three and four so it will be basically something like okay I will not disturb this so it will be two will be here then three will be here then something four will be here so I will be returning to so two so last element I will go to the right basically I will say that I will say that left as when the right is not proportional up till then I will keep on going all right so basically then I will reach at this four so what I want is I will put this force next as this five which I already saved it as right right and"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "but here you are changing the left as node like so where are you keeping the in your example which you are taking above so you are saying right one you will just link to the two and the two is already have a list then here for right five has already has a list so where is that two which you are maintaining the head of a list this two yeah so you will be constructing one list over here right at the left tree all right so it will it will form like this correct so where are you maintaining the pointer of the head for this left tree what"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "left I am getting this left as but left as you are continuously left as equals to left as right you are doing right bottom right so so but I do not require that actually later because once I will put two three four on the right so what will happen I will put one over here"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah you have already linked one with the two that's why you don't require it right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I don't think so I will basically my left as will point to this four so now now I know that this right is normal so what I will do I will put this force so basically I will put this left as right I will put as my right as and then I will basically return this particular route this particular node and so okay let's say okay this is the Sudo code type so what is the line complexity of this okay so let's say since it is here so once it goes for the so it goes here and then basically let's say that I reach at this second node and this is a long list on the left let's say there are height is h so each elements are there so I will make a basically whole list of each number so here it will be basically be one let's say there is a five here and then it will be six so by my this approach so I will have to again actually traverse from here to here so that will be a issue actually somehow if I could directly click at this end node and not have to traverse it because this will actually for every node I have to traverse like whatever the execute rate forms on the left side so to remove this actually if I get the because left and right reference is out my direct element so two is the left and right five is the right one so I don't actually need to store this so what will I do I will store the last element actually I mean I will pass on the last element so for example here one two three here I will return this three so no no this two three four was the right so two three four then I will return this four only now I already know my left and my left is two and from here it will return for the last the last one the last one in the whole list so I will directly have basically then I will put the roots roots right I will directly put my earlier left one which I had saved and I have the last one also from that traversal so I will take this and put it to my this right nodes and then then I will take this right and so I will basically receive two two outputs from the left I will receive the left in four and from the right I will receive the right in six right so I have the both and so now I will return six okay now I will return six here but but I have to return in the answer as once so since the root is not changing so we can directly actually return the root only in the answer so okay we have to do a little change in the code so let's say this line is removed and this is this is the end so left end and let's say this is the right end so I will receive the and also we need to put the null in the front left pointer of a tree node and null in the front as so each tree node has two pointer right left and right so only right you are going to use it for a single English in the left you just put the null all right right in the in the last step I will put that so basically yeah so okay let's say so now I have the root so it will go on the left and provide with the left end and go on the right and provide with the right end so let's say I'm at three so I am since I am doing single element left and right on null so it's it's right will be null it's left will also be null okay so let's say this since this is returning the end so let me just do you know this okay so yeah I have the I have the roots left and I have the roots right okay and I have the left end and I have the right end roots have the left end you have the right end so in the left end it will be four in the right end it will be six how you are computing it so I got that point so you have root you have left you have right so that is you now change it to left as to left end all right root okay so easily what I will you are doing is how will I send the last one so here I will send this three over here so it will get two will get from left side three and from right side four okay so I have the left end and at the right end what I want is this right should be this little left one okay and let's write this first so my roots right will be whatever the origin my left and okay so"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "my we are almost 15 minutes okay so we have more 15 minutes so whatever you did previously right that I think we will solve the problem we can improve the complexity in that itself but can you do the coding for that one first previous one yeah so let's do the coding for that one then if we get time we will try to improve it but since we are running out of time let's try to call the first which we already have okay"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so we basically had this so what we were doing is so yeah so while while our left is right was not a question we were going left as it will left as right basically we are prime at the end so first thing I will basically assign my my roots right will be this left is and then I will come to the end and then in the end what will happen my my left is right will become whatever I got from right is what is left as yes I was starting okay so this this will get to this will get five so yeah so basically what I'm doing uh roots right I'm assigning it as left as so basically once right I will become it will become two so one two three four is already there so after that I will go to end that is I will come to four and then I will do force right will be this right as right as was what five so"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can we write a code for this one while taking proper hk's and all right so just a general reminder of a we I so we will spend 10 minutes more on this question then I will switch to the next question okay so it's 12 almost 30 a.m so we have 10 more minutes for this just complete a method uh with three node as a parameter root and then start you can start with this"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so you will take a node let's say you will take a root now I will go to my left left and right and then the root side so let me put it here let's see if what are the hk's is here the first thing first but if if root if root is a null then root is a null and we have to actually write down a replay null so basically in that case left as in my right as can also be a null so if it's a null so let's see what could be the issues so this will not be a issue because if it is null then roots right will be null but here left as I'm directly checking so I have to first check if my left as is not the question null right so if it is not the question null so here before assigning left as right I need to also check if left as is not the question null so this will actually handle the case where our left as actually comes out to be null and no okay so if it if it is a null so it should not"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "you can write this null use cases uh so let's say you don't have to return anything"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay right so okay so you are planning to return the root node"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yes that's why you are getting this null check okay let's do this and we'll try to make it efficient if you have time so"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay if it's a null then it will return the null and otherwise it will go to left and so basically left means roots left and roots right and root right will be whatever left as I got so yeah so also let's say we are at 3 this 3m and alone is there so it's left and right both will be null so 3s right will be null and left as since it is null it will happen nothing so here it will just return 3 so for 2 on from left side it will return 2 from right side it will return 4 then it will assign roots right so 2s right it will assign as so 2s right it will assign as 3 because 3 was on the left and then I will go to this left as since left as is not null then I would try to see left's right is null or not so I will see that left's right is null then I'm here so left is not equal to null so I will assign this right as 4 so now I am returning this root that is basically I am returning 2 over here so from left I am returning to similarly this section will happen on the right side and it will return 5 and 6 wait a second where I will be putting the root left as null that is still missing"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "oh right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I will put left so roots left I have to put as null from right hand side I will be similarly between so let's say I'm here so it will go to the left and it will say see that there is a null so here our left as will be null but right as will be 6 so this is a different case so let's say here it will be null and here it will be 6 and my root is 5 so roots right is left as so root is 5 5 varieties so it will become null actually 5 will be null so it seems to be a little forward let's see but 5 so right let's say it's null then I will say left as since left is null so I will not go here and left is also null so I will not assign so okay so this case I have to handle so since left is null so I have to basically"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so can you improve so it's all look good so instead of returning 3 node as stress pointer which you are returning why we need to return since root node reference is not getting changed right so let's make it wide and when you are doing if root equals to equals to null they are simply return it let's not return the null because the root pointer which the parent node will return to us we are not changing it so they are returning the one and we will return the one only right so root will still be 1 so now can you see that the issue which you are facing with the null is it getting resolved or not and the return type of this method can be make as a wide"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay now what will happen now let's see so in that case I will all right so I actually do not need that then because I mean I can save it directly because I left as I can save it as roots left whatever was there and right as will be roots right because it is not changing so I can directly put it here roots right and left so I do not need to return this and if the if the left edge is a null that means our right is already defined so so we will not be changing anything there so it will work so now what about this use case like 5 doesn't have any left and 5 has 6 so let's run that use case what will happen in that case"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so all right so so 5 left there is no this so it will return then it goes to the 5 6 so yeah 6 is there so it will go to the root now it will become 6 if 6 is close to the customer no then how it will work after that"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so basically here only I have to see since left my left edge is a null so I have to check for assigning so if left edge is not a question null actually because if it is if it is a null that means whatever is pointing to the right is correct I don't need to change the right reference so if it is null in the right then it is okay no issue okay so here in this case then left edge was null so it will not assign anything to the right but 5's right was already defined as 6 right so then since left edge is a null it will not go anything here it will not put anything here and it will put the roots left is null which was already null so then 5's next will be 6 and 5 is already as a reference so basically 2's left I have to and 2's right I have 5 so there I can directly assign I mean so there we can do this once once right will be 2 3 4 to this roots right left is since it was not null and then here I will go I was at 2 so 2 3 4 so I am at basically 4 then 4's right I will put at 5 so this is the step 4's right I will put as 5 and then I will put as left edge null and then it will work then"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so here you put left not equals to null then root right equals to left will not run because left is null so 5 is still right nothing is said right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so now it was already set right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "it was already set as 6 where"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "5's right was I mean in the tree only"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay in the tree it is already there right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah yeah we need to change anything if there is null in the left then right as it is"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can you show the code once"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so in this case so we have a 5 so in that case it will not run"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so let's come to the left side at last level let's say in that we have 3 1 2 3 4's right so root is let's say one time root will become 3 and that case so in that case this left it will go left but since it is null it will let on it will go right since it is null it will return then it will come here since left is null it will not go inside this since left is null it will not go left is not it will assign the tree is left as null which was already null so not an issue so 3 is remaining as it is so currently 3 and 3 and 4 yeah 3 is set as null now it will reach to the right so now it is the 4th one the same thing will happen to the 4th right so now nothing is set so 3 is a separate note 4 is a separate note now we have run is like it will come to the 2 so now where the 2 comes in and those left I will receive as 2 here sorry 3 I will receive here 3 as left"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes so root last is 3 because we haven't changed the pointer yet and that one so you have still have the pointer and root right is 4 and left is not a question you change it to 2 right is to 3 so we see and 2 to 3 and left not a question no it is not null and left right not a question so we are going till now rent but 2 is the only last so you will reach till 2 and let not write equals to right so after 2 you are pending this 3 you are pending 4 correct so 3 was the last 3 was the left test 3 was the left test so when I am traversing the 3 it will basically come to 4 correct so now currently left is 4 so 4s right I will assign the right one which is the it is nothing over there I mean so 4 4 was there"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so what is the time complexity for this away"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so time complexity if I say off n is meeting for the whole traversal but in one single traversal for going to the whole right it can go actually taking the worst case taking the worst case then let's say there is n elements on the left so it will form a basically a line of n elements so for one one particular node only I have to traverse n so it will be actually n square"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah okay so we like we are almost passed over time right so so we have used 30 minutes for this question I have planned 20 20 minutes for 2 question so we still have 10 minutes so do you want to let's can we go for the approach for the second program let's not do the coding right so I will quickly have around 10 minutes let's see what approach you think of it how you are going it so it's 1242 at around 1250 we will wind up this interview right so let's think that you there is a lot of data streams coming in unsorted right and at any point of time somebody can ask us like what which is the what is the median let's say you got random number 495 minus 1 3 minus 100 something and then suddenly can ask what is the median you know right what is the median"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes if it is sorted and what is the median number"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah sorted and if it is an odd then it's a middle otherwise if it is a sorted and you can say that n n plus 1 divided by 2 that's the median so what approach you will think of what address so you will think what to use it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "all right so so looking at the problem so if it's same median so our first approach is if I have a data of numbers let's say I'm coming a stream is coming so what I will I will form a array already then at when a number comes then I will sort it so this is like the worst thing I mean worst whatever I can think of brute force so so let's say a data came my array is there then I will sort it after data came then I will go to the directly off and I will go to the middle and get the element then again data come again I will sort again data come again I will sort so I can see that every point I need a basically sorted array correct correct so so one data structure that comes to mind which which puts which keeps a array sorted at every point is a heap so I can use heap over here but now the point is since heap is giving extreme elements right either it is giving the max heap maximum element or the minimum element but we want the middle element correct correct so here what I can do is since I want the middle element so middle element is basically so I will form two heaps I will divide the array let's say I have this whole array I had so I will divide this whole array into two parts so one one place in the starting so so if let's say there is a array and we want to get the minimum element how so for the first left half I want the maximum and for the right half I want the minimum if we break the array into two parts and make it like a heap so then in that case I will make left as a left heap and right sorry left as the max heap and right as the mini because if my numbers are 1 2 3 4 then I need 1 2 in my left side and 3 4 on my right side as this so that will basically become"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "guarded away the correct approach yeah so we are on time and we are done away so before starting the feedback of yours do you have any feedback for me like anything can be improved in the next mock and all something"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no I it's pretty good does it feel like a real interview"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yes yes actually okay well let's start it's already pretty much later take lot of your time okay so first of all let's start so resume I will skip I have already given you the resume feedback yeah you can stop the presenting yeah okay so resume one I'm skipping now come on to the leadership principle question first so first thing okay keep little bit smile on right so you are very good in coding and all but smile is very important right so just keep little bit smile on so the first question if you remember I asked you like impact on the client right if you get some delay so here what interview I wanted to know is customer obsession right so the answer which you gave is that you try to do it today then it didn't happen next day you try to do it didn't happen and the solution which you have come with you will give the buffer that didn't show the customer obsession okay right so what customer obsession is like you did something so it didn't happen so what extra effort you did to make it do it on time so that okay I you know that it's going to get delayed what extra you did like have you taken any help you stay till night you come early and then you pull in some people to get it complete on time so I didn't hurt anything of this like what extra you did it just got delayed okay next date also didn't happen okay and then we'll say that the next time you will add buffer right so that is not customer obsession that is very important point like so generally if you see that big tech companies divide this leadership portion into different part one is top is customer obsession second is simplicity invention third is like punctuality like how sincere you are kind of task so they divide the leadership principle question in various bucket so this is a very important bucket it comes at the top of all the bucket customer obsession which is kind of today in goes in opposite of whatever you said right you are after didn't show you are obsessed with the customer right so don't say that we will add up buffer and then we will say like we will add three days buffer our system is slow we know that if we have committed to the two days what we can do to do it today what extra you can think pull in the leadership let's think of a solution let's try to deliver something if nothing happened then let's say one day more exceed happen but in future we will try that it will not happen we will before it's that we prepared such that we will not let this happen we will not add the buffer so buffer is not the solution the solution is we will resolve what is making us delay so that customer should not get impacted so the challenge area is we should deliver whatever early not add the buffer and delay right right okay and another thing which I have is like on the leadership principle itself you repeated the example right so that is should not be happen right so in leadership principle if you repeat the answer right it will show that you have a lack of experience or experience in various scenarios right so keep ready of also let's you say right the tool is one project which you have lot of experience right have some more project in which you have the exposure okay if you haven't have the exposure let's have somebody's and which you are aware of okay so"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so basically the question so I had this question so since I worked very less time in a major part so earlier I didn't get any chance to work on things now I was getting so basically I had done one major things but"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "you are too good away I'm not saying that but I'm saying never repeat an example right so let's say I was also doing the same mistake that's why I'm saying from my learning right I used to repeat sometime in the leadership principle question I used to repeat my example that okay in the same scenario this is happening right they never share the feedback what happened what happened what what gone wrong in the leadership principle but there's on my experience now when I I don't make this you know and I can know that okay I'm crossing that path so this is something which I improve right so the same experience which I'm sharing with you is today it's okay but as future and you will go have one or two more project where you can talk if you are only concerned to one project and all the examples you will give with that one project only you got you will get caught in that right so have two three projects in handy because all the question is related to project okay what happened in that project what if that project got delayed what if the manager is not happy with you with that project if all the answers you give with only one project right then it will become little bit if"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "we don't have like that particular experience so cannot at least say that I don't have that experience and"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "that is also good actually if you see that you can say that I don't have any experience in that one but this way I will handle this like how you gonna handle you can add that okay from my learning I haven't faced this scenario yet but this is how I am going to tackle if such scenario comes in future right just and then and always it's good to say truth otherwise sometime interviewers become so experienced they will easily catch actually like which one you are saying okay so now comes to the basic part to us know it basic parts few things are very good the answer which you have given for the URL part right that was totally in depth I was looking for host file I was looking for TCP connection 3 way handshake which you cover that is very good right but there are certain part like still some part is related like principle of whoops which is very very needed so since you are one plus years of one around one year of experience not completed one answer this is going to be a lot more useful for you and it's going to be like you can say that the first question in the whoops which going to be put you right because now you are something which you are doing a lot of coding you will be creating lot of abstraction interfaces design so you should know principles right so nobody will ask you what is and what is encapsulation what is abstraction that's why I didn't ask you this question I know you have one year of experience what is in height and what is encapsulation you know what are the principle of whoops that's what matters right so little bit level increases right if you see when I ask pressures so pressures know this basics so principle comes in like with some experience which comes in so in one year you might have to do some coding right you have picked one project you have also worked on that right big scale deloitte is a big so you have got so you should know like during doing the core changes what principle you follow right so that is one thing and there are few basic whoops concepts which are missing but that is not major but the major which I say is that you have mentioned one skill momo db in your skill and when I asked the question on to that you become like you have to think a lot right so that's what I want to say that whatever you are saying if you have a basic in bracket put basic or you say that in a beginning mode right so this way it will give me an intention that you are still learning this I can expect answer or not right so both I should not judge you on that but why I asked a momo db because when I review your resume I see one or two projects done in momo db and skills also you are momo db that's why I thought okay let's jump into that okay so if you think you are not comfortable in any of the skills it's always good to put that basics or in a beginning learning something like that right so that that's why I always say stop the interviewer beforehand itself where you are not comfortable right so if you're not comfortable with java you told me there itself that you have used very basic only with the android I didn't jump into the java itself but momo db I've used like it's a db right so you might have used the as a fully so that's one point apart from that dsa basic is good some minor minor gap is there like like constructor static or not and polymorphism without inheritance like some basic not other that is okay but the thing is the one I told you regarding momo db now let's come to your dsa part so in dsa part right first of all you have very good communication skill whatever you writing the code not a single time in this video you will see later there is a silence right I was totally with you so that is very very good right and also the use case which you are trying to find the edge cases in your code that is also good right so only very minor review commenters like don't take left test right test again take always some meaningful name right so that is always a name right and so this one is good and yeah so code wise little bit can you be so today I plan for two questions actually right so I so the first one is like I plan for 20 minutes and second one also I plan for 20 minutes right 20 second one I didn't expect a solution but first one I wanted to be a solution within 20 minutes right so you were able to find the solution and all so one input is just ask clarify the interview itself like in 40 minutes are we going to have a two questions or are we going to have a one question based on that what you should do is okay now you know that 20 minutes in 20 minutes if you are spending if you get at least one solution coded and then you get a time make it efficient right so that is one thing like at least in 20 minutes you have shown your coding skills right and sometime what happened is you when you when we try to make a code efficient right we lose the time of doing the coding and interviewer I can tell you in many companies interviewer at the 20 minute itself they will stop you they will choose the question and what they will do is in their marking they will mark the question one ask give a very less marking like coding is not even a start in right but what if you do is let's discuss it and if you ask me if you later ask me before trying to find a efficient that okay shrenge can we start the coding for at least this approach right this will solve the issue and then we will try to make it efficient as we have 10 minutes left right so I can say yes let's start with the coding and then if we have a time we will do the efficient approach then you can just tell okay now I will take some pointer of the last node right so we don't have to do the coding but at least we can tell them and then we can tell that okay by doing this I can reduce the time complexity of this by this way you will gain some points there you code it you showed the approach but you don't have to code for the this one then you can switch to the next version right so only that is the point your coding DS is very very good only thing is keep track of the time keep more checked with him like you are okay with this you considering the time limit I am can I start with the coding then we will try to make it efficient right if interviewer said itself okay I am not looking for the brute force approach itself can you make it little bit more efficient then it is okay then you have a proper 20 minutes full time make use of it right so that just one hint on that one like to not lose points on the questions right and everything was else good like I like the communication how you are doing right the approach so always keep the same way right and just keep some smile and all pretty good man things same okay so that's what you are from my side of it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah very I'm happy like see this and so I just actually want to thank you because I know like you're you must be really but still you are trying to find time for us so I mean this is invaluable whatever I say or I queue it's less thank you thank you for that actually"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "thank you thank you for staying so late it's almost 1 a.m so I'm sorry for keeping you so late"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "oh no no oh no thanks a lot yeah"
+  }
+]

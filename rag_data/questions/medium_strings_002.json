@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "id": "medium_strings_002",
+    "type": "question",
+    "topic": "strings",
+    "difficulty": "medium",
+    "pattern": "expand_around_center",
+    "tags": ["strings", "palindrome", "expand_center", "dynamic_programming"],
+    "complexity": {
+      "time": "O(n^2)",
+      "space": "O(1)"
+    },
+    "related_problems": ["easy_strings_001", "hard_strings_001"],
+    "evaluation_criteria": ["algorithm_choice", "optimization_awareness", "implementation"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Longest Palindromic Substring",
+    "description": "Given a string s, return the longest palindromic substring in s.",
+    "constraints": [
+      "1 <= s.length <= 1000",
+      "s consist of only digits and English letters"
+    ],
+    "examples": [
+      {
+        "input": "s = 'babad'",
+        "output": "'bab' or 'aba'",
+        "explanation": "Both 'bab' and 'aba' are valid answers."
+      },
+      {
+        "input": "s = 'cbbd'",
+        "output": "'bb'",
+        "explanation": "The longest palindromic substring is 'bb'."
+      }
+    ],
+    "hints": [
+      "I will expand around each character as the center",
+      "Nice approach! Expanding around centers works in O(n^2). Do you know a more optimized algorithm like Manacher's?",
+      "Remember to handle both odd and even length palindromes",
+      "For each center, expand outward while characters match"
+    ],
+    "edge_cases": [
+      "Single character string",
+      "String with no palindrome longer than 1",
+      "Entire string is a palindrome",
+      "String with all same characters",
+      "Empty string"
+    ],
+    "follow_up_questions": [
+      "Can you implement Manacher's algorithm for O(n) time complexity?",
+      "How would you count all palindromic substrings instead of finding the longest?",
+      "What if you needed to find the longest palindromic subsequence instead?"
+    ]
+  }
+}

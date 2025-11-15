@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "id": "chunking_strategy",
+    "type": "configuration",
+    "topic": "chunking",
+    "difficulty": "all",
+    "pattern": "text_processing",
+    "tags": ["chunking", "text_processing", "retrieval", "optimization"],
+    "evaluation_criteria": ["chunking_effectiveness"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "strategy_name": "DSA Interviewer RAG Chunking Strategy",
+    "description": "Optimized chunking approach for technical interview content to maximize retrieval relevance and context preservation",
+    "general_principles": {
+      "target_chunk_size": "250-400 tokens",
+      "overlap_strategy": "50-100 tokens semantic overlap",
+      "context_preservation": "Maintain logical boundaries and complete thoughts",
+      "metadata_enrichment": "Each chunk includes rich metadata for filtering"
+    },
+    "document_type_strategies": {
+      "questions": {
+        "chunk_size": "300-400 tokens",
+        "strategy": "semantic_sections",
+        "chunks": [
+          {
+            "name": "problem_statement",
+            "content": "Title + description + constraints + examples",
+            "size_target": "350 tokens",
+            "metadata_focus": ["difficulty", "topic", "pattern"]
+          },
+          {
+            "name": "hints_and_guidance",
+            "content": "Hints + edge cases + follow-up questions",
+            "size_target": "250 tokens",
+            "metadata_focus": ["guidance_type", "difficulty_level"]
+          }
+        ],
+        "overlap": "Include problem title in both chunks for context"
+      },
+      "solutions": {
+        "chunk_size": "300-450 tokens",
+        "strategy": "logical_sections",
+        "chunks": [
+          {
+            "name": "approach_explanation",
+            "content": "Approach name + intuition + algorithm steps",
+            "size_target": "300 tokens",
+            "metadata_focus": ["approach_type", "complexity"]
+          },
+          {
+            "name": "implementation",
+            "content": "Code + key insights + common mistakes",
+            "size_target": "400 tokens",
+            "metadata_focus": ["language", "implementation_notes"]
+          },
+          {
+            "name": "complexity_analysis",
+            "content": "Time/space complexity + optimization notes",
+            "size_target": "250 tokens",
+            "metadata_focus": ["complexity_class", "optimization_level"]
+          }
+        ],
+        "overlap": "Include approach name and problem reference in each chunk"
+      },
+      "concepts": {
+        "chunk_size": "350-500 tokens",
+        "strategy": "hierarchical_sections",
+        "chunks": [
+          {
+            "name": "concept_definition",
+            "content": "Definition + when to use + key characteristics",
+            "size_target": "350 tokens",
+            "metadata_focus": ["concept_type", "difficulty", "applications"]
+          },
+          {
+            "name": "implementation_patterns",
+            "content": "Code templates + common patterns + examples",
+            "size_target": "450 tokens",
+            "metadata_focus": ["pattern_type", "implementation_complexity"]
+          },
+          {
+            "name": "problem_applications",
+            "content": "Common problems + optimization techniques + pitfalls",
+            "size_target": "400 tokens",
+            "metadata_focus": ["application_areas", "optimization_level"]
+          }
+        ],
+        "overlap": "Include concept name and core definition in each chunk"
+      },
+      "transcripts": {
+        "chunk_size": "200-350 tokens",
+        "strategy": "conversation_exchanges",
+        "chunks": [
+          {
+            "name": "exchange_chunk",
+            "content": "2-4 conversation exchanges maintaining context",
+            "size_target": "300 tokens",
+            "metadata_focus": ["interview_phase", "speaker_roles", "interaction_type"]
+          }
+        ],
+        "special_handling": {
+          "preserve_speaker_context": "Always include speaker identification",
+          "maintain_flow": "Ensure conversational continuity across chunks",
+          "timestamp_preservation": "Include timing information for context"
+        },
+        "overlap": "Include previous exchange for conversational context"
+      },
+      "rubrics": {
+        "chunk_size": "250-400 tokens",
+        "strategy": "criteria_sections",
+        "chunks": [
+          {
+            "name": "evaluation_category",
+            "content": "Category description + scoring criteria for one level",
+            "size_target": "300 tokens",
+            "metadata_focus": ["evaluation_category", "score_level"]
+          }
+        ],
+        "overlap": "Include category name and weight in each chunk"
+      },
+      "feedback": {
+        "chunk_size": "200-300 tokens",
+        "strategy": "template_groups",
+        "chunks": [
+          {
+            "name": "feedback_category",
+            "content": "Category-specific feedback templates",
+            "size_target": "250 tokens",
+            "metadata_focus": ["feedback_type", "performance_level", "scenario"]
+          }
+        ],
+        "overlap": "Include feedback category context"
+      }
+    },
+    "chunking_implementation": {
+      "preprocessing": [
+        "Clean and normalize text formatting",
+        "Identify natural break points (headers, sections, code blocks)",
+        "Extract and preserve metadata",
+        "Handle special formatting (code, mathematical expressions)"
+      ],
+      "chunking_algorithm": [
+        "Identify semantic boundaries using document structure",
+        "Split at natural break points when possible",
+        "Ensure minimum and maximum chunk sizes",
+        "Add contextual overlap between adjacent chunks",
+        "Enrich each chunk with relevant metadata"
+      ],
+      "post_processing": [
+        "Validate chunk coherence and completeness",
+        "Ensure metadata consistency",
+        "Generate chunk embeddings",
+        "Create cross-reference links between related chunks"
+      ]
+    },
+    "metadata_schema_per_chunk": {
+      "core_metadata": {
+        "chunk_id": "unique identifier for the chunk",
+        "document_id": "parent document identifier",
+        "chunk_type": "problem_statement|implementation|concept_definition|exchange|etc",
+        "chunk_index": "position within document",
+        "token_count": "actual token count of chunk"
+      },
+      "content_metadata": {
+        "topic": "arrays|strings|trees|graphs|dp|etc",
+        "difficulty": "easy|medium|hard",
+        "pattern": "sliding_window|two_pointers|dfs|etc",
+        "tags": ["relevant", "keywords", "for", "filtering"]
+      },
+      "retrieval_metadata": {
+        "interview_phase": "problem_intro|clarification|solution|optimization|evaluation",
+        "speaker_role": "interviewer|candidate",
+        "interaction_type": "question|hint|explanation|feedback",
+        "complexity_level": "basic|intermediate|advanced"
+      },
+      "relationship_metadata": {
+        "related_chunks": ["chunk_id_1", "chunk_id_2"],
+        "prerequisite_concepts": ["concept_1", "concept_2"],
+        "follow_up_topics": ["topic_1", "topic_2"]
+      }
+    },
+    "quality_assurance": {
+      "chunk_validation": [
+        "Ensure each chunk is self-contained and meaningful",
+        "Verify that code snippets are complete and syntactically correct",
+        "Check that mathematical expressions are properly formatted",
+        "Confirm that conversational chunks maintain speaker context"
+      ],
+      "coherence_checks": [
+        "Validate that chunks flow logically within documents",
+        "Ensure overlap provides sufficient context",
+        "Check that metadata accurately reflects chunk content",
+        "Verify cross-references are valid and helpful"
+      ],
+      "retrieval_optimization": [
+        "Test chunk retrieval with sample queries",
+        "Ensure diverse content types are represented",
+        "Validate that similar concepts cluster appropriately",
+        "Check that edge cases and variations are covered"
+      ]
+    },
+    "special_considerations": {
+      "code_handling": {
+        "preserve_syntax": "Maintain code formatting and syntax highlighting",
+        "complete_functions": "Ensure code chunks contain complete, runnable functions",
+        "language_tagging": "Tag chunks with programming language metadata",
+        "explanation_coupling": "Keep code and explanations together when possible"
+      },
+      "mathematical_content": {
+        "formula_preservation": "Maintain mathematical notation and formatting",
+        "complexity_notation": "Preserve Big O notation and mathematical expressions",
+        "symbol_handling": "Ensure mathematical symbols are properly encoded"
+      },
+      "conversational_flow": {
+        "speaker_continuity": "Maintain clear speaker identification",
+        "context_preservation": "Ensure conversational context is not lost",
+        "timing_information": "Preserve temporal aspects of conversations",
+        "emotional_tone": "Maintain tone and sentiment information"
+      }
+    },
+    "performance_metrics": {
+      "chunk_quality_metrics": [
+        "Average chunk coherence score",
+        "Percentage of self-contained chunks",
+        "Code completeness rate",
+        "Metadata accuracy percentage"
+      ],
+      "retrieval_effectiveness": [
+        "Relevant chunk retrieval rate",
+        "Context preservation score",
+        "Cross-reference utilization",
+        "Query-chunk semantic alignment"
+      ],
+      "system_performance": [
+        "Chunking processing time",
+        "Memory usage during chunking",
+        "Embedding generation efficiency",
+        "Index update performance"
+      ]
+    }
+  }
+}

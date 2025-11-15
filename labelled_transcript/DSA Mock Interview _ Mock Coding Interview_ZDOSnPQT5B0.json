@@ -1,0 +1,590 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "So let's start with the interview and best of love."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let's start with like, could you please give basic introduction about yourself?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Samandh Tadhik Marutra and currently I am pursuing B. Tekken Computer Science and Engineering from Lovely Professional University. And right now I am in my fourth year of my undergraduate program and talking about my experience. Currently I am working with Babali AI as an native C++ developer intern and talking about my technical skills. I have good knowledge in the field of research, success and algorithms as I have solved many problems on various platforms. It code, it for geeks and all. Talking about my interest and hobbies. Like I have an interest in gardening. I love to spend time my free time in my garden and I have a habit of doing daily workout which helps me to feel energetic and motivated for the entire day. And this habit helped me to lose around 20 kg of weight in the previous six months. That's all. Thanks. That's all about me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Thanks, Tadhik for this one. Okay. So I will also let's start on the pattern. So Hardik I will be asking some basic questions of OPs and DSA. And after that we will be having two questions of 20 minutes each. Right. So I will keep you reminding of the time. And once we reach to the 20 minutes so we will just switch to the other questions so that we have sufficient time for the other question also. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And at last five minutes we will keep it for the feedback. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So and thank you for the introduction and let's start with. So Hardik what do you understand by OPs?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "OPs is like object oriented programming. Its performance is object oriented programming. By this term I understand like there is some, this is the way of representation where we represent things in the form of classes and objects. So it is very much related to the real life scenarios. Correct. Like like let's say trees are class, plants are a class and then particular plant is its object. Like every plant will have some similar properties. Correct. Yeah. And in those there are many concepts such as like we can also represent the inheritance that is in our real life also and there is concept of extraction and polymorphism and encapsulation these are some of the features."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you give me one or two line of each of this feature?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So talking about inheritance like it is the parent representing something in the form of parent and relationship like there are classes and objects so this is sorry there are inheritance between classes. So talking about abstraction, abstraction means like hiding the hiding like what is happening behind the scenes just giving the user that front end like let's say we drive a car. So we know how we have to apply bread to stop but we don't know what is happening behind the scenes when we are playing any bread. Talking about encapsulation encapsulation is like summing up all the properties in one entity. It is very much related to the term capsule. So we include all the functionalities and data members and everything in a class and yeah these are the features."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What do you mean by an harita gun composition? What's it? What do you mean by an inheritance and composition?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I don't know about compilations or sorry."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What is hazard relationship? Hazard relationship. Hazard relationship."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. When you told me about inheritance, what relationship it tells? Is the relationship hazard relationship? Parent hazard. Parent hazard. Yeah. I guess the inheritance is like as relationship like parent hazard. It's child. I'm not very much on-fraindable about this topic."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. So an inheritance is a relationship generally and composition, what does it mean is like when you have one object inside another object. So one object has another object."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. It's like an inheritance is a. So, okay. No, I don't know. I got things connected."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So you told me inheritance properly with the example, but these are the terms which also popular with that. You're getting your points. So, okay. So let's come into the, okay. And what do you mean by BST?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Bind is a street. Okay. So, by any search, street is like if we talk about a particular road node, all the nodes to its left will be smaller. And all the nodes to its right will be larger than it. And it recursively true for all the."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Goats. And where we mostly use BST?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like, because searching in a BST is the log and time. Correct. So, when we need something in the log and time complexity where we can search easily, there you can use. Like in the, I guess in the concept of ordered sets and ordered maps, there is the concept of searching in a log and a. So, BST mostly used during the searching faster search."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, how can you tell me what is topological sort?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Topological sort. Like, topological sort is a concept of graph, where like if there is a relation, if there is an edge between you to V, then it is mandatory that you will come first in our topological sort. If there is any kind of dependency. So, yeah, so it is sorting where the one which is dependent on someone will come later. Correct. Like, you can relate it with the core schedules. Like, if we want to complete, if we want to learn about software development, we need to have the knowledge of data structures and some concept of hoops."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you give me in one line the difference between T and a graph?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The difference between T and a graph. Okay. So, T is basically a type of graph. Like, we can say it is a undirected and a cyclic graph. And graphs are representation in the form of vertices and edges. Correct. That's an a cyclic. So, there is no cycle present at the tree. Yeah. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, I am done with my base GSA. So, let's move to the next part of the interview where we will be like 20 minutes each for two questions. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you can feel free to share your screen also so that I can give you a question. You can write it there. So, I will just start you like whenever we start the timing. I will just keep you reminding the timing. So, share. Okay. Do you know my screen is just below notes?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. Your screen is visible."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And see, can you increase the font little bit if it is possible?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Font. Okay. Yeah. Make it. Yeah. Yeah. That's better. I see."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, first question is. So, I see. Are you also okay? So, you are also representing. That's why. It is showing a lot of kind of the same screen again."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, if I will show something in this interview. So, firstly, you will share your screen and please explain the questions. That will be more."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Can you stop sharing this screen this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I don't know what's happening here."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, sir? So, this like, how this is coming that I don't like. Is it an issue because of you are also presenting?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, that's not like it is showing again and again just because I am presenting. I think it's a Google meet. I know it's a Google meet. Issues."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I will tell that I will explain the question. Right. So, just see like if you can do it into like any you can write the question also in your copy. Right. And then we will see. So, the question is you are given an array. Okay. Right. You are given an array and you are given some numbers. Right. Not in a sorted form. It can be jumbled also. Right. So, what you have to do is you have to tell me the minimum operation and what is operation is you can increment and decrement by one. Right. Each number you can increment by one or decrement by one. So, you have to tell me how many operations minimum operation you have to do so that all the numbers become same. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, let me give you an example. Let's say one, two, three."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, in this case, in the case of one, two, three, so if I, so what is the minimum number of operation is two? How? So, if I increment one by one, so it will become two."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Second number is already two."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And the three, if I reduce one, it will also become two. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, how much operation I did, two, operation I did. So, plus one, I did for the first one and minus one, I did for the third one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Getting you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what we have to return is what is the minimum number of values? I have to either add or subtract."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, that all the numbers become same."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Getting you. Okay. So, I will give you one more example. Another that you can go through. So, one more example you can write is one comma ten comma two comma nine."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, now in this case, if you see that how to become the equal values is, the output is 16, one six."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I could come in is 16."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "16, one six. So, if you see that I will increment one by certain numbers, I will increment two by certain numbers. I will decrement some numbers. Right. So, somehow the total addition of subtraction is 16 value. I have to do to make all the values equal. Getting it. So, question is simple. Right. Now, use your like wherever you wanted to code. Like, so just take your time. Just see if you have any doubt ask questions."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I am rehydrating the question. So, the problem is like I am given an array where elements. Sir, can you give me the constraint like elements will be all positive, negative or something."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, element would be all positive here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And elements will be all positive. Okay. So, the question is, I am given an array with an elements and these elements are positive. And for each element, I can do possibly two operations like either I can increase it by one or either I can increase it by one. And at the end, I have to make all the elements of the array as equal. Like, let's say the style of arrays in the first example, one, two, three. Let's say, now I am sharing my screen. Okay. So, it will be more comfortable for me to explain. So, it is my screen."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, it is possible."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, test case one is. One, two, three. Yeah. So, the array given to me is one, two, three. And the output coming will be two. And you know how I, I will be making all the elements as two. So, I will be increasing the first element by one. It will become two. And if you want to be increasing anything in the second element. And in the last element, I will be decreasing by one. So, it will also become two. Okay. And the test case that you gave second one was, one comma ten comma two comma nine. And here, output is coming as six ten. Output coming is six ten. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now, okay, I will start your timer. So, it's nine fifty three. I will keep you updated after 20 minutes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, let me think how the output for test case two is coming. So, let's say I sought the values for understanding now. Ten. Okay. So, either, let's say if I try to make every one ten, then on how many operations will be there? There will be nine plus eight plus one. That is equal to 18. If I try to make every one is nine. So, it will be eight plus that will be seven plus zero plus one. I will be decreasing ten. So, answer for this one is coming as sixteen operations. Okay. And let's say I want to make every one is two. So, it will be one plus zero plus seven. Plus eight. Okay. It is also coming as sixteen only. Okay. And if I try to make every one one, then it will be one plus eight plus nine. Okay. It is eight minus seventeen. Okay. Okay. So, if I make everyone as either nine or either I will make them two, in the out to this coming as sixteen. Okay. So, once, one number nine, zero, one, four, five, six, seven, eight, nine, ten. And I am having numbers at one, two, nine, and ten. So, for making ten, I will be moving this one, this one, this one, this one, and moving to this one also, this one, this one, this one, and moving this one also, this one, this one, so, what I am able to think is, if in the particular test case, I try to come in between values, like one, two, seven, nine and ten is the worst case. If I try to come to five, then it will be all. Let me check for the test case. If I am trying to reach five, five, okay. Then, I will be moving the one as one by four times to the right, two by three times to the right, and nine by, nine by four times, and ten by five times. So, it is coming as seven, plus four, and again, it is coming as 16, okay. One, four, the other, it is coming as 16. Let me take one more test case, like things are not very clear either. I am getting one instinct that either the answer will be the median of the given values, or it will be the answer will be the average. So, I will be taking one more test case, answer will either mean or median. So, it is I am taking one test case as two, seven, and let's say I am increasing the range by more value, let's say I am taking at 18 and 13, 14, 30. So, if I find the mean, it will be, 13, so I guess I answered one before median, because I am trying two plus seven, y plus y, just a minute, so I am checking one. So, the sum is, it is 30, 57, and by four, it will be somewhere around one times, 14 times, okay. So, the average will be at 14, so the answer for 14 will be, 13. So, I guess the answer will be median, because in that case, we do not have the median will be one of the elements from the array only, and we won't be, for at least one element, the answer will be coming to be zero. It will be indicating of, why median, why not average? Because for average, like we have to move each and every element to average, and distance will be more. But in case of median, it will be some element from the array only, let's say for this test case, 278, 18, and 30, the median will be at 18. So, what would be the time complexity of this? So, for finding the median, I have to sort the error first, so it will take and log in time, and then I will find median in one. The answer will, and complexity will be in log in time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you write the code?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Let's say I'm a farmer's tool. It will be equal, and a vector, and a numbs is coming. Okay. So, firstly, I will sort the numbs.picking. Oh my numbs.n. I'm finding the sizing, and anybody numbs.size. And I will move the element, is equal to the numbs of, in the file. Okay. So, in total operations, let's say I initialize it with 0, then for I will traverse all the error, and I is equal to 0, to I, this 10, and I plus plus, total of 3, shows plus is equal to, well, admitted the numbs at I minus cách. You can vote wait operations. Very jack punch, So, you can't ignore any, as all call the solve function over noise and form the middle element, and ignore total operations and input all operations and adding the absolute value of difference, as I am increasing or decreasing. Yeah, so this is the m-read function. Yeah, I am good with the solution."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we have saved some time here, so it's only 10 minutes. Okay, so let's move to the next question. Right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you saved your time little bit, so for next question now you have almost 30 minutes. Right? So, the next question is like, so you have to find out x raised to power n. x raised to the power n."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, x raised to power n. Right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you need to compute this value. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, any constraints for x and n?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, it would be like, it could be in the, so x could be in decimals also. Right? And it could be in the decimals also. Right? And n could be very big, like it's, you can say that it's 4 times 9, 7 times 9, 7 times 9, so it could be or big number. So, what is n golden? And n could be very big. Let's say I can also try 0.1 raised to power 99999, that could be big also. Right? So, these are the constraints. And just one heads of heart, so it's heavily raining. So, if there is an interrupt in the connection and all, so I will join back. I will connect from one more. So, stay online, I will be back. If there is any internet connectivity show."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, you got the second question. So, you have to find x raised to power n. Right? So, let's say I have given you 2 raised to power 4. So, you have to write a method which will compute this 2 raised to power 4 and give me the value."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Given you the constraint, that what could be the x and what could be the y?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, problem is find x raised to power n."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Okay. Where x can be double format in decimal also and n can be very large. Okay. So, for example, test case when I am taking is 2 to the power 4. Okay. So, if what do we do the power 4, the answer will be 4 and 60. Okay. Getting in mind. So, I am able to come with a brute force approach like we will write a recursive function which will compute the."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, which will compute the x to the power n? Like, we will, the recursive relation will be something like that. Like this. Like for, let's say, I write a function x to the power n. And so, for answer of x to the power n, the answer will be x star function of x comma n minus 1. Yeah. So, this will be my recurrence relation for a given question. So, what is the time complexity? The time complexity for this one will be O of n. Where n is the power like x power n. So, shall I write this brute force approach or?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let's not go for the brute force. See, can you let a little bit make it efficient?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Before making it efficient, I am taking one more test case. Like, as you mentioned, the x can also be double format. So, test case 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, for simplicity, let's do not think very much about the double. Just take it as an integer. But once you do the approach, we will make it run also for the decimal code. But for simplicity and for the time sake, just concentrate on it could be an integer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But n is very large. So, somehow, let's, we need to make it a little bit efficient. So, let's first concentrate on that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, currently, I am telling the approach is going time complexity. So, let me think of some O of, either log n time use or that, the big value can be decreased. So, let's take an example of, let's say I am, let's do the power, 4. So, it will be 2 star 2 star 2 star 2. Okay. So, I didn't think it was that. So, if I calculate the value of this half part towards the left, then it can be used for the calculation purpose towards the right side. So, it is basically written as 2 to the power 2 star 2 to the power 2. Okay. So, we can use this property like we can divide it into 2 parts. Let's say power given is n, then let's say, I am writing the recurrence relation for the solution that I am telling. Let's say, for the solution, f x, n, it is basically equal to f of x, n by 2 star f of x, n by 2. Okay. So, since this, in this recurrence relation, the, this part, left part, and the right part are similar. Correct. So, we will find this, we will store this solution of n by 2 in a variable, let's say x, and I will be storing it f of x, n by 2. So, I will be writing here as just this one, like x star, I will calling only one time, not two time. Got it, got it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. This is the approach that I am able to think. Yeah, any use case which is missing?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, it will, the use case that is critical over here is like when the power is odd. Let's say, I am taking an example, f, 2 to the power, 7. So, it is, so n by 2 will come as, let's say, 3, so n by 2 is 3. So, I will be calling function to 2 to the power 3, once then the solution will be, okay. So, solution will be like 2 to the power 7 will be 2 to the power 3, start 2 to the power 3, start that is 2 to the power 1. So, in this test case, I have to make sure, it was properly. Yeah, and what is the time complexity of this approach, are they?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, this will be log n, log n, since we are dividing the power from the grid power. So, it is decreasing by a factor of 2 every time."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually, I am good with this approach, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. So, the code would be very simple, so you have already written the formula, so that would be very easy. So, that is very nice. And, okay, so since we have some time, so I will use this time to see more of some fields. So, can you little bit tell me about the min heap and max heap?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, sir. So, min heap is actually a data structure, where the topmost value in our heap will be the smallest value out of all. So, and it is not mandatory that all the values towards left will be smaller or all the values to the right will be greater. But, all the values below it will be greater for sure. How does heap 5 works? Let us say I want to insert something. Let us say I am taking one example of a min heap approach only, so let us say we are building a min heap and we are trying to build insert some value. How it does insert into the heap?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so let us say my heap structure is something like this. So, basically heap is a form of complete bind rate. So, all the notes about the last level will be filled for sure. And, all the notes in the starting of the last level will be filled. It can be left out in the end of end of the loop. Let us say this is my... So, I am taking one example that I want to insert 3 into it. So, is this a min heap?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, I have a min heap. Does it have any easy filling sample?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, exactly."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, let us first try to insert a value into that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, so I will put the element over here. Since these two positions are filled in the last level, then I will add this element in the left part of 5. So, since it is a property that the value higher in the level will be having smaller value and the values in lower level. So, I will swap these two values. That is 5 with 3. So, it will be 3 and 5. I will check its parent, 3 is parent, which is 2. So, since it is smaller, so it is following the property of min heap. That is why I won't be doing anything and this is... What is the entire complexity for doing the heap 5?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It will be log-insert. And what is the overall time complexity of heap? Overall time complexity means for making an entire heap with an element."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And the entire element or like... Yeah, you can say that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It will be... Let us say, for... In every case, it is O of N, but in worst case, it will be O of N log-in."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "N log-in, correct. Good. Okay, that is pretty much from my side, Hardeg. Right? So, any feedback for me before we jump to your feedback?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, everything was fine, really. Okay. I haven't given too many interviews still long, so how I can give feedbacks to you. No, if anything, you feel like cushion was not layered or I was hurrying it up. Or something which you think I can improve."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, everything was fine, so you are taking... Okay, very nice interview. You are doing great work for the office. So, let us come to the feedback, man. So, for this... Stopping. Yeah, you guys know. So, you guys know, I am not sure if you have done this question before or not, but the way you have explained me, I feel that you have taken me like how you think through. Right. So, at least I was able to build the logic with you also. Even if I am new to this question, right? The way you have explained. No way I have felt that, even if I am new to this question, right? The way you have explained. No way I have felt that, does... I think knows this question or not. Even if you have solved it, but the way you have explained, right, each and every detail. You have not directly jumped to the answer. You have a thing through from the start that, okay, what if this will happen? What will this use case will happen? And then you told, okay, if I go with this, then it would be the better. So, that was very nice. So, based on this two questions and all the questions which you have answered, I can say that your DSF preparation is very good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, awesome work on that. Another thing which I like is, you are clarifying the questions if you are not clear, right? That is very important. You are thinking out loud. So, know where in the, if anybody will see this video, right? I will just say that the way you have taken after I just stop, and then you have taken over, there was a never a gap where there is a silent in the video."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, it was the call us thinking out loud or discussions, right? So, that was very nice. So, thinking out loud also, I was totally engaged with you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, the code which you have written is the one which I said is very clean coding. So, you have taken the proper variable names. Only thing is I and J which still try to avoid I and N as much as possible. But otherwise, all the names which you have taken is good, right? So, for the second question, you have come up with the brute force approach. That is also very good. So, always come up with the brute force approach."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You are oops, sir. We have asked so many oops concepts. So, you have explained with example. That was very, very nice even sometime. Interview wants this kind of example. Only thing is like you know, but the words other than like composition. You know. Even now after this interview, I can surely say that you definitely know if I can tell you, you can create a class which has a has a relationship. Like you can know I and you have to create an object inside an object. So, you might be knowing but you didn't know the word composition."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right? So, it is a little lack of revision in the colleagues concept. So, just take care of this words also like the terms. Is the relationship is nothing but a inheritance."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, I know you told me inheritance, you told me with an example. So, you know what is inheritance. But somebody can ask you also what can you explain is the relationship."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you should know that the message is nothing but is asking for an inheritance."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, just look for like which inheritance was also called as one. Right? So, that is one thing like just see what all other terms can be used for that approach also. Right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is getting."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Time complexity is your good. Like for all the approaches, the time complexity brute force plus approach wise, time complexity I didn't see any doubt. Plus all the DSA basics logical question which I have, time complexity perfect. So, that is also very important. I can say that you are very good in approach building. Like if you have come up with the approach right, this one right, it is like then I can say your DSA would be like awesome at this point of time. Right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is very very good. That is overall like say it is a very very positive feedback. I won't take a 1 second 2 or recommend for the second on it. So,"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you. Thank you. Like to expect a little hard question from you. Like from the previous videos I was, the questions are like a little harder."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No actually, extra power and was very hard. Like I don't say very hard, but if you don't know that property right, extra power and can be used wise. Like, but that is what I am saying. Your approach building is very question. So, for this question also you feel easy. So, now I am thinking I should have prepared the harder question for you. So, yeah, that is what I am saying. Your approach building is very good. Your DSA is good. Even these questions, I thought that is why you have given two questions, 20 minutes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Because I know I have choose little bit easier question because of the time constant. I want to put a pressure on with the time. But you are very fast on this one. So, like you can say I failed on it or you are very good. But now I am thinking I should have prepared the good day for me. That problem is falling in my book actually."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is pretty much good that at least with the questions which you have, like easy questions and whichever you have practice and with the time limitation, that is all good. Right. So, there is no issue I think. I can also take another round of for you also with full hard questions also. Right. So, no problem at all. I just need to find the time. I can also take one or more also no problem in a day that night. But yes, your DSA is good and I can know like if I am going to take another round, I will definitely prepare some hard questions for you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But for this interview it was very, very positive feedback. So, even so hard it does not matter only for the questions. Right. Even let us say I asked some medium level, medium easy level question because of two. Right. The way other questions which you have answered and the way you have a speak."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Where you are answering. That is very, very nice."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. So, if you say that DSA is 50% 50% is also this thing. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, I would say that your good in DSA but apart from this other things are also good. Right. So, how will you rate me in terms of communication?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Communication was very good. Like before when we started right, it would be that much good. So, you were speaking like it is a very hard actually. Right. Thinking out loud is very, very hard. So, sometimes we think right there is a pause for five minutes. Right. So, that was very good. Like even we sometimes we know the answer right. We are not able to express and like, I am going from this to this. Right. So, sometimes we do is like we can do okay, I will this use case and then suddenly jump to this. So, interviewer doesn't feel much connection. Okay. He might have known. But the way you have done, I never at a single point of time I know that you know the answer. I am not sure you know the answer before or not. Now you can tell me but the answer lay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, like the problem that you ask to the power and it is basically taught in universities not as also. So, things are familiar."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Things are, yeah because this is a mathematical problem. You just crammed the problem when I was in my first year but now I, with the time I got the concept. Because I correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, if you see the overall video right, overall interview wise. That was good. So, you know DSA that is also okay right. So, you got some reason what's the next. So, actually it's the same thing happens in interview right. So, in the during the placement. So, there are multiple interviewer comes in. Like I will tell you my experience when I, when we were going for the placement right. So, let's say one company comes in right there. There are multiple interviewer. So, when we go right. So, we were thinking like okay, I will interview him. He is asking easy questions. Like it's literally true that one interviewer asked some easy questions, one interviewer asked hard. So, it's a luck also sometime. So, it is a hard work plus luck sometimes you get the questions which you are expecting. And this is also a critical that even if you know. So, see in the placement there also ask puzzles. If you know right. So, what are the questions? Yeah, they ask puzzles and sometime what happens is we take so many puzzles right. And it's a very, very high chance that sometimes they ask the puzzle which we already know. And one mistake which my friend was this is he asked the puzzle and he know the answer. And even before the interviewer didn't completely give the answer. So, that's why he rejected you guys you know like. So, this is also a skill like if you know the answer take me to the journey like how you are building that thing. So, that is also a skill which is very good. So, I am very, very much positive for you like. So, you are going to do very much good in your placements. Keep this DSA part good and the way you have done it chill like I am not sure it is a mouth that's why you are so chill. So, just keep the same attitude. Just chill, keep the smile on and do DSA properly. And rest everything is totally good. I really like the interviewer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, all the same. And maybe in the next round when we will do like I will definitely prepare the hardest for you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, we will be more roundly."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I will be late."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, thank you. Thanks a lot. Thanks for staying in the entertainment. Thanks a lot, Hadeh. See you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you. Good night."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good night."
+  }
+]

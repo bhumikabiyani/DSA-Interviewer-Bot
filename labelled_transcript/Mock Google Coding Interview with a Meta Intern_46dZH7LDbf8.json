@@ -1,0 +1,246 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so I'm gonna start the timer right now. Okay. Okay, so this is a question. I want you to design a class that supports these three operations. So the first operation is inserting a value. And you can assume that there's no duplicates allowed. So you might be given a duplicate, but you don't want to actually store the duplicate. The second thing is removing a value from this class. And where it gets interesting is I want you to be able to get a random value that is already inserted. And among the values that are inserted, I want it to be of equal probability. So just these three operations."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. All right. So let me just repeat the question back to you to make sure I understood it. From what I understand, I have to create a class that essentially has three functions. One is to insert an element. Second one is to remove an element. And the third one is to get a random value that is currently in the class. Is that correct?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep, that's exactly right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Nice. Are these values like integers or strings or like animals? Like are these specific something?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, you can assume that they're integers."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. All right. Great. So... So then let me ask you this question. Are there going to be a lot of elements we're inserting or is it just going to be a certain amount?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can assume that it's like a reasonable amount, like less, maybe like in the terms of millions. But it's... You shouldn't run into like any limitations like with memory or anything like that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So let me ask you another question. Is there going to be more insertions done or more removals done or more get randoms done?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Ah, you can assume that there'll be like of equal quantity, like equal proportion."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Thank you very much. I'm going to ask you one final question before I start coding. Can I code in Python?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Here we go. So the first thing I'm going to do is create a class. Wow, there's auto-capitalization in this Google Doc. I don't know why you guys perform your interviews in Google Docs. I think it's very stupid, but... All right. So class... Um... Okay. So let's just call this a store. Class store. And we're going to start with the constructor. Is there a way to turn off this auto-capitalization? This is really annoying me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I can just ignore it. Yeah, you can just pretend like we can ignore the capitalization. You can just just... Hey. Try to ignore it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I'm just going to say it's not very inclusive of you because I have OCD and this is pissing me off. All right. So constructor in it. And this will be the constructor. So here we go. What is... What are the variables we need here? Right? We are inserting values and removing values. So we need a data structure to store these things. So let's think about... What we actually can use for this. We can either use an array. But if we use an array, inserting or removing will be... Okay. So it will have to... It will be all of one on average. But since we're inserting a lot of elements, okay, we'll have to keep growing in size. It might be useful for the get random since we have an index. Okay. All right. Let me just think about this for five seconds. Okay. So if we use an array to insert these values and we don't want duplicates. So let's say we just use an array and we insert values. Removing a value will be all of events since we have to find the actual value. So let's say we use a hash map to insert these values. We can make sure that there are no duplicates. And we can make sure that inserting and removing is on average very fast. All of one. Now... It sounds good to me. Okay. Okay. The third thing we have to consider is we need to get a random value out of everything that is inserted. Hmm. How to get a random value with equal probability."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. When it comes to getting random, I'll actually help you out here and just let you know that you can assume that there is a method. Let's call it random.choice I think in Python. And it takes some list of values and it'll return you a random number with equal probability from that list."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I actually already knew that, but thank you very much for the reminder. So let me just start by initializing a hash map. Map equals to inserting values. Okay. This. So the next function will be insert. Def insert. And for the parameter, it will just be a value. Right. We're passing one value to this function. Okay. So let's see. I think we can just insert it directly like this. Value inside of it. I think this can actually just be a set. Since. Starting a value. We're moving. Okay. So there's nothing for the input. Is it just one value or is this something else during the insertion?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, you can just assume that's an integer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Then I think what we can just do is. Add this value to the set. And. Okay. And then for the remove. And just remove value. From. That. Move. So these will be very quick operation. Um, no duplicates. I think this is fine since it's set. So if there's already one, it will just replace it or not put it in. Um, and then for the get random. Uh, get a value that is already. Um, okay. So if there's a function that you can just get something from a list. Randomly. I guess the easiest way is to just convert this set into a list and use this function on it. Okay. So we can just do return. Oh, yeah. Return. Random.choice. List. Self.man. Yeah. And yeah, let me put this here since these are class function. Okay. Um, so. We can also also add some checks for the set like to see if it's like empty or not before removing. Um. We're to see if this map exists. But I think that's fine since by initializing this class, uh, this map will exist. So yeah, this will be all of one insertion of one remove and, um, this will be. Oh, and for the get random and yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, that's correct. So this definitely works. Is it possible to get the get random function to be a bit more efficient?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, uh, this random got choice is all event correct like it has to iterate through the entire list to, uh, give an answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Well, let's assume that the random is actually constant time. So. Where your function is becoming linear time is converting the entire set to a list."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I see. I see. Okay. Okay. All right. Hmm. Okay. So let me think about this, um, since the conversion is. It cannot be avoided if we use a set. I'm assuming, uh, for this to store these values, we probably have to use an array. So. Um, the problem with using an array is the removal will be, uh, not efficient anymore. Is that an issue? Or do we want all these functions to be of one? Is that what we want?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, that's a good point because if we do it the way you kind of proposed, we can get the get random to be more efficient, but remove will then be linear time. So we don't really improve anything, assuming that each of these is called like an equal amount of times, which you clarified. So, uh, yeah, you're on the right track. I, is it possible that we can get all three of these to be constant time?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Hmm. Let's see. Hmm. Okay. So I think we probably have to use a combination of data structure here. So let's say we have an array where we store these values and, um, yeah, we insert and we remove values from there. Um, so let's say we have a hash map that stores the index of each value. Um, then, um, when we remove, we can just remove it from the hash map and take a note there. And then we know that it's not in the array anymore, even though it's like technically stowed there. Um, then we can fix the problem of removal being slower. So then removal and insertion will both be on average or one. But then for the get random, there will be, there will be integers in the list that are not supposed to be in there. Okay. So, um, how do we make sure that those integers are not taken into account? Um, um, okay. What if every time we have a value we want to remove, and we know where it is in the array, right? So let's say we switch the place of this element to the beginning of the array. And we're to the first element that is still supposed to be inside this array. So then we can essentially segregate, segregate, separate all the values that are technically not supposed to be in the array, and all the values that are supposed to be in the, in the array. So once we have all of this separated, um, what can we do then? Okay. So I'm thinking if we have all this separated, right? We know where the separation is. We can probably know, um, the last element that is not supposed to be in this array. From there until the end, we, oh, oh, yes. So we can do from there until the end, uh, use the random choice on, on those. But then we, we still have to slice the array. So that's still kind of all of n. It's like a bit better. Um, does that make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I think you're definitely on the right track. I guess I have a question. So you said earlier that the problem is we can't remove a value from an array in constant time, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Why is that the case?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because, uh, it could be in, but on average, it will not be constant time. Since if it's in the middle of the array, we have to move all the elements at the end, um, and like, push them back."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, that's true. Is there any case where we're moving from an array actually is constant time?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, if it's at the end of the array, it'll be constant. Ha, so if that's the case, wait, what does that tell me? Okay, so if, okay, so if we do that and at every time we remove something, um, we switch it with the end of the array. And then we remove it. That will be all of one. And then we can just use the random dot choice on the original list because they won't have all the values. Okay, I will start coding now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Sounds good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, okay. All right. So, uh, uh, okay, so the first thing is we'll initialize a array, self that, um, we'll call this value. Okay, we'll call this values and it's going to be an array. And we're also going to use a hash map to store the index of each value where each value is. Okay. So now for, let's, let's go for insertion. How will insertion work here? So, I think the first thing we need to do is check if it's already in there. So if the value that we want to insert is in self.map, then we want to return since we don't want any duplicate, right? So, um, is this the correct behavior we want? So if there's a duplicate, we just do not insert the new value."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, that works."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, once we have this, um, I think we can just perform the insertion. So, self.values, we can, we can put a pen value. Now, how do we know what index this is? Because we have to put this in a map. Um, so the value of this will be equal to the index. So this index will be, I think, the length of this array since it's the last element. So, length of self.values minus one. Perfect. I think this is correct for now. Value in self.map, if it's already in there, we return. Otherwise, we append it to the values array and we store at what index this value is. Okay. Okay. Okay. So now let's go to the remove function. The remove function. Um, we first want to check if it's in the map at all, right? So if value is in self.map, then, um, well, if it's, if it's not in the self.map, we can simply, uh, return. Okay. Now, if it is, if it is in, that means it's, um, it's an accurate value that's also in the array. Okay. And then we want to remove that. So, um, we can find a which index this value is by using the map. So self.value, uh, self.map value to get the index of where this value is inside of the actual array. And then, uh, here is where we need to perform the swapping. Okay. Um, okay. So let me think about this. How do we perform the swap? Hmm. Okay. So I think we're just moving to the last element. Um, and to do this, we can simply, um, do. Um, the last, let's save the last element. So, um, last value is going to equal to self.values minus one. And then, um, we can put this new value at that place. Self.values. Um, value equals to. Um, and for off that values minus one. Okay. Uh, and we want to put this one back. So, uh, self.map. Um, last value is going to equal to index. Oh, okay. Okay. Okay. Let me just make sure the swapping makes sense. So I'm getting the last element from this array, saving it. And then replacing. Um, and then adding this new value. I need to add it to the last. The last index. So I'm adding this new way. Value. Okay. So now I'm adding this new value. Or now we're removing this value. So yeah, I'm, I'm adding the value that I want to remove to the last index of the values. And then, um, I'm putting the previous last value at, um, the index of the other elements I'm trying to remove. Okay. And then at the very end of this, we can then remove, um, said value we want to remove. Okay. So, uh, I think we can use. Use delete. Hmm. How to remove an element from, I guess we can just use, I don't know if delete is the correct keyword, but I'll just set it to, uh, none for now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I think delete is fine. Adelite is fine."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Delete self. values minus. So I delete the last value from the, okay. And inside of the get random, uh, function, we can just simply do a random choice. Um, self. values. Does this make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, this makes sense. So a quick correction actually, I said it was delete, but I thought, uh, we were talking about the hash map, but for the list itself, uh, you can just use pop."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah. Great. Oh, you. True. Yeah. Okay. And, um, okay. So I'm missing something here is we need to also update the map. Um, so in order to update the map, we're going to do, uh, delete self. Don map and, uh, value. And this deletes it from the map. Okay. So let me just make sure in the insertion, we're appending to the values and we're also updating the map. And in the remove, we're also updating the values array and also updating the map. Um, perform the swapping. Oh, uh, do you want to walk through a couple like test cases?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, for sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Um, okay. So let's say we insert, um, three, uh, four, five, five. Okay, let's just say we insert three, four, four, and then, uh, we want to remove three. And that's it. We insert also five and then we remove three and then we, uh, get random. Okay. So then obviously we, we, we first we initialize the class and then, um, let me write down self. values. This self. That is, okay. So to keep track of the values, first we insert three. Now, and in the insertion, a value in self map, it's not in the map. It's going to append to the values array. So we have three and then it's going to put it in the map. So in the map, we're going to have a three with index index zero. Okay. After this, we're going to insert four. Insert four again, or actually the first four. Um, it's going to be the same thing. So append value four to the value array and put it in the map. So four with index length of self-taused values, it's two minus one is one. So here we go. Then we insert four again. It's already in it. We just return. Then we insert five. So same thing. It's going to append five to this and self-taused. Five is going to be two. Value of two. Okay. And at this point, we want to delete three. Right. So going into the remove function, we can see that three is inside of it. So now we get the index of three, which is x equals zero. And then the last value is equal to five. Go to five and self-taused values minus one is going to equal to the value. So here we're going to update five to value we want to delete, which is three. And then self-taused my last value equals to whoa, run. Equal value. Okay. So I think I'm missing something here. So we need to also re-put the first element that we deleted back inside. So self-taused values at index is going to equal to last value. Right. So this index is zero. And we're going to replace three with five, which is the last values value. Okay. At this point, we're updating the map. So self-taused map last value, which is five. We're updating the index back to zero. And then we pop from the last array. So it's only five four now. And we also delete three from the map. Okay. And at this point, we get something random. And it's going to get something random from five or four. There we go."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, perfect. We got it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, that was a good catch. Let's go. Let's go."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So I have a question, a couple of questions. So would this remove? Yeah. Actually, no, I mean, it looks good. I guess my other question is, so this solution works perfectly if we don't allow any duplicates. But what would happen if we did allow duplicates, like we could have multiple threes, multiple fours. And in that case, the probability would still be the same, actually. Like we would still want the, you know, the random to be proportional to how many times each value has been inserted. So we don't have to change the get random. But how would you change the rest of this code to allow for duplicate values?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So in that, if that's a scenario, that means the four here that we implement. So there's going to be two fours in the array, correct? In this example, I have down here."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yep."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So that wouldn't work with the current one because in the hash map, I can only have, I cannot have duplicates. So in this case, I think what comes to mind is, instead of associating each value with just one value, one index, I can put an array here. And um, instead of counting, hmm. Okay. So if I use an array, I can store multiple indices. So if I have a four, I can have a four index one, I can have a four at another index. And by having that, um, yeah, we don't we just have to update the. So in that case, the remove can just delete any of these fours, right? It can be the first four or the second four, the third four. It doesn't really matter. And I think that's that's pretty much it. I can just replace the one within array to keep track of the duplicates."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So that's exactly correct. Yeah, so yeah, yeah, in the insertion, I would obviously check if it's already in the self map, I would append to the array. Um, um, so that makes sense. That sounds good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah, we can cut that up."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, okay, we called that up. All right. I thought we're just talking."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "All right. So if that's the case, um, in the insertion, we're going to start here. If value is in self map, uh, return, or what obviously we're going to change this. Um, okay. So instead of using a, um, initializing like this here, I'm, I'm going to use collections out the fault dick. Uh, and I'm going to put a list in here so I can just append directly to an empty list for every value. So if the value is already in the self map, um, I'm just going to do self map, self map value, dot append, uh, length of self dot value, uh, minus one. And also obviously append us to the value array. Boom. Okay. And Zelda. Okay. So maybe this is the only thing self dot map dot values. Um, okay. So actually we don't even need this. Um, we can just do this. So we're just going to directly, um, append it to a value in the map. If it doesn't exist, it's going to be an empty list. And this is going to be the first element associated with it. If it does exist, well, it's, well, it's going to be the same thing. And append it to the value array. Okay. This is, this works for the insert. Now for the removal, if the value is not in self map, um, return, that's, that's fine. Uh, we have to change something regarding this swapping because now what we're returning is, um, an array. And self map dot value. Okay. So we're just going to return the first index to, and we're going to delete this first index. So the index is going to be, um, the first index of this value, whether it's duplicate or not. Okay. So then, um, this is fine. Below work, which is have to change the map. So the map, last value equals index, we're going to do a pen instead of equal. Um, yeah. Okay. And so values pop delete self. Okay. So in the delete here, we have to change it. So self dot map, um, value. This is going to be an array. We don't want to delete this entire array. So what we need to do is delete a specific index inside of this array. And something we can do to make this better is use a set instead of a list. So I'll just use a set here. Um, and we're going to, since order, the order doesn't matter here, I'll just use a set and it'll be faster for assertion and the, the leads. So self dot values. A pen. So we're going to do add and. Here we're going to do add. And self dot map value, we're going to remove this index move index. Okay. Okay. All right. So I think this works. Do you want me to run this through an example again?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Ah, sure. Yeah. Let's go ahead and do the same example that yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Perfect. Okay. All right. So. Let's start over. So self dot values, we do an insertion. We're going to go quicker here. Um, we add. Into the map first. So the map will have value three with a set of. It'll be zero where it's index. And then in the values array, we're going to just append three. So no problem. And then we're going to do it the same for four. So four is going to be like this. And then after this, we're going to add another four. So it's going to go self dot map value add to this. So four is going to add two here. Okay. Actually, I have to do this append before adding it. So that the length is accurate. Okay. So now that we have everything in the values array and the map, yeah, we have the duplicates and then we add five. Five is going to be here. And five is going to. Okay. All right. Perfect. And okay, instead of the leading three, we're going to delete four here to see how it works. Or because the leading three will be. I think pretty trivial. So the leading four will be the one that has two that has a duplicate. Okay. So if value is not in self, it is in. So index is equal to self dot map value zero. Okay. So zero here. We cannot use zero here. How to get the first element? How do I get one element out of a set? Um. Yeah, maybe I do need to use a list. I think we can just assume that there is a way to remove it. Because I think otherwise, I got it. I got it. I got it. I got it. We can use dot iterator parentheses. Dot next to get the first element of the set. Now, yes, that you didn't know that. Now we're going to do swapping. Okay. So index is going to equal to the first element, which is one. Last underscore value is going to be equal to the last value of this array, which is five. At this point, we're going to do self dot value index, which is one equals to last value. So self dot values index is the first four is going to equal to five. Boom. And then self dot map last value. Um. Last value is five. So this one, we're going to add this index. Uh-huh. But we have to add one here, but we need to delete the previous one. So we also need to do self. Of self dot map. Last value. Remove. Remove the last. And of self dot values minus. So yeah, so this is three. So we remove three. Okay. And then we pop from the values. So we pop. Wait. Wait. Self dot values index, which is three. Okay, I don't think I did this line. So self dot values index, which would index is three is one. Wait. Okay. Uh-uh. Okay. Uh-uh. Uh-uh. I think there's a problem here. So index here is one. Self dot values. The last element is value. Okay. Okay. Okay. Okay. Okay. I forgot to do this. So five is going to be equal to four here at the end. So then once we pop, we're going to pop four from this. And then we're going to remove. Um. This value, which is four, we removed. We're going to remove the index, the index, which was one here. We're going to remove one from this. And we're done. Please tell me there's no more follow-offs."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. We have like four minutes left, but I think this code looks good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. Uh-uh. You have anything else you want to change?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Fuck no. No, I'm kidding. But I think. Let me add another follow-up. Let me ask you a question. Is this code thread safe?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Uh, probably not."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. In order to make this code thread safe, we need to add locks or the insert and the remove. And the get random. And that will be all. Thank you very much. Did I get the job?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So we finished with four minutes remaining. So yeah, let's do the debrief now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Uh, I wasn't taking notes actually, usually in like a real interview, your interviewer will take notes. So first, like I gave, pan the question, it was really open-ended. I just said like insert a value, remove a value, and go to the end. Value and get a random value. And he clarified that these are like, what are we inserting? And I said numbers, like integers specifically. That was good by him. I think he could have done a little bit. Uh, I forgot what exactly his clarifying questions were. I think it could have been like slightly better. Uh, talking about like the edge cases of like, what if we don't have any values that we can remove? Well, he handled that in his code. But what about if we don't have any values that we can get a random value from? The way we coded it, we assume that there's always going to be some values inserted, which is the case. But, oh, that was more of like an assumption that he made, but he didn't like, like specifically clarify that. But I think it worked out. As he was coding, he, when he finished, he talked about like the time complexity. And without without being prompted to like before he even coded, he was talking about ways to make it more efficient. I think that's good because you could easily go down like the wrong track with these problems. And if you go too deep without asking any clarifying questions, you might have to like restart your entire solution, which will waste a lot of time. He didn't have to do that because. Well, like this problem, you either use a list or a hash map. So you can't really mess up, but. You know, it could happen with other problems. So running through like the test case, he did really good, I think, on just like keeping track of everything, just like explicitly writing it down. When I say like do a test case, like in real interviews, people will actually mess it up a lot. Like sometimes people won't write any notes, like as they're running through a test case. And like they just lose track of what they're doing. And sometimes I'll even lose track, like I don't even know what they're like saying anymore. So I think Pandit, a good job of like making it pretty obvious to me what he was thinking about the entire time, like what was going well. And like what the time complexity was, what data structures he was planning on using, like just everything. So overall, and like you got the correct solution for the first question and the follow up. I guess you needed like a few hints, but the fact that like the solution is correct, I'll give like a binary decision of whether I would like lean towards no higher or higher. And I would say for this problem, I would definitely give you a higher."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let's go. We passed. We passed. Keep going."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I guess Citadel thought otherwise. Wow. You had to add it in there. What the fuck? I'm sorry. What the fuck?"
+  }
+]

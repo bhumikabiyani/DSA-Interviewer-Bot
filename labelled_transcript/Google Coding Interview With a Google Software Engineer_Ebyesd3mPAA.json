@@ -1,0 +1,278 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Hey, Kher, how are you doing today?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Hey, I'm doing very well, so, Jod, how are you?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I'm good, I'm good. So today we're going to be going over a technical interview with you. I'm going to give you a coding problem, and you're going to have about 20 to 30 minutes to solve it. Most importantly, I want to hear how your thought process is throughout this, and whether you get the solution or not, just communicate effectively throughout this. Are you ready to get started?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, that sounds good to me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This is the problem. I'm going to paste it right here. Given a string S and array of string words, return the number of words I that is a subsequence of S. A subsequence of a string is a new string generated from the original string, with some characters can be none, deleted without changing the relative order of the remaining characters. For example, A's is a subsequence of ABCDE. So one example that I'll provide for you is with string ABCDE and word array of A, B, B, ACD, and ACE will have an output of three, because the subsequence that can be formed are with the strings A, ACD, and ACE. Bb, as you can tell, cannot be a subsequence of this string. Let me know if you have any questions about this, or if you can understand example two as well. So what are your first thoughts?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, no, this makes a lot of sense. I do have a couple of questions. So if I have A, B, C, D, E, okay, so A makes sense because it's the first letter, and then we have B, B, and because there's, and because you can't repeat any characters, Bb doesn't work, and then ACD works, because all of those exist in that order. So that makes sense. And then ACE also works for that same reason. So that also makes sense. One question that I had is that, can there be capital letters, or can I assume lowercase only?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can assume lowercase only. That's a good question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, and another question that I had was, regarding inputs, can we have numbers, negative numbers, integers, things like that, or even extraneous characters, such as like parentheses, or now?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can assume you'll have proper only lowercase English letters. It could potentially be an empty string, but otherwise they're all going to be normal."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, an empty string would result in a zero."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, cool. That sounds good to me. I guess for a brute force solution, I'm thinking that one way we could do this is say, for example, A, B, C, D, E, this would result in, we could calculate all possible substrings. So A, A, B, A, C, A, D, A, E, and then also B, C, B, D, you get the idea, right? And then put those in a set and then compare if we have valid inputs given our words list. So I'll write that down. But that kind of seems like a slow solution to me, and I know that we can do much better, but so, calculate all possible substrings and compare with words list. And there should be, I believe that calculating all possible substrings is a two to the end operation, where n is size of s. And s is what? The string, right? Yes, that's equal strings. And n is what? Where n is equals to the size of s."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Does that make sense?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, cool."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So that would be the brute force solution. I think another possible solution that I'm thinking of is that we pre-compute location of letter to index. So for example, we could do taking example of A, B, A, C. We could have a hash map of A, and that would have values of 0 and 2. And then we would do B, which would be 1, and then C, which would be 3. And that would essentially give us a hash map to be able to check very quickly of all the locations of the letters. And then we could go through the words list. And essentially check the hash map to see if we have a valid sub sequence."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So could you actually like put an example of the inner workings of this structure? What you're talking about?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, exactly. So I can do that right now. So take, for example, A, B, A, C, right? So this would result in a hash map of A with the values of 1 and 2, 0 and 2. And then B, which would result in values of 1 and then C, which would be 3. Does that make sense? And then we would go through the words list and check the first sub string, which is say, we want to check A, A, right? Then we would go through the map. And then for each word in the word list, we would go, oh, there's a A in the 0, so 0. And then we would check, we would delete that 0 into the hash map. So the next iteration would be A goes to just 2. And then we would find 2, right? And then that, since we can go through all characters, this would result in valid. Does that make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. And what do you think the time complexity of this is?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The time complexity, so the first pre-compute would be O of S. And then for each word, we have to go into, so it would be the essentially words, the length of each word, because each letter we're going into the hash map, which is O of 1 check."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. But this, yeah, so essentially like, but this should be the one question about that. One question about that is, in the case where we have essentially like A of 0 and A of 2, so you have one key mapping to two values. When we are deleting one of those values, depending on what structure is being used there, would that result in additional time complexities or no?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so depending on the structure it would, because a list, like it ships the elements, things like that, and it also resizes. But we could also use like a queue or a stack, and then that would mitigate that problem, because it's built on a linked list or something. Okay, okay. That sounds good. And since we're just adding to the end and then popping from the beginning, that should be fine. So that's usually a stack."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, and that will keep it O of 1, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Perfect. Cool. That sounds good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so I'll start by coding up the, um, the optimized solution that we just discussed to this problem, find a number of subsequence. And this will take in self, it doesn't need to take in self, because we're not in a class, but and then. So first things first, we need to calculate our index map. And this will go through each, um, car, in S character, in S, and then. Map of. Rector. So first, I'll check if the character actually exists. Mm-hmm. And this will be, it does, then we get the list current. Next list equals. Next map of character equal. Okay, now we have current list, current index list dot append. And then, um, so we actually need the index here. So I. In. Inumerate."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what does the enumerate function do?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So the enumerate function, it gives us the index, the, essentially, the index and the value. So it's index value."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Perfect."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah. And then so now, because we have both, we can append the index here. So I. And then we add it back to our. List our map."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sorry, I thought we were using a stack or a queue, like you had mentioned. Are we not doing that?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, we can do that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What is the import for a stack?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I don't know if Python has a built-in stack, but. Do you know the import for the stack? Intox."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you can just, in this case for the sake of this interview, you can just pop on zero. Like just use the list, but pop zero. But I'll just assume that we use stack. So we don't have to like worry too much about the complexities. I more care about your thought process."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, sounds good. Yeah. So now we have that. And then if character in index map. So now, okay, so else that means it doesn't exist. Then we create our current index list equals. And then. And then. Okay. Cool. So now we have our pre-commuted index map. And then now we just need to go into our map. And then. I'm going to each word forward in words. And then we need to account her. Of. Words equals zero. And then we'll be returning that. Here. And then we'll be returning that. Here. And then for word word compute if valid, which will take into word. And then we'll take in the index map. And then. If. Then. Let's. Let's equals one. Okay. So now we just need to. Initiate this method. And then once we do that, the. Solution should work. Okay, so now we have the word. And then we have the index map. One thing that I'm worried about is that we should create a copy of. Like a deep copy of the index map. Every time we pass it in. So we're making sure that we're not changing it. But we can do that in this function here. So index map. Copy equals deep copy. Index map. And then. So now because I'm pretty sure in Python, you pass by reference. So now what I need to do is I just need to go through the map for each word. Go through each character and check if that in the hash map. Okay. So for. Character in. And I also need to keep track of the. Index of letter. Okay. For character in word actually. So if. In the index. So we're checking the index. If the character exists. And if it doesn't, then we just return. So if it exists, then we need to. Pull the index. So index of. Current character. Equals index map copy of. Character. And the index of the current character that we pull has to actually be greater than the. Index of the letter."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And why is that?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So say, for example, because subsequent maintains the order of the string, right? So say, for example, we have. A B. And then in words, we have. A string of a. Or B A. So we need to make sure that B. When we're checking the next A, we need to make sure that it came before the B."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. Correct. To maintain the order. Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Cool. Okay. And there is a chance we might have to. Go through the. List in the hash map, because if you have. A B A. We would actually want to return true here. But the. Hash the list will first contain does you know. But this should still return true because the A exists after. Does that make sense?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So in that case, we actually cannot use a stack. Okay. So the list is correct. Okay. Cool. Okay. Index of current character index copy map. Okay. Okay. So now I have the current character. And I need to check. If. The next of lecture. Is. So, okay. So if I B A. B was equal to one. Okay. So index. Previous. Letter. Is. That was to be less than. Good. Okay. Actually in order to find. Find. Index. Character. We will take in the character. And the index map copy."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you're creating another function?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Set up this. Okay. So this will actually give us the. Character that is after the. Last character that we had. And this will take in the. Index of previous. Letter. So now we want to find the index of the character. So we're going to get the list of. Character. There. And then for. So this we can also do binary search here. And I can implement that later. But for now, I'll just do the easier solution. For the sake of time, because I want to get the correct solution out first. For index. If. So. Of previous letter. Is. Greater. Then. Index. So. Yeah. And you want to continue. Or we can just do less than here. Turn. Ducks. I'm trying to. I'm. Else that we. Close to. 0. o balanced. If you go through all of this, return true here. Cool. Okay. I think they should work."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Sweet. Are you ready to test it out?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I'll give you the, can you write out the function that you're gonna call and then I'll put in the inputs."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. This is the function I would call."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Right here. Okay. Cool. Let me put in the inputs. So first you have S, right? So we'll say S equals ABCDE and words equals of A, B, B, A, C, D, A, C, E. Okay. Then S comma words."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Um, I'll print that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Let's run it. Invalid syntax. Oh. What do you think you forgot here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Um, that was a cold wind."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Perfect. Let's try running it again."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So I think I need to import the deep copy module. I think the way it's actually done is we import copy and then here we do copy.deep, deep copy. And I think that should work. But yeah, let's see if we got any other errors."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Do you want to run it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, here I'll hit run."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Perfect. Cool. I want to try out another test case."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right, let's run this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Perfect. Two. Cool."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Did you handle the empty string scenario?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I believe so. It should work."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Cool. Now, uh, what you don't have to code this part out, but what are ways that you might enhance this or make it better?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So one of the things that I mentioned earlier was the function find index of character. It is actually linearly checking the list, which is already ordered, which is inefficient because that's O of N. And we could do better than that by doing binary search, which would be log N time. So that is one improvement that I would make right away. Other than that, I think that it runs pretty efficiently and we're using optimal space as well. But other improvements that I would make would be like more exception handling to make sure that if there's invalid inputs, I know we mentioned that there wouldn't be, but just in case that the user put in malicious input that we have checks for that. So those were some things that I would change."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Awesome. Well, Karin, you did a really awesome job and you completed it within time. Do you have any questions for me before we conclude?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What's been your favorite project at this company?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "My favorite project at Google is working on the YouTube team on my YouTube channel."
+  }
+]

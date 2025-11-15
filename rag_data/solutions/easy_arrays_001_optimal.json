@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "id": "easy_arrays_001_optimal",
+    "type": "solution",
+    "question_id": "easy_arrays_001",
+    "approach": "optimal",
+    "topic": "arrays",
+    "difficulty": "easy",
+    "pattern": "two_pointers",
+    "tags": ["two_pointers", "sorted_array", "optimal"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "approach_name": "Two Pointers",
+    "intuition": "Since the array is sorted, we can use two pointers starting from both ends. If the sum is too small, move the left pointer right to increase the sum. If the sum is too large, move the right pointer left to decrease the sum.",
+    "algorithm_steps": [
+      "Initialize left pointer at index 0 and right pointer at last index",
+      "Calculate sum of elements at both pointers",
+      "If sum equals target, return the 1-indexed positions",
+      "If sum is less than target, increment left pointer",
+      "If sum is greater than target, decrement right pointer",
+      "Repeat until solution is found"
+    ],
+    "code": {
+      "python": "def twoSum(numbers, target):\n    left, right = 0, len(numbers) - 1\n    \n    while left < right:\n        current_sum = numbers[left] + numbers[right]\n        \n        if current_sum == target:\n            return [left + 1, right + 1]  # 1-indexed\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    \n    return []  # Should never reach here given constraints",
+      "java": "public int[] twoSum(int[] numbers, int target) {\n    int left = 0, right = numbers.length - 1;\n    \n    while (left < right) {\n        int sum = numbers[left] + numbers[right];\n        \n        if (sum == target) {\n            return new int[]{left + 1, right + 1};\n        } else if (sum < target) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return new int[]{}; // Should never reach here\n}",
+      "cpp": "vector<int> twoSum(vector<int>& numbers, int target) {\n    int left = 0, right = numbers.size() - 1;\n    \n    while (left < right) {\n        int sum = numbers[left] + numbers[right];\n        \n        if (sum == target) {\n            return {left + 1, right + 1};\n        } else if (sum < target) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return {}; // Should never reach here\n}"
+    },
+    "complexity_analysis": {
+      "time": {
+        "complexity": "O(n)",
+        "explanation": "We traverse the array at most once with two pointers moving towards each other"
+      },
+      "space": {
+        "complexity": "O(1)",
+        "explanation": "Only using constant extra space for the two pointers"
+      }
+    },
+    "key_insights": [
+      "Sorted array property enables two-pointer technique",
+      "Moving pointers based on sum comparison guarantees finding the solution",
+      "No need for extra data structures like hash maps",
+      "Each element is visited at most once"
+    ],
+    "common_mistakes": [
+      "Forgetting to return 1-indexed positions",
+      "Not handling the case where pointers meet",
+      "Using binary search instead of simpler two-pointer approach",
+      "Overthinking with hash map when array is already sorted"
+    ],
+    "optimization_notes": [
+      "This is already the optimal solution for sorted arrays",
+      "Cannot improve time complexity below O(n)",
+      "Space complexity is already optimal at O(1)"
+    ]
+  }
+}

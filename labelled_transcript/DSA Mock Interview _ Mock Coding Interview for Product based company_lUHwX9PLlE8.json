@@ -1,0 +1,258 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "So, here Sandesh, I have started the recording and so, as you know already like we will be reviewing the resume if you want. So, do you want to resume review? So, resume review is one part, then we will discuss the fundamentals, then we will go for the feedback and before feedback one DSS question also. So, that is the pattern which we have. So, let me open your resume. So, yeah. So, first of all by seeing your resume, since you have finally, are undergrad, you have pretty much lot of information in your resume, right? So, like I am saying that that is good, you are using black and blue only that is classic format, but somehow it has lot of information. So, that is the first glance. So, let us weigh that, okay, education 9.24 very good CGPA and that is good man. The education wise, okay, achievements 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12. So, mostly I see, you are mostly the achievements of the code shaft, leak code, geeksforgeeks, code shaft, okay. So, can you little bit reduce achievement, like instead of like code shaft 4, 5 times, can you have the best rank which you have? Okay. So, let us say 241 297, just keep the best rank plus the maximum numbers. Let us say maximum number participated now 50,000 in another it participated let 40,000. So, keep your best rank plus the maximum participation in the one line itself. Secure this is my best rank and the maximum participation is this. So, you can avoid multiple lines. So, if you see the third line, fourth line both are same 241 rank 297 rank and again there is something global rank, leak code you can keep one only line for leak code, not multiple lines for leak code, not multiple lines for code shaft, right. 4 star on code shaft you can accumulate it in the one line itself. Check out this rank in this one, this participation and I am the 4 star on code shaft, right. 95 percent among the top 10 in the bytecams, okay, take tycoon to gold medalist and black belt in the district level, okay. So, that is also achievement. But, yeah, I would say that, so try to reduce this achievement little bit. So, I see a lot of duplicates, right. Just keep the best one and this one. So, experience you have mobile app developer in turn in the spark foundation, okay and it is July 2021, okay. June, okay, it is 2 months, June July. So, if I just say 1 month in one month. Okay, so you have highlighted the text, you use created and designed and Android app with a backhand, okay. So, you have highlighted the front-hand, influence and implemented a feature that is, but what does you, what is this you worked on. So, all I see in 3 points is the text stack. One is for backhand, one is for front-hand and a transactional history something like, but what is the work?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so, my work was related to the entry out, my work was related to building up the problem track. You should, both of them on the right. So, features of that, all of them within that one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. Try to add one line at least, like what is the work with you had, right? And then the text stack, right, 30 seconds. Okay, so that is one thing and again, your voice is low. Oh, my God. So, technical. So technical skills, Java, DBMS problem solving, structure, Android, GitHub, Firebase, competitive programming ok. So, this all the ok. So, ok, sorry I clicked on that ok. So, technical skill I think it better if you can divide into two, two, three points like the back end then put Java and other thing. Then you can put database put dbms, firebase into one and then put your extra skills like ah programs solving, competitive programming right. I am just trying to say and you can put one more like core subjects because you are under get right. So, you you can tell like these are the core subject major operating system networking database algorithm right. So, high level. So, the three points is instead of just clubbing all the skills. So, earlier we used to do this before, but nowadays if you see in latest resume right, you will see much clarity with that one just ah one point. So, you have two projects, Pachuker app and Cappro secure app. So, yes there is a lot of information develop an Android app for animal husbandry good, implemented feature for providing information related to this with some tutorial along with the implemented the functionality of. So, there is lot of ah. So, currently you have three points for telling the Pachuker app. I would say that can you just little bit more summarize and make it instead of three points like ah little bit summarize. So, it is little bit ah more for your resume. That is why you have lot of text in your resume. Try to reduce it. It is very difficult to read actually for a resume to go through right. So, influence and program the feature of local languages that is good ah tech involved that is good, but yeah little bit summarize more work more on like reducing the text. Crypto developer secure communication app is a center and receiver can communicate security using ah cryptography algorithm for encryption and that is very good. I understand by this one line itself that what is the project what you have developed. So, you have use a backend RSEDS so, all are highlighted tech involved. So, this one like how you have made for crypto secure app right this only that much information let us put into the Pachuker app also. That is on my the resume part ok. Now, let us go with the fundamentals ah. This thing so, it is currently 815. I will spend only 5 10 minutes on this one. So, so, this can you explain me like what is the memory management in Java"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "ok. So, memory management basically ah less than 10, instead of getting a particular object like that so, object gets facing heat in India. And like basically what is the language is after to Java like in there like when you use to create a particular lesson to see and all these other things to do to follow capture of the money for create or a limited space and you need to feed that case of the one job or the thing. But in case of the other it is the capture of target collection automatic target collection. So, even if ah if there exists some object let us say if there exists in your object and that does not exist in a reference to the ability that I have free to that object. So, in that is like the automatic object is simply a good that what you will update from our heat may be and that is how the Java is kind of management may be ah in more optimal way you can say"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "ok. So, you told that objects are created into heat and what data does goes into the stack."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, what ah in stack this is ah the reference of values are reference ah that particular object is updated in PCME. Those are stored in a stack."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what all data and what apart from reference data what else goes into the stack."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I was responsible as well when we perform ah from method calls. So, when we perform any method passing recurrent so, that is the story line."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Yeah can you tell me what is the difference between JVM, JRE and JDK?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So, basically the 8 minutes is our virtual machine it is kind of virtual team you can say the steam stadium provides a environment in its power by 2-7 and it is called JRE. So, JRE is nothing but an easy way to know TV ah we can say it provides some set of ladrists with help of which you can ah develop the Java prediction. So, that is what you do in JRE and if you talk about the JDK ah you will ask JDK director. Yeah. Yeah. So, Java development it is Java development team. So, Java development team is kind of it provides software development normative image or Java applications such as for example, G bugery is a bit of a novel piece."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct correct you are right. So, that is what Java code in the algorithm. Can you overload the constructor?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir we can overload them."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you override the static member methods?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Overwrite. Yeah. Because the static the firm static kind of belongs to the class area and like overwrite it is like kind of it is not possible."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you give me a real life example of ISA and has a relationship?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, is there a relationship is kind of related to integrating a property from the parent class? Okay. So, if I talk about like my own ah so like how you like I used to write it to my left hand. So, this property after we have inherited from my parent to this is kind of ah is there relationship? Okay. Within the parent and the class and as a relationship is kind of ah it is kind of ah a relationship you call it is kind of algorithmic and I am not sure but in fact like there is"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay what is composition?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Composition. Yeah. So, composition is like yeah there is to be strong top being within the ah let us say ah let me give you an example. So, let us say there exists one car okay and the car could not view without that individual car product is double in view. So, that is kind of a strong top being a strong bottom being the them and another one is associated where it is kind of true top being within those."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. How is that related to the property? Okay. What is pass by value and pass by the friends?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, basically pass by value is that thing and with this thing ah used to pass the arguments in terms of parameters and let us say ah that is one ah there is some value. We just have a pass two values ah the parameters for some other method okay and when in that method that other method if you change the value of those ah parameters or those where it is that would be reflected in the ah main class or main function while it is so that is kind of ah pass by the friends okay. So, the values are getting so value is that is in here and it is simple and it is in the main class so that is pass by the friends. So, what if you talk about pass by value? So, basically pass in for the values to that method. So, the values we just you know giving I think the value of those variables in that method and so, and I will print the values in that method. So, the value is just giving that method only okay. So, try to print it in the main function if you do not see reflected here."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, Java is the password value of password reference."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, basically Java is the pass by value ah but pass you know also you do it is pass by a transfigant pass and object term. So, but Java is generally pass by value, but you can do pass by a passing an object or passing an object to the method."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Are you sure Java is the pass by value?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, when you ah send an object into a method does it goes by a password value pass by reference? Because because Java in every object holds the address right. So, if you change any object in a particular method it will get change in the whichever method pass also right. So, there is no kind of pointer system in Java, but it is always a object holds the address. So, it is pass by reference. Okay. Can you give me different types of joints in SQN?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So, basically there is this multiple types of joints. So, the first one is an access joint. So, access joint is an intelligent operator. So, it kind of works as a similar to a Cartesian product, but the additional function in the access joint is provides unless I have two relational tables. Okay. And I will perform joint within them. Okay. So, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you give me the name for all the joints which you know?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Master's joint is there in the left of the joint, right of the joint and for full of the joint."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct correct correct. What are the types of SQN command? So, you can say there are subsets of SQN commands."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So, basically there is there is GAM command data declaration language command, there is GAM command data management language, then there is a data control language, and there is a SQN command and there is a password for the language."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. That is better. So, Sandhri, this is one small class, very small class, right. Okay. Can you tell me how you will improve this class? So, see just have a look at this functionality of the class, very simple. Only one method nothing else. A class, there is a class game which as I am you can say that the field known as WAPAN, right. And we have just method action. So, if the weapon type is gun, so we are performing some action. If the weapon type is bomb, we are performing some action like we just system.autower trainer perform bomb attack, right. In future we can have more also, like gun, bomb, that's in our game we want to add more weapon like knife and some other something else also without weapon also, right. So, there will be different operations for each one, let's have gun. So, currently action is performed gun attack. If there is a bomb, currently it is a performed bomb attack. Let's say if future we are going to add knife, we are going to add some let's say knife attack specifically. Similarly, like more weapons can be added. Can you just check look out this class and see what can be improved. No, there is no bug in that, right. All I want to say is like on the basis of like how you can increase the scalability of this code. Can you please do it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, let's pretend how different method for each one will be type like for example, for gun, gun, attack, perform some different activities. Like for each one will be particular type you can have different method."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so you can think different methods you can have for each particular time."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, generally the good way for this is like for each type of interface gun, bomb, knife, we can have a different tile class and weapon is considered like a interface, right. So, that any future we have to have a new class, we can just create a new child class, right. So, that you don't have to touch the existing written classes. You can remove this thing and now let's move to the one DSS question. You are given a two array. Let's say one is push array and another is pop array. So, let's say push array is the array values which you are given is let's say 1, 2, 3, 4, 5 and the pop array in the values which I have given you is let's say 4 and then 5, then 3, 2, 1 let's say. So, here your output would be true because what we wanted is you need to check that the way we are pushing into an, the way we, so let's say you have an stack, right. So, the way we are pushing the values and the way we are popping the values like is it the result of stack operation. So, you know write a stack first, the last, whoever at the top that pops out the first. So, just see that okay, the way the values are getting pushed into the stack, the pop operation which we are doing will it give a proper as a proper stack operation or not. So, let's say in this case one, so I let's say I did a push one, push two, push three, push four, then pop is four, then I definitely I can pop four because four is the top, right. Then I can push five, then the pop is next five. So, they are definitely five is the top I can pop it. Now, in the stack let's all one, two, three. So, now in the pop all is three, two, one. So, yeah definitely I can do this pop operation. So, it's a proper sequence. So, pop, so I can say that this pop I can, this pop is correct form. So, you got the question. So, that's why the output is true that for the push, for the every push, the pop is in a correct form, right. It is following the stack behavior like what the stack operation says. So, you can take your time."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, we just we just need to keep it by its direction."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you can say duplicate value or let's say for four simple let's say there is no duplicate."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, for this argument it is case for six, it should for you pop all this six elements. And then it should pop all this five and then to run in. So, for this also it should move to lighter."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, this would be true. So, one, two, three, four, five, six, then I can pop six, then I can pop five, then you can push it, then I can pop it, then three, two, and this is the whole truth. So, the five of both that is always the greater than one, right. Correct. Now, I just need to print whether it is true or false, right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, yes. So, I will be given this two are say added in good are you right sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. There will be two input are is."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, the first thing is come to my mind at that, let's say this array would be given to me. So, we can start our service array and then I will get any such element which is equal to the first element of the pop array. So, then I will simply let's say I will make it one more index for setting that. This time it will use one more index, it will be interterring to variable of pop array. Okay. And that would be first of pointy to the zero index, right. Okay. Now, so, now I am telling this element to, I will simply let increase the variable okay. So, then my variable index would be pointing to the variable five, right. So, the one index one. So, now, so once I am done with that, I can do how to see the thousand index element would be five. Now, this particular element okay, whether it is equal to the next index element of one. So, share it in this case, it will be for thousand if you increase the count of this index of the second pattern. Okay. Now, in the first array of the big rowers, okay, and that is okay, or the index would be n. Now, I will simply be rowers array from the back again. Like now, we increase our since the array size is like kind of when I am trying to, I will see the first array. Now, how this, the, how this index method is to the one index and so I do not rowers for the, okay, so there are no further elements. So, we do it in minus minus and would let us try to, let us work on this element three, it is at index two. Index minus minus till when?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What so? So, you are saying after five, there is no more item, so you do index minus minus."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yes sir. So, till when you are trying to do the index minus minus? So, let us say, in the first element of that first index, one traversing the minus minus minus, if it is equal to the first element of four patterns, for take me to say, now my index for pointing to the first row, okay, in the four patterns. Okay. Now, I will say, question this three is equal to this element or not, if it is equal, then I will do minus minus for the first, the index of the first array and do the plus the further, in the second array. So, till when, so now, from this particular case, for all the events should be equal, let, so now, if I am, or from the index minus, I am the final for index plus for the second array. So, all the events should be, let it be equal. If they are not equal, in that case, I will simply return that, if it is not possible to do, let it is not following you for a stack of our T."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you code it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what would be the time complexity you are thinking of this approach?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I just also thought it would be equal to order of N or E, order of answer and space complexity. Okay. I guess space complexity to also be order of one, because since I am not using any particular, it is just space for this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Just, you can do it, but I want you to little bit, let us say, if you can take space complexity itself also, like the way you are doing minus minus, like you can make it more efficient that they are, like you do not have to do minus minus."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, if I use, okay, if you think so. Let us say you are allowed to take a space. Okay. So, let us say if I maintain one stack, okay. Okay. Now, first of all, I would put this element one in my stack, right? Now, I would say whether my stack of top of the stack will be equal to the element two, no, it is not. So, I would move on to the second element. Now, put the second element again in the top of the stack, okay. This will be the top. Now, I would say whether this first element of top is equal to the second element of push out it. No, it is not. So, I would move on to the next element. Now, it is three. So, I would push this three element in the stack, okay. Now, I would say whether this element three is equal to the first element of top, or not. Now, if you take it out, before, I would say this is a three, no, no, they are going to be equal to four. Now, for four, I would push it to the stack. Now, I would say whether is the top of the stack is equal to the first element. I would say whether this first element four, and the first element in that. Now, I would say that, okay. So, since I have popped the element, now I would say whether the element three is equal to the, okay. So, after I have popped this four element, okay. Now, my top of the stack will be three, right? Now, I would say whether the top of the stack is equal to the five or not. It is not. So, I would say move on to the next element. So, this is equal to five, okay. So, I would choose this five element in that, in stack. Now, I would say whether the index on the, so the second element of four and it is equal to the top of stack or not. So, since it is equal, I would say this four of this element, and so, simply to index plus plus."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. I am okay with this. Of course, can you start the coding?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, sir. Just take this, just assume that you have a method, and just take the input of input in the method and just start with the method implementation only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, sir, sir, I was push and pop, I would be the same, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, let us consider that it would be same, all the elements which will be inserted will be formed also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, sir. Okay. And you will not get size, you will only get input array, push array and pop array."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And then, I would start to have a see the two sorry questions. First of all, in the first thing what I would do, first of all, I would push the parent element or one driver's unit push array, push the parent element in the stack for the thing. So, let us say, I would write them one star. So, once I would push the parent element in the stack, now I would take whether it is my, whether my top of the stack, stack, top, e, this is going to the, I say, now since I would take whether it is equal to the parent element of pop, or to further I need to maintain one next, which is the data in the parent element of the pop, I would say I would write running wherever it is, of the interaction with the 0. Now, I would say whether it is equal to the pop array in this or not, right. So, if I can equal it, so I would simply pop the top of the stack, okay. So, I would simply pop the top of the stack, and once I have popped that, I would simply pop the top of the stack, okay. Now, I need to order it, it is not equal, it is not equal to 0. So, I do not think the element to write any conditions, if it is not equal, it will simply be out of the unit, so this is the only thing, it is here, okay. When my top of the stack, I would simply pop out the, so when, let's say, when my index is for a, why travel to the array, it is equal to the 4, so it will simply pop out this element, 4, and now it will be increasingly index of 4 to the 5, so this pop index would be extremely index, pop of index is increasing, now pop index is going into this. Now, okay, so I just say, if you try to keep the pop, I do, and then, and then, and then, and then I keep the pop of Y look, so yes, there is a index, here, right, so it will be pop of this, now, yes, pop of the stack is going to the value of Y. So, let's say, here I will need the pop, but then I need to, so one more condition, that, why not start is increasing, but if start would get increasing, this would be, but not start is increasing. So, why do I start knowing, behind the stack dot p, is equal to the 4 array index, so simply pop out this element, 4, now my index would be pointing to this, and now my top of the stack will be this, now I will simply check, check, that it is equal, since they are not equal, I will, you get out of this Y look, I will do this, and then, for more on to the next index, I will do it, push this index file in the array, so one of the push is, and let's find the array, so I mean, they may find the array, now do take whether the index is equal or not, so the essence is both of them are equal, and now, to simply pop out, the, the spendings is true, so it will simply pop out the element, 5, I am talking this, so it will be, it will be, this, now again, other top of the stack of the p, so simply top of the stack of p, and the pop index, it is only, it will be, it will be, point point, point, into this location, from both of them are equal, in a meaningful pop, and it would simply repeat, this name for 2 and 1 also, so after that, that once, the copies status, once, this copy is done, now, when do we do it, and true now, if it makes right 2, I mean, pause, so that, we will be able to match another,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now currently, till now, I am with you, so this seems looked good to me, so you are putting a while loop, till, let's say, if it is after 4, then there is a 3 also, so that while looks look good, then if it matches, you are keep popping it up, and increasing the pop index, which is in the pop array, and let's say, again, the same value, match with the index, you will again do a pop, and computing, till the stack is not empty, so the current I would, so just need a, like, value will return true."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, let's say, it might, it might, I, is empty, I, this pop index is pointing to the size of I, so in both the conditions are true, in that case, I would just need it on, on, true, else, in the L space, I would return, so in the L space, I would, you return, 4, 4, 4, that's the value, it is,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "cool, cool, okay, then that's, let's say, I am good, like, if it is empty, okay, if the stack is empty, and pop index is equals to, goes to the size, it reads to the end, yeah, right, then means it's return true, as return false, that's, I am good at it, okay, I had one more question, but let's say, today we have a network problem, and the voice is not clear, so, for now, I will stay at this point itself, so we are almost 40 minutes, 45 minutes, so I will go with the feedback, right, so, but still, once your voice, I'm not sure if there is an issue with the voice, I'm from in your system, so, that's why I will not go with the second question, but if you like, I can send you the second question, which I have, you can try offline, and if you have any doubt, you can ask me also, right, wow, okay, so, Sandesh, I will go with the feedback, and just before feedback, guys, like, if you also want to set up the mock on priority, so generally, the mock is free, I don't charge anything, but if you want, like, it's on the priority, or is there anything which you want, like, apart from, mentorship and Java classes, please check the description, there have given the membership link, so, again, so, the way I take out my, mocks are totally free, it's, but it's only based on my availability, so, like, sometimes, there is happen, like, the candidate, to might really wanted a mock, they get missed up, so, that's why I just set, like, okay, how do I filter out this thing? So, just have a look, if you need, really need an attention on either priority, basis, you can definitely join that one, okay, so, that's just a quick thing, like, important node, okay, so, Sandesh, so, before that, you have feedback, right? So, apart from resume part, right, so, let's say that what you need to improve, right? So, first of all, you need to, let's get improved on your real-time world example, sample of a hazard, right? So, the hazard, meaning you know, it's a, like, a strong, you can say, the dependent on each two objects, right? So, you know, but the real example, you, don't know, right? So, that is one thing, you can take an example of the school, anything, right? So, school has children, right? So, if they has, right? So, both are independent, like, both are independent, but a school cannot run alone, so, school has children, right? So, that is just something, and, or you can say that, the classroom, school has classrooms, that is more, so, like, so, both cannot, so, classroom cannot exist alone, so, it's very tightly coupled with the school. So, I think that would be the better example, the classroom, school has classrooms, right? So, just work on the real-time examples, and your basics are good, like, so, all the basic questions, which you have given, that's totally good. There's small things, like, JVM, JDK, JRE, memory management, all you told is good, but still, Java is a pass-by reference, so, that is, again, a small miss. So, that is, but, it's a thing I'm making that, like, it can pass all this, but in terms of value, in terms of, primitive, that's, correct, correct, right? I think that's what, it's just a gap, you can say that in understanding, but, you were correct, maybe it's a gap from my side. So, I think the basics, you are good, right? And the thing, this thing is, at least, you should know the solid principles. I don't say that, go and deep of the design patterns, and all, already, at least have the solid principle, because the question which I give you, that is, violating the second principle of the solid, O, which is, open for extension, but closed for the modification, right? So, whatever the class you have, you can always extend it, but, one of the classes, return, tested, deployed to life, it's very danger to change the class, to add a new feature. We can always add something, but adding a new feature should always be done on a child classes, right? So, that's why it is, say, open for extension. You can always extend it, but, closed for modification, but the class, which is already tested, working properly, and if you are adding more features to it, it's just a, danger we are putting into, like, it's, you can say that, the risk of increasing bugs or testing again, right? So, that's why given you a very small class, and by looking itself, you can say that these all guns, fire, night can be a different change classes, right? So, don't go into the deep of the design patterns, if you don't want, but at least have the solid principle, okay? The class which I am creating, because see, after this, whenever you join, you are going to work on the, you are going to actually write a lot of code, right? You are going to create a classes, you are going to create a method, right? So, this is not a high level design. You are actually going to work on a oops, right? So, if you are going to create a classes, and if you are joining my company, then I should know that, okay, you do you know, oops or not, like, if you are, it's just like you create a class, and then you raise a PR for the review comment, then I will give you a review, right? Okay, so, Sunday you have written so many code, but it is not a good pattern. Can you change it to different child classes? Then again, you have to do a rework. So, that shows that how, it's not only how good you are, yes, but how well you define the classes and objects if you're working with oops, right? So, have basic understanding of LLD also. Very basic, but it's okay, if you improve on DSA part, but at least you can discuss little bit on the, if I go little bit deep on the classes, why you have to come this class, why? So, you should be able to tell me that it is extensible, it is scalable by this way, right? Just defining the whole logic, whole algorithm in one class is always not a good idea. Okay, so, another thing is, I'm not sure this is today only your voice is not good, but if you're giving interviews and this thing, so I will definitely tell, either take a good microphone or this thing, but your voice was not cleared Sunday today. And just one the heads up like if you are giving interviews online, so interviewer might be facing the same issue. And sometime it can, even if you know the things, it might create a gap. No, okay. So, that's one thing I wanted to tell, there is a lot of voice issue. Okay, let's come to the positive parts. And so your basics is really good. The way the confident you are while giving the basics, that really actually stop me. So, I have five more questions after that, all the basics, but I stop, as I know that you have, you know the basics, right? So, that is very good, the way you are with the confidence, you have given the basics, right? And also, you were speaking out loud, right? So, no issues with the SQL also, you were very good, right? So, I just, I didn't feel a time that you want, you forward and you are trying to think, what are the types of SQL, okay, DDL, DML, right? I think if I can go much deeper, what is DML? I think you might be able to give the answer. So, that's also, so I have four questions on SQL and few on DSA, but the confidence you have, that is stop me that he already knows it. So, let's move on. So, that is very good thing, okay? So, and in the interview of the DSA part, you speak out loud was good, right? Keep it the same way, you are speaking, right? Whatever the approach, you are trying to, while you are writing, you are trying to explain me, also that was good, right? So, this, right? Only thing is, the variable name also, you would take good, like, so I'm happy with like, what are the variable names and all the, how you are coding, that was good, only one thing is, class name cannot be start with the capital letter, right? So, class name cannot, or not class name, method name cannot be start with the capital letter, okay? So, the method name which you have taken, it does support this one, so D is capital. So, that, these are small, small things, which make your code clean and like, it's a format. Only class name can be a capital letter, right? After that, method, they're not should be with the same. So, you are doing of proper coding methods, but take care of this small thing. The interviewer do notice that, right? How you write a clean code and all, right? Apart from this, I really like the interview, I really wanted the second question, although because this first question is a little bit easy, right? I'm expecting two 20 minutes question, right? So, this 20 minute, you actually done in the 20 minutes, it's up with the code coding. The next question, I also wanted, so I will give you the second question, right? And maybe you can try it offline and you can send me if you have any doubts, right? But the, I think if you, the feedback would remain the same. The only thing is like, you were able to solve it or not solve it. That's just or no. But the major feedback like how you are approaching the program is that would same. The way you are doing for the one question, I am pretty much sure you will also follow the same thing. But only think, different, like you were able to solve it or not, right? If you are not able to solve it, that's like in the interview, it might go to the other side. If you are able to solve it, the feedback would remain the same, the positive, right? So that's pretty much I have. But again, so today all companies are taking online, this thing, so please, this voice is really important. If you are giving some major interviews and this voice can really go, can create a deferment."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, yes. So we make sure to think it's a real life."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, okay, okay, so that's all pretty much from my side."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I am thanks a lot. It's too much for me to create an experience. Thank you and thanks."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Feel free to ping me like for the second question. Like, or any doubt, anything like, I'm always active on LinkedIn. In comments or telegram group anywhere. Anywhere I would be a reply readily, I'm not busy."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, thanks a lot. Thank you so much, sir. Thank you."
+  }
+]

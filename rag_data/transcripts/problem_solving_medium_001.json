@@ -1,0 +1,198 @@
+{
+  "metadata": {
+    "id": "problem_solving_medium_001",
+    "type": "transcript",
+    "topic": "arrays",
+    "difficulty": "medium",
+    "pattern": "sliding_window",
+    "tags": ["interview_transcript", "problem_solving", "sliding_window", "optimization"],
+    "interview_phase": "complete_session",
+    "speaker_roles": ["interviewer", "candidate"],
+    "evaluation_criteria": ["communication", "problem_solving", "optimization", "implementation"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "session_info": {
+      "duration_minutes": 45,
+      "problem_id": "medium_arrays_001",
+      "candidate_level": "mid_level",
+      "outcome": "strong_pass"
+    },
+    "conversation": [
+      {
+        "timestamp": "00:00",
+        "speaker": "interviewer",
+        "message": "Hi! Today we'll work on an array problem. Let me share the problem statement with you.",
+        "intent": "session_opening",
+        "tone": "friendly_professional"
+      },
+      {
+        "timestamp": "00:30",
+        "speaker": "interviewer",
+        "message": "Given an array of positive integers and a positive integer k, find the length of the longest subarray whose sum is less than or equal to k. For example, if nums = [1,2,3,4,5] and k = 8, what would be your answer?",
+        "intent": "problem_introduction",
+        "tone": "clear_explanatory"
+      },
+      {
+        "timestamp": "01:00",
+        "speaker": "candidate",
+        "message": "Let me think through this example. We want subarrays with sum ≤ 8. Looking at [1,2,3,4,5], I could have [1,2,3] which sums to 6, or [1,2,5] which sums to 8. Both have length 3. So the answer would be 3.",
+        "intent": "problem_understanding",
+        "tone": "thoughtful_analytical"
+      },
+      {
+        "timestamp": "01:30",
+        "speaker": "interviewer",
+        "message": "Excellent! You've understood the problem correctly. How would you approach solving this in general?",
+        "intent": "approach_inquiry",
+        "tone": "encouraging"
+      },
+      {
+        "timestamp": "02:00",
+        "speaker": "candidate",
+        "message": "My first thought is a brute force approach - check every possible subarray. For each starting position, I'd extend the subarray as long as the sum stays ≤ k. But that would be O(n²) time complexity.",
+        "intent": "initial_approach",
+        "tone": "analytical"
+      },
+      {
+        "timestamp": "02:30",
+        "speaker": "interviewer",
+        "message": "That's a good start. Can you think of a more efficient approach? What if I told you this could be solved in O(n) time?",
+        "intent": "optimization_hint",
+        "tone": "guiding"
+      },
+      {
+        "timestamp": "03:00",
+        "speaker": "candidate",
+        "message": "O(n) suggests maybe a sliding window approach? Since all numbers are positive, if I have a window that's too large, I can shrink it from the left. Let me think... I'd use two pointers?",
+        "intent": "optimization_recognition",
+        "tone": "excited_realization"
+      },
+      {
+        "timestamp": "03:30",
+        "speaker": "interviewer",
+        "message": "Exactly! Can you walk me through how the sliding window would work?",
+        "intent": "algorithm_explanation_request",
+        "tone": "encouraging"
+      },
+      {
+        "timestamp": "04:00",
+        "speaker": "candidate",
+        "message": "Sure! I'd use left and right pointers, both starting at 0. I'll expand the right pointer and add elements to my current sum. If the sum exceeds k, I'll shrink the window by moving the left pointer and subtracting elements until the sum is ≤ k again. I'll track the maximum window size throughout.",
+        "intent": "algorithm_explanation",
+        "tone": "confident_clear"
+      },
+      {
+        "timestamp": "04:45",
+        "speaker": "interviewer",
+        "message": "Great explanation! Let's trace through the example [1,2,3,4,5] with k=8. Can you walk me through the first few steps?",
+        "intent": "trace_request",
+        "tone": "testing_understanding"
+      },
+      {
+        "timestamp": "05:15",
+        "speaker": "candidate",
+        "message": "Starting with left=0, right=0. Sum=1 (≤8), max_length=1. Right=1, sum=3 (≤8), max_length=2. Right=2, sum=6 (≤8), max_length=3. Right=3, sum=10 (>8), so I need to shrink. Move left to 1, sum becomes 9, still >8. Move left to 2, sum becomes 7 (≤8), current length is 2.",
+        "intent": "algorithm_trace",
+        "tone": "methodical_careful"
+      },
+      {
+        "timestamp": "06:00",
+        "speaker": "interviewer",
+        "message": "Perfect trace! Now let's implement this. Go ahead and code it up.",
+        "intent": "implementation_request",
+        "tone": "confident_encouraging"
+      },
+      {
+        "timestamp": "06:30",
+        "speaker": "candidate",
+        "message": "```python\ndef longestSubarray(nums, k):\n    left = 0\n    current_sum = 0\n    max_length = 0\n    \n    for right in range(len(nums)):\n        current_sum += nums[right]\n        \n        while current_sum > k:\n            current_sum -= nums[left]\n            left += 1\n        \n        max_length = max(max_length, right - left + 1)\n    \n    return max_length\n```",
+        "intent": "implementation",
+        "tone": "focused_coding"
+      },
+      {
+        "timestamp": "08:00",
+        "speaker": "interviewer",
+        "message": "Nice implementation! What's the time and space complexity of this solution?",
+        "intent": "complexity_analysis",
+        "tone": "analytical"
+      },
+      {
+        "timestamp": "08:15",
+        "speaker": "candidate",
+        "message": "Time complexity is O(n). Even though there's a while loop inside the for loop, each element is added once and removed at most once, so it's still linear. Space complexity is O(1) since I'm only using a few variables.",
+        "intent": "complexity_explanation",
+        "tone": "confident_analytical"
+      },
+      {
+        "timestamp": "08:45",
+        "speaker": "interviewer",
+        "message": "Excellent analysis! Let's consider some edge cases. What happens if all elements are greater than k?",
+        "intent": "edge_case_testing",
+        "tone": "probing"
+      },
+      {
+        "timestamp": "09:00",
+        "speaker": "candidate",
+        "message": "If all elements are greater than k, then no subarray would have sum ≤ k, so the function should return 0. Let me trace through: for any element, current_sum > k immediately, so left would move past right, making the window size 0. The max_length would remain 0.",
+        "intent": "edge_case_analysis",
+        "tone": "thoughtful_careful"
+      },
+      {
+        "timestamp": "09:30",
+        "speaker": "interviewer",
+        "message": "Good thinking! What about an empty array?",
+        "intent": "edge_case_testing",
+        "tone": "continued_probing"
+      },
+      {
+        "timestamp": "09:40",
+        "speaker": "candidate",
+        "message": "For an empty array, the for loop wouldn't execute, so max_length would remain 0, which is correct since there are no subarrays.",
+        "intent": "edge_case_analysis",
+        "tone": "quick_confident"
+      },
+      {
+        "timestamp": "10:00",
+        "speaker": "interviewer",
+        "message": "Perfect! You've demonstrated a strong understanding of the sliding window technique and handled the edge cases well. Any questions about this problem?",
+        "intent": "wrap_up_positive",
+        "tone": "satisfied_encouraging"
+      },
+      {
+        "timestamp": "10:15",
+        "speaker": "candidate",
+        "message": "Just one - would this approach work if the array contained negative numbers?",
+        "intent": "follow_up_question",
+        "tone": "curious_engaged"
+      },
+      {
+        "timestamp": "10:30",
+        "speaker": "interviewer",
+        "message": "Great question! With negative numbers, the sliding window approach wouldn't work because removing elements from the left might not decrease the sum. You'd need a different approach, possibly using prefix sums. But for positive integers, your solution is optimal!",
+        "intent": "follow_up_explanation",
+        "tone": "educational_positive"
+      }
+    ],
+    "evaluation_notes": {
+      "strengths": [
+        "Quickly understood the problem with correct example walkthrough",
+        "Recognized optimization opportunity from O(n²) to O(n)",
+        "Correctly identified sliding window as the optimal approach",
+        "Clear explanation of algorithm before implementation",
+        "Clean, correct implementation",
+        "Accurate complexity analysis",
+        "Good edge case consideration",
+        "Asked thoughtful follow-up question"
+      ],
+      "areas_for_improvement": [
+        "Could have mentioned the key insight about positive integers earlier",
+        "Might have discussed alternative approaches briefly"
+      ],
+      "communication_score": 9,
+      "technical_score": 9,
+      "problem_solving_score": 9,
+      "overall_assessment": "strong_pass"
+    }
+  }
+}

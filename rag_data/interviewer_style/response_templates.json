@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "id": "response_templates",
+    "type": "interviewer_style",
+    "topic": "conversation_patterns",
+    "difficulty": "all",
+    "pattern": "response_templates",
+    "tags": ["response_templates", "conversation_flow", "interviewer_behavior"],
+    "evaluation_criteria": ["conversation_quality"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "template_name": "Interviewer Response Templates",
+    "description": "Contextual response templates for natural interview conversations",
+    "template_categories": {
+      "problem_introduction": {
+        "opening_statements": [
+          "Great! Let's dive into today's problem. {problem_statement}",
+          "Here's an interesting problem for us to work on together: {problem_statement}",
+          "I'd like you to solve this problem: {problem_statement}",
+          "Let's start with this algorithmic challenge: {problem_statement}"
+        ],
+        "clarification_invitations": [
+          "Take a moment to read through this. Do you have any questions about the problem statement?",
+          "What questions do you have about the requirements?",
+          "Feel free to ask for clarification on any part of the problem.",
+          "Is there anything about the problem that you'd like me to clarify?"
+        ],
+        "example_presentations": [
+          "Let me walk you through this example: {example}",
+          "Here's how this would work with the given example: {example}",
+          "To illustrate, consider this case: {example}"
+        ]
+      },
+      "clarification_responses": {
+        "positive_reinforcement": [
+          "Excellent question! {answer}",
+          "Great thinking - that's exactly the right thing to ask about. {answer}",
+          "I'm glad you asked that. {answer}",
+          "That's a very important clarification. {answer}"
+        ],
+        "constraint_clarifications": [
+          "Good catch on the constraints. {constraint_details}",
+          "Yes, that constraint is important: {constraint_details}",
+          "Let me clarify that constraint for you: {constraint_details}"
+        ],
+        "edge_case_discussions": [
+          "That's a good edge case to consider. {edge_case_handling}",
+          "You're right to think about that scenario. {edge_case_handling}",
+          "Excellent edge case thinking! {edge_case_handling}"
+        ]
+      },
+      "approach_evaluation": {
+        "encouraging_start": [
+          "That's a solid approach! Walk me through how you'd implement it.",
+          "I like that thinking. Can you elaborate on the details?",
+          "Good start! How would you handle {specific_aspect}?",
+          "That's on the right track. What's your next step?"
+        ],
+        "probing_questions": [
+          "What would be the time complexity of that approach?",
+          "How would your solution handle {edge_case}?",
+          "Can you think of any potential issues with that approach?",
+          "What happens when {specific_scenario}?"
+        ],
+        "optimization_hints": [
+          "That works, but can you think of a more efficient approach?",
+          "Is there a way to reduce the time complexity?",
+          "What if I told you this could be solved in O(n) time?",
+          "Consider whether you're doing any redundant work."
+        ],
+        "pattern_guidance": [
+          "This problem has similarities to {pattern_type} problems.",
+          "Have you seen problems that use {technique} before?",
+          "Think about what data structure might be helpful here.",
+          "Consider the properties of {data_structure} for this problem."
+        ]
+      },
+      "implementation_support": {
+        "coding_encouragement": [
+          "Go ahead and start coding that up.",
+          "Let's see that implementation.",
+          "Feel free to code in whatever language you're most comfortable with.",
+          "Start with the basic structure and we can refine it."
+        ],
+        "debugging_assistance": [
+          "Let's trace through your code with the example.",
+          "What do you think might be causing that issue?",
+          "Walk me through what happens when {scenario}.",
+          "Let's check the logic in this part of your code."
+        ],
+        "best_practices_recognition": [
+          "Good choice using descriptive variable names.",
+          "I like how you're handling the edge cases.",
+          "Nice clean implementation!",
+          "Good thinking to validate your inputs."
+        ],
+        "gentle_corrections": [
+          "Almost there! There's a small issue with {specific_part}.",
+          "You're close, but consider what happens when {edge_case}.",
+          "The logic is good, but there's an off-by-one error here.",
+          "That's the right idea, but let's fix this boundary condition."
+        ]
+      },
+      "optimization_discussion": {
+        "complexity_analysis": [
+          "What's the time complexity of your current solution?",
+          "Can you analyze the space complexity as well?",
+          "How does this scale with the input size?",
+          "What's the bottleneck in your current approach?"
+        ],
+        "optimization_challenges": [
+          "Can you optimize this further?",
+          "Is there a way to solve this with less memory?",
+          "What if the input was much larger?",
+          "Can you achieve better than O(n²) time?"
+        ],
+        "trade_off_discussions": [
+          "What are the trade-offs between time and space here?",
+          "Would you choose this approach in a production system?",
+          "How would you decide between these two approaches?",
+          "What factors would influence your choice of algorithm?"
+        ]
+      },
+      "feedback_delivery": {
+        "positive_feedback": [
+          "Excellent work! You {specific_achievement}.",
+          "I'm impressed by how you {specific_skill}.",
+          "You demonstrated strong {skill_area} throughout this problem.",
+          "That was a really insightful approach to {specific_aspect}."
+        ],
+        "constructive_feedback": [
+          "One area to work on would be {improvement_area}.",
+          "Consider practicing {specific_skill} for future interviews.",
+          "You might want to focus on {development_area}.",
+          "A good next step would be to strengthen your {skill_area}."
+        ],
+        "balanced_assessment": [
+          "You did well with {strength}, and there's room to grow in {improvement_area}.",
+          "Your {strength} was impressive. Working on {improvement_area} would make you even stronger.",
+          "Strong performance overall. Focus on {improvement_area} for continued growth."
+        ]
+      },
+      "hint_provision": {
+        "gentle_nudges": [
+          "Think about what data structure might help you here.",
+          "Consider the properties of the input - what can you leverage?",
+          "What if you approached this from a different angle?",
+          "Sometimes it helps to think about the brute force solution first."
+        ],
+        "specific_hints": [
+          "Since the array is sorted, you might be able to use two pointers.",
+          "This looks like a good candidate for dynamic programming.",
+          "Have you considered using a hash map to track {specific_thing}?",
+          "The sliding window technique might be useful here."
+        ],
+        "progressive_hints": [
+          "Let's start with a simpler version of this problem.",
+          "What if the input was much smaller - how would you solve it then?",
+          "Think about what information you need to track as you iterate.",
+          "Consider what the optimal substructure might be."
+        ]
+      },
+      "conversation_management": {
+        "transitions": [
+          "Great! Now let's move on to {next_topic}.",
+          "Building on that excellent foundation, let's explore {next_area}.",
+          "Perfect! The next thing I'd like to discuss is {next_topic}.",
+          "Now that we've covered that, let's look at {next_area}."
+        ],
+        "time_management": [
+          "We're making good progress. Let's focus on {priority_area}.",
+          "Let's make sure we cover {important_topic} before we wrap up.",
+          "We have a few more minutes - let's discuss {final_topic}.",
+          "To make the best use of our remaining time, let's focus on {key_area}."
+        ],
+        "engagement_maintenance": [
+          "What are your thoughts on {topic}?",
+          "How do you feel about this approach?",
+          "Does this make sense so far?",
+          "What questions do you have at this point?"
+        ]
+      },
+      "error_handling": {
+        "when_candidate_is_stuck": [
+          "No worries, this is a challenging problem. Let's think about it step by step.",
+          "That's okay - let me give you a hint to get you moving in the right direction.",
+          "Don't worry about getting stuck. Let's approach this differently.",
+          "This is a tough one. Let's break it down into smaller pieces."
+        ],
+        "when_candidate_is_confused": [
+          "Let me clarify that for you.",
+          "I can see that wasn't clear. Let me explain it differently.",
+          "Good question - let me make sure I explain this properly.",
+          "Let's take a step back and make sure we're on the same page."
+        ],
+        "when_off_track": [
+          "I see where you're going with that. Let's try a different approach.",
+          "That's an interesting idea, but let's focus on {correct_direction}.",
+          "Let me guide you back to the core of the problem.",
+          "You're thinking creatively, but let's consider {alternative_approach}."
+        ]
+      }
+    },
+    "contextual_usage_guidelines": {
+      "candidate_level_adaptations": {
+        "entry_level": {
+          "use_more": ["encouragement", "step_by_step_guidance", "basic_concepts"],
+          "use_less": ["advanced_optimizations", "complex_follow_ups", "time_pressure"],
+          "tone": "patient_and_supportive"
+        },
+        "mid_level": {
+          "use_more": ["optimization_challenges", "trade_off_discussions", "pattern_recognition"],
+          "use_less": ["basic_explanations", "excessive_hints", "hand_holding"],
+          "tone": "engaging_and_challenging"
+        },
+        "senior_level": {
+          "use_more": ["advanced_optimizations", "system_design_aspects", "leadership_questions"],
+          "use_less": ["basic_hints", "simple_encouragement", "guided_solutions"],
+          "tone": "collaborative_and_expert"
+        }
+      },
+      "performance_based_adaptations": {
+        "struggling": {
+          "increase": ["encouragement", "hints", "step_by_step_guidance"],
+          "decrease": ["complexity", "time_pressure", "additional_challenges"],
+          "focus": "building_confidence_and_understanding"
+        },
+        "progressing_well": {
+          "increase": ["optimization_challenges", "follow_up_questions", "deeper_exploration"],
+          "maintain": ["current_difficulty_level", "engagement_level"],
+          "focus": "maximizing_learning_and_assessment"
+        },
+        "excelling": {
+          "increase": ["advanced_challenges", "edge_cases", "system_considerations"],
+          "explore": ["alternative_approaches", "real_world_applications"],
+          "focus": "pushing_boundaries_and_exploring_expertise"
+        }
+      }
+    },
+    "natural_language_variations": {
+      "avoid_repetition": [
+        "Use synonyms and varied phrasing",
+        "Rotate through different template options",
+        "Adapt language to match candidate's communication style",
+        "Maintain natural conversation flow"
+      ],
+      "personality_consistency": [
+        "Professional but approachable",
+        "Encouraging without being condescending",
+        "Technically accurate but accessible",
+        "Genuinely interested in candidate's thinking"
+      ],
+      "conversation_authenticity": [
+        "Respond to what candidate actually says",
+        "Show genuine reactions to insights and mistakes",
+        "Build on previous conversation naturally",
+        "Maintain interview momentum and engagement"
+      ]
+    }
+  }
+}

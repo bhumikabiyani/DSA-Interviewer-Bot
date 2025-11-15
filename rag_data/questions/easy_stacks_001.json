@@ -1,0 +1,64 @@
+{
+  "metadata": {
+    "id": "easy_stacks_001",
+    "type": "question",
+    "topic": "stacks",
+    "difficulty": "easy",
+    "pattern": "stack_matching",
+    "tags": ["stacks", "string_processing", "matching"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(n)"
+    },
+    "related_problems": ["easy_stacks_002", "medium_stacks_001"],
+    "evaluation_criteria": ["data_structure_choice", "implementation", "edge_cases"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. A string is valid if open brackets are closed in the correct order.",
+    "constraints": [
+      "1 <= s.length <= 10^4",
+      "s consists of parentheses only '()[]{}'."
+    ],
+    "examples": [
+      {
+        "input": "s = '()'",
+        "output": "true",
+        "explanation": "The parentheses are properly matched."
+      },
+      {
+        "input": "s = '()[]{}'",
+        "output": "true",
+        "explanation": "All brackets are properly matched in correct order."
+      },
+      {
+        "input": "s = '(]'",
+        "output": "false",
+        "explanation": "The brackets are not properly matched."
+      },
+      {
+        "input": "s = '([)]'",
+        "output": "false",
+        "explanation": "The brackets are not closed in the correct order."
+      }
+    ],
+    "hints": [
+      "I'll push opening brackets to a stack and pop when I see a closing one",
+      "Good! Using a stack is the right approach. How will you handle mismatched or extra brackets?",
+      "Think about what to do when the stack is empty but you encounter a closing bracket"
+    ],
+    "edge_cases": [
+      "Empty string",
+      "Only opening brackets",
+      "Only closing brackets",
+      "Mismatched bracket types",
+      "Correct brackets but wrong order"
+    ],
+    "follow_up_questions": [
+      "What if the string contained other characters besides brackets?",
+      "How would you modify this to also validate mathematical expressions?",
+      "Can you solve this without using a stack?"
+    ]
+  }
+}

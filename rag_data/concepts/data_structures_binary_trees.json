@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "id": "data_structures_binary_trees",
+    "type": "concept",
+    "topic": "data_structures",
+    "difficulty": "medium",
+    "pattern": "tree_traversal",
+    "tags": ["trees", "binary_tree", "recursion", "traversal"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(h)"
+    },
+    "related_problems": ["easy_trees_001", "medium_trees_001", "hard_trees_001"],
+    "evaluation_criteria": ["tree_understanding", "recursion", "traversal_methods"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "concept_name": "Binary Trees",
+    "definition": "A hierarchical data structure where each node has at most two children, referred to as left and right child. Forms the foundation for many advanced tree structures.",
+    "key_properties": [
+      "Each node has at most two children",
+      "Has a single root node",
+      "No cycles (acyclic graph)",
+      "Unique path between any two nodes",
+      "Height determines performance characteristics"
+    ],
+    "types": {
+      "full_binary_tree": {
+        "description": "Every node has either 0 or 2 children",
+        "properties": ["No node has exactly 1 child", "Maximizes internal nodes for given height"]
+      },
+      "complete_binary_tree": {
+        "description": "All levels filled except possibly the last, which fills left to right",
+        "properties": ["Efficient array representation", "Used in heaps", "Height is O(log n)"]
+      },
+      "perfect_binary_tree": {
+        "description": "All internal nodes have 2 children and all leaves at same level",
+        "properties": ["2^h - 1 total nodes", "Perfectly balanced", "Optimal height"]
+      },
+      "balanced_binary_tree": {
+        "description": "Height difference between left and right subtrees ≤ 1 for all nodes",
+        "properties": ["Guarantees O(log n) operations", "Self-balancing variants exist"]
+      }
+    },
+    "traversal_methods": {
+      "depth_first": {
+        "preorder": {
+          "order": "Root → Left → Right",
+          "use_cases": ["Tree copying", "Expression tree evaluation", "Directory listing"],
+          "implementation": "def preorder(root):\n    if root:\n        visit(root)\n        preorder(root.left)\n        preorder(root.right)"
+        },
+        "inorder": {
+          "order": "Left → Root → Right",
+          "use_cases": ["BST sorted traversal", "Expression tree infix notation"],
+          "implementation": "def inorder(root):\n    if root:\n        inorder(root.left)\n        visit(root)\n        inorder(root.right)"
+        },
+        "postorder": {
+          "order": "Left → Right → Root",
+          "use_cases": ["Tree deletion", "Directory size calculation", "Expression evaluation"],
+          "implementation": "def postorder(root):\n    if root:\n        postorder(root.left)\n        postorder(root.right)\n        visit(root)"
+        }
+      },
+      "breadth_first": {
+        "level_order": {
+          "order": "Level by level, left to right",
+          "use_cases": ["Tree serialization", "Finding shortest path", "Level-based processing"],
+          "implementation": "def level_order(root):\n    if not root:\n        return\n    queue = [root]\n    while queue:\n        node = queue.pop(0)\n        visit(node)\n        if node.left:\n            queue.append(node.left)\n        if node.right:\n            queue.append(node.right)"
+        }
+      }
+    },
+    "common_operations": {
+      "insertion": {
+        "description": "Add new node maintaining tree properties",
+        "complexity": "O(h) where h is height",
+        "considerations": ["Maintain balance", "Choose insertion strategy"]
+      },
+      "deletion": {
+        "description": "Remove node while preserving tree structure",
+        "cases": ["Leaf node", "Node with one child", "Node with two children"],
+        "complexity": "O(h) where h is height"
+      },
+      "search": {
+        "description": "Find node with specific value",
+        "complexity": "O(h) for BST, O(n) for general binary tree",
+        "optimization": "Use tree properties when available"
+      }
+    },
+    "implementation_patterns": {
+      "recursive_template": {
+        "python": "def tree_operation(root):\n    # Base case\n    if not root:\n        return base_value\n    \n    # Recursive calls\n    left_result = tree_operation(root.left)\n    right_result = tree_operation(root.right)\n    \n    # Combine results\n    return combine(root.val, left_result, right_result)",
+        "java": "public ReturnType treeOperation(TreeNode root) {\n    // Base case\n    if (root == null) {\n        return baseValue;\n    }\n    \n    // Recursive calls\n    ReturnType leftResult = treeOperation(root.left);\n    ReturnType rightResult = treeOperation(root.right);\n    \n    // Combine results\n    return combine(root.val, leftResult, rightResult);\n}"
+      },
+      "iterative_template": {
+        "python": "def iterative_traversal(root):\n    if not root:\n        return\n    \n    stack = [root]\n    \n    while stack:\n        node = stack.pop()\n        visit(node)\n        \n        # Add children (right first for left-to-right processing)\n        if node.right:\n            stack.append(node.right)\n        if node.left:\n            stack.append(node.left)"
+      }
+    },
+    "complexity_analysis": {
+      "time_complexities": {
+        "traversal": "O(n) - must visit each node",
+        "search": "O(h) - path from root to target",
+        "insertion": "O(h) - find position then insert",
+        "deletion": "O(h) - find node then restructure"
+      },
+      "space_complexities": {
+        "recursive": "O(h) - call stack depth",
+        "iterative": "O(h) - explicit stack/queue",
+        "balanced_tree": "O(log n) space",
+        "skewed_tree": "O(n) space"
+      }
+    },
+    "common_problems": [
+      {
+        "category": "Tree Properties",
+        "examples": ["Maximum depth", "Diameter", "Balance check", "Symmetric tree"]
+      },
+      {
+        "category": "Path Problems",
+        "examples": ["Root to leaf paths", "Path sum", "Lowest common ancestor"]
+      },
+      {
+        "category": "Construction",
+        "examples": ["Build from traversals", "Serialize/deserialize", "Clone tree"]
+      },
+      {
+        "category": "Modification",
+        "examples": ["Invert tree", "Flatten to linked list", "Connect next pointers"]
+      }
+    ],
+    "interview_strategies": [
+      "Always consider both recursive and iterative approaches",
+      "Think about base cases first",
+      "Consider what information needs to be passed up/down the tree",
+      "Draw small examples to understand the pattern",
+      "Consider edge cases: empty tree, single node, skewed tree"
+    ],
+    "optimization_techniques": [
+      "Memoization for overlapping subproblems",
+      "Early termination when possible",
+      "Tail recursion optimization",
+      "Iterative solutions to avoid stack overflow",
+      "Level-order for breadth-first requirements"
+    ],
+    "common_mistakes": [
+      "Forgetting null checks",
+      "Incorrect base case handling",
+      "Stack overflow on deep trees",
+      "Not considering tree balance",
+      "Mixing up traversal orders"
+    ]
+  }
+}

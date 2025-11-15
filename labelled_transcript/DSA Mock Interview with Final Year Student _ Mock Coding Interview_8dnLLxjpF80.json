@@ -1,0 +1,486 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, Risha, so let us start with our interview and yeah, I am glad that you have joined for this call. So, Risha, like do you can you tell me like which algorithm with sorting algorithm is an in place sorting algorithm, either must sort or quick sort."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, in place sorting algorithm, so I can quick sort is an in place sorting algorithm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what is the time complexity of quick sort algorithm?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The quick sort the best case time complexity of quick sort is N log N and the worst case is over 10 square."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And when does the worst case complexity happens?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The worst case complexity happens when the whole area is sorted. The whole area is sorted and when the area is not divided equally."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, when the area is not divided equally. Can you quickly give me a brief like how quick sort algorithm works?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in quick sort algorithm what we basically do is we select a pivot and from selecting the pivot we basically want the pivot to go to its correct position and the remaining the all the elements to the left of pivot will be less than that pivot and all the elements to the right of pivot will be greater than that element. So, we keep on recursively doing this until our area gets sorted."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Got it, got it, got it. So quick sort algorithm is better than must sort or it is worse than must sort."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in some cases it is actually better than must sort but the time complexity of must sort best case as well as the worst case time complexity of must sort is both both and log N. So I prefer must sort over quick sort."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, but you know right. So in quick sort so even in the average was average complexity and log N for both there is some constant. So, hidden. So for that constant quick sort is very efficient than must sort but yeah but depending upon the use case depending upon must sort of quick sort can be here. But yeah, thanks. Okay, so that is on it. Thanks for giving the answers for this one. So let us move it to the next part. So I have shared a quote, shared a collab added link. So can you see what I am writing on this screen?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I am typing on this screen. Let me see. So far, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So which language you want to select?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I am comfortable with this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So are you able to see what I am typing here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, hello. Hello, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So I am writing the question here. Right. So I am writing a question here. So what we have is we have three strings. So we have a string one. You can say S1. Let's say A, B. We have a string two. Let's say CD. And we have a string three where it is made by combining the letters. So let's say A, C, B, D. So here if you see S3 is made up of S1 plus S2. So 2 plus 2, 4. So S3 language would be 4. And if you see A, B. A string one has A, B. So string three also will have an A and B at index 0 and index 2. Right. So string two has CD. So string three should also have CD. So it is on D is also present at index 1 and index 4. Right. Yes. Not index 3. Right. So all the characters of the string one and string two should be present into string three. Right. But in a sequence. So if you see that string one is A, B. So in S3 also it should be A, B. So it should not be like B. It should not be B, A. Okay. Right. So in a sequence matter, but it is like you can say that one character of a string one, then another character of a string two, like two characters of a string one, three characters of a string two, like it can be there, but order should be maintained."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Means the sequence should go in maintained."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. There should not be consecutive. Like correct. But the sequence should be maintained. Correct. So what you have to do is, so you will be given the three strings. So you need to return through or false. You need to return through or false. If string three is, you can say that is, you can say that it is combined or you can construct a bit the proper condition which we have just told. So it should have S1 plus all the characters of S2 plus sequencing also maintain. Right. Like string S3 should contain all the characters of S1 and S2 and S3 should also contain all the characters of S2. So just for a little point in this polar edit, it is always showing that your connection has been lost. So I just have to reconnect all the time. So can we do is on Google, or something like this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. We can open Google."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let us do this. Let us use it for this. So for this one, your output will be true in this case. Right. Now here, but if you see that let us say S1 is A, B, S2 is CD, but my S3 in this case was let us say A, B, C only. So this is false. Why it is false? You know right? Because D is not there. Right. Yeah. So now you know right what tells the question. Any doubt clarification you wanted to do?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So yeah. So the overall the question boils down to like in string 3, S3 should contain all the characters of S1 and S3 should contain all the characters of S2 plus S3 in S3. The sequence of characters in S1 should be maintained as well as the sequence of characters in S2 should also be maintained."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Yeah. If it is maintaining all this property then return to otherwise return false."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Return false. Okay. Okay. So yeah, it is always this redonection here. So if you understand the question reserved and you can take your time. So let me know I will stop here."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So the first approach that comes to my mind is basically a two pointer kind of approach."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what I will basically do is I will keep a pointer I over at the starting of S1 and then I will enter J at the starting of S2. And I will traverse through S3 and I will check if this A matches with S1 of I. So if it does not match then I will check if it matches with C like for example I am just asking you a question like this clarifying question. Actually it is always between the connection type of thing. So it should be an collab added for both over connectivity should not be an issue. So it might be a collab added issue."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So like the string S3 can be in this case like if it is like CKDD this also valid this also valid string right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "C A. C A DDD. Yeah. It is a valid string. Yeah. It is a valid string right. So yeah the approach is like I will traverse S3 and I will check on both S1 and S2. So like if this A matches with this A then I will increment the I pointer and then I will and if it does not matches I will keep the I pointer as it is. So like then my I will move over to B. I move over to B. And then string S3 now I have C and S1 of I is B and S2 of J is C. So it matches with C then J moves to D and so I have I at B and J at D and now again at S3 I come over to B and I check if S1 of I is equal to S3 of J S3 of K let's say so if it matches then I move over to the I increment the I pointer. So now I pointer moves at the end then again at S3 I come at D and again at S2 I come at D. So both of them matches and both of them move to the last like there at D and so yeah. So that is the case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you are saying you will take a 2 pointer, 1 pointer at S1, 1 pointer at S2 and you will be iterating from S3 and if any of the character matches with either S1 or S2 you will increment that one and likewise you will reduce to land. So one thing that comes to my mind while going through this approach is like I can have a string like KB and I can also have a string like KB right. So in that case A, B, A, B and if my string is of the time if my string is of it is like K, A, B, so I am just taking it with tool world. So if it is K, A then I am incrementing if both of the character matches I only increment one of them I am not increment both. Okay, if both of them matches. Can you share your string once?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Can you share your string? It is a string of yeah. Because it is reconnecting right so maybe one of them is not shared then it could be okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So then whatever you are writing I will be also in saying."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. That is better actually. Yeah. So if string one is A, B and string two is also A, B. Okay. And my S3 is A, B, B. A, A, B, B. Okay. B, B. And I am going through the same approach that I previously told you. So if both of the matches like in this case A, A, A, all the three matches like S of I, S1 of I matches with S3 of K. So like T is the pointer of S3, I is the pointer of S1, J is the pointer of S1, J is the pointer of S3 of K. So S1 of I is equal to S3 of K and S2 of J is also equal to S3 of K but I only increment one of them either A or either I or either J. So let's say I increment I of K. So now I move over to B and my J is still at A and this is still at S3 is also still at A. So both of them now matches. So I would like, I guess that 2 point of good will work. So it will work. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So I guess are you sure that we are covering all the use cases?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "First of all the first of all is obviously check if the length is same means S1 plus that is S2. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So the second use case which you have taken A, B, A, B in that you told that if both are matches, if both are matches then you will increment one. So can you think from this perspective like is something has to be done here? Like you are right that if both matches, so is it something extra we have to do? Can you think from that perspective?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Okay. Okay. You know I guess it should work because I am going to implement one of them. Okay. And if S3 is a valid string, if S3 is a valid string then my claim is that all the characters all the directors should do sequence. So, if I interrupt over them, I should reach then."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, think about from let us use KSR ratio. So, let us say, right one S1 equals to A, B, C, A, B, C."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, A, B, C. And S2 is A, C, B. And S3 is like A, C, B, C."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, B, C. Yeah, now let us say when you are saying, so A, A matches up, right? So, at the first case only it will not work, right? Because the string cut S1.S, S2.S, S2.S, it is not equal to S. Correct. Let us say A, C, B, B, C, 1, 2, 3, 4, 5. So, yeah, just make it correct like what is missing, A is there. Okay, double A. B, C, A. Yeah. So, let us say at last we have put A, let us put double A then. Double A, start. Just a sec, let us, I am just trying to see a use case where the two pointer approach might have to be modified. So, let us say A, so you are saying that if any of the matches you will increment only one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Only one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, here let us say you have incremented. And then, okay, A, C, A. Can you make A, C, A, double B, C? A, C, A, double B, C, yeah. So, now in this case let us say both aim matches up. A, C, A, double B, C. Okay. Now, in this case, I, J, I, J and the K index all are at the zero itself. A, C, A, double B, C, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, yeah, all right, the zero index, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now, in this case what you are saying is if any, if both matches in the string one and the string two, you will increment only one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, let us say you have incremented the S1. Of course, one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, yeah. So, now second one is B."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. And the S2 is still at A."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. But S3 now comes to C."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. What it will return? Yeah. Yeah. Yeah. So, you will handle this use case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you think of loud like we are? Are you going to help you?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, nice. I was thinking, yeah, so that's a very good edge case that you pointed out. I also need to make the decision like which string I get too low forward. So, I cannot randomly just pick anyone string and iterate. It means implement that I implement that report. I end the matches. Okay. Quick time. We have past 10 minutes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. So, what do you do in that case? Risham."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Okay. You have, you don't know in this case like whether I should increase this, then I will get an answer or whether I would increase there or that I will get an answer, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, what in generally in such cases we do? We where we can have both options."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry. We try both options."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And when we try both options, what is that approach?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It's most recursive kind of thing. So, it's a recursion."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Right. So, now you are thinking right like we have to try both the options and now you also know that recursion is something which comes into the picture. Right. So, yeah. Think from that perspective."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, yeah. I'm sorry. You can't really remember both of them. You can come to the front. Then like my icon to move to be. If I get from there. I should see. I check. I check. If this is. Now, I just will. If I get. This one is. I see. This. This. This. This. This. This. This. This. This. This. This. This. This. Okay. So, I guess. I guess. Recursion kind of thing would work. Yeah. So, what I do is like. If at I and J. If I. So, I equal to S of D and. So, I have. So, I have. So, I have. Right. Whether to be. I. I. I. I. I. So, first I try. So, what I will do is. I. I. I will make. I. I. I. I. I. I. I. I. I. I. Is. I. I. I. Which is this. I. I. This. One. For. So, I. . So, basically should be like when both I equal to 2 and I equal to 2 and I return at 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right, right. Now, what is the time complexity of this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, generally, it is a kind of thing and I have two options, right. And I am trying both of them and I am trying both of them. So, if you do not memorize it, if you have the power to 20 power n as I am trying both the options. And if I memorize it, right. No, no, okay. But, okay. Sorry. But I have three states, right. I have I j and k. So, I j and k. So, I can both end to. No, sorry. No, I j."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Without the obligation. Before memorization, Risha. Like, what complexity you said to rest the power?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "2 raised to 2. How? 2 raised to 2. How? 2 raised to 2. Yeah, 2 raised to power n. 2 raised to power n. 2 raised to power 2 raised to power n. 2 raised to power n. Yeah. What is that? n. n is the length of the string. Where n is the maximum of the length of the string that is one or less two? It should be the maximum. Can you double check what? Is this the correct time complexity?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Minimum minimum of the length of the string is one and less two. Why it should be minimum?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because after one gets to the end, after I get to the end, the rest of the string, the rest of the string should match with that with the string."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What is the worst case when this time complexity can go? So, what would be the worst case use case of S1 and S2? When the... So, okay. Just take S1 equals to let us say Bb. S2 equals to again Bb. Yeah. Okay. S3 is BbBb. Take it to the all of the string."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you are saying it is 2 raised to power n, the minimum. So, minimum is nothing but a 2. No, no, no, it is 2. Yeah. So, you see that whatever the approach we have come up with, that recursion and... So, now in this case, this is the worst case scenario where each character is matching."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, each character has two options, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, at what depth it can go? So, each character has... Each character has two options. And so, each character has 0, 0, 0. So, there are couple of two options. So, sorry very very. I guess it would be 2 to the power n plus n will..."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right. ...and the length of one string and time is the length of other string. Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "It would be m plus n, like combined. Combined combined."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right? So, it will go first of S1 then S2. Then S1 then S2. So, the depth it can go is m plus n."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Then it would go to n plus n. Okay. So, this is the worst case. What we are talking about the brute force. Right? I want you to write this brute force first then you will try to make it efficient. Okay. So, just a quick time check we have only half in our left."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yes. Okay. Yes. S1. Okay. Okay. Yes. Okay. S1. Okay. S1. Okay. S1. Okay. Next we call this as a brute force. Okay. S2. Okay. Okay. Okay. Okay. Okay. Okay. Okay. Okay. And while writing the code ratio it could be helpful if you can a little bit loud so that I can understand what you are going to. Yeah. Yeah. Yeah. Yeah. Yeah. So, I still pointed at S1. I still point up S1. Case the point up S2 and case the point up S3. Okay. And I'll declare this S3. This all these three seems globally. So, that I wanted to go. And I call my consent from here. We question 0, 0, 0. Let's part of the string 1 string 2 string 3 from the main method itself. Like you do not want it to be global."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Let's pass it from the main method itself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah. So, let's see. Let's take a step. So, let's see. Let's take a step one is something. And I can write the VZ. I choose it. It's even. And this is the form. This is the form. VZ3 is the VZ. So, this is the form. So, this is the form. This is the form. So, this is so fine. It can be one person change. And that's so fine. It's equal to two persons of K. Then I have physically two options. Right. They have physical problems. And I'll basically two options. First, it's to go i plus 1 and change. And K plus 1 is one. And second is. Second is. Just go i and change. Plus one and K plus one. We have this one. It's one is. What I do is I return the order of them. And we do. And it's one of I. So, it's equal to equal to. And another. So, it's okay. Yeah. So, it's okay. Then I have this. And just to return the first. I plus one. J. That's one. That's one. That's one. I just want to pay. Now, I just want to pay. This is. You just have to put. So, I just do them. And I love. I come up to. Let's. Yeah. It's. It's fine. So, I. It's. It's. It's. It would be as one of I equals to it. It was. It was. And. j equals to s 3 of k. s 2 of j should be equal to but if s 1 of i equal to s 2 of j and s 1 of i equal to s 2 of k, that is same right. So, second one is I have s 2 of j, s 2 of j equal to 2, s 3 of k. Then what I will use is written in question of i plus 1, it is this one, s 1, s 2, s 3. If any one of i is false like this is also for then I have simply written false because s 1 of i is equal to s 1 of i equal to s 3 both of them matters, s 1 of i is equal to s 3 of k, s 1 of i is also does not matters, s 2 of j also does not matters. Then it is simply written false, let us simply written false ok and the base case will be nice, base case will be like this, if i equal to s 2 of s 1 less size, i equal to s 2 of s 3 of s 1 less size and j equal to s 2 of s 2 of s 1 less size, and k equal to and change. And guess, uh, did that? Hmm. Yeah. I'm just going to try. Yeah. Hmm. Hmm. Hmm. Hmm. Hmm. Hmm. Hmm. Hmm."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Do you need all this efforts? Like all this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. No. Uh, I'm saying, do you need all this if else if else if can this be a little bit simplified? Hmm. Right. And so on. I'm trying to put those things. I should put those things. I'm trying to put them. Uh, I'm trying to put them. Like if at the first, you can just check. You can just check if it's of I. Yeah. At the first, you can just check if. If it's one of I. It's not equal to a state of A. And it's. I just need to try to post if one of the matches that I need to implement that point. If the given metadone, you can implement the ge pointer. Hmm. Like, let's first take in this work. And not get."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Sure. I'm checking the base conditions."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I'm going to do. Like if it's one equal to a start size, like all of them, which is there and then return. I'll simply went through. And this may not work sometimes because like I may process. Limit. So I should not check. I give sure. So why should also like. You're like, you can see, I is less than 100. And case less than three times. And I just then use. Like. So. And case less than three times. And. I just wish it worked now. We can. Yeah. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "As soon as we see. Should we run it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. I guess it's taking us somewhere. Yes. Okay. You can write in your. So just copy page the code. I do you have any. Intelligent with you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Let's use that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So. So. Yeah. Yeah. Yeah. Yeah. Yeah. Yeah. It's one of the things that we see the series business. Yeah. Yeah. Yeah. It's given me. Yeah. So. Let's try a false page once. Okay. Can you try. Yeah. Remove. Just change some opposite the letter. Let's try with. Yeah. We. We. We have a. We have a. We see. Let's. Let's. We see. 123. 123. Write this one. I'm giving you a sample. Can you write in the string one? Wait a little. Yeah. L. B. B. B. was a. W. B. A. B. It was c. B. like if only if S 3.5 is not equal to S 3.5 plus S 2.5 is S 3.5. S 3.5 is not equal to S 3.5. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, yes. Yes. Yes. It's been through. Where is the output? I am not seeing this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Here, here is the output. Oh, one. One means? Yeah. Is it one? Yeah, it's one actually."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you just change in this? Okay. Can you show me the code once? What does the, let me go through it? First, the check which you have put that is okay. So now here, if I go to s1.size and j goes to s2.size and all three reads till the end means it's true. It's true. Then you are putting all three conditions right? Like i as not reads to the end, j has not reads to the end and s3 also not reads to the end. And all three are equal and we have to go at both the path and from whichever path we will get a true. It will return a true. Elsa. Elsa. Yeah, that is once you are returning for i plus 1 and once you are returning for k plus 1. That's okay. But can you, do you really required this Elsa? Two Elsa. Two Elsa. Why this simply if and two if can work right? So what I am trying to say that if you can little bit clarify this, clear this code like. So one you can run for, see if you remove the above if condition. And you can, two Elsa, you can change it to if condition. So that will do the same thing right? So it will simplify your code little bit."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so you are telling to just remove the above if one and two. Just do like this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, right. Two if condition. So if both if condition got true, it will run both. It will run more. So it will little bit clear to your code. Yeah, you can remove it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That's actually not a plan. It will be 0 now. Yeah, yeah. And delete the committed part. No, it's actually giving a long answer now. Yeah, yeah. That we can correct it. So we actually the above case if condition we don't need it. So we can just see. So here white is giving falls. This right there. You have an option one option to and you are returning an all. So that's you just need a that thing. Yeah, option one. This one and option two. And this initially let's do both of them in a sports. Or also also. And let's do a let's do a or write. Just a bit."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Tentor we have last 10 minutes. Okay, yeah, what is the space complexity in this program?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So the space complexity is actually the depth of the regression stack. So. I. The question. For. Yes. No. Or. Or. And one is the sign of a language and one is the sign of this one and two is the sign of the school. And space complexity is and one plus and two. Q. Or. And. Q. Or. Or. And. Or. And. Or. And. Yeah. So now. So time complexity we know that it's two rest of our M. So now can you see can we improve a little bit time complexity?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What you can do is there are things, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, speed, No sorry, what are you doing? What are you doing? What are you doing? What is DPI? I am actually memorizing the code. So I am just memorizing it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, you should see today overlapping some problems. Before memorizing the Rishabh, first tell me the use case where it will do the, like what is the bottleneck? Like can you little bit explain before you start?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so like if my test case is like A, A, A and this case also like A, A, A and this three so that I then it will go and the worst is done complexity. No, that is okay, but why do you need a memorization? Since the time complexity is exponential and so it is exponential in the power 2 to the pi and plus and we cannot do that much computation. So what if you will do is it will bring down the time complexity, it will, since we are overlapping subproblems to the problem, so it will memorize that correct problem and whenever we have seen that I have already visited this state, it will just get done from the state rather than going again into the recursion. So there is a subproblem overlapping with your R and how you are trying to solve, so can you explain me like in whatever you have taken a DPRA, what you are trying to store before writing the code?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, so Dp of i, jkmokk will basically store whether I have come to the, whether I have come at this state or not. So if I comment this state, then I will simply return from that state, I will simply return it at that state. Means what I, what it will basically store is the answer for Dp of, and the final answer will be like a Dp of n minus 1, m minus 1 and k minus 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So you are taking three areas, Dp of i, Dp of j, Dp of k, I like to, no, I did not get it like, one arrow only, but three states, n, m and k. So, like this, a group of Dp of, if I take like 101, 101 and 101, moves like, what is this 101? So this is actually the size, so we can also, take a vector, it is will, so anything like, I am taking the worst, so what can be the maximum size of S1? Okay, so you are wanted to take whatever the maximum length, you want to take that direction. Yeah, let us take 101, keep it as, I will get this in the maximum. Yeah, so I am taking, and I am taking, this memory, if I come, if I come at this state or not, so if I come at this state, then I will simply return from this state. And if not, and I will simply scroll. Yeah, so the now the time complexity actually reduces to over, so the previous, so previously, the time complexity was 4, 2 to the power n plus m, 4, 2 to the power n plus m, where n was the size of S1 and, n was the size of S2, and now using memorization, it actually came down to 4, n, m, yeah, over n, m, into, actually, 4, ij k, so basically, over n in 10 plus m, give me, so basically, like, 4, n, q, kind of n, 4, n, q."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now what is the slope? No, no, no, no, it is not, it is not, ok, so like, if I take, n is the space, if n is the size of S1 and, m is the size of S2. So, with the help of memorization, I believe, so the all we have removed it, the subset, it is an overlapping problem, right? Oh, okay, it is like, now become, you can say that, actually, a dp, it is an over n into m, actually, so you did it correctly, so it is not over n, so it is an into m, ok."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That is very well, like, so that is, we have almost reached to the exact point, 940, almost 2 minutes left, so that is pretty much from my side, like, yeah, so any questions you have, Risha?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Like, over n, like, this can also be storm using table, right? Like, if you could not use the recursive one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, ok, so we still have couple of minutes, so do you want to discuss on that dp one? The regular one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, I am ok with that one, this one, but like, if you have wanted to discuss with dp one, like, can you share me your thought, like, what you are thinking about dp?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like, if I think about the bottom of one, like the table of dp one, so, but then I would think like this, for dp of i, j, k, will basically store, like, I have iterated, like, what will be the answer for, for s of 1 of 0 to i, s of 2 of 0 to j, and s of 3 of 0 to k. So, if it is basically giving the correct answer, not like dp of i, j, k, basically stores the answer for the length, the first of s 1 from 0 to i, the length, correct?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. 2 from 0 to 10, the length. So, the subset, like, the, the, you can say that 0 to i is wherever the i would be, so, we will be checking only that part, so, it is like a bottom of, you are correct. Ok, so, that is pretty much from my side, and I think it is an end of our, this one, you can stop sharing this screen also, this, we can come on the video itself only. Ok, so, now it is time for the feedback, and we are almost done. So, how was it meant like, it might be, there is some communication gap in the question and all, did you feel something like that?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "You, you are not available, Risha. You are not available. Not available again. Hello. Risha, you are not available. So, can you, might be a mic problem, can you remove your phone once? No. Can you try without TFO? Hello, am I out of battery? Yes, you are out of battery now. Oh, sorry, sorry. So, Risha, did you felt any, gap in the communication of the question or anything else?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, the communication of the question, there was no message in the communication of the question. I caught the question at the first round, but, yes, you just pointed out that edge case, so, that I missed it. So, like, first, when I went by the two pointer approach, so I thought like two pointer approach would work. So, then you get me an edge case, so, like, that, so, then I went on to go into more recursive, means I started thinking in a recursive kind of way. So, like, so whenever there are two options, like, but I struggled a bit in the time complexity. So, this is generally a bit of problem with me, like whenever I write a recursive code, I memorize it and then the time complexity becomes easier because the big wave of states, the number of states in DPM basically becomes the time complexity of the code. But before, memorizing the code, the time complexity is actually a bit harder to guess, because we need to find them, then from the recursion tree, right? So, yeah, so that was a bit of challenge for me to directly figure out the time complexity."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, let's go with the feedback, Risha. Sorry for the noise, which is coming from the back for the cracker. The marriage garden at the back, so it's, so, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, so Risha, like leadership principle, as we discussed, we skipped, so that, so it's also not applicable for you. So, in the quick sort part, you have all the, given, so the reason for asking basic is, like we are doing an advance coding, right? Base should not, we should not get out of touch of the base, right? So, in place complexity wise and the quick sort approach, you quickly told that should be that you have the basic, still practice, even though you are, might be doing daily DPM recursion, anything, but your base is still, you are in touch like what is the exactly time complexity, which is in place, right? So, that is good, so that from that perceptive, that time, good. Now coming to the problem side, right? The first thing is the analysis part, right? So, there you started with analysis, right? But there is some gap, like you missed some edge cases, and that is kind of, you can say that, if the interwit didn't give you the edge case, right? Properly, you might have lost another 5-10 minutes more, and you might not be able to complete, right? So, it now totally comes to the interviewer if he able to help you, or if he don't help you, if he give you a hint about the edge case or not. Otherwise, you will be keep on doing the two sliding window problems, right? Two pointer approach, something, right? So, you would be still doing that, and you will start writing the code, then at last, when I told you what about this use case, you have gone. First thing is, you have to do is more analysis, analysis part. So, out of, you can say 5, I will give you on this two, because if I didn't help you in this one, next stage, you won't be able to read, and totally depend upon the interviewer, sometime interviewer comes good, and they help, actually, right? And why I help you, because you were talking to me, actually. So, you did the communication, right? That is one your plus point, that your communication was good. So, whatever you were thinking, you told, actually, that this is a use case. So, sometime what happened is, candidate do, like, they don't talk that much. So, they think internally in their mind. So, in that case, I might not help, giving the edge case also. So, this is, you can say that, at communication point of you, that was an advantage, but at analysis point, there is some gap, okay? Now, let's come to the second part, discussion. So, discussion you are doing, but at their some point, I have to tell you that, Risha, please speak out loud, so that I would also understand what you are thinking. So, this is, little bit, it's not totally you are not discussing, you are discussing with me, but let's say, when you are trying to discuss on the, if you remember, I give you a hint about the recursion, right? Yeah. So, go with the recursion. If, let's say, you are not discussing with me, right? I don't, sometime I say that, so what happened generally, Risha, many in interview, when an interview, taken interview, they will also do some office work also, I will, to be honest, right? So, until I analyze, you don't engage him, right? He will keep looking at his male, he will see some his messages, right? Until if you don't keep, if you keep me, I am engaging, right? I will keep everything aside, because you are talking to me. That is one key point, which is very, very important, keep the interviewer engaged, and as soon as you will keep me engaged, right, I will give you a hint, like Risha, the recursion, you are going right, take recursion approach, right? So, one other thing is, on the discussion part, you are doing the discussion, but try to engage more, little bit more, on the interviewer side, right? So, at some point, around for a good amount of time, you were thinking about, from 2 point of 2 recursion, there was a gap, so there, I have to jump in. So, in that period, you just, what you have, you can do is, you can see like, what is going in your mind to the interviewer. So, just tell that, what I am thinking, challenges, like, if I can do this, it doesn't matter, even you are not asking any input from me, but think out loud, like, I might think, okay, Risha can ask me question any time, so I have to be less informed, okay? And then, I can give you a hint. So, from the discussion point of view, I can give you, you can say that, 2.5 out of 5, it is a, you were discussing, but little bit, you have to improve more, right? Then, there is something called speed, your speed is good, like, so you did the coding, without any compilation error, that is very, very good, plus you also optimize it. So, your speed of coding is good, so that is, I didn't find any, this thing, so it is a complete mask on this, from my side. Then, it comes a clean coding, so clean coding, I want to deduct some points here, let's say, so in clean coding, you can say, like, first of all, did I didn't see? Yeah, duplication of the code, which is not even needed. Sometime, what we happen is, even in the coding, when we do in the actual, right? We do too much conservative coding, let's say, I afraid that my code will not be, so I put if condition, let's say, I put if condition, putting so many if condition that, okay, for each and each thing, even they are not required, right? So, always try to remove such code, which is not even necessary, right? The one point is, I told you that, it is not even required that if condition totally, that is one of the place, so you can clean little bit code up, try to avoid taking ijk, okay? Try taking index of say, S1, S1 index, S2 index, S3 index, right? Avoid ijk, because if anybody reads your code, right? They don't know, like i is corresponding to S1, ij, so if you say, S1 index, they know, okay, it's related to S1 string, okay? So, little bit clean coding, you have to do, and clean coding, you got what you have to do, naming conventions, plus the code, which is just, after writing the code, whatever you did, it's perfectly fine, but after writing, just see, give one more glance, can I reduce unnecessary code? Right? So, in the clean code, again, I will give you 2.5 out of 5, some, I am giving less, because of naming convention and the duplication of the code, right? But rest was, okay? So, the recursion name, I was totally readable, R, E, R, recursion and all, then completeness of the code, that I want to give, again, complete math, that it was complete, and I tell you, to tell the memoization, and, yeah, there is some point, data structure point, right? So, here, how much, you have command over data structure, right? So, that, that is not related to the interview part, that I am saying for you to, for the interview preparation part, right? So, by looking at the quotient, you should be able to identify the pattern. So, by looking at this quotient, you should know that it is a recursion problem, right? Some, so, this will come, like, looking at the problem, I can know that, it is a, a sliding into problem, if it is a sub-array, I, if I want to, if the quotient is like, give me a sub-array, in the sub-array, which is a maximum sub-array length, let's say, or in the sub-array, in the maximum number, I know it, I will be using 2 pointer, right? So, by looking at the quotient, and just quickly identify the pattern, what is the pattern, I need to do. So, that is where you will save the time. So, today, if I want to help you, you won't be able to proceed further, you will waste lot of time in thinking, what pattern it is actually, right? So, this is the problem, you should identify the pattern, like, I need to apply recursion here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so, like, yeah, I got the recursion, but like, whenever, whenever I, when I thought that, as of one, the three characters just matched. So, at that point of time, I just once thought that the recursion might come helpful, because, it will drive all the possible combinations, and then it will give me the answer. But then I thought that, if I just move, let's try a more 3D approach. But, yeah, most of the times, 3D approach, it doesn't do to be right. It's just our intuition. So, always build some of the root force. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right? So, this is just a pointer, like, some pattern matching thing is like, there are some common problems for which you can identify that this belongs to this pattern. So, all this problem comes to the recursion, right? All this problem comes to a sliding window problem. All this problem can be solved through this 3D. Some basic, right? So, this is known as, like, you can know that, it's a pattern identification. Right? So, little bit work has to be done. Some work has to be done on time complexity. Right? You are able to identify the time complexity. But, the thing is certain, like, time complexity is wrong. It's not that totally different. You set 2 rest of our m. It's actually 2 rest of our m plus m. So, just give, think one more time. Like, whenever you say that, okay, it's a final. Before saying it's a final, just think one more time. That's just one input. That, okay, is it really 2 of m? Like, can it be more? Just see one more time. So, that at least, okay, yeah, it could be more. And some time complexity, little bit has to be work. Not much, but you are able to identify the time complexity for the efficient one, which is good. So, it's good, but do some more practice on the time complexity. So, that, okay, so that, you are able to make the code efficient. That is very good. And that's pretty much from my side. So, based on this feedback, right, Risham, I will suggest for the round 2, actually, in that case. If I would be taking your interview, I would send the feedback that, these, also, round 2 generally is also coding. Right? So, this all the points which I told, right, and this is where you have to improve. So, in my feedback form, I will give it to the round 2 person, but with this feedback, that in the round 2, see if this thing has been improved or not, giving one more chance. So, in the round 2 generally, what happens is, whatever the feedback comes from round 1, where you have your lagging. So, in round 2, have you improved on that, plus you should perform better in the round 2. Right? So, based on this, for you are eligible for round 2, Risham, but that also depends upon the interviewer. So, if it's a good interviewer, most of the time, interviewer helps. Right? I am talking about from Amazon perspective, Google perspective, Meta perspective, the interviewer wanted to hire. They don't want to reject you. So, there is a different thing. Interviewer, I am taking an interview to reject you. I have, like, something like, I have to reject him. But, some interviewers are like, they wanted to hire. They wanted to help. And all these big companies write good product based company, they have the intention to hire. So, they do help. Right? So, from that perspective, I recommend for the round 2. But, if you, there are, you know the places where you have to work, because if other company, so interviewer might not help. So, there is a chance, still there is a chance, you might like in the interviewer round 1. Right? But, it's a probability is more 50% more than that interviewer will recommend you for the round 2. So, that's the conclusion of the feedback. Right? So, if I am the interviewer, definitely I want to hire. I don't want to reject. So, you have many qualities than what you are lagging behind. Right? So, in that basis, on round 2, I would be, see that if you did well on those where you were lagging. Right? So, that's pretty much from my side. And I hope it helps you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, it had a lot, because the placement scenarios, means the placements are coming up with the next month only. So, like, I was preparing for the placement only. So, like, I'm in touch, like I'm doing, it put every day, like every on then. So, like, I can identify the problems, like, there are some cases, like, whenever you feel like, yeah, in most of the DP problems, like, I can identify, like, it's a kind of decrease, a kind of recursion. So, encoding the recursion part in also, but the time complexity of recursion part, whenever I am, to guess the time complexity of recursion part, without the memorization part, it kind of gets a bit tricky, because you need to find that, that's the recursion stack, and how many states. So, yeah, I have to improve on that part a bit. And yeah, so, in today, in this question, like, if, whenever I talk there, the first approach, like, whenever I felt that, just increment the I pointer without deciding. So, yeah, that was a major flaw, that I found out. Yeah. So, if I, if I had the first code, it just, sort of recursive function, like, I'll just increment both of them, and check whichever gives me the right answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. That would have been good. The first part, right? Analysis part is very important, actually. So, yeah. So, in the, in the, when you will actually work, right, you will always be, you will never gonna work on D. You will never gonna work on linked list, right? But whatever the project you will got, right, you have to do the analysis. Right? So, analysis is very, very important, like, are you able to find the edge cases? So, if you see that, that has very, very more weightage, because, you know everything, but if analysis is wrong, the rest, all things will go wrong."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We will go wrong. Yeah. So, if your analysis is screwed up, rest, everything will get screwed up for sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Yeah. So, yeah, I guess I need to work on the analysis."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. But like, figuring out the edge cases, but like, if I have figured out that edge case, that would have been helpful, yeah. That would have made the whole approach a bit different."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Different. Yeah. Cool."
+  }
+]

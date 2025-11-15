@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "id": "real_interview_hard_001",
+    "type": "transcript",
+    "topic": "graphs",
+    "difficulty": "hard",
+    "pattern": "dfs",
+    "tags": ["real_interview", "flood_fill", "graph_traversal", "matrix"],
+    "interview_phase": "complete_session",
+    "speaker_roles": ["interviewer", "candidate"],
+    "evaluation_criteria": ["problem_understanding", "algorithm_design", "implementation", "communication"],
+    "source": "real_interview_transcript",
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "session_info": {
+      "duration_minutes": 60,
+      "problem_type": "flood_fill_algorithm",
+      "candidate_level": "entry_level",
+      "outcome": "needs_improvement"
+    },
+    "conversation": [
+      {
+        "timestamp": "00:30",
+        "speaker": "interviewer",
+        "message": "So question is you are given a m by m matrix right? And the input you will get is like i comma j what is the particular cell right? And the color which you have to color that cell? Now what you have to do is like let's say I have given a 3 comma 2 let's say put green color. So what you have to do is you have to make its neighbor green also up down left right diagonals also. And when you will stop when you will reach the border and what is the border is when you find some different color.",
+        "intent": "problem_introduction",
+        "tone": "clear_explanatory"
+      },
+      {
+        "timestamp": "01:00",
+        "speaker": "candidate",
+        "message": "Sir like could you give an example for this?",
+        "intent": "clarification_request",
+        "tone": "seeking_understanding"
+      },
+      {
+        "timestamp": "01:15",
+        "speaker": "interviewer",
+        "message": "Yeah it's a very simple example. Take 3 by 3 matrix in this case. So 3 by 3 matrix and let's say you are getting ij which I wanted to color with a green color is let's say 1 comma 1. So 1 comma 1 or 1 comma 2 is also okay. So 1 comma 2 I wanted to put a green color right? Now what you have to do is all its neighbor it would be a cascading effect like so 1 comma 2. And now it will go left right top down diagonals and it will try to make everyone with the green color until unless it won't find a border.",
+        "intent": "example_explanation",
+        "tone": "patient_teaching"
+      },
+      {
+        "timestamp": "02:30",
+        "speaker": "candidate",
+        "message": "So we have 8 neighbors. 8 neighbors so we will also include the diagonal cells. So in this case since we don't have any other colored neighbors so we will fill all of this with green.",
+        "intent": "understanding_confirmation",
+        "tone": "working_through_logic"
+      },
+      {
+        "timestamp": "03:00",
+        "speaker": "interviewer",
+        "message": "Correct correct correct. Yeah that would be an example. And just to add one more thing then it's a recursive then those which you have made a green then they will also go forward. So it's not only this cell. Not only the neighbor of this cell let's say you have make another cell green. So now its neighbor also till it will stop till all there is a border encounter.",
+        "intent": "concept_clarification",
+        "tone": "building_understanding"
+      },
+      {
+        "timestamp": "05:00",
+        "speaker": "candidate",
+        "message": "I would like to share my approach that I am getting on the question is what we can do is we have this traversal we can represent this matrix as a graph. Which has like you know eight neighbors top down bottom and the diagonals and whenever this function is called what we will do basically is we will keep on going to the neighbor of the cell and we'll keep filling it with the given color until and unless we have either boundary or else we'll encounter cell which is not the color which is given to us.",
+        "intent": "approach_explanation",
+        "tone": "confident_analytical"
+      },
+      {
+        "timestamp": "06:00",
+        "speaker": "interviewer",
+        "message": "Let's make it one more different here so instead of all white what you asked was right can it have colors so let's say it can have some white already some different colors already so let's go with that way so let's say what I'm going to say not all white somebody might have some different color.",
+        "intent": "complexity_increase",
+        "tone": "challenging_gently"
+      },
+      {
+        "timestamp": "08:00",
+        "speaker": "candidate",
+        "message": "So from the given i and J cell what we'll do is we'll perform DFS which would mean depth first search so what this will do is it will explore its children until a boundary is encountered. So let's have this function. I am initializing this dx matrix which will help me access the neighbors basically. So I will be adding which will help me go to like you know top which will make me access all the eight neighbors top bottom left right and these more diagonals.",
+        "intent": "implementation_start",
+        "tone": "methodical_coding"
+      },
+      {
+        "timestamp": "15:00",
+        "speaker": "interviewer",
+        "message": "So you will call the fill method again will it not change the original will it not change the original way of reading. And then on new like NX when we are changing the color here.",
+        "intent": "debugging_question",
+        "tone": "probing_understanding"
+      },
+      {
+        "timestamp": "16:00",
+        "speaker": "candidate",
+        "message": "No, so here you are calling a fill method right grid NX and Y color. So original equals to grid IJ. So now IJ you have already pointed to NXN and Y. But we are changing it here so that color could be maintained I think.",
+        "intent": "debugging_attempt",
+        "tone": "uncertain_explaining"
+      },
+      {
+        "timestamp": "20:00",
+        "speaker": "interviewer",
+        "message": "So maybe what I'm so initially we'll have the matrix as okay let there be no color so it will be like a empty string is that okay. No no so let's assume that we have already have an M into N matrix with some different colors. Some colors are already filled are already there now.",
+        "intent": "requirement_clarification",
+        "tone": "guiding_specification"
+      },
+      {
+        "timestamp": "25:00",
+        "speaker": "candidate",
+        "message": "So initially what I can do is I can have a variable which will store the original color of that cell before we change the color to the given color let me create a variable called original which will store the color. So what we will do is we will iterate to all of its neighbor and we will see if either the grid is empty or the grid has color as original.",
+        "intent": "solution_refinement",
+        "tone": "problem_solving"
+      },
+      {
+        "timestamp": "35:00",
+        "speaker": "interviewer",
+        "message": "Okay let's so can you do a dry run once. Now let's do a dry run.",
+        "intent": "verification_request",
+        "tone": "testing_understanding"
+      },
+      {
+        "timestamp": "40:00",
+        "speaker": "candidate",
+        "message": "When we like exploring all the neighbors so what we can have is for example in case the area is not filled with any neighbors then it would visit all of these cells then it could be a m cross n.",
+        "intent": "complexity_analysis",
+        "tone": "analytical_thinking"
+      },
+      {
+        "timestamp": "41:00",
+        "speaker": "interviewer",
+        "message": "Correct. Space complexity.",
+        "intent": "complexity_follow_up",
+        "tone": "testing_knowledge"
+      },
+      {
+        "timestamp": "41:30",
+        "speaker": "candidate",
+        "message": "Space complexity we are not taking any additional space except for this string color. So maybe the space complexity would be constant.",
+        "intent": "complexity_analysis",
+        "tone": "uncertain_response"
+      }
+    ],
+    "evaluation_notes": {
+      "strengths": [
+        "Understood the flood fill concept correctly",
+        "Identified DFS as the appropriate approach",
+        "Asked clarifying questions about the problem",
+        "Attempted to handle edge cases with original color tracking"
+      ],
+      "areas_for_improvement": [
+        "Struggled with implementation details and syntax",
+        "Missed space complexity analysis (recursion stack)",
+        "Code organization and variable naming needs work",
+        "Didn't fully consider all edge cases upfront"
+      ],
+      "technical_gaps": [
+        "Incomplete understanding of recursion space complexity",
+        "Syntax and coding standards need improvement",
+        "Variable naming conventions poor (nx, ny instead of newRow, newCol)"
+      ],
+      "communication_score": 7,
+      "technical_score": 6,
+      "problem_solving_score": 7,
+      "overall_assessment": "needs_improvement"
+    }
+  }
+}

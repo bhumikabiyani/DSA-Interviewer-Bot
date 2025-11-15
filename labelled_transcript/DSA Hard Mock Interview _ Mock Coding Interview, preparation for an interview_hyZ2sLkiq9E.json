@@ -1,0 +1,650 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Hey Hush, I have started the recording and thanks for joining and as you already know the procedure we have, so I will be uploading this session on the YouTube and I will be reviewing your resume. So, if you have any concern, please let me know. No, we can start then. So, I am going through your resume now and let us see. So, first of all I went through your resume, it is a very clean. The blue and the black and the bold, it is very good. So, giving it a quick glance, it is good. First of all, about I have already gone through it, about is ok. So, just by reading it I get to know that you are doing beta, you have solid understanding of this algorithm and something. So, it is ok. One education wise totally ok like all good. So, I just only need to know what you are currently doing. 10, 12 is not mandatory nowadays. Experience, I have one point is like you have written on wing. Can you change it to like when you started and it took further?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually, I have to update it. Because then I put it on my resume, I do not have that joining it, particularly when I am joining it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Ok. So, that is one thing. The third thing is the projects. I think you have a very, very strong project lineup. So, the two projects which one I am very, very much interested in is one is video chat web app and another is infinite to do list. So, these two projects is something like you should know in depth, if you have written this. Right. In depth and the senses. So, you have. So, these two are like you can say lot of system design questions also done on this two question itself. Right. To do list and web video chat. Right. So, these are the very hot topics I can tell you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I can in to do list that I have built myself but it was like five, six months ago. So, I do not remember proper in depth and for like that video chat, I want to build for my personal platform learning like universe."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. No, no. So, that is what I am saying. So, just tell the scope. So, here what I can see is develop a video chat using these all tech stack. User can create a call and also reject the call. Right. The basic accepting video call. Right. So, now here either first tell is is it a group project or its or individual. If it is an individual means you have built everything. Right. Then there is a lot of scope of asking. Right. Or if you are not able to ask then like you might not have done or if it is a group project, then what is your role in that. Right. What is your role in that. So, just do that. So, if it is a group, what is your role? You can mention that one. If it is an individual, just say that it is an individual project and I have done this. And I would say that so for SD1, SD2, for SD1 if you are applying it is a very less chance. They will go much deep. Only one level like okay you know Webarty C. So, it might be some question of Webarty C and all. But if you are still keeping it on your resume after the SD2 also just prepare for going in depth on to this for sure. Right. Because see the my worldly clone and HTML canvas is okay. Right. But these two projects have taken the like the whole the light you can say that. Right. And see now if you have done this project and I would say that your project is kind of more valuable than your experience I can say. So, you can put video web app and to do list and first two in the projects and also can you skip the projects little bit top. Right. And I do. So, once you get the experience in the company, you can bring experience at top. But for now, these two projects is very good. Like if you have build it like then it is an awesome man."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like I told that that infinite total is was build by me. Yeah. That video chat was it was a learning project like I want to experience that video chat."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Yeah. It's a learning project. But if you are able to create it like if you are college project or learning project doesn't matter. If you have made it, it's a project of yours. But if you have mentioned it here at least you should know about it. Okay. So, just make sure that if you have mentioned it here, whether it's a college or it's yours, just make sure that you know about it. Right. So, but your project lineup is very good. So, my worldly loan and HTML canvas, you can put a third and fourth, first and two, you can put this. Right. Technical IT skills, all good. So, GitHub, Linux, command, SQL queries. SQL queries, you can say my SQL. Right. So, SQL queries, it's not a DBMS. So, it's just my SQL or if you know or I saw you have used MongoN2Dooless. So, you can put MongoDB also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is like I have learned development, I have to use MongoDB and express and load all. But now I have like, forgot those things. So, it's promoted from my resume."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I have already got here. But see, you have project still. So, definitely this question might come like. So, see, generally what happened is I will not spend much more time, I have another one more minute. So, if you have any use any text stack in a project means you are allowing an interviewer to go into and talk about that. Okay. So, now if you have given MongoDB, so you have like allowed me to go into the MongoDB part. So, that is one thing like if you have mentioned into a skill or not, but you have made a project. So, now it otherwise it would be contradictory. You have made a project, but you don't know about the text stack. And now you are saying if you made a project, but you forgot the text stack."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, that is basically like if I mentioned in my project, you will like learn the basics about those. Yeah. Like what I have used in those."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, that's why we say, whenever before going to the interview, go through your resume. Whatever you have mentioned, at least know about it. Right? Otherwise that would be a excuse like, okay, I have made this project two years back. Now I don't know that. Right? At least you should know. Otherwise, if you don't know that, remove the project itself also. Right? But otherwise apart from this, like if you have a good command over your projects, your resume is very strong. Right? As a fresher college, it's a very strong resume. So, that's on the resume part of the first. Right? So, now let's move on to the second phase, where we have a basic OPS and DSS question. Okay? So, it's 11.23. I will spend only around 10 minutes on that. Okay? So, let's start. So, Hurt, can you tell me what is dependency injection?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Depending. I have not heard of it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay? Can you tell me in the OPS, what is type coupling and loose coupling?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I didn't came across these two words."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, do you know about composition and inheritance?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, composition and inheritance. I know. Sir, before telling you about the composition, I would like to tell you about the association property. The association is the relationship between two classes. And our association is divided into two parts, aggregation and composition. So, this aggregation relationship, it is like has a property and the composition is like these two classes cannot exist without each other like the objects. This has composition. Right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you tell me the difference between interface and abstract classes? What is the difference?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Interface in?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Interface and abstract class."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Abstract class and interface. I don't know what the interface but abstract classes are used to use inheritance to hide the important information which we do not want to provide to the user."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. And abstract class, what all properties does it have? It can have what all methods it can have. Can we create an object or not? Can you go a little bit more information?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir, I don't remember the end of the further."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What are the types of constructor?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir, they are like default constructor, parameter constructor and pre-constructors."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, in the default constructor, default constructor use a deep copy or shallow copy?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In the default constructor, they are like shallow because you pass the variables and they can directly copy them into the private variables."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. What is pure virtual function?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir, pure virtual functions are like, sir. We use them like number, column or column. I don't remember the number."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you tell me about 2nf and 3nf?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, I will go short. So, 2nf and 3nf are basically second-learned common, third-learned common of our normalization. What is normalization? What is normalization? First, I will tell you about an organization. So, normalization is basically reducing our table or decomposing our table in two or more tables. Correct. You reduce the redundancy number table. So, what is our second-learned common? So, second-learned common says like our table should be in first-learned common. That is only one set should contain only atomic values. And the second rule of second-learned common is that there should not be any partial dependency in our table. Now, what is partial dependency? So, partial dependency is basically suppose we have A, B, C, D as our attributes and A, B together can define D and B alone can define C. So, in this case, our A, B is like our candidate key and these are our prime attributes and C, D is our non-primary attributes. But here we can see like our B, a component of a candidate key can find a non-primary attribute which can create problem because it can become the when we are depending it as a primary key. So, it can get it for all of us. So, D should not be in partial dependency and 3 and F is basically our table should be in second-learned form and D should not be any transient or dependency in our table."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir, I have to explain."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, that is what I wanted to know. Okay, the last question in this, can you give me a quick query or just a logic how you will find the second highest salary in a table. So, let us say our table has to call up the name and the salary and if I want to know the second highest salary."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Right, second list. I can sort it and all of it. Second sorted by Odin print only the first two of those logic is okay. We do not need to write a query the logic from the my SQL query how you will find the second highest."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is what I am saying. Like we can sort our, when you are adding this, we can sort it and we can sort it in increasing or decreasing. In increasing, so we will get the highest whatever top and then second highest. Then we can print the second first two or we can skip this first and then we can print in the second how you will skip the first."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I do not remember that. I have actually tried it but I do not know that you will keyword or like, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is we are almost five minutes on this one. But that is pretty much on the basics. So, shall we move to the DSA part, Harsh?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, it is 1128 and we have almost 40 minutes for this question. So, I have one question. If you able to solve it, then second question we can just discuss an approach and all. But if you are, just take 40 minutes complete for this one. I have no issues with that also, right. So, can you share your, no, but I will tell you the question. Is it visible in my screen?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, yes, it is."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Could you please, little bit, announce it? Just, if it is, is it open?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, no, can you, yeah, that is better now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, the question is, you are given a number like say, 1, 2, 3. Right. So, you have to convert it to a string like 123. Okay. So, now you are, let's say another number which you are given is, I take any other number. So, this is 100, take another 1000. So, let's say 4567 something, right. Just take 4567. Okay. So, what you should print is 4567. Okay. So, maximum we can go to the, you can say that million. So, let's say you have, okay, so 4000 then 40,000, let's say, and then let's say 157 and triple zero or say 245 something 245. Okay. Triple zero you can remove. Yeah, 245. So, what is this 100? So, it would be 157,000, 245. Right. So, generally how it is represented in, you can say that, and in India we would say that 157,000. But generally the approach, other would say is that in more, how 157,000. So, all 3D numbers we generally represent. Right. 157,000, 225. And if you put another one, it would be, let's say, 1 million, 2 million, 2 million. And 157,000 and like this, you got the question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And maximum we can go till like million only. Let's say like 2 million, like 9, 9, 9, 9, 9, like something."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, yeah, yeah. Let's say, maximum we can go to million, not billion. Like something like 9, 9, 9, 9, 9."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. 20 million, 30 million, 40 million, 90 million, 99 million. Something like that till million, it's just that. That's okay. But after that billion, we can skip."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Okay. Okay. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Does question is totally clarified."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So basically I have been given a number and I have to print it in the form of string. I have written a string."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So can we, so this is our only question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Am I correct?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, this is the only question. So what I have to read like a function or something or let's start it. Yeah, just assume that you have a method which is accepting the variable that whatever the end and return the string. Return the string in this form like 123 like this. So for this output is not. So for the first one you have written output is right. Call on 123. Call on. Should be 123. Yeah. No, no, it should be 123. 123. Yeah. I have to write like this. Yeah. Yeah. No, not one. Oh, anyone. 121. 123. Yeah. So this should be the output. So for the next one. 4,567. Like how we do write in the check right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "4,567. Like this. You got it now."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And for. Yeah. Okay. Okay. Okay. So it's 1133. So yeah, you can take the time now. So can we also like leading zero something like this? Even in code."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sorry."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Can we also get leading zero zero like in the given input given number?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, let's check it. No leading zero basically. I have the numbers from range one or should also be a zero also. No, no. Yeah, let's say we can have zero also from zero to 99 million."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, like so we're limit. So feeling you put in the limits in counter like. My distinction clearly visible."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, totally visible. If you can little bit enhance it, that would be better. I'm trying to let it. Otherwise it's good. It's totally visible. No problem."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what we can do. Like I have two first of all. Keep a track of this like one. What is one? Let's spelling of these. Okay. But like if I do like this. Create a map for one to and all. How will I then have to create one for this like 23? Okay. Now this is bad. How will I create a map for 20 number for 20? I have to 20 and something. I'm not going to. I'm not going to. What what we can do. I can't. I can traverse it from the back like once. If I counter three possible. A length of three. I can also keep a counter counter for like how many. Three lengths. I have encountered correct correct. Or like it I can. And then."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Very nice. You're going in a right direction."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "100,000. I will. Okay so after 100,000 I can only get a pool. Two digits."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I could take it like million. 10 minutes. I'm taking like how will I keep the track of this spelling thing?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can take a string builder right. You can keep up and like how you are constructing it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "You know like I have to keep me like this. If I encountered this one. So I've to both one stands 100 this. So like this 100 it is okay. I have encountered 30. So I can write this 100. But suppose this is our second variable. So I have to keep a map of like 20. Like this. If this is our second position. If some number comes on our second position. So I have to write it something like 20 30. 40. So first I thought like if I can create a map of from 129. I have to. Now I'm. What I'm saying is that I have to keep a track of this 20 also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. So what we can do is like 129 1 map and then from. 10. Oh sorry 0 to 9 1 map 0 to 9 and then in the end this map only given it. 10 to 20 also. 10 to 20. Okay. So we'll be having 20 variables in our. What we have can keep the value pairs in our map. Okay. So like if suppose I encounter 1 2 3. So I know this is a length of 3. Okay. So I can store like I will traverse in this thing and break it into parts. Okay. So now if I get this sub part 1 2 3 as a 1 3. So now I will start from the beginning and I will add what like if it is a file plus equal to 0. So I will add 1. I will write I will match that character from that what would begin to like string. I will find its value from the same select 1 and then up and 1 only and then up and up and up and down. Okay. So I will add it. And if I encounter like that 10 to now I know it is it is a second position. So I can like again. Go in the map and look for the map for the second values. I can read 20. Now I know it's a one position. So I will write it as a 3."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So you are saying in the map or in a list somewhere you will restore 1 to 10. So I will write it as 9 then 10 and 10 to 20 also you will restore right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. I think because otherwise how can we correct your identity. So 10 to 20 also. And then one other map like second map within 20 second. Okay. Now suppose this part is okay. Now you can create a list also let's just not in the proper coding just for your reference. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "One list would be something like this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I will create a map like this one. Two three. And just so let's say we will ask this. So last would be your 20 right. Till 9 and then this. Till 10. Like 1 to 9 and 0 also. Okay. So second I think that we have to mark what is 20 also. So should I get another map or I don't know the same map only. I think I should I should I should create a second map. Because I have to keep the index also. So I will get one another map from 10 to 20. Or I would say that create a one map for 1 to 19 and create 20 30 40 another map. If you want."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. That only that only 10 20 30 till like 100 not 100 90. I will create another map. On this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I think you got my point."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. I told you that it's been controlled like second position."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This is my second map. Second and this is my map. So if I if I am at this position is starting only. So I will use these values and if I am at this position I will use this map."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, I'm saying like we have begun to do our solving for this. But now suppose we have one more really for like 4567. How will I like to do this. No, no, let's first complete this map itself. No, let's complete. You are doing very good. So let's complete this map first. So first you said one zero. Let's remove zero. Also no issue. So one two three until nine only you will keep what about 11 12 30."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry. I. I. I'm saying like one two. What is this? Just keep it till 19. One to 19. It's all you need it actually. Okay. Then. So it is going to be your time. I can like 29 or something like and do like from this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, from this you can have 20 30."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I got a little bit and I was trying to see this on this part only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, this is correct. So that's look better now. So your first map has to one to nine ten. And then the second map you have you don't need ten actually in that one right. So."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I don't think you know ten."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, yes, yes. Because we can. Yeah, you let one and 30 90. What about next? Do you need more because we need till million so that's what I think like this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Now we can handle the students, but now what about this for what? Now if I traverse I can calibrate what this part. Now if I. I told you like I will keep a counter for this three length of like we have encountered one length of three. Then I will increase my that count and I will end now not a this part. So I find like this. So if now my count now my that length count. I can. If you're getting a point like if you traverse this count, we can increase that variables value. And now if that variables values like one. Okay, so we can create a map for that also like. For that value for the like count length. So if that counts like count length values equals to one. So what we can do is we can map it with like 1000."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, okay. Got it. Got it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If I am not this very second rate, I take 4 and 10,000. And suppose if this count length become. What all I need 4000 40,000. Okay, 4000 and 400,000. 400,000. What all I need is something like 1000. 1000. 1000. 10,000. 10,000. And 100,000. So what will happen? So after 1000, 100,000. So after 1000, what will happen? I'm thinking of something like what we call this 100,000. 200,000. 120,000. 120,000. 123,000. So, okay. Okay. Okay. Easy. Okay. So, if our count length is this variable, like how many we have length of 3, we have encountered. Okay. This length. So, if it is equals to equals to 1. So, whatever this number after this comma between these two formats, okay. This number plus 1000 something. Like if suppose we are going to be and we don't need these whatever do you need. So, this number, middle number will be called 120,000. Correct. Okay. So, if I and I'm telling you like here, our count length will be 0 and when we encountered this again. So, now we have counted as equals to equals 1. So, we will traverse up to 3 length and whatever the number we will get, we will add a number string like this number and 1000. All right. 1, 120,000. And 123,000 we can make in a similar way like we are doing for this part. Right. For the first three numbers. And if this is equals to equals to, we can put it like million. Right. So, now, now what? Like this is power sort, like this, this, this, this, this, this, this, this, things, three maps, we can give us our answer, we require answer. Okay. First, second, and this word will use like thousand nothing, thousand like this third map. Now, I am thinking like what we can do. Travers from behind. Travers from behind. So, bunstance. Okay. Or should I use the question? A trait of a map. What, what we can do? What we can do? Travers from behind. I first, what we can do is convert a number into string. Because strings are maximum, it can be converted into the string using two string inbuilt function. And then what we can do is start, reversing from the fact. So, I have just told you that if this is our zero position, so we will directly write like five from the first. If it is our second position, I, you, so we will do take it from here. Now, can you avoid changing it to a string? Can you think of some other way?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, if we are not doing it in the power string, we can, what we can do? I could, if a reverse is normal."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "You are doing the right thing. In mid, you told something, you will going to use recursion. So, that was correct. So, can you think in that way only?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, the question is also correct, but I thought like, okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, can we reverse the number like three to one? We can also reverse this also now. So, then also we will be having like, like, what is my author 1 to 3? 3 is at first place, you know. And if I reverse this number to 3 to one, then also my 3 is at first place. If you are getting my phone, then there is no, no, no, no. Then my 4 will come at that last. Sorry, if I didn't get to, I was saying like, if it is about number 123. And if I use recursion and go till last, I can, and then I will start reversing from that back, back. Now, the approach coming to that came to a mandate like, we can reverse this number 1, 2, 3. And then we will get 3 to one. So, this will also help me, but this is only applicable to this. 3 did numbers only. If it is a coded number, then my answer can go wrong. Okay, so I will use recursion to to traverse till the end of that number string. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, what we can do?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, now to create these maps, I have to pass these maps also with this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Actually, it's hard. It's a hard person. So, you are doing right first there. So, see, I will give you a hint there. So, you know that you are going to take 3 digits, right? How you will take out the 3 digits? Right. Can you make use of 1000?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, that was what I was thinking. Like, 1000. We can divide the number by 1000. So, you can directly get the last 3 digits. I don't have to then account that part. I was doing that in the portfolio. Suppose that I have number of like 4567. And if I divide it by 1000. So, I have multiplied 1000. So, I will get 567 as a remainder. This is our basically number. So, you told me not to traverse and all. So, while it's a amateur thing, I am actually thinking of how to like implement this in a recursion. All right. So, you are very close. That I can say. And I am thinking of the implementation part. Like how I use this implementation part. 4000, 500, 500, 500. So, like if I go, I can call for a basis like if our n is greater than or less than equal to 99. If our n is less than equal to 99, we can directly written a string from the sub part. And if sorry if n is less than 9, 9, 9. Let suppose it be positive function. Like string, you can do string. Okay. string helper. And suppose you are positive and so if in this our end n part. In this one, in our n part, if n is less than equal to 99, 9. It means like our number is in this this range. Like we have come to these last two dates. Okay. Okay. I can directly calculate my using this map. This part. And I can directly turn a string like 90,000. Suppose my number is this 4567. So, I will stop at this part. And what I will do is I will pass like helper n, a model of 1000. In the next code. So, I bought really get an extra like 567. So, 567 is less than equal to 99. So, now we can calculate this 567 using this value. Okay. And for like if I come back to our answer, I have to pay to do. You just think like in the answer, you can do. And this answer will get append to something that is returning from that part. But in the middle of this, I have to add this 4,000. What particular. I can all I was saying that I will pass a variable like. And count length. And count length like this, this is this variable. So, if count length is equals equals to. Oh yes, what about. Okay. I will take into. And then one more time variable. And I want to do like n divided by 1000. And then what will be. M. Model equals to. M 5000. No, I didn't get this. So, that is I got it like 10. You get from. I'm passing in 10. And this will be my base condition. Like suppose we have number 4, 567. So, about 4, 567 is greater than this part. So, what we call a recursion. To solve this this further part of him. So, now we hit our base condition. This is our base condition. Okay. So, now I'm saying like we can calculate this 557 in this base condition. And it will return to in this our solve, solve function. Like it is getting hooked. And messed up here. I. Sol. I'm saying like I will create an instance at this part. And see when we reach like this 567 now. 567. So, what we will do we will it will I'm saying that this with this base condition will return me. 500. 567. Okay. Now this will come back from recursion and will get append to our answer. And we will this we will return this answer to guide to the suppose we have this type of number. Okay. So, now this whole answer will get will get about this whole answer. And this whole answer will get append to this this part of the string. Okay. If you are getting no I got it. Now what I now what I'm saying like suppose I am saying taking this example 4, 6, 7. So, as I told like this is over not this is not this did not hit our base condition. So, we came down. So, now what is this helper? Where is that helper? Oh, actually I create got I wrote now. So, it goes to what me like some of the part of the problem. I don't know. Sorry. No problem. No, see. Now our number is 4, 567. And I am I created an answer to written from this level to previous level. Okay. So, now I am saying like I will call answer plus if you solve this. This what will do it? It will send me the value of 557. The string value of 567. And it will get append to the current answer for the level that we are currently sending. So, I am saying now I have solved for this part but now I have to I have to calculate for this part also. So, to solve this part I have what I am doing is I am creating one into time variable. Okay. And it is basically it is it will be close to end by 1000. What our time will become? Question 4. Right. Now what I am saying now I need this 4 what I told you like suppose DF anything between this these two brackets. Okay. We have anything between these two brackets. We can directly write that this number calculate this number. What is this number? Calcutta is number and directly append 1000 to it like this part. Okay. So, I what I will do is I can create one function. I will just bring small answer and I will pass this temp to that part. Okay. And now my answer will answer will become I can write like this. What is the small answer? I am saying. I told you like that if you are given this one to free. So, I have to create this one to 123. So, instead of creating two functions. No. Instead of writing this whole code again like I have to do it like in this part also. In the base condition this helper. What is right? Okay. Okay. So, in the small answer means it is a you will compute 123 kind of like this. Yes. Okay. So, okay. So, like we can put this small answer from here and now small answer like we compute small answer for this part. We compute small answer for this part. Okay. So, now what I will do is our answer is storing this 4. And I will also like this answer plus equals to I will get good like this. I told you I am passing this count length until like where we are returning this. So, my count length when we do this condition I will increase my count length. Okay. Count length will increase. I can pass it by reference. Now, if our count length is a better word."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we have last 5, 6 minutes more."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. We can do this. Okay. So, our answer plus equals to what is our what is in our map?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Third map. Third map 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, it will what it will do is we got our answer for this this up. And we have a branded this particular two values. What are we having? Okay. So, our we got about this answer using this part. And I can pop it this. Tell say. Now, what we got 4000 and we solved added this of the both of the sub part. Why you need if else I can you explain me this part."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, if this. So, if I told you how to count it initially with 0."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, it will be hit whatever basically it will be 0. And when we start returning from this position. Now, it will increase to 1. So, it will like if we. Now, how is it? It will increase to 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Whether you are increasing."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. It is."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, I have asked it by reference to now. When it will return to the previous one. It will have a value of 1 after the string pound. Okay. So, now let's say if it is 4527. So, 567 you computed you make it 1. If count is equals to equals to 1 then you are appending to. Okay. Something. No. I. I think I should. Basically started from like 2. 2. 2. Okay. I can start it from like sending from 2 only. So, I don't know to this. I don't need this. So, when we initially we were here. This part. So, my count will count. That will value it 2. Count will be 2 initially. Okay. Now, when you pass to this sub part. It will, I will pass like count length minus 1 to the next. It will take a follow. Okay. Why it is count is 2. So, I was starting like this. Like, it is like a key value. If it is 2, I will add a pen million to this part. If it is 1, I will add 1000 to this part. This is 1%."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You are going from left to right or right to left."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sir, sir, sir, since you are calling it, we are going like this. From this starting."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Are you sure? I will be."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, you are saying we are going from right to left."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Suppose, our number is like 1, 2, 3, 4, 5, 6, 7, 8, 9. So, what I will do is like first I will use 1, 2, 1, 9, 9, 1000."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, just check the code."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what you are doing is right. So, you are taking a mod. Right. So, I saw somewhere that you are taking a mod. This is the test. Right. So, you are taking a mod on the recursion. So, this mod will give you the right part of the left part."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It will give me that right part. Right. Yes. Right part."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, we are going from right to left."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. You will like this right. Okay. I was thinking from the number part. Number. You will find a view."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, you are doing right. So, you are doing right. So, you are implementing the count and right. So, that logic is right. So, you have to implement the count logic. So, if it is 1, then you have to look that, okay, if it is 1, I have to go for 1000. So, that is correct. Then, I will, here is one thing like if I do this initially. So, our count then will not be pushed once. So, I am, I have to add this part after this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I cannot add written this answer. You are getting a point because if I do this part before, I will be adding a couple things. It is so much confusing in this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Let us simplify this method one by one. The if condition where you have put n less than equal to 9 and n can be first simplified this if condition. This break, base condition can be simplified. So, what is our requirement till when we wanted to do this recursion. So, ultimately what you are doing is you are every time once it is done, next time you are dividing. By, right, dividing by 1000 and getting the other rest of the number. So, ultimately we are reducing it. So, can you simplify like we have to run this condition while n is greater than 0 than till do the recursion. And then see can little bit be code can be simplified."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The thing you are saying like greater than 0, I am basically reducing it to like one step. Okay. I am reducing let one step we do not have to go to 0. You can go to like here only. I do not want to like I will solve this part directly using this small answer and this can be easily calculated calculated. And for this each sub part, I am calculating like this small answer and depending on this. So, I am let me see really. So, I told this I will create I will calculate for this small part. Now, what I will do is I need I have calculated small answer in a way this part. Now, I will add answer to this these two conditions. Okay. Now, I have to create one more value the return answer. Return answer it will be solve recursive code and model of 1000. Now, between these two, I am what we got we got this part 157000 and 200 for 3 and this two these two strings. Now, I have to obtain 1000 between these two. So, answer plus now after this. So, after this now if we having this so this length is equals to 1. So, we are adding 1000. 1000 is plus return answer from the previous call. Okay. And I think. So, this is the code is perfect. This code will be written our answer and I will increase down to length plus plus. Okay. And I have to now create this small answer to calculate this sub part of the string."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, hers I did not get this this if condition and this else if condition."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I told like the both of them both if an else if condition are same."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Of course, sorry. That is true. That is why."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I was thinking we have 426. Okay. So, we call it this recursive part and this return answer is to this 426."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, let us say if we have today we have 1 and 2000 million let us say in future we are going to have billion trillion. So, you are going to keep on adding ffs if condition. Then how can I keep a track of this 1000 million like if I instead of taking a map can you simply take an array. So, it is 012 only right 0 is you can keep it empty 1,000 2 is your million 3 let us say in future somebody had we just append in the array. Okay. And your count that is nothing but index one count that is one is to automatically pick the 1000. So, we do not need a map actually. That will be a better. So, currently your code is not scalable."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. Okay. Sorry."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. And we are almost exactly on time. So, 12 or 5."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If it can give me like 5 minutes I can put this small answer part also."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, I am good with it. I am good with it. I am good with it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If you do not get this part can actually this one one more time like this small answer and answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I got it small answer. Whatever you have explained."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I got it small answer. Yes. So, we have to compute the 157 3 part you want to compute 245 this is what the small answer will do."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, this will do and now we are appending this 1000 between these two."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, that is not. So, this third one which you are doing you are appending a thousand in the mid or mid and in the mid."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. I am clear with the code. Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. That is pretty much from my side. So, before going your feedback like do you have any feedback for me like anything can be proven further more."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Your side was perfect. I am sorry from my side that I was not able to solve this question fully on time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, no. That is totally. I have given you less time and not even 40 minutes. I was just putting some pressure. So, hardly I give you 30 minutes. So, that is good. Okay. So, that is good. So, and shall we start with your feedback?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. I will be assured. Then share a close man. Yes. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You can stop sharing the stop presenting also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, okay. First of all, things with your good at and then we will talk about where you need an improvement. First of all, your communication is good. You the whole time you were communicating with me and that is the reason I gave you a hint. If you were not communicating as I told in the previous mouse also, the interview will not give the hint. If you will not talk to me. So, right. You were communicating. You were talking. You were doing solving like a peer. Right. So, that is good. And second is the approach. How you went it's like you cast the starting one and giving you an example. Three three. I said. Right. So, that was one hidden hint which I was trying to give. So, always get three three three it would become easy. Right. So, I think I don't know if you cast that thing but now how you come up with that three you got it okay thousand million. So, pointer approach. Right. So, that was very good. So, you find out the approach which is good. If you miss that three three part if you don't go and if you come with one stands hundred it this question can become very very hard. Right. That is one thing the approach the way you find out the approach. So, sometime in the interview give the question right they won't give the hint but somehow they will in the way they are explaining they will give some something. Right. So, we need to listen carefully. So, that was good. Second thing is you really tried well like I gave you a less time less than 40 minutes. Right. But I see that you are trying to complete it. You wanted to complete it and at sometime with this question I have given this question to many during mock interview before when I was not recording it. So, doing many candidates what happened generally is like such a hard question they simply raise hands. So, can we go for another question right. So, interview will definitely go to another question but just take it as like know from the interview right. So, until unless even if you are not able if you even if you think it is very difficult never say no keep hustle keep trying keep thinking of different approach try to think. So, the one thing I like is you really did well right. I from initial you told me that it is a hard. So, it give me some vibes that okay will you surrender or something."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually it was not hard but it was something like me that I have encountered like first time yeah yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No the initial when you said that it is hard question and also I got some like are you also going to say that no no I can be change the question right. I do not give up. But the thing is like you really did well you come up with the approach and the way you have show that you can do it you can complete it if you get some more 5 minutes. Yes. So, that is the reason I gave you 5 10 minutes less itself from the 40 minute like in the real interview like you will be able to complete it right. So, these are all the good stuff man like so, that was very good. In the few bad thing or you I know I will not say bad the bad is just like the improvement thing right. The thing is like you need little brush up on your basics first right. So, tight coupling loose coupling these are very common of concept right and abstract interface these are very very common this things."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I will I will I will I will I will I will I will I will I will I will I will I will I will I will I have like search for like top questions or like the quick pressure by and ever in counter these terms like."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, dependency injection oops is dependent dependency injection is very very important concept in oops right. If you are working on C++ or any Java these are oops language. Dependency injection if you are writing oops I I think in about itself you write object oriented programming right. So, means you are well aware of the Ops concept. So, dependency injection is must you can say that very important topic and that is why one of the reason I told that LLD is not experience for the experience LLD is for the develop. Then if you see LLD right lot of dependency injection we use right. So, dependency injection is one thing which is important for the Ops concept tight coupling loose coupling interface versus abstract this first three question itself you were not clear of that right. So, that you need to be little bit work pure virtual function right. So, these are little bit you need a brush up even though you are very weak that is what I am saying. So, even if you are very well in the coding DSR right if Ops is not you can say that if base is not good even if you solve some hard toughest question tough first question you will get you will lose harsh like if I have so, there are lot of competition right. Let us say if another interview after your interview I take one more interview right and that guy show me the base question correctly and but he tried the second question also but not good as you did but he at least right. But he will get the preference because his base are clear right. I will just give you I will not go much into this I will just give you one hint like of my batch mate like you know Sundar Gopal Singh I made one talk with him also he is from all my yes right. His base is like rock solid right and in the college we used to do lot of question but he kept only base and he just relax and in the question whatever in whenever we do any coding rounds and exams also any question comes in he use his base and then he use that base to solve all the question right and that is just I am pointing out that even if you are not solving toughest question but if your base is strong you would be able to solve though right. But if it is opposite your base is not clear and if you have solved the toughest question if something new comes up let us say right it is very less chance if your base is not the strong you will not be clear right. So it always goes from like base to high so keep so make such impression to the interview that this guy bases solid right. So if he asked 10 question basic question you should be able to give 10 answer right it give a very good impression that this guy bases solid and then if there is some mistakes happen and that then it is okay okay that is one thing and the another thing which is like you need to little bit work on your examples the example which you give for I think normalization a take a b cd never give a b cd examples."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I also told like I told like a b cd I was able to attributes something like that I told yeah that was a b cd example don't give it like keep some real example or some meaningful example every time we use a b cd right after a particular level interview get cancelled. So whenever I am doing this normalization part I have always seen or you can see like the most comfortable thing a comfortable way to understand like the deserve attribute or something like can you give some example like how from water I can replace this a b c like okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So see regarding to NF to NF what you said is like functional dependency. So let us say just take an example of an employer so employer ID is 20 right and you can say that okay employee age right and all we can say that teacher so that teacher is one more so teacher can teach so many subjects let us say I am a teacher I teach let us say for example DSA system design and my age right. So in the second normal form what would be the case so my ID let us say Shreyaan so Shreyaan's ID 1 he teach DSA in one row and his age right then in the second row again Shreyaan's ID 1 then another subject he teaches let us say system design and age again. So this is you say it while it the second normalization because age can be taken out from this table. So something just explain with some real objects like right real objects which I mean so let us say teacher employ something like this where you can use some names and all this things instead of going a b cd that just one simple it will if it is a very short example use a b cd it is okay but somehow it will you are going to talk a lot on that example. So I will interview you what is a what is b what is c right. So try to avoid using a b cd in examples okay and then another thing is the again I see a lot of variable names which are not correct to her so one thing is small answer that was because I did not actually write the code in the solution."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We were like discussing and coming with some approach like and because I want to use like class also okay. So I can take when the curts even get small function you can call using object okay but we didn't go time so it was basically like rough only yeah I would have used like good names"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct but so this is your one and that so it might be the real interview also that where you might not get a chance to write a proper coding so this might be considered as your coding itself what you did so whatever you write right just see that you are writing properly right yes. So the names like small answer and I forgot time return answer so these are the names which should be avoided right. So even if you are writing just give a proper naming that this would be easy to understand but rest like this is not an easy question first of all right this is not an easy question at all"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I think it was medium but I should have"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "but that's what I'm saying based on the past experience of all the mouse which I have taken not here which is recording before itself I know many people have given up so that's why I said that this is not a easy question and so but you did really well and I told you where you are lagging in the basic right. So I think you have done this question if I give you another question you would be able to do it good but you have based like I in the DBS I asked you the second highest question right second highest salary right. So these are very basics right so that also was not correct. So some pressure need to be required."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, I have to study the condiment. I am only very very basic you not also basic I need I know very basic like these old terms are totally dependent condition and all I have never even heard of"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "but see her you are in college or this should be a part of it. So now if you see like now we are working on seven years in the company right. So, I just remembering the base would be tough for us like okay what is pure virtual function I don't know when I studied in college I forgot but now you are in college it should be a part of it you should be it learned by heart and this thing. So just again get a very strong hand on the base."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually when I have tried to learn something from youtuber like GFG and I was never able to understand like what is abstract class what is like run time polymorphism what is on your over ready and I was never able to understand it is like I will be left it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, her see if you don't know interface you don't know abstract with alone DSA you cannot code even if you are 100% like heart code or like any question anything you will code but if you don't know interface abstract relation object you can't just code with DSA there is of no use because in when you going to work you have to define a classes you have to define objects you have to take some design pattern single turn you should know when I have to be single turn factory patterns right. So, it is a LLD that is one thing LLD where LLD we join it with system design actually but LLD is very nothing but an opes concepts right. So, I will work on these parts"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "correct fundamental."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, that is one thing you are very good in DSA solving but if you are not able to define an objects not able to define relationship not able to so interface abstract I will today in this case I will take an interface and then case if you don't interface then it is like you don't know solid principle solid principle I is nothing but the interface driven. So, means opes principle is missing and if opes principle is missing you can't code on the opes language itself right. So, that is a huge gap now. So, give sufficient time for the basics that is the only thing rest all perfect. So, your resume looks good the way you did the interview coding DSA part the second I am saying coding part right that was very good approach finding and everything was good only thing is the first section the DSA basic fundamental."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes I will first I hope you find useful and thanks for staying great it is almost 1230."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I usually stay awake. Thank you man like and really nice to meet you I know that you have joined my channel like when I just created it so it really nice to meet you in person also. Thank you very much."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you very good luck. Thank you very much."
+  }
+]

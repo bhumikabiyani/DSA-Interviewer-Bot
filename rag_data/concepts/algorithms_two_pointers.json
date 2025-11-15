@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "id": "algorithms_two_pointers",
+    "type": "concept",
+    "topic": "algorithms",
+    "difficulty": "medium",
+    "pattern": "two_pointers",
+    "tags": ["two_pointers", "arrays", "strings", "optimization"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["easy_arrays_001", "easy_strings_001", "medium_arrays_002"],
+    "evaluation_criteria": ["pattern_recognition", "pointer_management", "optimization"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "concept_name": "Two Pointers Technique",
+    "definition": "An algorithmic technique that uses two pointers to traverse a data structure, typically to solve problems in linear time that would otherwise require nested loops.",
+    "when_to_use": [
+      "Sorted arrays or strings",
+      "Finding pairs with specific properties",
+      "Palindrome checking",
+      "Removing duplicates in-place",
+      "Merging sorted arrays"
+    ],
+    "key_characteristics": [
+      "Uses two pointers moving through the data structure",
+      "Pointers can move in same or opposite directions",
+      "Often reduces time complexity from O(n²) to O(n)",
+      "Typically uses O(1) extra space"
+    ],
+    "types": {
+      "opposite_direction": {
+        "description": "Pointers start at opposite ends and move toward each other",
+        "use_cases": ["Palindrome checking", "Two sum in sorted array", "Container with most water"],
+        "template": "left = 0, right = n-1; while left < right: process and move pointers"
+      },
+      "same_direction": {
+        "description": "Both pointers move in the same direction at different speeds",
+        "use_cases": ["Remove duplicates", "Fast/slow pointer for cycle detection", "Sliding window"],
+        "template": "slow = 0; for fast in range(n): process and conditionally move slow"
+      },
+      "fast_slow": {
+        "description": "One pointer moves faster than the other",
+        "use_cases": ["Cycle detection", "Finding middle element", "Remove nth from end"],
+        "template": "slow = fast = head; move fast 2 steps, slow 1 step per iteration"
+      }
+    },
+    "implementation_patterns": {
+      "opposite_pointers": {
+        "python": "def two_pointers_opposite(arr, target):\n    left, right = 0, len(arr) - 1\n    \n    while left < right:\n        current = arr[left] + arr[right]\n        \n        if current == target:\n            return [left, right]\n        elif current < target:\n            left += 1\n        else:\n            right -= 1\n    \n    return []",
+        "java": "public int[] twoPointersOpposite(int[] arr, int target) {\n    int left = 0, right = arr.length - 1;\n    \n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        \n        if (sum == target) {\n            return new int[]{left, right};\n        } else if (sum < target) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return new int[]{};\n}"
+      },
+      "same_direction": {
+        "python": "def remove_duplicates(arr):\n    if not arr:\n        return 0\n    \n    write_pos = 1\n    \n    for read_pos in range(1, len(arr)):\n        if arr[read_pos] != arr[read_pos - 1]:\n            arr[write_pos] = arr[read_pos]\n            write_pos += 1\n    \n    return write_pos",
+        "java": "public int removeDuplicates(int[] nums) {\n    if (nums.length == 0) return 0;\n    \n    int writePos = 1;\n    \n    for (int readPos = 1; readPos < nums.length; readPos++) {\n        if (nums[readPos] != nums[readPos - 1]) {\n            nums[writePos] = nums[readPos];\n            writePos++;\n        }\n    }\n    \n    return writePos;\n}"
+      }
+    },
+    "common_applications": [
+      {
+        "name": "Two Sum (Sorted Array)",
+        "description": "Find two numbers that add up to target",
+        "approach": "Use opposite pointers, move based on sum comparison"
+      },
+      {
+        "name": "Palindrome Verification",
+        "description": "Check if string reads same forwards and backwards",
+        "approach": "Compare characters from both ends moving inward"
+      },
+      {
+        "name": "Remove Duplicates",
+        "description": "Remove duplicates from sorted array in-place",
+        "approach": "Use read and write pointers moving in same direction"
+      },
+      {
+        "name": "Cycle Detection",
+        "description": "Detect cycles in linked lists",
+        "approach": "Fast pointer moves 2 steps, slow moves 1 step"
+      }
+    ],
+    "optimization_strategies": [
+      "Sort the array first if not already sorted",
+      "Use the sorted property to eliminate impossible cases",
+      "Skip duplicates to avoid redundant processing",
+      "Combine with binary search for enhanced efficiency"
+    ],
+    "common_pitfalls": [
+      "Off-by-one errors in pointer initialization or movement",
+      "Infinite loops when pointers don't converge properly",
+      "Not handling edge cases (empty array, single element)",
+      "Forgetting to update both pointers when necessary",
+      "Not considering duplicate elements properly"
+    ],
+    "complexity_benefits": {
+      "time_improvement": "O(n²) → O(n) for many problems",
+      "space_improvement": "Often achieves O(1) space complexity",
+      "examples": [
+        "Brute force two sum: O(n²) → Two pointers: O(n)",
+        "Palindrome check with string reversal: O(n) space → Two pointers: O(1) space"
+      ]
+    },
+    "interview_recognition": [
+      "Look for sorted input data",
+      "Problems asking for pairs or triplets",
+      "In-place modification requirements",
+      "Palindrome-related problems",
+      "Cycle detection in linked structures"
+    ],
+    "advanced_variations": [
+      "Three pointers for 3Sum problems",
+      "Multiple two-pointer passes",
+      "Combining with sliding window technique",
+      "Using with binary search for enhanced complexity"
+    ]
+  }
+}

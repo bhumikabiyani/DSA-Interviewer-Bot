@@ -1,0 +1,438 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Thank you. So, Luxia tell me something like in one line can you give me what is that log. Right. And one real time use case where that log can be happened. Like what is the use case? Give me an example that if this if I do this then that log will occur."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Dead log occurs when some when two things simultaneously asking for data and both are dependent on each other. Like if I am asking you for data but you are asking me for data before giving that so this is kind of a dead log. We can use it like if some app is asking for OTP before but the before sending OTP I need that that apps confirmation. So, this is kind of a dead log."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Yeah. Yeah. So, let us correct dead log with the okay. So, goes to the next question like can you tell me the advantage of linked list over an array?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "In link both are linear data structure but the problem with arrays it will allocate a chunk of memory full chunk of memory if I we take a size of array 10 then if we take integer array which is 4 bit. So, it will give directly 40 bit at one place whereas linked list use pointer. So, it can allocate different memories at different places it does not have to be at one place. So, this gives us advantage over array."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What are the other advantages? This is one advantage."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This another we can use heap memory for it instead of a stack memory and point it is okay. I think this is it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, it is a dynamic memory allocation. So, that is also one thing and yeah there could be many advantages but it is okay we can go ahead. Okay. So, can you tell me the difference between binary tree and the balanced binary tree?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "A binary tree is any tree which has two children which can have two children whereas a balanced binary can have only zero or two children. So, it can either be a full binary or a node can either have two children or it can be leave no."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. You are right. And do you know about what is a vl tree?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No sir I am not going."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. No problem. So, let us say I have a binary I have a parent node. So, how I can find out its children at which node they will be present at? I have a so I am given a root of a binary tree. Yeah. So, just consider that my parent so I have an array representation of a tree. Okay. Right. So, my any parent node let us say it is that index i. So, I need to find its children's left children and right children. How can I find those children?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That is we can use the formula 2i plus 1 and 2i plus 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, it will always be 2 and similarly if you want to find the parent we can just divide in 2."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. What is the time complexity of BFS and DFS?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "BFS and DFS as we have to is it each and every node then it will be O of n. I have an n being the number of nodes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. That is not O of n is not. So, n tree in a graph there are two things. What is this and edges? Right. So, what do you mean by n? So, what is n here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Number of nodes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Okay. When to use BFS and when to use DFS?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "DFS we generally use when we have to go deep inside a tree or a graph. Like if I am searching for if generally if I am searching for we are going in a ancestral way hierarchy. We will use DFS but if we want to search on a single level then we will use BFS."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. Correct. Right. Yeah. That is right. Okay. So, that is pretty much your basics of DSA. Right. So now let us come to the question luck share. So you can share your screen also. So I will tell you the question you can write it over here. So have you opened the collab at it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So let me write a question into the collab at it and let me know if you are able to see what I am typing. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So here the question is you are given an array right and so inside this array. So you are given some integers like 2, 0, let us say 3. What are these? These are the ratings for a childrens. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So the first children has rating 2. Second children has rating 0. Third children has rating 3. Right. So the question is we have to give the lollipops to the children or you can say that we have to give the candy to the childrens. Right. So at least one candy. So at least one candy we have to give to all childrens. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And if any children is higher rating than its neighbor it has to be it should have more candy than its neighbor. So what I mean is let us say in this case for example in this case let us say 2, 0, 2, 1. So in this case all three should have at least one candy right. So if you see that okay all three at least should have one candy. But now another condition is if the children has higher rating than its neighbor then the number of candy it has should be higher than them also. So now it is the neighbors. Yeah. Then it is neighbor. So in this case the two the childrens two has the rating two right and it is greater than its neighbor not both the neighbor at least one of the neighbor. Yeah. Right. Whichever the neighbor it is higher than it should be it should have more candy than its neighbor whichever it is lesser than that. So let us say to avoid the confusion here let us say I make it a 3. So here in this case let us say 2 is greater than 0 right. So here it should have more candy than the children one. So children one has candy one so it will have candy more than this than its two right. So now comes to 3. So 3 has greater than its neighbor right. So 3 should have more candy than the lesser neighbor. So it is lesser neighbor is 2 and 2 has 2 candy. So it should have more candy than this. So it should have 3 right. So this satisfy now the condition. So every children should have at least one candy and the children who has the higher rating right from its neighbor should have the more candy than him right. So and for this case let us say 2,2 in this case every children should have one candy so this one one one. So now 2 is greater than 0 so it should have greater more candy than this so it would be 2. Now another 2 is it greater than its neighbor no it is equals. So it is okay one to one is the correct answer now. So you got the question"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you can take your time thing through it let us discuss the approach and then we can start with the voting."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So one thing is very clear that we will the answer array will be initialized with one at every index correct because we at least we have to give one candy then sorry it is disconnected yeah it is an issue at collab at it let us ignore it. So we can do that and the ratings have not sorted so we have to look both at left and right okay. So so what we can do is sorry I am not able to know. So if we initialize an array with one and you see my screen."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah I can see your screen like if you want to change some other editor like you have any editor you can use that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Shall we use the FG editor?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah sure. I think collab added I will not use it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Can you see?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah I can see."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we have initialized our array with one and the size will be equal to the array given to us and then for every index we need what is on the left of it and right of it. If it is greater then we will add plus one to the which whichever one is maximum in both of them let us say we are given an array 0, 2 and 1. So as we can see the two is greater than both of them then we will see if 0 has more candy or one has more candy then we will add one to it okay. There will be there will be our answer. Now we have to find a way to store the candies of a particular element. So I think..."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you try to find some other use case like which are more use cases which you think is missing?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So first one is if we are talking about the first index then if we will only have to see left of it, right of it sorry and for the last index we will only have to see the left of it okay. So we will see if it is lesser then we will keep it as it is and if it is greater then we will have to add one to whichever amount of candies second index first index is having and similarly for the last case we will have to do this and so I think we will have to somehow we will have to use a data structure to keep the track off the previous index and the next index is candy okay. So what we can do is if I go to 2 then I will see if it is greater than 0, if it is greater than either one of them then we will take the maximum of any of them and add one to it okay. So but if I go like this if it is first index is 0 right now we will only have to check right which is greater no it is not greater so it will stay 1 then we go to 2 it is this greater we will say yes this is greater so maximum of 0 and 1 candy is 1 only so we will add 1 plus 1 which is 2 then we will go to 1 is it last index we will check to the left of it and left is left is greater so we do not have to change it okay okay. We will have to take some other test case into consideration also so let me think about that yeah. But if we add 3 1 something like this so 0 this case will stay same this is greater so it will be greater than both of them then 3 is greater than 2 so we will add we will give 3 candies and now 1 will stay 1 2 is greater than 1 so it will take 2 and this will again take 1 so I think this is correct answer 1 yeah correct but so yeah so you think that this approach will work I think so I am currently trying to imagine more scenarios okay. So what if what if we put the greater element here so it will have to be 2 it will fail in such cases if let us say 1 and 1 is even if 1 is having 1 candy the 5 we will add the first iteration we will take 5 and see it is greater than and we will increase it by 1 only so it will be gone 2 but 2 has to be increases by 1 again so it will become equal so this approach will fail here so it has to be 3 correct or what we can do is every time we increase we go back and increase check for everything which is greater than it has greater element of it so what we can do if we increase an element we can we can check if it is a previous neighbor has to be greater than it or not if it is greater than it so we will increase it again and then the same process for that index also we can do this all we can save. Simply I am trying to I am thinking of one of those is that we can store 2 we can take 2 arrays and store every index is left element and right element to it somehow if that good work one thing is there that one iteration alone would not be able to do it I think so."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So what you are saying what you said you will be keeping one left array and one right array."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah okay okay so like if I take this as right array so if it 5 the left element is 2 left element is 1 and this one is left element is again 1 and 2 and then 1 and so we will keep n minus 1 the size of right array will be n minus 1 because first index does not have first in first index is not a right of any element similarly we can keep a left array and like 5 does not have any left but it will start from we will keep minus 1 to it"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "but what are the what are the constraints is it all positive number"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah or positive."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So we can give minus 1 to 5 and 2 left will be 5 once left will be 2 and then I can give this copy I didn't get this right array is 2121 so you remove 5 and you keep everything as same as it is"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no no no no 5's right it 2's 2's right is 1 once right is again 1 this one's right is 2 and this 2's right is 1"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay so you keep the right right 5 right is 2 2 right is 1 okay like wise"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah and left is like 1 left from 5 left is no one and for the last element we can give minus 1 to it okay. So now we will traverse if we will see if 5 is greater than similar index of right or 1 yes it is we will take the positive 1 and as we have only initialize with it one only it will take the positive 1 and we will increase it by 1 then it will become 2 and we will check for right again for the next index 2's right is 1 which is not greater so it will remain the same and 1's right is 1 which is not greater remain the same 1's right it to no need 2's right is 1 again no need and 1's right is minus 1 so this minus 1 will harm our so we can put maximum amount here sorry"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "no I didn't get it like when when you said 2 right is 1 2's right is 1 yes"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so then what we did in that case 2's right is 1 so we will sorry we will add add 1 to our answer because it is greater and 1's right is 1 again so it is same we don't have to add anything then here 1's right is 2 so it is greater so what we can do is increase 2's amount so which is second last array and or we can do it in the left left iterations I think we must should keep it for the left iteration so I'll keep it as it is just check for right then 2's 2's right is 1 it is greater so we will increase it by 1 and 1's right is maximum it is not greater it will remain the same then I think we should keep a run a loop again for left array so 5's right is minus 1 it is greater it doesn't have to change anything then 2's right is 5 right is already done right so now we are running for left left so 5 2's left is 5 it is small it is smaller than it so it doesn't have to change but we will change this as it is previous index we will change as it as this index is smaller now we will go to the we will go to 1 we'll check 1's left which is 2 then we will again increase 2 by but then that array will again again so again cascading issue will occur"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay now can I get a hint"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so you are actually you are doing right then when you have taken a left and right array right so that is actually correct approach I would say but instead of keeping the 5 right is 2 2 right is 1 so just think from that perceptive that let's not do that because ultimately what we have done is kind of storing the same data right even I can iterate on the same thing left and right whichever you are doing keeping the 5 right is 2 and then I can also do the thing the same at itself right so the real value comes of right and left is like if you store the candy in that just think from that perceptive not the values currently you are storing the ratings so ratings I why I need to store the ratings in the left and right which I can itself get an iteration from the main array I can run from right to left I can get our right values I can get from left to right I can get the left ratings"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yes so you are doing right but just change the approach from rating to candy that's one hand just"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so if we have changed the approach to candies then it will have to be initialized by one again it is 6 in numbers let's say my array will come here so let's check for okay okay we will I think I think I am at the right approach we will iterate for right then we will iterate for left and then in our answer array we will see whichever one is maximum I think this should work let's dry run it once 5's right is 2 5 doesn't have to change whose right is 1 2 is greater then we will increase it by maximum of left and right both are one no right you are iterating from how you are going in the array left to right or right to left for right I am going left to right okay okay so if I am going moving 5 5 doesn't have to change 2 2 is greater than its right so it will change we will give make it 2 one is similar this one is smaller this one is again greater than its so we will change it here also and we will I think we should go from last to left from right to left or left direction if one is smaller so one is smaller so it doesn't have to so we will change this index 2 and now 2 is greater so we doesn't have to change one is similar doesn't have to change here again one is smaller so we will change the greater element this 2 and now 2 is smaller so we will change 2 plus 1 which is 3 so that final array will be 3 maximum of 2 1 2 is 2 1 and 1 is 1 1 and 1 1 I think this should be let's take 2 1 1 I think yes I think this should work no does right there is correct right okay 5 sorry sorry I made a mistake 5 is greater than so 5 should be increased 2 is greater than 1 2 should also be increased 5 1 this shall be again I think then one is greater one is similar one this is smaller this is greater we will increase we will go for left array one you check it if it's smaller if yes then we will increase this part I want to this we'll check if it's left it's smaller no it's not we'll move if this thing is smaller no it's not if this yes this is smaller so we will increase this index by maximum of which was initially it was 1 only so it will be 2 we will check for 2 if it's smaller yes it's smaller then add 1 to it no but right array is not correct right yeah I'm thinking about in that direction only I think we should traverse if we traverse right from the right to left yeah so if if one is one is smaller than it we don't change anything to 2 is greater than 1 so let's just initial it is 2 1 again one is smaller we don't change anything 2 is greater we will take maximum of left and right add 1 to it which will be 2"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "why left and right why left why left"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I'm just making okay okay we have left array for that I don't have to do that that was my initial approach okay so 2 we will add 1 to it it's greater then we have at 1 one is same we don't do anything then we are at this index it is smaller so we do it is smaller so we can if it's smaller we can add 1 to this also base and if now 2 is smaller we will add 2 plus 1 to this 3 yeah and if I am traversing this from last I think I should traverse left from left to right if 5 is if we will inshize it one again 5 is greater than 2 we will increase it"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "2 is greater than 1 so no why you have increased it to 2 5 is greater than so we are building left array all right array"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay okay we have to pick consideration only left elements okay 5 has no left element so it will remain as it is 2 has a left element is 2 smaller yes true is smaller so the previous index we will increase by 1 okay now now we are at 1 is 1 smaller than 2 yes it is previous index then we will increase by 1 if this this might be a problem let me think about it"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sorry yes I'll come down it lets you go down twenty-company and back on your toes week. Sitting up yourself, up close up in front and down to now, correct the awaiting. Okay, let's try 5 left is nothing, so it will remain 1, 2 left is 5, so 5 should be increased by 1, 1 left is 1, left is greater than it, so it should also be increased by 1, 2 it is. Now we are at this one, it's left, so 5 left is 2 left, 2 left is greater, so we increased by 1, left is greater than it, so we increased previous index, then this one is left is not greater than it, it will remain the same. And then this two is left is not greater than it, it will remain the same and this one is greater. Just a quick time check, we are past 20 minutes, so we have 15 minutes left. So you are doing right, so luck share you are currently doing, but I am just concerned like when you are creating a left array, why you are increasing the previous value? That's why you are facing an issue, right? In the right one you didn't like this right, when you in the right on whichever index you are comparing, you are incrementing that value, right? So why and left you are incrementing the previous one, right? So you are creating a left array, just think from that perspective. You have totally done right, very minor gap, try to look at that, we will see if whatever we know, scatter will increase. So what is 5 left, nothing right? What is 2 left? 2 is left is 5, it is 2 is smaller. So 2 is smaller, so it has to be increased, no right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, so let's move on. So 1 is again smaller, no change, 1 is same, no change, 2 it is greater, then we will increase it by 1, and this one again, no change. Okay, so I think this should, this is right, let's check for left array. Now what we have to do after this, once the right way left array, now we will make an answer array and the maximum of right and left will be our answer. Because as I said in the initial part, we will look for left array, left part and right part, and then we will take whichever one has maximum candy and add one to it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So that's why we have added one or one candy plus one for right and left array, now we will have to take maximum of it. So I think for every index, we will take maximum array, like in this example, 3, 2, 1, 1, 2, 1, as I have written, this should be the answer. Let me check, 5 is greater, 2 should be 2, 5 should be the, it will remain the same. Yeah, I think this approach is correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is the time and space complexity in this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Space, as we are using, we don't count answer array, as we are using this two array, it will be of two of, of two n, which will again be of n. And for time complexity, we are traversing it two times. So again, that will also come out to be of n in the end."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you write the code for this one?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, I just comment it out. So, I don't know. Taking only function for it, vector of integral pass and we will be given a vector only. Let's name it numbs. Now, first we have to do, first we will create a write or a left vector. First we take the size of it and n is equals to numbs.size. And we will create three vectors of the same. So, this is left, which has size of n and will be initialized by one only. Similarly, for write, we will do this. And our vector answer, it doesn't have to take anything. Now, for the right array, for i equals to 0, i less than n, i plus plus. Sorry, for the right part, we were traversing from right only. So, we will give this n minus 1. Now, if it's greater than or equal to 0, i should be i minus minus. Now, we were checking if it's greater than its previous counterpart or not. If it was, we were increasing it by 1. So, let's check this. If a right of n is greater than the right of n minus 1, then we will give right of n, right of n minus 1 plus 1. We should work 1. This is 1. Yes, this is greater. And the third one to it is not given. 1. 1. This is... Okay, okay. No, I'm skipping this. It means we are not going to be the same. 1. Between us. What did I miss? High for something. We were checking for 1. If it's greater, no it's not. If 2 was greater, yes it is. Add 1 to it. You will change it to 1. This one was greater. No, it is not. This one is greater, no it is not. This 2 is it greater than this. No, it's not. Hmm... Should have been for left. How did we change it to 2? Sorry, which one? Okay, I forgot you gave me the hint about the right one. Yeah, for the right one just traverse from right to left. Yeah, so we were checking for i-a-position if it's greater or not. So for i-a-position if it's greater than it's 1 and minus 1. No, this is the right area, right? So it should be n plus 1 check. Yeah, yeah. That was an interesting one. First of all this should be i. So this should be n minus 2. Should be i, i. And this should be i plus 1. See, if we start from here, if this is greater, yes it is greater. Increase it by whatever this value is plus 1. This is greater, no it is not. This is greater, no it is this greater, yes it is. Okay, this should work. So right of i will be equal to right of i plus 1 plus 1. This should be, this should make our right area similarly for our left area. Reward traversing it from 0 only. It will be equal to 1 actually. 1 it will be smaller than n, i plus plus. If we will check for first index, if it is at a, it has a greater element, no it is not. If it has, we will increase it by 1. So right, this will be left. If left of i is greater than left of i minus 1. If it is left of i should be left of i minus 1 plus 1. I think, okay. Now we will for our answer array. Why it would be left of i greater than right comparison? Oh sorry, i call it. Left of i minus 1. I think, this left we will come from here. Not greater, not greater. This is greater, increase it by 1. Yes, this should work. Okay, for the maximum part, we will have to run our array again. i equal to 0. I guess then n, i plus plus. Then for answer. Just, if they can a equal to maximum of left of i and right of i and will push it in our answer. Or we can directly do this answer dot i. We have already given it a size. So answer i. In the end, we can return answer."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now, can you make this code little bit space efficient? Like currently we are taking three array, one for right, one for left and one for answer. Can you make it a little bit more efficient on this? Just see if you can use only one array something."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Use only one array instead of three. Okay. Okay, what? We create a right array. We fill it up. Then we create a, when while we are creating, instead of an array, we take an integer. And each time we check if it's maximum, then right of i is or not. And then if it is, we will change the value. And that will be our answer. I think then, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you change the words?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Let's just remove this part. And also this will like we have 10 minutes more. Okay. So this first part was this and for left part, we will, if left of i is this, and instead of this, we will take an integer. Oh, sorry. Instead of left of i for i minus 1, we have to keep a track. First, can you, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Is this the existing code is correct? I think yes. Can you double check once?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. No. Or all the information will do it. And minus 2 and... Like this one. So, all right, we were doing checking from second last. If it's right is greater. So if it's greater than i plus 1, then we were increasing it by 1. For left, we were checking its left. From 2, it's greater. And we were increasing, we were increasing it by 1. So, we were able to find the issue in this code. So, you were saying that left part has some issue, right? And this code has some issues, just say. Okay. So, sorry, I am not able to catch it. Where are we comparing the ratings with the children? So, all I see is right and left. Where is usage of num?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Oh, yes. That was very stupid of me. Sorry. This will not be right or left. This will be nums. Nums, we will check for nums. Yes. Now it will work."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, now you are doing something like to making 3 space array to 1. Like how you were doing it, let's see. So, for the left part, you only need its left part, right? And we are starting from first index. So, first index should always be 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes, first we will take and left. Left value, left. It equals to 1. And we will check nums if it is greater."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "One moment please."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If it is greater than 1, then our left value. What you did is left and you won. Now, what you did? What is your logic?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "As I was saying that for the, we were traversing from first index, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, right. You are right. We are good."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we have gone from right to left. We have updated our right array based on the right context. Now, what you are trying to do is, now in the same array which right has updated with the number of candies for the children. But that is from the perceptive of right. I will always look my right. I will always look my right. Now, we are running the left. Like I will always look my left. And we are trying to use the same array which right has build up. So, now here, can you add what you did?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, you added one left value. So, first for 0th index, left array, 0th left index will always be 1. Because 0th index does not have any left."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, why? Why in this case? Because already right has run right. So, 0th index, it already has computed some candy for the 0th index. But from the right perceptive."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, why, what if it is 2?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we are taking maximum of it of it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Now, I have not completed the left part of the code. Okay. So, I was explaining. So, if it is greater, we will add left value plus 1. And then we will compare then right of i minus 1. It will be maximum of weight of 1. It was 3 and it was 3 or 1. Then it will remain 1 i only, maximum of right of i and left value. If this value is not greater, then the left value should choose to 1 again."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, if the number of i is greater than the number of i minus 1, and you said left value will increment. So, let us say at initial, its child rating is 5 and the next one is 2. So, 2 is greater than 5. No, it will go to the S part. You make it 1. Why 1? What if it is 2?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, what were you saying?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, why we are hard putting it left?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, we are making left value equals to 1. So, we have not changed the right value. Okay. Yeah. Okay. So, right value is still the same. We only have to change right value. If it is greater, because 1 is the hard one, we have to give 1 candies to each and everyone. So, if there is 1, we do not have to compare. So, if the value increases by more than 1, then we will have to add 1 to it. So, what we are doing is, we are doing left array as we were traversing from i-flat i equal to 1 only. For this, the value will always stay 1. Let me create another array, which is 1, 1, 1, 1. For 5, it will always stay 1. For 2, as it is smaller than 5, it does not change. So, it will again left value will say left value will stay 1 again. And now, we are at this index. It's left value is smaller. Then this one is greater. For this one is greater, we will add 1, left value will add 1 to it. It will become 2. Then we will compare it to right array. If it is greater, then we will put it in the right array. I am taking this approach. This I have done because, let's say, if this was somehow this was greater. So, we will add 2 to 8. But, in the next case, if it was not greater, left value will again be reset to 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you are carrying forwarding this left value to the next also."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. No, if it's greater, then it should only be carried forwarded. If it's not greater or it's equal or less, then it should be set to 1 again."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But, what is the purpose of taking this variable? So, see, you already have an array. So, let's say, after 5, 6, there is a 7. So, in 6, you got something like, I am greater than my left. So, I might increase some candy. Now, it leads to the 7. So, why I have to carry forward this left value when I already maintaining one array? Where I know that, for the sixth one, I have 2 candy. I can increment, so whatever you are doing is right. So, you are doing left value, so left value plus 1. So, what I am saying is, why can't you use the right array itself? And do plus 1 in that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, okay. So, what you are saying is, if we are at 7, then instead of carry forwarding left, we can just take this value and add 1 to it. If it is lesser, if it is equals and lesser, because if it is 7, so 7 is greater than is left. So, its candy should be greater than 6. So, we will check here, if numbs of i is greater than numbs of i minus 1, correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, one more condition, we have to put right, if the 7 candy, whatever the current candy is 1. So, what is candy is less than equals to i minus 1, because we are doing the left right, then we have to increment. So, we can give that condition a error."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so that condition and this left value is very error prone actually. So, currently we are dealing with very small subset, 5, 6, 7, 2 and 5, 6. So, just say that, let's say if we have 10 raised to power 4 array size, let's say, then it would be very difficult like how it is working actually. Okay. Okay. The right of 5 is less than and equals to right of 5, then yes, we have to increment the current tau value. We have 2 right of i minus 1 plus 1."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. And this else part will go away."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. So, the time and space complexity will remain the same, but the constant which is present into the space complexity will go."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yes. So, yeah. And we are exactly on time. So, we started on, exact 40 minutes we are done for this one. Okay. Right. So, I am pretty much done with it. So, this is, I can move to the next section of the feedback. So, yeah. So, like before going to the feedback lecture, do you have any feedback for me like something need to be improved in this interview?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, everything was perfect. Thanks for, well thanks once again for giving this. Yeah. Yeah. So, yeah, I have only given one interview till now as I am a fresher. It was yesterday only. And it was based on more based on web depth than DS. I hadn't been asked in any of the interview till now. No, this was my first experience."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, okay. So, see now let's jump to the next section feedback. This one. So, first thing is the biggest which I think is missing is, which you have to, is the brute force approach was missing. Right. The one which you have given me is the efficient one. Right. So, the one thing which clicks to me like you might have done this question or might be one month back or one and a half month back. But now you know the efficient approach directly. Right. So, this might come to an interviewer. Like, so generally when any question comes in, so your approach should be like first the brute force. So, you don't have to code for brute force actually. Never code for the brute force. Right. But, start from the brute force. So, consider me as I don't understand anything. So, you first tell me like this is the brute force approach. Like, I will do like this. Right. And this complexity is big of n square for brute force. Now, I am trying to optimize it. Then, take me from brute force to the efficient approach journey. Okay. Then, I know that, okay, actually I first find out the brute force and then he found the bottle lag and then he think through and found the efficient approach. Okay. So, one biggest question mark here is you did not come up with the brute force, you directly come up with the efficient approach. Okay. That is one thing. So, this is sometime interviewer take this as a serious thing like let us say if you see this, this is a very good question. Right. So, and if you are new to the question, there is very less chance you will come with directly the efficient approach. Right. So, you were actually going through the brute force as far as I remember when you find a cascading impact, right, you were thinking like I will run it one more time. I will run it one more time. You were saying something like this, right. So, that was actually a brute force. So, you had to explain it. Yeah. So, that was actually brute force because cascading impact comes. So, it has to keep running till the area does not change. Right. So, if it is the area is changing run one more time, complete area. If again run one more time, run till the area does not change. Okay. Okay. So, that is brute force. You were going to the brute force but you did not discuss. Okay. So, from that point you directly jump to the efficient approach. So, that is take as a one point which you can add up. Certain thing is your basics are good but try to grasp the basic trees all trees. So, AVL is AVL red and black. At least these two trees you should cover. Right. Your BFS, DFS time complexity was not correct. Right. So, the time complexity is not big of n. Right. So, somewhere you answer the base DSA correctly but I would say that at least still graph. Right. So, it might be DP quotients. You do not do that but at least still graph DFS, DFS basic binary tree balance binary tree AVL red and black. Right. And there is also called entry but that is real DAS. Right. But try. Right. So, if I ask like how to do a try how you create a try. So, you should know at least these basics of the try. Right. So, what I would say is that time complexity at least should be on the tips. Okay. It is a BFS. Okay. This is the time complexity. If it is a quick sort, this is the time complexity. Right. So, even if you have not code on the AVL that is totally okay. At least know the basic. Okay. So, it is a self height balancing tree. It is time complexity generally lies between here. Right. So, similarly but whatever the definition to give for DFS BFS that is correct. So, DFS use when we have to go find something which lies very deep inside the tree. So, I would say that basics you have like good understanding but somewhere it is lagging. Right. So, little bit work on the base also. Right. Second thing I already told time complexity has to be practical because interviews do take time complexity very seriously. Right. So, the time complexity for the questions which you have done you have given the correct time complexity for that one. But the inside the BFS DFS that was wrong. So, just I have already covered in the previous point. Something is missing in the base DSA which you need to cover on. Okay. Right. So, third thing need to find all the use cases like. So, let us say you actually you did also in this point. So, when the question comes in. Right. So, you started with the approach like you have taken an example and one good thing which you have done is you have taken another example and then only you will able to find out the cascading impact. Right. So, one thing here is missing is you did not take any example of common I think I am not sure if please correct me. Have you taken an example like where we have a common values let us say 2 2 2 2 2 2 what if we have like this all the values common all the very common. So, what I am trying to say is that let us take all different approaches. Let us say all the students have the same rating 2 2 2 2 2 2 what will happen. Let us say all the students have in sequence 1 2 3 4 5 6 ascending order. Let us say ascending order. Let us say mix up. Let us say high low high low high high like you got it what I am trying to say. So, what will happen with this is. So, let us say I would say that today is your lucky day that you are able to find the cascading impact. If you miss this cascading impact you would not be able to solve the question. Right. So, the only best way is like try to find all the possible use case. So, here if you see I can come up with 6 7 use cases ascending order descending order all possible jumble then high low high and then low high low. Right. So, 1 2 3 4 like I think 6 7 use cases I come up and then run my whatever the dry run which you are running run on all the 6 use cases before writing the coding. Right. So, there is some missing in this use case also right. So, little bit more you need to practice on the use cases starting in Aishaban. Right. Little bit you have a little bit another. So, these are all the points which I am saying is like where you have to improve. So, you are doing good in the coding but little bit faster. So, now if you see that you able to find the approach right to left has to be done right left to right has to be done and we have to find the maximum. Let us say if you have 5 minutes you should be able to code this simple in 5 minutes. But if you see today like this so, this is approach building is the only top part in this. But the code is very simple if you have seen right to left left to right 2 loops and then have to find the maximum. But we took a lot of time there. So, this code the speed of writing code little bit has to be improved. Right. At least simple codes you do not have to make mistakes first of all like the mistakes norms plus there just look for edge cases like okay null pointer exception will come or index out of one exception come or not just things through that from that perceptive edge cases right. But code little bit speed has to be increased right. So, these are all the points where I found that something can be improved right. Now good part is you did very good in the discussion you keep you kept me engaged actually. So, even though you are doing the coding the whole time I was totally aware what you are doing. So, you are you are talking with me right that is one thing. Second thing is you ask for the trick like sometime what happen is interviewer has the intention to help right. But sometimes it is just like waiting like okay let him ask then I will tell. So, it is good thing like if you stuck you did not waste the time you ask the interview itself that can you provide me some hint. So, that is not actually a bad thing. So, if he has the intention he will give if he does not have the intention he will not give. So, it should be okay right. But instead of wasting more time it is good to ask in the front itself like to save the time right. So, that is one thing like so you were not wasted the time you go ahead and ask for the hint you kept the interviewer engaged right. So, that is all are in your and one more thing is you actually able to find the approach. So, you were going through the approach but you needed some help some hint right. But you come up with the left hand right approach right. So, initially you are doing wrong but yeah you did come to that approach. So, you are going into that direction only just need little bit push that is all. So, that is also good thing that you were able to think through that okay this is the question this could be the pattern I can take two areas right. So, that is also a good thing that you are able to identify the patterns based upon the question right. So, that is another all good thing. So, now as a overall combining the good and the bad you see right. So, currently I would say that there is little bit more area of improvement right. And you know like what are all the areas of improvement first the biggest thing is like brute force and the second is use case. So, right if anything goes wrong in this one right. So, use case anything goes wrong you are not able to identify one use case your code will break right might be some use case will give you help with the edge cases also writing the edge cases right. So, if you do not able to identify that edge cases you would not be writing in your code and interviewer will be able to quickly identify will this work will this your code work and then you will kept thing in what I miss. And again you go to the use case ok what about this use case right. So, that should be done before itself ok. So, take this as like positive feedback like these things has to be improved right. And speed little bit increase more right overall it is good like you are able to find the approach you were discussing keep the communication right. Whatever how you are doing it today right keep it like this the interviewer will like it right. So, all we need is like those who keep communication skills these are all communication skills whatever you are thinking are you able to express to the other people right. So, that was very good part. So, yeah that is all the feedback which I can give right. So, that is pretty much from I sign."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you thank you so much. This was really helpful as I have said this this was my first time giving interviews I only read about the part. I know that we have to give brute force approaches and use cases I still forgot about it. So, the now I will not forget shortly after this experience."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, these are actually the major so, if it was a real interview right. So, there might be like brute force I would I might ask for the brute force like what is the brute force time complexity how would do that right. Because, sometime brute force complexity is tourist about and sometime over and square but we need to come from brute force to efficient like let us take the interviewer from that journey that ok this is the brute force and this is this. If you directly give the efficient approach right and if you solve this so, the code was very simple for this efficient approach that is how you solve it quickly. You give the time for me to ask another question actually right. I have already prepared the second question I might put if you done it in the another 10 minutes before right. But if you take me from brute force to this one right I will forget about this I will say that yeah this is a very big question he needs time to think. So, he is taking his time like brute force and this one. So, sometime what happened is when you go directly efficient right so, I will say he already knows it let us ask another question right. So, that is just one hand rest all good like just take those feedback and see if you can work on it ok."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Ok man it is already late it is 12 or 10 sorry for keeping you so."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It is fine."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah ok. Cool thank you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you very much. Good night."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good night. Bye."
+  }
+]

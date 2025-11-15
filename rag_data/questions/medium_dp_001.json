@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "medium_dp_001",
+    "type": "question",
+    "topic": "dynamic_programming",
+    "difficulty": "medium",
+    "pattern": "1d_dp",
+    "tags": ["dynamic_programming", "optimization", "memoization"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "related_problems": ["easy_dp_001", "medium_dp_002"],
+    "evaluation_criteria": ["dp_recognition", "state_definition", "recurrence_relation", "optimization"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "House Robber",
+    "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night. Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.",
+    "constraints": [
+      "1 <= nums.length <= 100",
+      "0 <= nums[i] <= 400"
+    ],
+    "examples": [
+      {
+        "input": "nums = [1,2,3,1]",
+        "output": "4",
+        "explanation": "Rob house 1 (money = 1) and then rob house 3 (money = 3). Total amount = 1 + 3 = 4."
+      },
+      {
+        "input": "nums = [2,7,9,3,1]",
+        "output": "12",
+        "explanation": "Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1). Total amount = 2 + 9 + 1 = 12."
+      },
+      {
+        "input": "nums = [5]",
+        "output": "5",
+        "explanation": "Only one house to rob."
+      }
+    ],
+    "hints": [
+      "Think about the choice at each house: rob it or skip it",
+      "If you rob house i, what's the constraint on house i-1?",
+      "Can you define a recurrence relation?",
+      "Do you need to store all previous results?"
+    ],
+    "edge_cases": [
+      "Single house",
+      "Two houses",
+      "All houses have same value",
+      "Houses with 0 money",
+      "Alternating high and low values"
+    ],
+    "follow_up_questions": [
+      "What if the houses were arranged in a circle?",
+      "How would you track which houses were actually robbed?",
+      "What if there were additional constraints (e.g., can't rob more than k houses)?"
+    ]
+  }
+}

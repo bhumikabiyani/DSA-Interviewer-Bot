@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "id": "algorithms_dynamic_programming",
+    "type": "concept",
+    "topic": "algorithms",
+    "difficulty": "hard",
+    "pattern": "dynamic_programming",
+    "tags": ["dynamic_programming", "optimization", "memoization", "bottom_up"],
+    "complexity": {
+      "time": "varies",
+      "space": "varies"
+    },
+    "related_problems": ["easy_dp_001", "medium_dp_001", "medium_dp_002"],
+    "evaluation_criteria": ["problem_decomposition", "state_definition", "recurrence_relation", "optimization"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "concept_name": "Dynamic Programming",
+    "definition": "An algorithmic paradigm that solves complex problems by breaking them down into simpler subproblems, storing the results of subproblems to avoid computing the same results again.",
+    "core_principles": [
+      "Optimal Substructure: Optimal solution contains optimal solutions to subproblems",
+      "Overlapping Subproblems: Same subproblems are solved multiple times",
+      "Memoization: Store results to avoid recomputation",
+      "Bottom-up Construction: Build solution from smaller to larger problems"
+    ],
+    "when_to_use": [
+      "Optimization problems (min/max)",
+      "Counting problems (number of ways)",
+      "Decision problems (possible/impossible)",
+      "Problems with recursive structure and overlapping subproblems"
+    ],
+    "approaches": {
+      "top_down_memoization": {
+        "description": "Recursive approach with caching",
+        "advantages": ["Natural recursive thinking", "Only computes needed subproblems", "Easy to implement"],
+        "disadvantages": ["Function call overhead", "Stack overflow risk", "May use more memory"],
+        "template": "def dp_memo(n, memo={}):\n    if n in memo:\n        return memo[n]\n    if base_case(n):\n        return base_value\n    memo[n] = recurrence_relation(n)\n    return memo[n]"
+      },
+      "bottom_up_tabulation": {
+        "description": "Iterative approach building from base cases",
+        "advantages": ["No recursion overhead", "Predictable memory usage", "Often more efficient"],
+        "disadvantages": ["Less intuitive", "May compute unnecessary subproblems", "Harder to implement"],
+        "template": "def dp_tabulation(n):\n    dp = [0] * (n + 1)\n    dp[0] = base_value\n    for i in range(1, n + 1):\n        dp[i] = recurrence_relation(i, dp)\n    return dp[n]"
+      }
+    },
+    "common_patterns": {
+      "linear_dp": {
+        "description": "1D array, each state depends on previous states",
+        "examples": ["Fibonacci", "Climbing stairs", "House robber"],
+        "recurrence": "dp[i] = f(dp[i-1], dp[i-2], ...)",
+        "complexity": "Time: O(n), Space: O(n) or O(1)"
+      },
+      "grid_dp": {
+        "description": "2D array, often path-based problems",
+        "examples": ["Unique paths", "Minimum path sum", "Edit distance"],
+        "recurrence": "dp[i][j] = f(dp[i-1][j], dp[i][j-1], ...)",
+        "complexity": "Time: O(m*n), Space: O(m*n) or O(min(m,n))"
+      },
+      "interval_dp": {
+        "description": "Problems on ranges/intervals",
+        "examples": ["Matrix chain multiplication", "Palindrome partitioning"],
+        "recurrence": "dp[i][j] = min/max(dp[i][k] + dp[k+1][j] + cost)",
+        "complexity": "Time: O(n³), Space: O(n²)"
+      },
+      "knapsack_dp": {
+        "description": "Selection problems with constraints",
+        "examples": ["0/1 knapsack", "Coin change", "Subset sum"],
+        "recurrence": "dp[i][w] = max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i])",
+        "complexity": "Time: O(n*W), Space: O(n*W) or O(W)"
+      }
+    },
+    "problem_solving_steps": [
+      {
+        "step": "1. Identify DP Structure",
+        "description": "Check for optimal substructure and overlapping subproblems",
+        "questions": ["Can the problem be broken into subproblems?", "Do subproblems repeat?", "Is it an optimization problem?"]
+      },
+      {
+        "step": "2. Define State",
+        "description": "Determine what parameters uniquely identify a subproblem",
+        "examples": ["dp[i] = answer for first i elements", "dp[i][j] = answer for range [i,j]"]
+      },
+      {
+        "step": "3. Find Recurrence Relation",
+        "description": "Express current state in terms of previous states",
+        "approach": "Think about the last decision or action taken"
+      },
+      {
+        "step": "4. Identify Base Cases",
+        "description": "Define the simplest subproblems that can be solved directly",
+        "examples": ["dp[0] = 0", "dp[i][0] = 0", "dp[0][j] = j"]
+      },
+      {
+        "step": "5. Determine Computation Order",
+        "description": "Ensure dependencies are computed before they're needed",
+        "approach": "Usually smaller indices before larger ones"
+      },
+      {
+        "step": "6. Optimize Space",
+        "description": "Reduce space complexity if possible",
+        "techniques": ["Rolling array", "1D instead of 2D", "In-place updates"]
+      }
+    ],
+    "optimization_techniques": {
+      "space_optimization": [
+        "Rolling arrays for 2D DP",
+        "Using only necessary previous states",
+        "In-place updates when safe",
+        "Coordinate compression for sparse problems"
+      ],
+      "time_optimization": [
+        "Pruning impossible states",
+        "Early termination",
+        "Using better data structures",
+        "Mathematical optimizations"
+      ]
+    },
+    "implementation_templates": {
+      "1d_dp": {
+        "python": "def solve_1d_dp(n):\n    # Initialize DP array\n    dp = [0] * (n + 1)\n    \n    # Base cases\n    dp[0] = base_value_0\n    if n > 0:\n        dp[1] = base_value_1\n    \n    # Fill DP table\n    for i in range(2, n + 1):\n        dp[i] = recurrence_relation(dp, i)\n    \n    return dp[n]",
+        "space_optimized": "def solve_1d_optimized(n):\n    if n <= 1:\n        return base_cases[n]\n    \n    prev2, prev1 = base_cases[0], base_cases[1]\n    \n    for i in range(2, n + 1):\n        current = recurrence_relation(prev1, prev2)\n        prev2, prev1 = prev1, current\n    \n    return prev1"
+      },
+      "2d_dp": {
+        "python": "def solve_2d_dp(m, n):\n    # Initialize DP table\n    dp = [[0] * n for _ in range(m)]\n    \n    # Base cases\n    for i in range(m):\n        dp[i][0] = base_value_col\n    for j in range(n):\n        dp[0][j] = base_value_row\n    \n    # Fill DP table\n    for i in range(1, m):\n        for j in range(1, n):\n            dp[i][j] = recurrence_relation(dp, i, j)\n    \n    return dp[m-1][n-1]"
+      }
+    },
+    "common_mistakes": [
+      "Incorrect state definition",
+      "Wrong recurrence relation",
+      "Missing or incorrect base cases",
+      "Off-by-one errors in indexing",
+      "Not considering all possible transitions",
+      "Forgetting to handle edge cases",
+      "Inefficient space usage when optimization is possible"
+    ],
+    "interview_strategies": [
+      "Start with brute force recursive solution",
+      "Identify overlapping subproblems",
+      "Add memoization to recursive solution",
+      "Convert to bottom-up if needed",
+      "Optimize space complexity",
+      "Test with small examples",
+      "Consider edge cases and constraints"
+    ],
+    "complexity_patterns": {
+      "time_complexity": [
+        "O(n) for 1D linear DP",
+        "O(n²) for 2D grid DP",
+        "O(n³) for interval DP",
+        "O(n*W) for knapsack-style DP"
+      ],
+      "space_complexity": [
+        "O(n) for basic 1D DP",
+        "O(1) for space-optimized 1D DP",
+        "O(n²) for basic 2D DP",
+        "O(n) for space-optimized 2D DP"
+      ]
+    }
+  }
+}

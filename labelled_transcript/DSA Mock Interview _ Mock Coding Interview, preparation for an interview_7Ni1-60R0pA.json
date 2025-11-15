@@ -1,0 +1,542 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "So, with it I have started the recording and I will be recording and uploading on YouTube. So, if you have any concerns please let me know."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No. No. No concerns right with it. No, no, no. No, no. No, no. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, I will tell you the quickly pattern. I think you might already know it. So, 10 minutes we will do some basic DSS questioning. Right. And not only DSS who hopes and little bit more which you have in your maybe subjects. Then we have 40 minutes one DSS question, medium level question. And after that 5-10 minutes we will have a feedback like where we can improve from both sides. Right. Okay. So, that is the pretty much pattern. And let us start with this. Currently it is 10-17. Okay. So, with it can you please tell me something about yourself?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, I am with it. I am a fourth year undergrad from the Planet Planet Campus. Currently I am pursuing mechanical engineering. And as far as it was open there in future, I started learning coding from a first semester. I was introduced to C-Ranguage and Math first semester. After that I started learning Python from a second semester and started doing some online courses on machine learning data things. I after my second year I did another internship, I did an internship, I was a part of a machine learning team. And I was also the team leader of the whole project. Our project was based on to develop algorithm to detect fake news. And the major is the tech sector which I use was Python and some libraries of it. From the past one year I have been focusing upon my problem solving skills and also covered some other CS courses like the ESA operating system and observant programming. And yeah, another thing and the past one year I developed another project. It was a search engine which I developed. It was used like a H2 search similar sounding beads. So, something like a bead recommending system. The major is the tech sector. I use that for Python, Gina and Streamlet. Streamlet is a Python interface. Python is coded in Python and it's a, as you should give a web interface to machine learning algorithms and all that. So, the use can have easy use of that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Then it must be very difficult right doing your college mechanical engineering plus learning all this stuff. So, how you are managing this with your studies?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I mean, it's kind of difficult because along with maintaining a good season in our college plus you have to do other courses like in my case, it was kind of easy because we had to do some mandatory courses which was. Other from our own discipline. So, in that we I covered operating system, watching the programming and DSC from my college unit. And they were considered the college units only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good, good. Thanks, David. Okay. So, thank you for your basic information. Then let's start with some questions. So, just concern me as a very like 15 years old young child. I don't understand what is classes, what is object in the layman term explain me all all the hopes concepts."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, basically, who's been down two concepts. So, basically we have encapsulation. We have inheritance. We have polymorphism and we have abstraction. So, in layman terms, if I tell you that inheritance is something like we we get like we have we are we have pettings and we have children. So, there's their properties. They kind of heredity comes towards into the children also. So, for example, I am a left and repressed man left and repressed. So, this kind of gene has been in my opportunities also. That kind of transfer of gene is a example of inheritance. Second is polymorphism. Basically, being start the same function is being different kind of stuff all the different kind of activities. For example, in this one, I can so let's say we have a teacher. Let's consider some teachers. So, she's playing as a role of a teacher. Sometimes she's playing as a role of a mother. Sometimes she's playing a role of a sister. So, in for a person is kind of acting a different different. Poison different activities are different tools. That's a kind of polymorphism I can say. Apart from that, so we covered inheritance for polymorphism. We have abstraction and encapsulation. Abstraction. So, every imp, so I'm assuming that of a few we are faithful. So, if we're faithful, we're working with the mobile and other software. Mobile phones, we're actually. So, in mobile phones, when we click on the screen, the thing happens. Let's say we click on the app, then it's the app opens. But we really don't know what happens inside. And when we click on the screen, so that's kind of abstraction. We don't know what internal implementation is. We just know how to use it. And encapsulation maybe. Maybe we can define that. So, to reduce the mobile, we have we have a touch screen, then we have a battery. Everything is compiled or everything is combined in a single object. That's a kind of encapsulation I can think of right now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. Thank you. So, what are the traversal method of a trees?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We have three. We have four first pre-automatic in which root is travelled for traverse force, then left and right. We have in order in which left root and right. And then we have a footer in which left, right and root. Other than that, we also have a DFSR in which we go from level to level, down and so on. So, it's the down."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, okay. Now, tell me that thing. Let's say you have 10 million records, right. Which need to be sorted. Which one you will choose? Must sort or heaps sort?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "10 million records."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Any other information about the data here? Or also on our standard of data? You can ask me like if any other information you wanted, what information you wanted? You can ask."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, the type of data we have, I mean, let's say integers. Okay. So, we have to, let's say we have integers and it's random only. So, we have to sort them."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, how you will sort it? But we have a huge order. Let's say I'm set 10 million. Let's say it could be 50 million. Which algorithm you will prefer heaps sort or must sort?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, both algorithm uses an login complexity. In words, we have some time for recursion like we go into depth and depth and depth. In heaps sort, we don't do that. So, maybe I guess I'll go with heaps sort. So, that I can save the time complexity of going into the recursion."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, but then heaps sort also we do a recursion, right. We go up, up, up, up, so heaps sort doesn't heepify. So, heepify also does the recursion."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay. I'll give you a hint. Like, let's say there is a space constraint. Then which one you will choose?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If we have a space constraint. I mean, even if we do a heepify, it will be to follow the complete binary, complete by it. So, I don't really don't have any idea what's going on."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, can you tell me like in a SQL query, right, which we write, there is a keyword called explain. What is the use of that keyword explain?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually, I haven't covered DBMS, so I don't know what the SQL query is right now. I'm actually learning them right now."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure. No problem. Okay. So, let's say you have a binary tree, right? How do you find whether this binary tree is BST or not? Binary search tree or not?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We can do a traversal. What in traversal? Pre-order tree. We can do a pre-order traversal. In which we can pass some arguments that this node should be greater than this value. This node should be greater than a particle node should be greater than this value and lesser than this value. So, we can make a pass arguments out there."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, but what about at a particular in depth? Let's say you have gone to level depth inside this. So, if you do pre-order, and you just check that, okay, if it is greater than and lesser than functionality, how you will keep track that the parent also, there is the same behavior maintained."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, let's say you know that I am making a function which takes the root node and at the same time, I am going to take two more in-delements. Let's say for the starting, we can say I am going to lower bond would be in minimum and upper bond would be in max. So, when I go in the left, I will have a constraint. I will have the constraint and upper bond is going to change. And when I go to the right, then the lower bond will change."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. No, that is correct. No issue in that. But there is one property of binary surgery. Like during traversal, what one property is that?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Oh, yeah. So, okay. So, if you do an in-order traversal of that, it should be sorted. It should be sorted."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, if you do an in-order traversal, it should. Like in the next one, it should not be. So, no need of that. What is the spanning green?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I mean, the spanning green is a concept graph in which we need to connect also. Also nodes with minimum weight. I mean minimum destiny if you consider the distance between two nodes that's weight. So, minimum weight of all the edges."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. So, spanning tree generally like covers all the nodes. But it can also be for the un-un-un-weighted graph also. But, yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. I mean, if we have a graph, then we, the minimum amount of edges, we need to connect all the nodes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, can a cycle be present into a span of three or not?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No. It's a tree. So, it won't have a cycle."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. So, which memory does recursion uses? I think you have already answered that interview previous question."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. But it's still. It's correct. It's correct. It's correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So, let's say can you write one expression and tell me what is this prefix notation?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, notation is bracket A plus B bracket A plus B bracket close into. Yeah. Multiply into bracket start C plus D bracket close."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, can you share your screen? Like, can you open some node pad in your distinct and you can write so that when others see they can like watch the expression."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, I'll repeat the expression. So, it's a. Okay. I think there is a network connectivity issue. Do you have any node send your system?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. We can save some bandwidth in there."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. That's better. Yeah. So, the expression is A plus B, yeah, into C plus D."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Could you please let me put a little bit zoom in?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Thank you. So, what about this prediction?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I'll repeat it. Yeah. That's better. Repeat. So, in prefix, we need to like the plus operator. Some operation to be behind both the variable right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What? So, generally, yeah. In this two minutes, the way plus B plus E plus B and multiple other other one things."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. And what's the postfix notation in this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, postfix should be a plus B. Then we do a sp, e plus B, e plus, and then we might write it all."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Cool. That's pretty much on this one. So, can we use this node by itself and you can write the question, now the DSS question. Right. So, it's exactly 1031. So, we have around 40 minutes for this question. So, the question is, we have to remove the, so you are given a string. Okay. So, you are given a string and it's an alphabet, a small character's only. Right. So, you have to remove the duplicate character. Right. You have to keep only one. Right. And you have to return the smallest lexicographically order. So, for example, write, just write the BAB. A string is given BAB. Right. So, in this case, you have to remove the duplicate and keep only one. So, in this case, you can either restore BAB or AB. So, what we have to return, we have to return the smallest. You can say that lexicographically or a smallest one. So, output would be AB, not BAB."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This is right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. This is correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, you can take one more example. BCA. Okay. BC. BC. Okay. So, in this case, if you see B is 2 times, C is 2 times. If we remove the duplicate and keep it sorted from, it would be ABC."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This is the output."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, question is clear."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, it's 1032. Please take your time with it. Also, let's take another example. I have developed an approach which I am going to go with it. So, let's take another example from me. So, let's take my name only, VID ID. So, in this one, if we remove, so our first step would be to remove all the duplicate characters. If we, if we remove all the duplicate characters in the output would be, first, would be VID, and after that, whatever characters we have, we can just sort them and take the written. So, if I sort this, IEDD. No, sorry. IEDD. So, if I get an input of whether, this will be the answer, IDVT. Okay. Let's see. So, in this case, so we have V, then we have I. So, in this case, okay. No. In this case, it will, this will not be the answer. Okay. So, this will be the answer. T should come before I am pre-sowing. Will this be an answer? IDVT."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, we have to return in the lexical graphically order. If you see that, D I, right. No, but, you need to consider the sequence of the characters also, right? So, here, if you see that, VIDIT. Okay. So, you have to remove the duplicates. In the same, you cannot, let's say, V is at 0 at 10x, we cannot make it to the n. So, we have to follow the lexical graphically order for the same strings."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, let's go again with the question. So, we have to remove the duplicates, right? But, we cannot, let's say, V is at the start, we cannot make it to the n, right? So, characters should be at the n. We have to maintain the order also, yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "But, we have to remove duplicates, let's say. Okay. I will give you one more example. So, with that, it would be a little bit more clear. So, right, CBA, CDA, CD, CD, CBC, CBC."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, its output is ACDB."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, how would this output has come if you see that? So, here, first of all, if you see, look at the output, ACDB. So, it follows the A is first, then C, then D, then B. You will find the same kind of, you can say the subsequence inside this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, what I am saying is, so we cannot drastically change the location position of the characters. So, only thing is, we have to just remove the duplicates and we try it, which character to remove that we have to decide a little bit intelligently, that so that we maintain a sorted form. Okay. So, consider this use case and this output and see how it has come. So, here, if you see that, so first is C, then B, then A comes. So, but if you see that, if C is duplicate, so that's why I remove the first one. C, but I keep the second C, because it would be sorted form after A, there is a C."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, I can remove it, the first C. So, similarly, we can go with all the characters, which one to keep? Okay. Okay. Um, our first approach, which is right now, I'm able to think is, kind of, so yeah, we can go recursively and we can try to make all those sequences in which all the characters are coming. And then we reach the last index, after taking the last index, after considering the last index, and check whatever in whatever strings we are going to make, which is actually, actually, it's more, and then we can keep it from some rebound, then we can turn that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, and recursively, how you will remove the duplicates?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, for that, we can keep us set with us. We will try to insert element into that. If we find that this element has not been taken yet, okay, then there is another thing that, whether it's a last element or not. Okay. So, if I, we can, okay. So, we can also keep a track of how many elements of similar type are there in the, okay. Okay. So, let's say, for this C, we have three more elements on the forward side. So, when we try to take C, whether we can take it, that's the first choice. If here is that, we need to make sure that there is a further C in the whole string or not. So, let's say if we come on A, right. If we come on A, and we try to decide whether we need to take it or not take it. So, and the first option is if we take it and it's okay, if we are not going to take it, we can figure out that there is no further A in the whole, in the whole next string, like on this and all the characters are forward to A. Correct. And that case would be removed from that point."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. And how you will decide whether to keep it or not keep it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Requisitive, we will go with both the choiders. I mean, if we are at A, but let's say we are at this position C, this position C. Now, there would be a case in which this C would be taken or this C would not be taken. So, if this C would be taken, the set in which we are going to take it, the count of the, and this C would be 1. So, at this position, I will not be able to take it. And the case is there that this C is not there or we haven't taken it in the C. Then at this position, we have two choiders. And either I can take this C or don't take it because we also know that there are for the C in the string."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you do a dry run on the small one? Can you make sure that this recursion approach will work?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. So, let's take this example. Yeah. BCA, BC. So, I am at index 1 right now. Index 0 right now. And the set we have, set is right to empty. And we also need to make sure that how many elements are in the next side. So, for that, we can do a prefix from something like that from the right to left, which we have done much before then. But right now, let us assume that we have a B in B. I have B right now. And so, I am at right now at this position. I can say, we can take this. We can take this or we can't take this. So, I can make two cases. I have taken this element. So, I am going to restore it in a string B. And because we have taken it, we have to also take it this in ProB. Another case would be that I haven't taken this element. So, nothing. And if we haven't taken this, we have to also store this to be. Nothing. And we don't have, I have Bs also. That's not important right now. So, we have to keep this one with B and another with no B. And what is B1? What is this B1? Okay, frequency. Okay. So, frequency of B is 2 right. At this index and 0 index, excluding this index, I had of it. Okay. Exploding this one more left. So, it was earlier 2, but now it has been reduced to 1. Okay. Okay. Okay, okay. And no, I'm doing it in a different way. So, at an index, what will happen? Now, so, what I'll do, I will go from, I will go from, right to let 4 ones and I will carry a hash map, and I will store the hash map in e to the index. So, that, that, what I can do is that I can make a prefix something like this. I'll just do that. So, this one, it will be 1, 1, 0, 0, 0, 0. 0, 0. So I will make this perfection. What it represent? That at this index, I have no C further than this. 0 depends not. At this index, we have 0 elements, which are the, I had of it. At this index, we have 0A in front of it. At this index, we have one C, I had of it. And in this case, we have one C. And in that aspect, I can devote this here. I have this contrast. I have this. Then we can again, like we have two pieces, then we can go with, go like it would be a recursive approach. So it might get outside. Let me tie it once. So once we have, we would have a B and C with us. Then it said we can have a B C, because we, and the case would be not to take it, but including B. So that would be B. Coma set, Coma B. And the case would be with the, with this case, in which no index was taken, then in this one, what we see, and instead, we have to see this. And another case would be, to not to have it even, and I can have a set, nothing. And I, like this is, like keep going on. The time complexity of this one, would be, I guess in two-power, and this would be exponential. Not good. So, I should have called it, should have optimized it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you try to optimize it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. Um. Oh. At this index, I am going to keep a stack, if, I take this element and, okay. So, again, and let's say that, if I make this a little trick, then clear also, again. And I, kind of keep a stack on it, and on an index, if, if, if, if, if, if, if, if, if, if, if, if, if, if, if, also has a more occurrence than it, then we will remove that element, okay. And if, if we don't, if we can't find any occurrence, more than, I add of it. Then we will keep it and we will, again, push the element."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Okay. Did you get to prove it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah. I got to. So, what you're saying is, you will maintain a stack. If there is no further element, not be news, you will add it. Yeah. If it is there, and if, some comparison, you will do, remove something. Yeah. Yeah. Let me try to, try to, do it. I don't know this one. I don't know. So, initially, I have a stack empty stack. And we are index zero. So, right on, because stack is empty, we are going to push it. So, in stack, we're going to have push. So, we have, we have, we have in the bottom most of the stack, then we will come at c. We will have a stack, right on, we have a b in it. And we are index index one. Now, now, if I come to c, I will make thinking that, okay, we have to see, not the lower, lower element than c is a b, which is smaller than that. So, if I remove it, if I keep a c, beside, instead of that, so it will make a lexicon of a bigger string than that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No. So, this version, YAC has to be before b. No, no. I'm trying to say that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we have a b lower than this. We finally remove this. And then, if I keep a c, then it will be, they come in bigger, bigger, bigger, bigger, bigger, bigger, we should not do that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Correct. Right. So, in this one, I should keep a b and c together. Okay. I can have a stack. And again, I can see, right. I'm going to index two. Now, now, this is very important point. We have a A with us. I should probably slide some more downwards. Okay. We have a A with us. And now, A will compare with c. See, we'll say, okay, A is smaller than c, then A deserves this position. Another check would be this, that whether we have a c element, I had a first one out. Because if we don't have a c element, I had a first, we will break out the condition that every element, a position should be, every element should occur once. Yeah. So, if I do try to do that, then we'll have a, okay, we should remove that again. We'll come at B, then again, we move that to correct. So, we'll have a, okay, I got your approach. I got your approach."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "What is the time complexity of this approach with it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We're going to traverse, now, once in a whole string, and we're going to go downwards again and again. So, I guess I get a, a, a, a, a, a, a, a, a, a,"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can we start the coding? We are almost 5. So, yeah, let's start the coding. We are almost 20 minutes more."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Okay. Can you start here only?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we're going to take that. We can, whatever, we are coding a string input, we're going to input, focusing as we need."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This is the function only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we're going to install this."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Well, like whatever, how should we do? Also implement the, how we're going to take the input and all that?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, just write the function. That function will accept an, a string input a string. And we can just implement the main function. That's all. Nothing else."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And what will do? First and first thing I did, I'm going to do is something like this. I have to find out how many elements are occurring. I had a fit. So, for this one, do an, let's make a factor. And frequency. Because we have 26 characters. We will have 26. And also, I need to have another vector. Which would be around. Frequency. I had frequency. And we can store it. And we can share it with the store. Comment below. And we are going to try. The first thing I need to do is to make this kind of array. What is the order? What is the order? What is the order? Frequency. I got it. So, you take a number 26 length of array for the alpha-beds. And two store frequency. Yes. What is ahead frequency? So, this one. Basically, at this point, because we're going to try, we're going to keep a track of it. This will keep going, keep going to change again. So, we can't use. Like at a particular index, we need to store some element, some particular element of this one into this one. So, this is the ahead frequency for me. I will put this. And what is the FR-EQ, then? So, what will happen is, if I don't, so I'll start from, so frequency of this, we're going to try to start from this point to this point. This frequency array in the C element, although, third element, so I can index of it, it will change to one at this point. I mean, it will act as a global thing for this thing. Okay. Okay. So, with the help of this frequency, I will get this element. That's what I'm going to find."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Instead of this, I had frequency with your keeping, it's little bit, you can say that, can we simplify that part? I am okay with all the approaches you said, but I think there can be a little bit, simplify this ahead frequency. So, here, what you are currently doing is, so you are going from right to left and you are seeing C. Like, I had, is there more C? No. I had any more B? No. So, it's okay. It will work. But if you see that, when somebody comes, let's say somebody comes and look at your code, it is little bit not intuitive. So, you, you might be able to, able to find it easy, but somebody else might not be right. So, can we little bit make this ahead frequency more intuitive? Like, easy to understand?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It's like, should I change this? It's not length two, some variable name?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. Okay. Okay. Can we do this like, instead of this, 1, 1, 0, 0, 0, can we do like, okay, C, it's character C, the last usage, the last occurrence of that C comes in."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The last index of it?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "The last index, yeah. For every character, what is the last index you have seen? So, whatever you did, you can run from left to right. So, I am just giving you some improvement over here. I had frequency. So, let's say you run from left to right, and for B. So, you have already taken the 26th character, arrow length, right? So, for A to Z. Yeah. Right? So, for each character, you have one index, yeah. Right? So, each character, what is the last occurrence? So, let's say A. So, A is index 0. What is the last occurrence, A has been seen. Then B. What is the last occurrence, B has seen. Right? So, can it be used? It would be a little bit easy for you also. Like, or if you are okay with this, you can go ahead with that also. No issues in that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Now, I can go, but I can, I am able to find a problem with this approach. It won't go for some elements. I was thinking about that. I think it is, we are not kind of like, at a particular point, we are not storing the, where this element has been taken or not. Yeah, I have not. I'm not able to, like, with this, with my tools, I want to be able to take a care of that and that one. So, if you are seeing that, if you should just store out index of the previous one, if you try to do that, that's a good report. So, if I go from left to right, I will have no occurrence of B. So, let's just see, minus one, we'll detect this and that there is no occurrence behind it. Again, for C, then we will have a minus one again. Then we will have a B, which will commit one and C will be at two. So, with this one, I will have that one now for B and C, but I don't even know, I don't know, I'm going to move some elements of it. So, you can take one, like, has set or something to make that this character has been used on."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, yeah, of course, I can do that, but which, which we should not take that also important and from, for that element, also important. I mean, even if we do that, there would be possibility that, we need to remove that element and we have to keep this element. How can I do that? So, if I go over this approach, okay, so, and if we take this element and, we remove this one. No, you are doing right with it. I don't want to change the logic or going in other direction, you are correctly doing, your stack logic is perfect, right? And I'm just giving you an hint that, the place where which you are getting confused, like, I have used one character and later occurrence, we have to remove that and use that. Just, dry around your stack, that will not happen, right? Because, the, you are popping up, right? So, you are always keeping the, sorted order in the form. So, that will never happen. So, you are going in the right direction, just, think through it like, what is missing to complete the goal?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so, if you are going to store it in the right way, I'm going to keep a frequency of it. So, and I had to consider, you will store that, how many elements are ahead of it. Okay. Now, even if you do a index of it, I guess, index of the tell is only that, it's the same thing, yeah. Yeah, so, okay, we can do that, but, okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Let's go ahead with this only. Let's go ahead with this, if you are comfortable, let's complete the goal."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so, let's just say, then, which is the first to start with. And I'll just delete this one. To hold it. Then, first thing we need to do is to find out how many frequency of this particular character is ahead of it. So, I'll go from title it for that. I can do a, for it. Okay. Let's say, let's say, it was to length minus one, then, it can say, let's just read it, read it, read it, read it, read it. And, let's go ahead with this. Minus minus. So, what we can do, because we have, we would have a character at this point. We need to find which particular index we are going to map. So, I think, now, you can say, maybe say, cat index, let's say, so, index minus of a. And, the, the four, the four, adding these two frequency, we have to, we have to put this element into, put the amount of frequency in the higher frequency, the values to, add frequency of, index is equals to, frequency of, car index, and frequency of, car index, plus. So, car index basically, we think that, if we have a, then we have to, map it to the zero index, and, it's going to be like that. And, we're just, I'm thinking, so, now, I have to move in there, from left to right direction, and we have to also keep a stack, and let's take a stack, and, um, smallest, and, this is more correct, and, let's say, index equals to one, car index, and, index, index will us, then, and, and, indexed as, first, first gives, would be dot, whether the stack is empty or not, but it's very, it's so tough. Smallest dot, empty as to, then we can see that, uh, what we can see, it is push the element, first, put push, what we can push, we have to push the as dot index. Of course, it will be done. Then, else we have to, else we have to note that my stack is not empty. And that is, we will have a character and we have to figure out that by this element is smaller than this element. So, you can see that, that one. So, why?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This is a general reminder last 10 minutes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What is smallest dot empty is not to little spatial, it over anti stack and then smallest bracket of dot is greater than, greater than the current element. So, we started that also one thing we need to take care of it. And there will be two key hidden in it, rather than, okay, so, and then. So, at this point, I am trying to cover that stack is not empty, it is not the, with the, and the character we have in the stack is bigger in the character we have right now. This should be character element and the frequency. So, we have, I have frequency, frequency of the, okay, little part of the, smallest dot dot. Minus a is greater than zero, which will, like, which will be able to figure out all this one. And if this is the cases, then. I have to. We have to do a smallest or push. What? I start from next. No response. We have to remove all the elements which are given in this element. And when this, when this portion, when this condition is big, then we have to push this element. Next. Right. And after this, we have to just traverse the stack and. We will have a. Stink. Next. Let's answer. I am T. Stink. So, I am. Smallest or tenety is not true. We can say that. Answer equals to smallest. So that we can with one with a direct traversal, you can get this small string because the lowest element will be the. And we can do a smallest. And. And."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I have a doubt with it that this place I had frequency smallest dot top minus a which you are doing. So, shouldn't this be like a respective of each index where it. So, currently let's say we are at index of five. Right. Which example are you going to take? I am. We are at index right. Let's say we are at index five. Correct. Now, we need to see that. Let's say now current. So, we are at index five. Right. That character at index five is a. Okay. Yes. Now, let's say in my stack. I want to remove b because b is greater than a. Now, but I am doing a one more check that is there any. No, is there any more b after a."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I know. You're right. So, there is that index usage and I had frequency. I completely missed that one. So, you're right. So, for that I have to do is one modification in the stack only. I'm going to store a character and also going to store a index."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. That's what I'm saying. Don't touch this one. Can you. Slightly go up. Slightly go up. Can you improve your this ahead. I had frequency itself. You are. Yeah. So, this logic is totally correct. Only the problem there is in the ahead frequency. So, currently what you are storing is like how many ahead this character this. Right. So, I'm giving a hand. Yeah. Can you. Put them for each character. Can you store the last occurrence."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. So, there when you are at particular index, you can just check that after this index, the last occurrence of that character. Is it greater than that index or not? Yeah. Yeah. Call it. So, what we can do. Yeah. So, we can do a small modification. So, in the ahead frequency, we are going to, we are initializing it to 0 for that. I will just initialize it with minus 1. For once why am I doing the minus 1 with this? No, no, not in this one. Sorry. Zero. Zero only. In the frequency, we can do it, we can do it minus 1. This would be, it doesn't got this would be the 4th occurrence. If we are occurring, we are in the frequency and that element comes to you minus 1. Which means this is the first frequency of the right hand side. So, if the same element comes in, even change this, we would not read the frequency ID."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "You get it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. I didn't get the usage of frequency."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. So, what we are going to store in ahead frequency, tell me that thing first."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What we are going to store in ahead frequency now?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "In the implementation, I can just remove this. If we can, we don't require the frequency round. Even here. We don't require required."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "What? I will do. I will just initialize it with minus 1. This is refilling rather than the element has been occurred before this or not. Then we have a current X here. Then what I will do? This is a simple check. So, here. I had frequency. We can see your current X. Yes. Equation equals 2 minus 1. Then we need to update it. I had updated with you. So, with what you are installing in ahead frequency now? I am going to store the last occurrence. So, you are going to run from right to left. Last occurrence. I am going to show from right to left. We need a last occurrence from the right."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, what you are trying to do? So, you got A. Now, you are running from right to left. So, means you will get more the bigger number index earlier. And let us say if any other occurrence left, you will find it the minimum later when you go from right to left. So, what you are doing here? So, if I had frequency of character index. So, whatever the character you are finding, let us say B. So, B is also at let us say index 20 and index 5. So, let us say index 20 was to find it at index 20. So, at index 20, I will hit this case of minus 1. In that case, I will change that index to this particular index. So, let us say we will change it to 20 only. And when we hit at the 5 in the first position, I guess you told fifth position."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, at the fifth position, we will figure out, this position is not minus 1, we do need to change it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, can we just go from left to right and just simply store the index?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, we can also do that. Again, again, over right again and again. Yeah, we can do that again. So, it would be the same thing, the comparison will get removed. So, in that case, I do not need to even compare it. Yeah, we do not really have to compare it. So, index 2, index 3, index 3, index 3, index 3, and index plus plus, we just need to move on this thing. And, index 3 already have a half index, a half index of index 2, we have to be the first one, index. So, we will sit over it again and again. So, that now you have like each character when the last occurrence. So, the same thing, we have to use it in, now you correct this book here in this part. So, we have a character in the first and the..."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, actually, still in this stack, we have to use a pair because we cannot, with only care, okay, we can, okay, we can. The book is that this while loop, this book is that while loop."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That was correct actually."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, while as far as you know, everybody is trying to talk this kid in index which he was in that character because an accuracy of a small dot top is greater than index."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. At this particular index, we have a yeah. So, if it is greater than index means after this index also, there is some occurrence present for that B. We can go ahead and pop it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And we are exact 40 minutes. Right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Time complexity will be up."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Of this one would be, oh, yeah. Yeah, okay, cool. So, with it, that's pretty much the question and everything. So, before starting the feedback, like, do you have any feedback on me? Like, anything can be improved or anything which you want it to add. So, that I can implement the next interview."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Question of authority rate. It was, it was gone. It was, yeah. Achievement. Yeah, the explanation was good. And I guess we can expect to see anything. Yeah. No, it was absolutely to get me off it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, let's don't let's not waste time and let's go ahead with the feedback. So, first of all, with it, the hands on you have on the data structures, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, we can stop sharing this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. You can stop sharing this. Otherwise, yeah."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, first of all, the hands on which you have currently, right on data structure, being in a mechanical engine, that is very good, right? So, you have very good communication is very good, right? And the think out loud was also very good. The few points which I always say in all mocks, like, which is missing. So, these two are very good. Also, the thing is you go ahead with the brute force force, the recursion one. You also ask, like, should I code or not? So, we never have to code for the brute force. That was also good, right? So, this is all at the positive point, which you showed, right? So, that was very good. Certain. So, let's now start with here, like, so, as you said, there are certain basic DSAC questions, which are still lagging. So, you can still work on that. There is some gap there. So, yeah. So, see, if you sit in the interview, right? So, actually, they will not even think, there are many interviews. Those don't even ask, tell me about yourself. So, they don't even know whether you are a mechanical engineer or not. So, they will expect you to be the same as a level of CSE, right? Yeah, yeah. If they are not hiring. So, what my point here is, so, you should also be have this basic, like, instantly, right? So, let's say, what is, so, you said, explain the query, DBMS, right? Yeah. So, basic DBMS also, you should have at least, right? So, don't leave it. Even I can also tell you, when I give interview in some big tech companies, suddenly, out of nowhere, suddenly, one DBMS question comes in. Even in the manager, around also, right? No point, it's going, some, actually, is going, LIT is going, but somehow, suddenly, somewhere, DSE question, or DBMS question comes in, right? It happens, like, it doesn't matter. But, still, we have to keep our DBMS, still, basic clarity, right? So, don't leave that, right? And, there are, again, something like, which, mostly, all you have answered, but, still, there are something, which you can improve. But, it was very, very much, you have covered the basics, right? Now, in the, comes to the coding part, right? The first coding part is, so, first, I am not sure, you got this stack, approach, now itself, like, how it is all you have done this question before, not sure, but, you just take, learn more patterns, versus, like, what are the patterns, what is the question given, what are the different patterns, right? So, let's say, today, I have given you, like, pattern in the sense, like, I have given you a question, where we have to look at the past characters, we have to remove it. So, we know that, it's a monostat question, right? So, there are different patterns, so, if this pattern is solved by this DSA, this pattern is solved by this DSA, right? So, why I am taking this, because, it's just very helpful, which we all do try to learn these things. I am not sure, if you are aware of this thing, but, try to learn the pattern, because, there are very limited patterns, there are so many questions, thousands or thousands of questions, but, the patterns are not thousands, right? So, sliding window is one pattern, monostat is one pattern, like, so, these are some patterns. So, get a good grasp on it, right? So, I would say that, when the question is given to you, in the 5-10 minutes, you should be able to clarify, what pattern is going to you need to use, right? So, I have written this one when you start using the recursion, right? When you said recursion, right, I was not very confident that, you will be able to reach to the stack. That's why I have written this point, that if you know the pattern, right? So, you will get more confident in you speak, like, yeah, I know. So, then you will speak little bit more confident during the start itself. So, when you gave the question, I was able to figure out that it is a stack question. But, I couldn't directly jump on the pattern. So, I was like, okay, let's think about something else, right? So, then, they don't have to amount the recursion, right? Correct. So, I didn't, so, what happened? I didn't expect that you are going to take a dry run on that one. So, it took a lot of time for on this one. Yeah. When I was doing the dry run on the recursion, I was like, okay, I was going to take a lot of time and also, every node, we are going to go for two different possibilities, like, okay. Then, they don't, I said, okay, you want me to call or not. Yeah. So, yeah, that's why I have written this point. But then, I cut it off because you know the, like, you went to the efficient approach, but still, learning this thing, if you are aware of it, that is better, right? And a few things is like, when you are doing a coding, right? So, you are taking, you are trying to take a variable name correctly, but still, the variables' names can be little bit more improved, right? So, you, you try to give a better name, right? But, couple of things, the more logical name, try to give, right? Second thing is, whenever you are trying to put some logic, right? So, currently, when you started, right? So, it got little bit complex, that logic. Right? The logic. I had to keep going. I had to keep going, it was very, very complicated, right? So, try to think in a simpler way. So, that is one thing. Yeah. So, sometimes, what happens is, we are able to understand that, but for other, it's very, very complicated. For example, for example, when we do an F condition, when you come in a company, there is one very minor review comment you will get. When you will write an F condition, they will give you very basic condition that, use that condition before, put enum first, before using the object comparison. So, these are very small, because it will be helpful for others, right? So, let's say, somebody likes like object is empty and then put not ahead. Somebody likes object is not empty. Which one is easy to understand? So, if it's a big if condition, it would be easy like object is not empty and other than object is empty and then there is a not sent ahead. So, try to think of a logic, like whatever you are trying to do, in the bigger perceptive that others, if you read me, you will be able to understand or not. If not, I would say that add a comment with an example. Okay. Just try a one line comment in your code, one or two in places add a code, right? Rest or I would say that like, you are very good actually, right? So, everything which small, small changes which you have covered right, so that was very impressive actually. But only this very small gaps, right? So, that you can learn, right? Some basic DSS and DBMS, that is all that. From code perceptive, right? It was very good, very minor improvements, like on the variable names and some comments, right? And some simplification of logic, that's all. But if you remove that ahead frequency logic and rest, piece of the code if I see right, it's very clean. No extra expectation, no nothing. So, it's a very small and clean code. So, with it, it's like kind of, I am very happy with the today's interview, right? It was definitely positive feedback. Take it as a very positive feedback. Hello. Hey, with it, your network is gone. Okay. So, with it, okay, I see your network is gone. So, that's also, I'm pretty much, if you say this video later, I'm pretty much done with my feedback. And you are good. I don't have much negative feedback, so that's why I'm pointing like, where all you can improve, right? So, there are places where you can improve. But otherwise, it's all good, very nice, keep it the same way, right? Okay, with it. Thank you. If you have anything, if you wanted to ask anything and because of this connectivity show, you couldn't ask, please feel free to ping on the telegram or comment, like I will be there. Okay, bye. Thank you."
+  }
+]

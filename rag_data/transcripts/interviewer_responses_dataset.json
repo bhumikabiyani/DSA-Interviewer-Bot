@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "id": "interviewer_responses_dataset",
+    "type": "transcript",
+    "topic": "interviewer_responses",
+    "difficulty": "all",
+    "pattern": "response_patterns",
+    "tags": ["interviewer_responses", "question_framing", "candidate_interaction"],
+    "interview_phase": "various",
+    "speaker_roles": ["interviewer"],
+    "evaluation_criteria": ["response_quality", "guidance_effectiveness"],
+    "source": "real_interview_dataset",
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "response_patterns": {
+      "question_framing": [
+        {
+          "problem": "Climbing Stairs",
+          "response": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. Write a function to determine how many distinct ways you can climb to the top.",
+          "context": "Clear problem statement with constraints"
+        },
+        {
+          "problem": "Two Sum",
+          "response": "Given an array of integers nums and an integer target, return the indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution.",
+          "context": "Standard problem introduction"
+        },
+        {
+          "problem": "Maximum Subarray",
+          "response": "Given an integer array nums, find the contiguous subarray which has the largest sum and return its sum.",
+          "context": "Concise problem statement"
+        },
+        {
+          "problem": "Valid Parentheses",
+          "response": "Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. A string is valid if open brackets are closed in the correct order.",
+          "context": "Problem with specific constraints"
+        },
+        {
+          "problem": "Merge Intervals",
+          "response": "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals and return an array of the non-overlapping intervals.",
+          "context": "Array manipulation problem"
+        }
+      ],
+      "positive_reinforcement": [
+        {
+          "candidate_input": "This looks like a Fibonacci sequence because at each step I can come from n-1 or n-2.",
+          "interviewer_response": "Correct! The number of ways to reach step n is indeed the sum of ways to reach n-1 and n-2. Can you now write the recurrence relation and think about how to implement it efficiently?",
+          "pattern": "acknowledge_correct_insight_and_build"
+        },
+        {
+          "candidate_input": "I will use Kadane's algorithm to keep track of the maximum sum ending at each position.",
+          "interviewer_response": "Excellent choice! Kadane's algorithm works in O(n). Can you explain how you update the running sum and the global maximum?",
+          "pattern": "praise_algorithm_choice_and_probe_deeper"
+        },
+        {
+          "candidate_input": "I'll use a queue for BFS to process nodes level by level.",
+          "interviewer_response": "Exactly! BFS with a queue is the right choice. How will you keep track of nodes at each level separately?",
+          "pattern": "confirm_approach_and_ask_implementation_details"
+        },
+        {
+          "candidate_input": "I'll sort the intervals by start time and then merge them one by one.",
+          "interviewer_response": "Perfect! Sorting first is key. Can you describe how you check if two intervals overlap?",
+          "pattern": "validate_strategy_and_probe_specifics"
+        },
+        {
+          "candidate_input": "I'll use three pointers: prev, curr, and next, to reverse links iteratively.",
+          "interviewer_response": "Great approach! That's O(n) time and O(1) space. Can you also think about a recursive solution?",
+          "pattern": "acknowledge_efficiency_and_explore_alternatives"
+        }
+      ],
+      "optimization_guidance": [
+        {
+          "candidate_input": "I'll check every pair of numbers with nested loops.",
+          "interviewer_response": "That will work, but it has O(n^2) complexity. Can you think of a more optimal solution using a hash map?",
+          "pattern": "acknowledge_correctness_but_guide_to_optimization"
+        },
+        {
+          "candidate_input": "I think we can use a hash set to track numbers.",
+          "interviewer_response": "That works but uses extra space. Can you think of a way to do it in-place using index placement?",
+          "pattern": "point_out_space_complexity_and_suggest_improvement"
+        },
+        {
+          "candidate_input": "I will expand around each character as the center.",
+          "interviewer_response": "Nice approach! Expanding around centers works in O(n^2). Do you know a more optimized algorithm like Manacher's?",
+          "pattern": "praise_approach_and_introduce_advanced_concept"
+        }
+      ],
+      "clarification_and_guidance": [
+        {
+          "candidate_input": "I'll push opening brackets to a stack and pop when I see a closing one.",
+          "interviewer_response": "Good! Using a stack is the right approach. How will you handle mismatched or extra brackets?",
+          "pattern": "confirm_approach_and_probe_edge_cases"
+        },
+        {
+          "candidate_input": "I'll use DFS to explore all paths.",
+          "interviewer_response": "DFS is a good start. But think about what specific information you need to track during the traversal.",
+          "pattern": "acknowledge_direction_and_guide_to_specifics"
+        }
+      ],
+      "encouraging_struggling_candidates": [
+        {
+          "context": "candidate_stuck",
+          "responses": [
+            "No worries, this is a challenging problem. Let's think about it step by step.",
+            "That's okay - let me give you a hint to get you moving in the right direction.",
+            "Don't worry about getting stuck. Let's approach this differently.",
+            "This is a tough one. Let's break it down into smaller pieces."
+          ]
+        },
+        {
+          "context": "wrong_approach",
+          "responses": [
+            "I see where you're going with that. Let's try a different approach.",
+            "That's an interesting idea, but let's focus on a more direct solution.",
+            "You're thinking creatively, but let's consider a simpler method."
+          ]
+        }
+      ],
+      "complexity_analysis_prompts": [
+        "What's the time complexity of your current solution?",
+        "Can you analyze the space complexity as well?",
+        "How does this scale with the input size?",
+        "What's the bottleneck in your current approach?",
+        "Can you optimize this further?",
+        "Is there a way to solve this with less memory?"
+      ],
+      "implementation_encouragement": [
+        "Go ahead and start coding that up.",
+        "Let's see that implementation.",
+        "Feel free to code in whatever language you're most comfortable with.",
+        "Start with the basic structure and we can refine it.",
+        "Let's trace through your code with the example.",
+        "Walk me through what happens when we hit this case."
+      ]
+    },
+    "conversation_flow_patterns": {
+      "problem_to_approach": [
+        "How would you approach this problem?",
+        "What's your initial thought on solving this?",
+        "Can you think of any similar problems you've seen?",
+        "What data structures come to mind for this problem?"
+      ],
+      "approach_to_implementation": [
+        "That sounds good. Can you implement that?",
+        "Let's code that up and see how it works.",
+        "Can you walk me through the implementation?",
+        "How would you structure this code?"
+      ],
+      "implementation_to_optimization": [
+        "This works well. Can we make it more efficient?",
+        "What's the complexity of this solution?",
+        "Are there any optimizations you can think of?",
+        "How would this perform with very large inputs?"
+      ],
+      "optimization_to_testing": [
+        "Let's test this with a few examples.",
+        "Can you trace through this with the given test case?",
+        "What edge cases should we consider?",
+        "How would you verify this solution?"
+      ]
+    }
+  }
+}

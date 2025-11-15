@@ -1,0 +1,174 @@
+{
+  "metadata": {
+    "id": "positive_feedback_templates",
+    "type": "feedback",
+    "topic": "feedback",
+    "difficulty": "all",
+    "pattern": "positive_reinforcement",
+    "tags": ["feedback", "positive", "encouragement", "strengths"],
+    "evaluation_criteria": ["feedback_quality"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "template_name": "Positive Feedback Templates",
+    "description": "Collection of constructive positive feedback for various interview scenarios",
+    "categories": {
+      "problem_understanding": {
+        "excellent": [
+          "Outstanding problem comprehension! You immediately grasped the key constraints and asked exactly the right clarifying questions.",
+          "Impressive how quickly you identified the core challenge and potential edge cases. Your systematic approach to understanding the problem is exactly what we look for.",
+          "Your ability to break down the problem statement and verify your understanding with concrete examples shows excellent analytical thinking."
+        ],
+        "strong": [
+          "Great job understanding the problem! Your clarifying questions showed good attention to detail.",
+          "You demonstrated solid problem comprehension and identified the key constraints effectively.",
+          "Nice work walking through the examples to confirm your understanding of the requirements."
+        ],
+        "good": [
+          "You understood the problem well and asked relevant questions to clarify the requirements.",
+          "Good job identifying the main objective and working through the given examples.",
+          "You showed adequate problem comprehension and covered the basic requirements."
+        ]
+      },
+      "algorithm_design": {
+        "excellent": [
+          "Brilliant algorithmic thinking! You not only found the optimal solution but also explained alternative approaches and their trade-offs.",
+          "Exceptional pattern recognition - you immediately identified this as a [pattern] problem and applied the perfect technique.",
+          "Your systematic approach to building the solution from first principles demonstrates mastery of algorithmic problem-solving."
+        ],
+        "strong": [
+          "Excellent algorithm design! You found an efficient solution and explained your reasoning clearly.",
+          "Great job recognizing the [pattern] and applying it effectively to solve the problem.",
+          "Your step-by-step approach to developing the algorithm was very well structured."
+        ],
+        "good": [
+          "Good algorithmic approach! You developed a working solution that addresses the problem requirements.",
+          "Nice job thinking through the problem systematically and arriving at a valid solution.",
+          "You demonstrated solid problem-solving skills in developing your approach."
+        ]
+      },
+      "implementation": {
+        "excellent": [
+          "Flawless implementation! Your code is clean, efficient, and handles all edge cases perfectly.",
+          "Outstanding coding skills - your implementation is not only correct but also demonstrates excellent software engineering practices.",
+          "Impressive code quality! Your variable naming, structure, and error handling are exemplary."
+        ],
+        "strong": [
+          "Great implementation! Your code is clean, well-structured, and correctly solves the problem.",
+          "Excellent coding style and your implementation handles the key scenarios effectively.",
+          "Strong programming skills demonstrated through your clear and correct implementation."
+        ],
+        "good": [
+          "Good implementation! Your code correctly solves the problem with clear logic.",
+          "Nice job translating your algorithm into working code with good structure.",
+          "Your implementation demonstrates solid programming fundamentals."
+        ]
+      },
+      "optimization": {
+        "excellent": [
+          "Exceptional optimization skills! You not only achieved optimal time complexity but also considered space optimizations and discussed trade-offs.",
+          "Brilliant analysis of complexity trade-offs! Your ability to optimize both time and space while maintaining code clarity is impressive.",
+          "Outstanding complexity analysis and optimization. You demonstrated deep understanding of algorithmic efficiency."
+        ],
+        "strong": [
+          "Great optimization work! You successfully improved the solution's efficiency and explained the complexity benefits clearly.",
+          "Excellent complexity analysis and you found meaningful optimizations to improve performance.",
+          "Strong understanding of algorithmic efficiency demonstrated through your optimization approach."
+        ],
+        "good": [
+          "Good awareness of optimization opportunities and you made reasonable improvements to efficiency.",
+          "Nice job analyzing the complexity and identifying areas for improvement.",
+          "You showed solid understanding of algorithmic efficiency concepts."
+        ]
+      },
+      "communication": {
+        "excellent": [
+          "Outstanding communication throughout! Your explanations were crystal clear and you made the complex problem easy to follow.",
+          "Exceptional ability to articulate your thought process. You would be excellent at mentoring and collaborating with team members.",
+          "Brilliant communication skills - you explained complex concepts clearly and engaged in meaningful technical discussion."
+        ],
+        "strong": [
+          "Great communication! You explained your approach clearly and responded thoughtfully to questions.",
+          "Excellent job verbalizing your thought process and making your reasoning easy to follow.",
+          "Strong communication skills demonstrated through clear explanations and good interaction."
+        ],
+        "good": [
+          "Good communication throughout the interview. You explained your approach clearly.",
+          "Nice job sharing your thought process and responding to questions appropriately.",
+          "You communicated your ideas effectively and maintained good engagement."
+        ]
+      },
+      "learning_ability": {
+        "excellent": [
+          "Impressive learning ability! You quickly incorporated feedback and built upon hints to reach the optimal solution.",
+          "Outstanding adaptability - you learned from each hint and applied new insights immediately.",
+          "Exceptional growth mindset demonstrated through how you processed feedback and improved your approach."
+        ],
+        "strong": [
+          "Great learning ability! You responded well to hints and built upon them effectively.",
+          "Excellent job incorporating feedback and adjusting your approach based on new information.",
+          "Strong learning agility shown through your response to guidance and suggestions."
+        ],
+        "good": [
+          "Good learning ability demonstrated through your response to hints and feedback.",
+          "Nice job adapting your approach based on the guidance provided.",
+          "You showed solid ability to learn and adjust during the problem-solving process."
+        ]
+      },
+      "debugging_testing": {
+        "excellent": [
+          "Exceptional testing and debugging skills! You proactively tested edge cases and caught potential issues before they became problems.",
+          "Outstanding quality assurance mindset - your systematic approach to testing demonstrates excellent engineering practices.",
+          "Impressive debugging skills and your thorough testing approach shows great attention to detail."
+        ],
+        "strong": [
+          "Great testing approach! You validated your solution with good examples and caught important edge cases.",
+          "Excellent debugging skills demonstrated when you identified and fixed the issue quickly.",
+          "Strong quality mindset shown through your systematic testing of the solution."
+        ],
+        "good": [
+          "Good testing approach with relevant examples to validate your solution.",
+          "Nice job debugging the issue and verifying your fix worked correctly.",
+          "You demonstrated solid testing practices throughout the implementation."
+        ]
+      }
+    },
+    "scenario_specific_feedback": {
+      "first_time_success": [
+        "Excellent work solving this on your first attempt! Your systematic approach and clear thinking led you directly to the optimal solution.",
+        "Impressive problem-solving! You navigated this challenge smoothly and demonstrated strong technical skills throughout."
+      ],
+      "improvement_after_hints": [
+        "Great job building on the hints provided! Your ability to learn and adapt during the interview shows excellent problem-solving potential.",
+        "Nice work incorporating the guidance into your solution. Your learning agility and persistence are valuable qualities."
+      ],
+      "creative_solution": [
+        "Brilliant creative approach! Your unique solution demonstrates innovative thinking and deep understanding of the problem.",
+        "Impressive creativity in your solution approach. Thinking outside the box like this is exactly what makes a great engineer."
+      ],
+      "strong_fundamentals": [
+        "Excellent demonstration of strong computer science fundamentals! Your solid foundation in algorithms and data structures really shows.",
+        "Great technical foundation! Your understanding of core concepts and ability to apply them effectively is impressive."
+      ]
+    },
+    "encouragement_phrases": [
+      "You're on the right track!",
+      "Excellent insight!",
+      "That's exactly right!",
+      "Great observation!",
+      "Perfect reasoning!",
+      "Brilliant approach!",
+      "Outstanding work!",
+      "Exactly what I was looking for!",
+      "You've got it!",
+      "Impressive thinking!"
+    ],
+    "transition_phrases": [
+      "Building on that excellent foundation...",
+      "Now that you've mastered this concept...",
+      "Your strong understanding here leads us to...",
+      "Given your great work so far...",
+      "With that solid approach established..."
+    ]
+  }
+}

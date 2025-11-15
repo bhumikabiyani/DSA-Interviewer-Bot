@@ -1,0 +1,578 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "so let us start our interview and Rathvik would you start some basic introduction about yourself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay so my script is a poetry and I am from most Bengal I am to the link only to pass out a passed out from two criminalized foundations and complete science engineering student diverse and little basic about me like I have worked with boring news it is a Bangalore based startup there I have worked on reaginative and Gornet part also then I have joined an outloads around 8 months there I am working on mostly Gornet and I am competitive quarter I do competing and last year I have put ranking on port beta around 138 and that is pretty much it about me and yeah okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Thank you thank you for all the introduction. So let us start with some question Rathvik can you tell me the difference between DML and DDR?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Data manipulation language and data definition language. What is the data definition? Data definition is actually used for like creating things and manipulation is like optating or deleting like if you want to update DB if you want to delete some value count DBs on that case you can use DEML data manipulation that is why it is called a DEML and what you understand by DDR? Data definition like case and creating some row or something. Creation of a row. I mean creating a value I mean creating the table or something and entering some value like okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No not inserting the value creation of a table is fine but inserting a row is considered as to be a DEML."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I mean sorry creating a column."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Creating a column yes correct. Can you tell me what are the access specifiers in loops?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay so access specifier you know as per C++ it is around its public private and protected but on Java it is default also but let us talk about C++ only. So on public you can like depend anything and you can access form anywhere like you can define the object and you can access form it really anywhere okay and on protected it will be like it will be only accessible from the inherited classes I mean from the child classes only and on the case of private that will be only being used inside the classes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. What do you understand? Can you tell me the difference between error versus exception?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay so error is kind of it is an event that used to get triggered when there is some mismaniple present used to be happen on system like let us say you are trying to divide one with zero so that is that is something beyond mass right so that will be giving you infinity so on that case it will throw the mirror so that actually what the program and that will stop the execution on that part."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what is the exception?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay and exception is a kind of event that used to throw one there and that type of error happens and you can handle it by throw and catch blocks and you can cast the error and you can like output as per as the that way."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "As per the exception."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "As per the exception."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct. What are the characteristics of abstract class?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay abstract class they are most important characteristics are data binding and data encapsulating so kind of like you can you can keep the data and a save pillars and you do not want to let others see that okay so let us say you want to protect some details let us say you want to give that much details on that part. So let us say you can define the function name there and you can you can define the functions and you do not need to give the definition on that part you can give the definition on the child but also that is data abstraction and and you can you can generate one data I mean abstract class is also and data binding also and that is encapsulation that actually means data binding okay so you want to bind some data let us say you want to bind function also integer I mean functions and integer codes variables and everything everything you want to bind it is like encapsulating the things it is like a medicine you want to interpret everything inside a it is a class board."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah that is encapsulation so I am just saying so when when you define a class as an abstract what are the its properties like can you initiate its object can you not initiate its object can you initiate an object of an abstract class?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No no no you can."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Why?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because I think because you like you can't because you do not have a definition of all the classes because because they are abstract class right so there might be chance you will have some abstract method also on that question you do not have definition on that question but you can implement them by inheriting the abstract class inside a child class and give the definition of them and you can define them later."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay can you tell me a real world example of polymorphism real world example?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Real world example of polymorphism okay so let me give a example of compiling polymers okay so let us say I my name is DITIC and there is someone else who is also name is DIT okay so that is real time polymorphism because both have same name but both have different name as well as the name that is kind of polymorphism you can say different name but different sorry same name and different form."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now what do you understand by polymorphism?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Polymorphism is like same name and different properties."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay can I have a different forms right yeah yeah okay can you tell me what is composition"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no sir sorry no sir I didn't have to tell me about 1 and 2 and 3 enough. It is kind of normalizing the database the normalizing is actually used for like segregating the data and like and like it is like making the database like little more addition and like dividing the data and removing the permanent data. So let us say there is some value it is getting used multiple times okay so there is no property of using that multiple times and you can segregate them on a different table and you can use them their ID and by their ID okay so that will be a little fast report I mean that will be more scale value on that case."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No what is 1 and what is 2 and what is 3 and 1."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "1 and if it is like yeah kind of like if you want if there is kind of subjects okay so let us take an example okay so let us say 2 students are there let us say 5 or 6 students are there they have different subjects okay and as far as subjects they have subject sports such okay so if I want to keep the subjects corresponding to their table so that will be like not that much scale level so on that case we can keep the subject code and later on on different table you can keep the subject name corresponding to the subject code also and that will be 1 and after after after after after after applying this there are some more optimizing you can do what to end okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you tell me how do you find also how do you find a mid of a linked list. So you already have a had so you have a pointer of a had and you want to find the mid of a linked list how you will find it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So you do not have we do not have anything okay and that will be a linear link is like next next variable and data variable right yeah so you can you can take a first pointer and slow pointer and first pointer will go to step and second pointer will go to step okay so to step and like that when the first pointer will go to the end and on the slow pointer will be on the middle okay you can hit on that"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct. So we have two more minutes so I will cover two more questions what is the time complexity of DFS."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "A by C it is D work D plus E I mean it is always yeah sorry"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "is it always V plus E"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so I mean so in okay so if if the if the E so let us say there is a self cycle also so on that case E will be like not consider that"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "what about adjacency matrix okay let us talk about adjacency matrix okay so on adjacency matrix also so I mean add your questions. No so what I am saying is what is the time complexity of DFS so you know right graph can be represented as adjacency list and adjacency matrix yeah right so does DFS time complexity is V plus E for both of the use cases"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no no no so what is the adjacency yeah what adjacency matrix it will be like B square I think yeah B square it will be because you have to traverse the whole list all time okay I mean yeah I think you got my part"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay what is try"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "a try is a kind of data structure we use like two store strings like it it it it it is to store strings and it is it is to help us to search the strings through through the I mean through the restructure sorry if try is a type of data structure and it mostly used for scoring strings and it gives a good complexity when good time complexity is that when you are trying to search a string"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay okay we are almost 10 minutes on this one that was good so let us move to the second part of the interview which is the coding round so Rithvik can you please share your notepad so we have or sublime sorry notepad or sublime will be over notepad yeah yeah your endure system whatever the notepad you have let us do use that correct okay so yeah yeah it is visible if you can a little bit increase the font size that would be better for others who will see later okay so Rithvik I will be telling you a question yeah that is very much better yeah so I will be telling you a question please write it down also and then you can go through it so the input which you will get is a kind of a map right and the map is like so the first key is name let's say Rithvik let's say Rithvik yeah create a map like Rithvik and then given arrow and what are the values in you will get is let's say R at the rate Rithvik at the rate a well dot com comma Rithvik at the Rithvik at the rate gmail dot com Rithvik at the rate hotmail dot com like male ideas right so yeah that's okay so next key in the map would be let's say let's say Raj some so Raj will have its own list of email ID Raj at the rate hotmail dot com Raj at the rate gmail dot com Raj at the rate Yahoo dot com like a list of email ID right in the next let's take another name called Steve right so Steve has let's say Steve at the Steve at the rate outlook dot com comma Rithvik at the rate a well dot com here is the twist Rithvik at the rate a well dot com right so let's say it is given this this much so what would be the output so now here if you see the Rithvik and the Steve has a common email ID Rithvik at the rate a well dot com correct so means Rithvik and Steve are the same person right so in the output what you have to return is you have to return the area of kind of list and so you just need to group together Rithvik and Steve in one list and Raj in another list right so can you write an output so the output would be its Rithvik comma Steve this is one set Rithvik comma Steve the bracket close let's say yeah Rithvik comma Steve is one set Raj is one set and why Rithvik is one set why Rithvik and Steve are in one set because there is a common email ID in between which is linking them right because here Steve has Steve at the rate output dot com Steve Rithvik at the rate a well dot com and Rithvik at the rate a well dot com is also present into the Rithvik name so means Rithvik and Steve both have a same person so that's why we have keep into the same so you understood the question"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so it's 1021 so your time is tight now and yeah good luck"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay and so it kind of email that will be that will not be numbers right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah these are emails okay and I don't tell you the constants also this take this let's start with this then once we have the approach we will try to see like will it work for the more constants oh god and how I will get the inputs I mean that will be in a map"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "let's say kind of this map yeah yeah I got it so it will be like string and take a string like the process yeah you can take it okay so the first thing is coming into my mind is actually so first approach will be like I will take okay I will take all the emails I mean I will take all the values okay and I will both wrote all the emails and I would try to once again so I have to get the form on okay yes so okay okay I have a point right now so let's say let's take a map okay so for the KOL so let's say it is there okay sir"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "are you there"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah I'm listening yes I'm okay so it's okay well this as per it's okay well I will define it is also corresponding to that so that will be like string or string so corresponding to one email I will assign one more email okay I mean I will assign one name okay so dithik you will will be assigned with dithik okay now next time dithik address email all dot com will also be assigned with dithik okay okay two two emails will be assigned with different and dip I mean same names but on different fields okay okay so it's kind of map of string that's corresponding to string okay okay for one thing you will get their name on the second and for I mean for email you will get the name on the seven points okay now now Steve so let's have for the Steve okay when I will try to traverse through them so I will I will see Steve is on different different position I think is on different poison okay and so when I will try to find any thick and I will see dithik is already being assigned with dithik okay dithik at that com is already doing assigned with dithik on that test what I will do I will try to I will see like I mean I will map it dithik and Steve on the same poison okay so I will get to know like dithik and Steve is same person okay on that case I think what you can do right so I think there is much more need of a linkeding dithik and Steve okay so for later why is later if I get dithik also so Steve will automatically be assigned with dithik okay so then there may be a chance like so let's say I have formal is there so formal will get something like that also give added out to platform like that from that case Steve formal and dithik are both the three on the same right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct correct so we need something so that should link dithik and Steve and later position I should be able to identify dithik and formal was also same correct"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so I think I think I should go with that approach that is for like parent child illness I mean so I will try to I mean what I mean to say is actually so there will be one parent and there will be one child okay so when there is Steve and when there is dithik so when I will get to know Steve is tend with dithik so I will try to assign a parent of dithik same with Steve of dithik so that will be like union and union that is like let's kind of like you creating union and like qt getting union and margin there okay kind of kind of same thing you got my point I think"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "correct what about if there are multiple parents like there could be many linking side let's say that's the thousands of data and there could be so many linking side so will that be able to work with that also"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah kind of like so what I can do know I can better assign them dithik and say Raj and Steve it number okay and number can be assigned and corresponding to them I can keep the name on the side and I can keep them on a map okay so dithik will be assigned with like kind of zero and this Raj will be assigned with kind of one so on that case it will be little easy to handle the data okay because these are the strings okay okay take what my point right yeah so will I think I you got my idea right how I will app for the question so let's say 0 and 2 is there okay so let's take take a numbers right now okay okay you got my point right how I will map a string with number"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah yeah that's that's fine let's take a number I got that you will map the name with a number yeah you go ahead with the price I'm a little bit not clear to the approach"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so kind of like let me make it more clear for you okay so when I will go through 0 and I will see there is three emails okay so I will try to assign them a parent okay selection before doing something everyone will be passed as everyone will be parent of yourself okay so 0 spend will be 0 once spend will be kind of one let's write it and whose parent will be like to itself okay okay now at this point okay itself and now let's say I will cover 0 okay then I will go to know like uh it's explained is 0 okay and I will try to find with who is it explain it to go else got some spent I mean it will be 0 right one second on I will traverse through this and I will try to find it to go oh a o l's parent okay then I will see 0 is parent okay how how on that is what I will do"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "how do you know that 0 is a parent"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so yeah have top the map okay there I have told you I think um here do map pass upon it is string pass upon it is string and string I mean email pass upon it to their parent okay okay okay so with the trick you have like it's map to 0 okay the k o l is map with 0 the correct regime of course also map with 0 okay okay and on that case I will try to find it the k o l is there so I will I will get to know it the k o l is already sent with 0 okay so what I will do I will then I know it is already sent with 0 so I will try to merge uh keep keep actually keep is 2 and merge 2 and 0 so what it will do it will make uh whose parent to 0 okay do you understand I you understood my app was"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I did not know I am okay with turn now I am going with you yeah yeah so let's next step so when I am trying to find cummels parent okay so cummels are there team will come it's 3 that is fine now s t at the outlook dot com then I will get to know s t i it's already been sent with 2 okay that's 2 right it's already been sent with 2 s t at that outlook dot com then I will then I will try to merge 3 also with 2 so now 3 is also it merged with 2 so let's say whose whose whose parent whose parent is 1 so I sorry 2 spend is 0 and 3 spends will also be 0 because I will I will try to merge all the uh connected elements under a single parent okay so it's kind of like a union type person I will try to union all the related things on a single parent and later on one when I will try to find uh how many numbers are there inside as single parent so I will get to know how many charts are there okay okay so it is like okay so okay now these are the this is the thing and the end later on what I will do I will I will throw them and I will mark and once again okay what about the use case what about the use case let's say uh can you let's just scroll up so let's say 0 has Rithwick uh Rith 0 has Rithwick and uh st at the rate outlook dot com let's say instead of Rithwick at the Rithme dot com and let's say one more uh st at the rate outlook dot com right and from 2 just remove Rithwick at the rate a old dot com no no no yeah this one no yeah so now you start with the 0 so how you will uh go through the can you just one more time again"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so on that case here uh as corresponding to Rithik at the Rithik at the rate outlook it will be 0 as going to Rithik at the so yeah so all these plans will be again similar correct now Rithik at the rate outlook will be assigned to it 0 that's fine okay Rithik at the jimil dot com is also assigned with 0 that's also fine and st at the outlook dot com is assigned to 0 on the map yeah that's true yeah that's true uh let yeah now let's skip this part now let's come to this part st at that at that outlook dot okay now I will try to find st at that outlook dot com in this map and I will get to know it's already been assigned with 0 right so it's already been assigned with 0 that means actually uh uh so that means we have to march 2 and 0 now"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "what in the map you will store so in the map you will still have only Steve uh which is linked to the 0 you will update that map also"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "five will not update the map"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "oh you will not update the map okay"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah so yeah so I will not update the map that that's because like um because that doesn't matter so let's say there is Steve I will do that there is also Steve other outlook dot com ok so if I try to find st at that outlook dot com I will get to know it's previous plans is 0 okay then I will try to march what I will try to march uh 3 0 2 come on it's kind of same if I march I bet I do march 3 I with 2 and 3 with 0 both the same kind of because all they have will 0 better right okay you got my"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah what is the time complexity of this one"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so time comes to do so let's take they have okay so let me tell you so let's take in another of inputs okay number of inputs of the map and number of inputs on the map and and aim will be like a number of uh number of emails inside a corresponding map of maximum it will be okay so let's take aim is a maximum number of element can be can we have inside a particular value okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so on that is what it will be it will look like uh keeping them in a map is like it's like a linear and merging them it will be like merging to will take uh tool to get in one second so it will take first we have to find the parent with that the finding parent it will take uh it will take big off one because like uh how we can yeah we can compress that and we can like uh it will take big off one yeah finding parent it will take big open and ascend them which they are trying to be also take big off one and and one more thing we have to do we have to merge them and we have to it's kind of um yeah we have to traverse through them so it will be so approximately any into them okay okay okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay let's start with the coding we are already uh 15 minutes so let's start with the coding so we have around 15 minutes more 10 minutes more"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so I have to let's write the function or I have to take the inputs also"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "let's uh first try to write a method which will accept this map and write the main code then if we have the time we will go with the driver method also"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay it will return and the character okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "can you little bit uh maximize this window"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah yeah that's better that's better thanks so long so like kind of um let's name it um imagine let's uh let's name it like um um so you do okay map of map of uh skin it's kind of cast green and the grass green um can I will keep a map which will tell me who is what okay so I will be fine and and my name will help me to identify which thing is that's going to what value okay so as I have told I will replace 0 and 1 with the names so we're gonna punch right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah yeah I got you"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Send of Now they really have to And the second thing I will do is actually try to find this and their parents open."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let us name this or for simplicity or a earthquake let us say that in the input you will get 0123 itself instead of RAR. So that would be as a point right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, I got your point. Yeah, that will be better. Let us take that. Yeah. So yeah, there will be one more thing like corresponding to all emails I will keep they are kind of their owner in it. So now for every single well, every single one for every one owner will be 0. Right? That's one email as when you want to all get all j there owner will be that is one thing they want to be dying in tager now is pretty much here and now later I will try to convert to all the emails that is one thing okay I got one to tell you is yeah so I have to merge them now so I am thinking actually I'm thinking to reuse this loop only that will be fine as the like that will not matter at all on time from the zero that is fine okay now if here okay so on that I can merge them I don't I don't use I don't need to use this thing I can merge them here already so let's let's write the merging code later on but I know whom to merge I know I have to merge this thing with their previous owner okay who is their previous one of their previous owner is owner email and I got I got second yeah yeah yeah so here I here so let me tell you is there one thing okay so here I what I am doing I am merging both parents okay so like zero and one so what I was doing in this step right that thing I have written here so what I will do here I will I will get to know like he already have one previous parent okay then what I will do on that case I will type the merge them in the same in the same map itself"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sorry I didn't get your point in the same map only right owner email"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah yeah yeah same because because like see ST1 outlook dot at email dot com will be assigned once later on when I will find ST at dead outlook dot com that time this thing will already be based in map correct"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "the second time when I yeah when I will get to know he already have some parents I will try to merge one three okay that is you got because like I have to merge them right okay that is one thing also and different merging also I have to keep track of one parent so let's let's assume n let's decide size equal to the number of name we have okay number of names will be like the size okay so let's take a picture and parent so previously I have already told you like previously everyone will be there parent only okay so it's kind of self-parent on previous I mean I said one more function I have"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so if you tell me that will be numbers okay so is that one from like it will be like 0123 I mean it will be not like 100 100 on the first go"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no no let's take 0123 so okay so that actually like equal to alliance with index also okay phone all that is so on this case parent parent will be themselves previously okay okay when I will get the remainder"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "that's why you have last 10 minutes"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "oh guys so merging them will take parent also because you have to merge them so so you know give me one thing so I should merge I should write this one previously or I should I should I mean I should implement the other other other part of the board"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "as you feel good like you tell me like what would be the so go ahead with like whatever you feel you would be able to come"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay okay okay so better let's assume the once I did and let's go with the other part okay so after merging I will get to know like what the parent's okay now or you know okay now I listen size a plus plus hmm I can take map answer map the map will be good for this condition I will tell you why because like I directly want to assign everyone with their parent okay so answer map will assign their parent with their owners I mean with the names okay so parent will know who is the actual parent of the element okay so answer map and your parent"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sorry I have a doubt like yes so this is answer map is the output"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "not output I mean it's kind of but cell output but I will later on convert it to this form vector of vector okay it's kind of sorry you can you can get an idea for me so it will be like it will look like 0 corresponding to 0 it will be like 0 to 3 will be kept on map okay corresponding to 1 it will be like 1 kept on that will help me to get out to later okay so answer map will be if being uh parent yeah now this is kind of same thing and now later on I will convert it to vector because as you have one case it will like in vector form okay so I wrote second is actually vector okay as you can see here okay and yeah and that's pretty much it I can return the answer and now now let's write the margin code it will take one integer that is first one and second one and parent and parent to mark now okay now if parent of first it's not equal to okay um let's find your parent first and you let's them and first we will do parent so let me also make a new method to find the parent program parent that's an image I need to check an integer and it will return the parent okay okay so this poor parent of first and second and I will try to mark them to parent of first parent of um and first and I'll sign that too and second so it's like both are two in telling the union now okay the finding parent is kind of um yeah finding parent is also helpful because two on best the road here so if i equal to equal to parent of meme then only it's two parent okay okay so you can and the file which you must it so let me um quickly both through I mean quickly a driver can go you through"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "sure sure that's a bit"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah let's first start with the driver called um okay so you will get me an email email and I mean it's like kind of yeah map with the integer and okay and owner email is like kind of converting it to email that's going to do their own ads okay so this kind of size of all the names but can parent is parent will help me to keep parent of each and every each and every name you can say okay now firstly it will be like they are like self-parent firstly later on I will get to know when I will get to know he already have someone else on that one that person I will merge the parent okay so I will"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "and what is the use of this parent of i equals to why why we are maintaining this one"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so yeah that will be helpful when I will try to find a parent okay so let's say I'm so this is the thing okay as per zero it is zero as per one it is one as per two it is also zero okay here parents zero spends and two spends as zero so it will be maintained in the parent um parent ad in okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so here what you will do is let's say three parent is two so here at the second index you will see who is the two's parents so you will taking that value"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay yeah okay so who is spent right now right now it will be two correct and what I will die I will try to merge zero and two on that one that has already I have means and here okay zero and two will be merged and right now after merging them what will be two's parent it will be zero correct because they are coming under same parent okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "now later um yes it will go to this poison as you can see and later yeah and then it will go like this one so after after going through this thing how it will look like it will look like parent parent area will look like this because three will be as end with this and yeah that's pretty much it it will look like okay that is to get the parent parent parent area as I would it will all be look like zero is parent of zero one is parent of one two is parent of two three is parent of three hmm it will look like whose parent is zero three is parent is okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so you have already done the merging so"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay so we have come yeah so I will I will I will make you understand the merge photo but let's assume merge code is working fine and we are doing doing this okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay got it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay now later on what I will do I will just um I will just map their parent and push them okay so that that actually means but zero because going to zero will be pushed will be pushed three will be pushed okay okay and yeah and for one it will be one will be pushed okay so that that actually gives us the result but in a map on one"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "and what about two what you will push"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "it will be pushed inside zero no parent parent okay okay no"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay so first you will so you are running on zero one two three all right"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "no yeah yeah yeah yeah all so zero you have run two you have run what about when you okay zero run one run what about when you come to the two so how you come to a parent of two is currently zero as I have mentioned here okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay all right so as part zero as in I mean in zero corresponding to zero zero is already being pushed and two will also be pushed on that position"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "the corner point right yeah yeah yeah so till later on I will just convert it to a vector form okay"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay let's try let's try so you have any ID ID"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah this is this is my ID that's like ID only right"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "let's write the driver code add one input and let's try to run it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay and also today make you understand the margin margin margin code also"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah let's run one sample once I theoretically I got it what is merging but let's do with the code okay"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "okay and also I want to understand the time complexity of this code also"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "okay okay even margin"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "so let's uh with like alpha zero I'll push the calendar if you are in a lot of form"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "yeah just take a small name r at the rate a well dot com so that it will be faster"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah no one let's push one or yeah it can be"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "so you'll be also repeat no no this table same example okay the first one which previously we have taken so rhetoric rhetoric at the ring dmail dot com in the first map right one and the second one let's keep it as a separate totally new user so it has something called let's say disc k k at the ring dmail dot com that's totally okay so what is map zero map one so map zero has two email ideas r at the rate a well dot com and gmail dot com well let's talk to you will also yeah so it has two then map the first user has only let's say k at the ring dmail dot com is totally different so then comes the two which is a Steve and it has s at the ring dmail dot com and r at the ring a well dot com okay let's run with this so here the expected output is zero and two should be grouped together one is grouped alone correct"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "correct I need to get some errors so I will take them all oh once they're not there it's just a one this is the one let me let me just put it okay it looks like it's kind of same yeah so there's a glass to a couple of more minutes than uh yeah once in maybe or here nice old Now I am just spending too fast. in Okay. Yeah. Yeah, let me tell you the time from the city. So here, it will be like, it will be like, this block, it will be like an interim. As I have told you, aim is the kind of maximum of all the emails. I mean, counting maximum of the emails. So let's say in this case, 012, sorry, 123, 3321 and the maximum. Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "That's okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And this part is that. And this was kind of same. Like, we're not iterating. Are you sure that we are not. Yeah. Yeah, merging, merging will also take place. And I think it will take in more, it will be like, kind of, kind of like that. What is that? Actually, this code will not, every time take in, because like, as, as for this tip, it is like kind of, it's average cases like big off one. Okay. Like, in and five, it's like a auxiliary time. I mean, mostly it will take big off one. And sometime it will take big off and kind of that. Because like, we are, we are assigning paint on, I mean, so let's say. Let's take worst case. Okay. So worst case, it will take in into a mean to in. Okay. I think, yeah, it will take. Okay. Cool."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, that's what we are cross tower, almost all this thing. 40 minutes also for the coding part. Right. So, I am pretty much done. So, that's pretty much from my side. If you have anything, you can stop sharing the screen also. Right. So, if you have anything for the feedback on me, before we start the feedback for you."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, actually it was bulls head. It's a good experience. It's kind of, it feels like a real interview."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "A real interview, right?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. And I was like, like, little nervous, like a real interview."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. It doesn't look like you're nervous, okay, but it is just it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, let's start with your feedback."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, first of all, the basic DSA, like I have a lot of positive points for you. So, all the basic DSA which you told with very confident. So, that's pretty much okay. And also, you told whatever you don't know, you clearly said you don't know. You didn't go round and round on that one that also I like. But I still want you like go some practice some more on the base DSA. Like, so these are the basics, like I know you can solve difficult questions, but this basics should be on still on tips, right? So, composition, so very basic like composition, 1 and 2 and 3 and you were answering, but I was not very much convinced with the answer, right? So, get more better clarity on that. What is composition, it is very simple, right? For when you were telling me the abstract class, you went to the encapsulation and encapsulation and other part. It's a very quick question. So, I was just expecting like, okay, you already answered it. In abstract, you can define the method and also you can chive a child class which can give the implementation. But you also went to encapsulation and all which is not even required. So, stick to the point that is one thing, right? And there are some basic DSAs which you have to more work on, rest all good. And I like that if you don't know, you just clearly said that you don't know. That's pretty much okay, because it's worse than your favorite because you saved your time, right? So, one, okay. So, that is one thing. And second thing positive is you think out loud. So, when you will see this video again, right? You will find yourself very good. Like, you didn't, like, there is not a silence in this video at all, right? Even you were thinking, you were doing the coding, like, I have to be literal, now we are discussing, right? I have solved this using a distancy list. And your approach is mostly, I was looking at like a graph only. It's a list only you are mentioning with. Is it like, there is the approach, you know, union and political union, okay? There could be different solutions also. But you are able to convince me, like, the way you are thinking, the way you have come up with the use case, like, the zero is dependent on A is dependent on B kind of relationship. That use case finding is also good. You didn't just go ahead with whatever the use case which I gave. That is good. Your communication is good. Your thinking out loud was good. So, keep it as it is in whichever interview you give, right? So, that is very, very positive. And one, certain things which I want you to is, right, whenever you write a code, right, write a one line comment. So, see what have generally happened is when you come into any company, right? And most of the review comment is on the, like, give more comments on the code, right? So, we can't, and in the company, when you will write a comment, it would be full description, like three, four lines totally, right? But in the interview, we don't have to give that much full detailed comment, but at least one liner at certain one or two places gives more positive impact, like, that you are writing a code more professionally, right? So, give one liner comment that this variable owner email is used for this and give one example that are at the rate gmail.com hold this value. That's all. Finish, right? So, actually, don't write that, it even leaves like that, but I had to maintain that. No, no, yeah, that is one more point. Variable name is something else, but what I was saying is regarding the comments, right? So, give one line comment and let's say you are taking a map. So, give the example what values just map contain. So, it would be easy for me when you are writing the code, right? It would be easy for me. So, this map owner's email is like email and the value set full contains name, right? So, like that, just one give example. So, one liner comment would be, okay, not at all the places, certain places, right? So, it will give a positive impact. Again, you have already said. So, I like you were taking some names which are meaningful, right? But still, I saw some name ijk a, let's avoid taking it, right? So, I in almost every interview, more interview, I say this, avoid taking variables. Because this is when in join a company, you raise a PR, you will get a review comment like this, avoid taking this ijk, right? It's not allowed, right? Not allowed, it's allowed actually, but it's like a best coding practice. So, avoid taking it. Give one liner comment, right? And while giving the, I feel you are little bit fast actually. So, little bit slow down your pace, right? Not too much. Okay. So, it's not very fast, but I would still see that you are little bit in hurry somewhere. Okay? So, I just want you to little bit slow down, right? Not too much, little bit slow down. Take your time before thing, something, right? Okay. And then just say that, right? So, here, don't slow down too much and currently you are not that too fast, right? But some places, I think like it's going little fast, you can slow down a bit. Very slow down a bit, right? It's okay for that one. So, that is only one thing. So, that is only one thing I found like where you can work, just your pace is good. So, might be, interviewer pace might be little bit slow, right? So, you have to keep with my pace because I need to understand what you are saying, right? So, I know that you might be good, so your pace is awesome. But you have to sync up, you need to see what's the other interviewer pace, right? So, in what pace I have to explain him, so that he will be with me, right? So, based on the interviewer, if interviewer is also able to cope up with you, then your pace is okay. Otherwise, just see that what's the other pace and try to go with him like, okay? So, that he will also understand. Yeah, yeah, I got it. So, that is only one thing and yeah, lot of, let's say today you got a compilation error, try to practice more on the pad and just see that if it's more of a logic compilation error, then it's okay, more of a syntax error you see than try to avoid that, right? So, just I added this point in a negative that if there is any compilation error, you can resolve, just practice more on the pad, right? So, overall interview was very good, right? So, you were very, very confident, right? I am not sure you have done this question before or not, but you were very confident."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I was not able to solve also. I come up with something new."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no, that was, actually I was able to convince that this solution will work. So, that's very positive feedback, but certain areas which you can improve that would be very good."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "As a DSS, I didn't prepare that much, I did prepare for one or two hours, maybe I wanted two hours."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, yeah, that's okay. DSS is always, so in many interviews, still after I give the interviews, I get like basic DSS questions, like what generally interview they put me is like, let's say I am a child, 10 years old child, explain me all the properties of books in a simple manner, right? So, we have to come up with something, so we can't go with the book definition, right? Because now we are explaining something to a child, so we have to come up with some examples on the instant itself, so that it would be very easy for a child to understand, right? So, this kind of question you can also expect, so not always go with the book definition, right? So, if interviewer asks, right, real-time example, so what real-time example, I think can be little bit more improved, which I ask, right? Yeah, okay, so one of the real-time examples which you can think is in the same manner, so there can be many names you said, right? Rathvik can have, but they have different properties. You can have also like a same person can play a different role, that's what polymorphism, right? Same object, different forms it can take, so a same person can be taken as a role of other, so a father can be role as an employer, can be role as some other forms, right? So, examples is also very important, so work on the examples also, right? There is this example, this example, like a different example, what is used in different terms, in different sentences?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry, so a word is used in different terms, in different sentences, so like I like you, this is the use of life, okay? Something like a what is used in different meaning, in different sentences?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, okay, so that's like a simple single word and different form, you know. Yeah, that is also a polymorphism example, right? Single word, user a different form, so yeah, that's what I'm just trying to say. Interview can ask you to give an example, so work on the example, so your example should be clearly understandable, right? So that's pretty much on my side, but still the interview was good, right? Keep it the same way, positive things, don't lose it, negative, if there's something you can improve, let's work on it, all right? Okay, it's like, I hope it will help you. And one of the things that one would think, yeah, so it might be a paper interview, will you advance me to the next level or like, what?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, yeah, that's what I told you, so in any company there is not only one coding now, right? So there are multiple code, it's not about paper, right? I would say that any company take Amazon, Microsoft, Meta, right? And this question is based on a real life application, right? Consider the Facebook where we have many different names, people create our email IDs, so they have to know that these are the two people, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "It can be mutual print type."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, mutual, not mutual, like these are the same person, same email ID, let's say, just say. Okay, so in this case, and each company has multiple coding now. So this coding round was good, so that's what I'm saying. So whatever then areas which need to be improved, right? In the next coding round, that has to be improved."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "I got it, it's kind of based on three. That's what I'm based in three."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah, so it was good, this time you can say that it's good, that's why it goes to the next level. But in the next level, if the same mistakes happen, right? Then it would be turned out to be against you, right? So today, let's say the code be not able to run it in the 40 minutes, and might be they are not give you 40 minutes, they might give you 30 minutes or 20 minutes also. Depending upon the company which you're applying, right? But the question was big, that's why I gave 40 minutes for this. I know that. So assume 30 minutes you will get easily for this one. So we are, so their expectation, let's say, output should also be needed, right? So, but based on today's interview, they will be 100% I can't say, but at least from my side, if I am the interviewer, I would refer to for the next round. But in the next round, you have to be more better than this, that in the areas which you are missing. Let's say if interviewer comes with the very slow pace, right? Then it would be very difficult for you to explain. You will go so fast and interviewer will not be able to catch up with you. So even though you know the things, there will be a communication gap comes up. Okay? Okay. So see you in front and identify what is this pace and go with this pace. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, Rathvik, thanks for staying so late on Sunday night."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, it's not a problem, I was waiting for these long."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, okay, no problem. Thanks, I'm sorry about this dilemma."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, I'm trying to fix it."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Thanks a lot. Bye, Rathvik."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you, sir. Bye, sir. Good night."
+  }
+]

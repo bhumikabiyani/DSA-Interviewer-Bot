@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "id": "struggling_candidate_medium_001",
+    "type": "transcript",
+    "topic": "dynamic_programming",
+    "difficulty": "medium",
+    "pattern": "1d_dp",
+    "tags": ["interview_transcript", "struggling_candidate", "hints", "guidance"],
+    "interview_phase": "problem_solving_with_hints",
+    "speaker_roles": ["interviewer", "candidate"],
+    "evaluation_criteria": ["hint_responsiveness", "learning_ability", "persistence"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "session_info": {
+      "duration_minutes": 35,
+      "problem_id": "medium_dp_001",
+      "candidate_level": "entry_level",
+      "outcome": "pass_with_guidance"
+    },
+    "conversation": [
+      {
+        "timestamp": "00:00",
+        "speaker": "interviewer",
+        "message": "Let's work on the House Robber problem. You're a robber planning to rob houses along a street. Each house has money, but you can't rob adjacent houses or the alarm will go off. What's the maximum money you can rob?",
+        "intent": "problem_introduction",
+        "tone": "clear_explanatory"
+      },
+      {
+        "timestamp": "00:30",
+        "speaker": "candidate",
+        "message": "Okay, so I can't rob houses next to each other. Let me think... maybe I could try all possible combinations?",
+        "intent": "initial_thinking",
+        "tone": "uncertain_exploring"
+      },
+      {
+        "timestamp": "01:00",
+        "speaker": "interviewer",
+        "message": "That's one approach. Can you think about what the choice is at each house?",
+        "intent": "guiding_hint",
+        "tone": "gentle_leading"
+      },
+      {
+        "timestamp": "01:15",
+        "speaker": "candidate",
+        "message": "Um, at each house I can either rob it or not rob it?",
+        "intent": "basic_recognition",
+        "tone": "tentative_unsure"
+      },
+      {
+        "timestamp": "01:30",
+        "speaker": "interviewer",
+        "message": "Exactly! And if you rob house i, what constraint does that put on house i-1?",
+        "intent": "constraint_hint",
+        "tone": "encouraging_leading"
+      },
+      {
+        "timestamp": "01:45",
+        "speaker": "candidate",
+        "message": "If I rob house i, then I can't rob house i-1. So I can only get money from house i plus whatever I got from houses before i-1?",
+        "intent": "constraint_understanding",
+        "tone": "growing_confidence"
+      },
+      {
+        "timestamp": "02:15",
+        "speaker": "interviewer",
+        "message": "Great! So if you rob house i, you get nums[i] + (best result from houses 0 to i-2). What if you don't rob house i?",
+        "intent": "choice_exploration",
+        "tone": "building_understanding"
+      },
+      {
+        "timestamp": "02:30",
+        "speaker": "candidate",
+        "message": "If I don't rob house i, then I just get the best result from houses 0 to i-1?",
+        "intent": "second_choice_recognition",
+        "tone": "more_confident"
+      },
+      {
+        "timestamp": "02:45",
+        "speaker": "interviewer",
+        "message": "Perfect! So at each house, you take the maximum of these two choices. Does this remind you of any algorithmic technique?",
+        "intent": "pattern_recognition_hint",
+        "tone": "guiding_toward_solution"
+      },
+      {
+        "timestamp": "03:00",
+        "speaker": "candidate",
+        "message": "Hmm... it sounds like I'm building up the solution from smaller problems? Is this dynamic programming?",
+        "intent": "pattern_recognition",
+        "tone": "uncertain_but_learning"
+      },
+      {
+        "timestamp": "03:15",
+        "speaker": "interviewer",
+        "message": "Exactly! You're breaking the problem into subproblems. Can you define what dp[i] would represent?",
+        "intent": "state_definition_guidance",
+        "tone": "encouraging_educational"
+      },
+      {
+        "timestamp": "03:45",
+        "speaker": "candidate",
+        "message": "dp[i] would be... the maximum money I can rob from houses 0 to i?",
+        "intent": "state_definition_attempt",
+        "tone": "thinking_aloud"
+      },
+      {
+        "timestamp": "04:00",
+        "speaker": "interviewer",
+        "message": "Yes! And what would be the recurrence relation based on our discussion?",
+        "intent": "recurrence_guidance",
+        "tone": "building_on_progress"
+      },
+      {
+        "timestamp": "04:30",
+        "speaker": "candidate",
+        "message": "dp[i] = max(dp[i-1], nums[i] + dp[i-2])? Because I either don't rob house i and take dp[i-1], or I rob house i and add it to dp[i-2]?",
+        "intent": "recurrence_formulation",
+        "tone": "gaining_confidence"
+      },
+      {
+        "timestamp": "05:00",
+        "speaker": "interviewer",
+        "message": "Excellent! You've got the recurrence relation. What about base cases?",
+        "intent": "base_case_guidance",
+        "tone": "pleased_encouraging"
+      },
+      {
+        "timestamp": "05:15",
+        "speaker": "candidate",
+        "message": "For base cases... dp[0] would be nums[0] since there's only one house. And dp[1] would be max(nums[0], nums[1]) since I pick the better of the first two houses?",
+        "intent": "base_case_reasoning",
+        "tone": "working_through_logic"
+      },
+      {
+        "timestamp": "05:45",
+        "speaker": "interviewer",
+        "message": "Perfect reasoning! Now can you try to implement this?",
+        "intent": "implementation_request",
+        "tone": "confident_in_candidate"
+      },
+      {
+        "timestamp": "06:00",
+        "speaker": "candidate",
+        "message": "Let me try... \n```python\ndef rob(nums):\n    if len(nums) == 1:\n        return nums[0]\n    \n    dp = [0] * len(nums)\n    dp[0] = nums[0]\n    dp[1] = max(nums[0], nums[1])\n    \n    for i in range(2, len(nums)):\n        dp[i] = max(dp[i-1], nums[i] + dp[i-2])\n    \n    return dp[-1]\n```",
+        "intent": "implementation_attempt",
+        "tone": "focused_careful"
+      },
+      {
+        "timestamp": "07:30",
+        "speaker": "interviewer",
+        "message": "Great implementation! Let's trace through an example. What happens with [2,7,9,3,1]?",
+        "intent": "trace_verification",
+        "tone": "testing_understanding"
+      },
+      {
+        "timestamp": "08:00",
+        "speaker": "candidate",
+        "message": "Let me see... dp[0] = 2, dp[1] = max(2,7) = 7. dp[2] = max(7, 9+2) = 11. dp[3] = max(11, 3+7) = 11. dp[4] = max(11, 1+11) = 12. So the answer is 12?",
+        "intent": "trace_execution",
+        "tone": "methodical_careful"
+      },
+      {
+        "timestamp": "08:45",
+        "speaker": "interviewer",
+        "message": "Perfect trace! You robbed houses with values 2, 9, and 1 for a total of 12. What's the time and space complexity?",
+        "intent": "complexity_analysis",
+        "tone": "building_complete_understanding"
+      },
+      {
+        "timestamp": "09:00",
+        "speaker": "candidate",
+        "message": "Time complexity is O(n) because I go through the array once. Space complexity is O(n) for the dp array?",
+        "intent": "complexity_reasoning",
+        "tone": "analytical_growing"
+      },
+      {
+        "timestamp": "09:15",
+        "speaker": "interviewer",
+        "message": "Correct! Can you think of how to optimize the space complexity? Notice that you only need the previous two values.",
+        "intent": "optimization_hint",
+        "tone": "challenging_gently"
+      },
+      {
+        "timestamp": "09:45",
+        "speaker": "candidate",
+        "message": "Oh! Instead of keeping the whole array, I could just keep two variables for the previous two results and update them as I go?",
+        "intent": "optimization_recognition",
+        "tone": "excited_realization"
+      },
+      {
+        "timestamp": "10:00",
+        "speaker": "interviewer",
+        "message": "Exactly! That would make it O(1) space. You've shown great learning ability and worked through this systematically. Well done!",
+        "intent": "positive_conclusion",
+        "tone": "encouraging_satisfied"
+      }
+    ],
+    "evaluation_notes": {
+      "learning_progression": [
+        "Started with vague brute force idea",
+        "Responded well to guided questions about choices",
+        "Recognized constraint implications with help",
+        "Identified dynamic programming pattern with guidance",
+        "Correctly formulated state and recurrence",
+        "Implemented solution accurately",
+        "Successfully traced through example",
+        "Recognized optimization opportunity"
+      ],
+      "hint_responsiveness": [
+        "Needed multiple hints to recognize DP pattern",
+        "Built understanding incrementally",
+        "Asked clarifying questions when stuck",
+        "Applied hints effectively to move forward"
+      ],
+      "strengths": [
+        "Persistent and didn't give up",
+        "Good logical reasoning once guided",
+        "Accurate implementation after understanding concept",
+        "Correct complexity analysis",
+        "Recognized optimization opportunity"
+      ],
+      "areas_for_improvement": [
+        "Pattern recognition needs development",
+        "Should practice identifying DP problems independently",
+        "Could benefit from more exposure to common patterns"
+      ],
+      "interviewer_guidance_quality": [
+        "Provided appropriate level of hints",
+        "Built understanding step by step",
+        "Encouraged learning rather than just giving answers",
+        "Recognized candidate's learning style and adapted"
+      ]
+    }
+  }
+}

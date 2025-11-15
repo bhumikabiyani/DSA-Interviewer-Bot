@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "id": "medium_trees_002",
+    "type": "question",
+    "topic": "trees",
+    "difficulty": "medium",
+    "pattern": "bfs_level_order",
+    "tags": ["trees", "bfs", "level_order", "queue"],
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(w)"
+    },
+    "related_problems": ["easy_trees_001", "medium_trees_003"],
+    "evaluation_criteria": ["bfs_understanding", "queue_usage", "level_separation"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "title": "Binary Tree Level Order Traversal",
+    "description": "Given the root of a binary tree, return the level order traversal of its nodes' values (i.e., from left to right, level by level).",
+    "constraints": [
+      "The number of nodes in the tree is in the range [0, 2000]",
+      "-1000 <= Node.val <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "root = [3,9,20,null,null,15,7]",
+        "output": "[[3],[9,20],[15,7]]",
+        "explanation": "Level 0: [3], Level 1: [9,20], Level 2: [15,7]"
+      },
+      {
+        "input": "root = [1]",
+        "output": "[[1]]",
+        "explanation": "Single node tree."
+      },
+      {
+        "input": "root = []",
+        "output": "[]",
+        "explanation": "Empty tree."
+      }
+    ],
+    "hints": [
+      "I'll use a queue for BFS to process nodes level by level",
+      "Exactly! BFS with a queue is the right choice. How will you keep track of nodes at each level separately?",
+      "Think about processing all nodes at the current level before moving to the next level"
+    ],
+    "edge_cases": [
+      "Empty tree",
+      "Single node tree",
+      "Complete binary tree",
+      "Skewed tree (like a linked list)",
+      "Tree with null nodes"
+    ],
+    "follow_up_questions": [
+      "How would you do this traversal from bottom to top?",
+      "What if you needed to traverse in zigzag order?",
+      "Can you implement this without using a queue?"
+    ]
+  }
+}

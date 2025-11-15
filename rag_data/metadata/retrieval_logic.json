@@ -1,0 +1,321 @@
+{
+  "metadata": {
+    "id": "retrieval_logic",
+    "type": "configuration",
+    "topic": "retrieval",
+    "difficulty": "all",
+    "pattern": "retrieval_strategy",
+    "tags": ["retrieval", "ranking", "context_assembly", "filtering"],
+    "evaluation_criteria": ["retrieval_effectiveness"],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  "content": {
+    "strategy_name": "DSA Interviewer RAG Retrieval Logic",
+    "description": "Multi-stage retrieval and ranking system for contextual interview responses",
+    "retrieval_pipeline": {
+      "stage_1_context_classification": {
+        "description": "Determine interview phase and intent from user input",
+        "classifiers": {
+          "interview_phase_detection": {
+            "inputs": ["user_message", "conversation_history"],
+            "outputs": ["problem_introduction", "clarification", "approach_discussion", "implementation", "optimization", "testing", "evaluation", "feedback"],
+            "method": "keyword_patterns + context_analysis",
+            "confidence_threshold": 0.8
+          },
+          "intent_classification": {
+            "inputs": ["user_message", "previous_response"],
+            "outputs": ["asking_question", "providing_solution", "seeking_clarification", "requesting_hint", "showing_confusion", "demonstrating_understanding"],
+            "method": "semantic_similarity + pattern_matching",
+            "confidence_threshold": 0.7
+          },
+          "candidate_state_assessment": {
+            "inputs": ["conversation_history", "performance_indicators"],
+            "outputs": ["struggling", "progressing_well", "needs_guidance", "ready_for_challenge", "completing_successfully"],
+            "method": "performance_tracking + behavioral_analysis",
+            "update_frequency": "per_interaction"
+          }
+        }
+      },
+      "stage_2_primary_retrieval": {
+        "description": "Retrieve relevant knowledge based on classified context",
+        "retrieval_strategies": {
+          "semantic_search": {
+            "query_construction": {
+              "base_query": "user_message",
+              "query_expansion": ["synonyms", "related_concepts", "technical_terms"],
+              "query_weighting": {
+                "user_message": 0.6,
+                "current_problem_context": 0.3,
+                "conversation_context": 0.1
+              }
+            },
+            "search_parameters": {
+              "top_k": 50,
+              "similarity_threshold": 0.65,
+              "embedding_model": "text-embedding-3-large"
+            }
+          },
+          "metadata_filtering": {
+            "phase_based_filtering": {
+              "problem_introduction": {
+                "document_types": ["question", "concept"],
+                "priority_tags": ["problem_statement", "examples", "constraints"]
+              },
+              "clarification": {
+                "document_types": ["question", "transcript"],
+                "priority_tags": ["clarification", "edge_cases", "constraints"]
+              },
+              "approach_discussion": {
+                "document_types": ["concept", "solution", "transcript"],
+                "priority_tags": ["algorithm", "approach", "pattern_recognition"]
+              },
+              "implementation": {
+                "document_types": ["solution", "transcript"],
+                "priority_tags": ["implementation", "code", "debugging"]
+              },
+              "optimization": {
+                "document_types": ["solution", "concept"],
+                "priority_tags": ["optimization", "complexity", "trade_offs"]
+              },
+              "evaluation": {
+                "document_types": ["rubric", "feedback", "transcript"],
+                "priority_tags": ["evaluation", "assessment", "feedback"]
+              }
+            },
+            "candidate_level_filtering": {
+              "entry": {
+                "difficulty_preference": ["easy", "medium"],
+                "complexity_focus": "basic_understanding",
+                "guidance_level": "high"
+              },
+              "mid": {
+                "difficulty_preference": ["medium", "hard"],
+                "complexity_focus": "optimization_awareness",
+                "guidance_level": "medium"
+              },
+              "senior": {
+                "difficulty_preference": ["hard"],
+                "complexity_focus": "advanced_optimization",
+                "guidance_level": "low"
+              }
+            }
+          }
+        }
+      },
+      "stage_3_behavioral_retrieval": {
+        "description": "Retrieve interviewer behavior and conversation patterns",
+        "behavioral_contexts": {
+          "candidate_struggling": {
+            "retrieve": ["hint_templates", "encouragement_patterns", "guided_questions"],
+            "tone": "supportive_guiding",
+            "interaction_style": "step_by_step_guidance"
+          },
+          "candidate_progressing": {
+            "retrieve": ["follow_up_questions", "deeper_exploration", "optimization_challenges"],
+            "tone": "encouraging_challenging",
+            "interaction_style": "building_on_success"
+          },
+          "candidate_confused": {
+            "retrieve": ["clarification_templates", "simpler_explanations", "alternative_approaches"],
+            "tone": "patient_clarifying",
+            "interaction_style": "reset_and_rebuild"
+          },
+          "candidate_excelling": {
+            "retrieve": ["advanced_questions", "edge_cases", "optimization_challenges"],
+            "tone": "impressed_challenging",
+            "interaction_style": "push_boundaries"
+          }
+        },
+        "conversation_flow_patterns": {
+          "natural_transitions": [
+            "problem_understanding → approach_discussion",
+            "approach_discussion → implementation",
+            "implementation → optimization",
+            "optimization → evaluation"
+          ],
+          "intervention_patterns": [
+            "confusion_detected → clarification_mode",
+            "stuck_too_long → hint_provision",
+            "wrong_direction → gentle_redirection",
+            "excellent_progress → challenge_escalation"
+          ]
+        }
+      },
+      "stage_4_cross_reference_enrichment": {
+        "description": "Add related concepts and follow-up opportunities",
+        "enrichment_strategies": {
+          "concept_linking": {
+            "method": "graph_traversal",
+            "depth": 2,
+            "relationship_types": ["prerequisite", "related", "advanced", "application"]
+          },
+          "problem_similarity": {
+            "method": "pattern_matching + difficulty_progression",
+            "similar_problems": "same_pattern_different_context",
+            "follow_up_problems": "increased_difficulty_same_pattern"
+          },
+          "interview_continuity": {
+            "method": "conversation_flow_analysis",
+            "natural_next_topics": "based_on_current_discussion",
+            "assessment_opportunities": "evaluation_checkpoints"
+          }
+        }
+      },
+      "stage_5_ranking_and_selection": {
+        "description": "Score and rank retrieved content for optimal context assembly",
+        "ranking_factors": {
+          "relevance_score": {
+            "weight": 0.35,
+            "components": {
+              "semantic_similarity": 0.6,
+              "keyword_overlap": 0.2,
+              "topic_alignment": 0.2
+            }
+          },
+          "context_appropriateness": {
+            "weight": 0.25,
+            "components": {
+              "interview_phase_match": 0.4,
+              "candidate_level_match": 0.3,
+              "interaction_type_match": 0.3
+            }
+          },
+          "behavioral_fit": {
+            "weight": 0.20,
+            "components": {
+              "tone_appropriateness": 0.5,
+              "guidance_level_match": 0.5
+            }
+          },
+          "content_quality": {
+            "weight": 0.15,
+            "components": {
+              "content_completeness": 0.4,
+              "accuracy_score": 0.4,
+              "clarity_score": 0.2
+            }
+          },
+          "diversity_bonus": {
+            "weight": 0.05,
+            "description": "Bonus for content type diversity in final selection"
+          }
+        },
+        "selection_algorithm": {
+          "method": "maximal_marginal_relevance",
+          "diversity_lambda": 0.3,
+          "final_selection_size": 15,
+          "content_type_distribution": {
+            "primary_knowledge": 0.6,
+            "behavioral_patterns": 0.25,
+            "supporting_context": 0.15
+          }
+        }
+      }
+    },
+    "context_assembly_strategy": {
+      "context_window_management": {
+        "total_budget": 8000,
+        "allocation": {
+          "system_prompt": 1500,
+          "current_conversation": 2000,
+          "retrieved_knowledge": 3500,
+          "behavioral_context": 1000
+        }
+      },
+      "content_prioritization": {
+        "tier_1_critical": {
+          "content": ["current_problem", "immediate_context", "candidate_state"],
+          "allocation": "guaranteed_inclusion"
+        },
+        "tier_2_important": {
+          "content": ["relevant_concepts", "solution_approaches", "interviewer_guidance"],
+          "allocation": "high_priority"
+        },
+        "tier_3_supporting": {
+          "content": ["related_examples", "additional_context", "follow_up_opportunities"],
+          "allocation": "space_permitting"
+        }
+      },
+      "context_organization": {
+        "structure": [
+          "system_role_and_objectives",
+          "current_problem_context",
+          "retrieved_technical_knowledge",
+          "behavioral_guidance",
+          "conversation_history_summary",
+          "response_instructions"
+        ],
+        "formatting": {
+          "clear_sections": "markdown_headers",
+          "code_preservation": "syntax_highlighting",
+          "emphasis": "strategic_bolding"
+        }
+      }
+    },
+    "adaptive_retrieval": {
+      "performance_based_adjustment": {
+        "candidate_struggling": {
+          "increase_guidance_content": 1.5,
+          "simplify_explanations": true,
+          "add_encouragement": true,
+          "reduce_complexity": true
+        },
+        "candidate_excelling": {
+          "increase_challenge_level": 1.3,
+          "add_edge_cases": true,
+          "include_optimizations": true,
+          "prepare_follow_ups": true
+        }
+      },
+      "conversation_length_adjustment": {
+        "early_interview": {
+          "focus": "problem_understanding",
+          "guidance_level": "high",
+          "patience": "maximum"
+        },
+        "mid_interview": {
+          "focus": "solution_development",
+          "guidance_level": "medium",
+          "challenge": "appropriate"
+        },
+        "late_interview": {
+          "focus": "optimization_evaluation",
+          "guidance_level": "low",
+          "challenge": "maximum"
+        }
+      },
+      "topic_expertise_detection": {
+        "strong_areas": {
+          "detection": "quick_correct_solutions",
+          "adjustment": "increase_difficulty",
+          "opportunity": "explore_variations"
+        },
+        "weak_areas": {
+          "detection": "repeated_struggles",
+          "adjustment": "provide_more_support",
+          "opportunity": "foundational_review"
+        }
+      }
+    },
+    "quality_assurance": {
+      "retrieval_validation": {
+        "relevance_check": "semantic_similarity > threshold",
+        "completeness_check": "all_required_context_types_present",
+        "accuracy_check": "technical_content_verification",
+        "appropriateness_check": "candidate_level_and_phase_alignment"
+      },
+      "fallback_strategies": {
+        "low_relevance_results": "expand_search_criteria",
+        "insufficient_content": "use_general_templates",
+        "context_overflow": "prioritize_and_truncate",
+        "missing_behavioral_context": "use_default_interviewer_style"
+      },
+      "continuous_improvement": {
+        "feedback_collection": "track_response_effectiveness",
+        "retrieval_analytics": "monitor_selection_patterns",
+        "performance_metrics": "measure_interview_outcomes",
+        "model_updates": "retrain_based_on_feedback"
+      }
+    }
+  }
+}

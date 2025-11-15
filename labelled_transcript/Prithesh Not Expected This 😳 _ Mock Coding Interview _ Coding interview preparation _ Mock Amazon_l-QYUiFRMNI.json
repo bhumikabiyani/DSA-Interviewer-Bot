@@ -1,0 +1,290 @@
+[
+  {
+    "speaker": "Interviewer",
+    "text": "Now let me, okay so here the question is given n number of parenthesis right of function to generate all combination of well form parenthesis for example if you are given n equals to 1, so what would be the output, output would be your array of but yeah only this is possible right. So if n is inside an array so it is a list of strings so currently only with one pair of parenthesis given n pair of parenthesis 1 means one pair of parenthesis open and close right. So we have to generate all combinations of well formed parenthesis. You understand the question what is mean by well formed parenthesis or you have any questions feel free to clarify."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No, like equal number of open and close pair and add same variations like all the brackets would be closed."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, okay cool, so are we good with the question?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, yes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So it is 701 yeah let us start."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we have n pair of parenthesis so we have to like generate it starting with an open bracket and so like we can have in the form of suppose n is equal to 3 and this is an open bracket where it is closed then again open then close then again open then close or we can have in this form as well nested brackets a pair of open and close bracket inside a closed bracket and one pair outside this bracket or we can have like two nested like three open and three closed. So two pair of brackets inside one bracket. So the first institution which is coming to my mind is backtracking, okay that we can move in all directions suppose I start with an open bracket and I can move in different directions that I can close it immediately there itself or I can add more open brackets on it unless I exhaust that n number of open brackets then I want to close all those open brackets. So the one DIT which is coming to my mind is backtracking algorithm. Suppose I start with an open bracket then I can move in different directions like directions in the form of I close it there itself and I can keep account as well of the number of open brackets and closed brackets."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So why you need to have account?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "To keep it racked we have exhaust how many brackets like how many open brackets are there and how many are yet to be closed."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay, okay. And one direction can be that I do not close it I add another open bracket and then I close it like same direction for every open bracket. Okay. So how you will stop how you will stop like not to use the first closing one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sorry I didn't get you sorry."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No I am just saying how you so you told that you will pick first open and then close or open open how you will control that it should not be first close and then open but how you will control this one. Close first and then open."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we have to don't want this kind of right. So in backtracking how you will control this one. Like what I am creating is suppose I have this open bracket and then I close it then I have another open bracket and like we can keep a trap of them in valid use case like by keeping account that is a number of closed brackets should be less than equal to the number of open brackets and at any point of time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "At any point. Yeah. That makes sense. What is the time complexity of this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So as you are using the backtracking approach so as we use the backtracking approach so we have a number of brackets so it terms of big go and end. Like big go of end going through that stage again so big go of two to the power end."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "And what would be the space complexity of this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "And that will be space complexity. Like we have this pair and space complexity. So this is the end. So first we have to evaluate that what can be the maximum number of possible strings with a given value of n. So for n of one we have one and n of three these the only set of legal brackets or open on closed. It's like three like I guess we can have six six set of brackets six set of legal strings for n is equals to three and for n is equals to do we can have this this string at this so like the possible number of strings for a given value of n we have n factorial and the space complexity will be n factorial."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Then you start the coding."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like first we have n and so we have now a value of n and in order to move the backtracking direction let's create a function outside of this mean let's call it backtrack and the parameters we thought to be same are n and we also need to have a string empty string this string will keep upending the places. And as we have we are to store it in a we are to store it in a vector in let's create an answer vector a global vector string and the answer and another vector let's create a parent. We are using it to keep track of how I guess we do not need this sorry we don't state we need a singularity array and that will whenever we have exhausted all the end pairs we will keep upending it to the string and when we will exhaust that end pairs we will append it to this bit answer in the form of a string vector and we have to keep account as well of more open and closed. So what is this double code why there is an empty string okay so you are just taking one empty string for now you will keep on adding like you are generating. Yes we keep on adding the braces inside the tensed and this one okay. And let's create a account for open and closed by this add a point like n is the pair is empty string for the braces. The first zero like these zero for keeping track of open brackets and closed brackets."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay sorry so you have written one backtrack method with n zero zero and now you are writing a backtrack method okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes sir."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay let me add this comment on the top as well as for the sake of the Rp okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So an edge case can be that we have exhausted all the open brackets as well as closed brackets so we have a legal string and we can append that legal string into our answer vector okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so I have provided about this backtrack method to grow it vector okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I am writing a case here if open braces are empty zero and so as the value of closed braces as well so I just mean that we have an legal string and we will be appended in the answer on the vector."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No I did not get it you are passing zero zero itself right or you three three itself."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I am sorry."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "From the main method you are passing zero zero only right open bracket."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes yes because we have an empty string so we have it added anything."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so firstly you are adding empty string into that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes I got your point this should be an vote of them should be a since you are voting and then I will get all it simply because it is a point I am I clear till this point of time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah yeah make sense. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "This is our case. Now I have to move in two directions where I will add a close a close bracket and I will not add a close bracket but if the string is empty then there is no sense of adding a close bracket there so I will have to keep keep that part in mind as well. So suppose if the start end of the parents win is zero so of course we won't be appending a close bracket we will simply be adding an open bracket here and now we can move in two directions. Yeah that looks close. Open bracket and I will open bracket here itself. Open bracket is one. Okay so I will use a recursion I will send the string to the next function. Open braces has been added so I will do plus one here and loans braces plus one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Why you are increasing the close bracket?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because I have passed away since here I put it in that was by mistake. Okay so close bracket and then zero and open bracket and then one. In other cases where we have something in the string so I will have to check if we have exhausted the number of open braces. If it is double equals to n then there is more point in and error open brace. I will simply have to add a close brace and then I will send the parameters to for the recursion. In current open brace will be in the same and close brace increments and he can simply get on it from here because there is no other function which is yet to be in the filter. No sorry we need to add data because we have to pop it back to open braces or n so we can get it on it here itself. Now we have a condition where open braces are less than n and of course those braces are yet to be added. So what we can do is we can call two functions where itself. In the first condition in the first function I will add an open brace and in the second I will add a close brace. In the end we have an current string and let me look at current versus a first one. And the pin brace plus one and close brace still in the same. Then I can do current of that to remove the last open brace. I can add a close brace here but I guess we need to check a condition there itself because we have to keep a track that the number n number of open brace are less than or equal to the number of open braces which are added to the string. So I have to check a condition here. I have added open braces and they have a pop it back. I have an nth here which is equal to condition here. So I have added open braces to the current string and the power transfer increased. So I can simply put the nth condition that if the close braces are less than the open braces. We can add a close brace here and let it execute the next function. Open brace remains the same and close brace increases by one. This is the error function and this is okay. Let me give this function a view. If we are missing any other condition. In case 0 in condition, open braces are n. So we only have to add the close braces and this exhaust account of both. In other conditions we have open braces are less than n. We add one here and this to the string then we pop it back. Use braces less than n. Then we can add one. And return the answer there. I guess I am here done with the function, the code. So shall I dry it in it or you have any doubts?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, one thing is why there is so many efforts. Can you little bit clean this code like? Do you really require all the efforts conditions?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, I do. I do not prepare too much of efforts conditions. We can how to reduce the length of the number of code lines? This is 0. So in what case you will add an open bracket. So here in this case if current dot length equals to equals to 0, you are adding an open bracket. If open bracket equals to equals to n, you are not adding it. So what does it mean? So this two if condition can be come into a one single if condition."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, if current dot length equals to equals to 0, you are adding an open bracket. If open underscore bracket equals to equals to n, you are not adding an open bracket. Yes. So what does it mean? Instead of saying this two things can't we have one single if condition and add an open bracket in that. What is that condition?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes, I guess we can, if we can incorporate this condition here itself because in both the cases open and close will be 0. So in this case both open and close will be 0. So I guess this condition will ultimately eventually incorporate this condition. Okay, so one if condition gone. Yes. And remove this and this will not be the same. Okay. Remove one. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you just see anything else can be improved?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yes. So this condition we have number of open number of braces are in. So we will simply add two braces only."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Do you really need it this if condition if open bracket equals to equals to n, then only add this add this add this. Can you double thing on this one if this if you really need this or it can be considered like how you are doing in bottom."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so in that is for this condition is if we have a social number of open brackets and this is if we have not. So I guess no because I do not want to increase the time block complexity and if I remove this condition, there might be a possibility that it will lead us to dependent cases. It will not add that answer string, but it will explore it will this course it will the score will then explore those conditions where we have greater number of open braces and the number of open braces greater than n greater than n number of open braces."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "How it is possible how it will reach greater than n. Because suppose you have to remove this code a this if condition. Then this condition will be executed now. Now you can you put if condition here at top if open bracket is less than n then only you will added right if open bracket is less greater than n why you want to add an open bracket."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, so if the open receiver is the name then only you need to add the open braces. Yes, yes we can remove this one. This F1 or F can or more be input. Okay, so we are adding the identification number if further number of open braces or less than n. So if it is less than n then you will add this one else means you know not else another F condition would be if closing bracket is less than open bracket you would be doing a closing one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you again check is another anything missing any bug in this part."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So this will be open control once. Okay, so if we have n okay it will add this open brace."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Now why this if condition is in the overall block this first if open bracket is less than n its block should be closed after current dot pop back right."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Actually I wanted to check a condition that we have less than n number of open braces but we can still add."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So if you close it can you close it after this. Yeah, so after that only if condition also it will go at right. This is not if it is part. If open braces less than n okay. It will get open braces and I add close braces as well."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "If you put into one F condition if you put into one F condition what if open bracket has been reached to three let's say n equals to three open braces reach to three but closing bracket haven't reached how it will come inside a condition. So if open braces open braces haven't reached n but we want to close braces to it right correct. So that's a different if condition you have right if you keep into one F condition then it's an issue."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Are you getting it"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yes sir. Okay, I'm getting it so I guess there's going to be a final"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "no like there is still one issue can you find that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay, let me dry run it in yeah for some case. Suppose let's take n equals to three. Which I will write it in it's a problem. Suppose we have n equals to three then we start with zero zero number of more the braces. So this will satisfy this condition we will add one open brace. Again we will add one open brace and again we will add one open brace. Now we don't have we have reached this limit so it won't satisfy this condition. So let's move this one if close braces are no less than open braces yes they are so it will continue to add a game. So this is one of the string which will get up and get to the answer let's create an answer vector here as well. So this is one of the strings which has been up and get now it will come back to this case where the current straighters of those current string gets. So we have three open braces and we have three closed braces. So again we are back to this condition and now let's pop it back in the last bracket. So now we have two braces and again this will satisfy this condition as well. We will add two open braces and one closed brace here. And again get to go here and add one open brace and bring it where that has one open brace. Okay I guess I don't work for okay three was the last year itself. So three and three open brace and one closed brace and one closed brace. This will also be up and get there itself. We are going to get a problem there."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No so let's see even when you are doing a closing break can you write that example yeah comment start."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So in the third one open open close right open open close yeah after that yeah remove what if after that you have to remove the close one and then start an open one. You have to pop it back and from this also right okay okay I got this condition okay so let me move it back here. And we will go pop back here so we will have to add that at the close base there it's okay I'm good with it and we are on time."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So let's can I write this last condition"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "yeah which condition?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This one because we have to pop out that last bracket."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "You are already doing the proper right why you are doing this one. This is the proper one back one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So you have done right current dot pop back why you need why you are adding another open then."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like you said that we have to pop back the last two bracket as well."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Correct and then again recursion will take care of this adding an open bracket why you need another current equals to current plus open bracket here. What was the reason for it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "It was in five removing this last brackets of all this. So it will again go back to the recursion level. When I will remove the last one you do convert it to this one then I will have to add another open bracket."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No no just after the pop back you remove it and then over the if you make a recursion tree you will see that it will go to the open bracket because that is still not less than n right. So it will add it. Okay cool can you stop the screenshot let's discuss the feedback. Okay man."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay before going into the feedback do you have any feedback for me if question was not cleared or anything I was rushing anything."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "No in fact you have helped me a lot. I do not have negative feedback you have actually helped me a lot. I was not like expect me this much of a during the execution. Yeah. It was a great experience for me a great learning experience for me."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay cool thank you. I will start my feedback man. So one thing is I help you because you are thinking out loud. I was with in line with you what you are trying to do. So interview will always help if you see that you are hustling to find out an approach. You are thinking out loud and I am with you so I can guide you. If you were just thinking inside your mind not thinking out loud and I don't know what you are actually trying to do. You will definitely not get a single help from me. So this you always get a help from interview. You always remember if you take interview with you and if you show that you are hustling. If you show that you are thinking out loud and you want it trying to find out an approach. So that in always interview every good interviewer will always help you. They will definitely tell they will give at least some hint so that you can stop going from a wrong path. Okay so first thing good case is you have identified different use cases. I have given you very simple use case but you have identified different use cases that scored. Right one bad which I think is you haven't asked me what if N is 0. What you will return minus 1 or empty string what. So what you are going to return there what if I change you know what if I change return 0 return minus 1. So you have to identify those edges like if N equals to 0 what should I return. Yes. That clarity should be there. Another thing is the time complexity part you are somewhere right but sometimes you think that you are very confused. You are not even have confidence on you. Try to have little bit more confidence on telling the complexity right take your time. Whenever the time complexity questions comes in don't get like nervous that I am telling wrong or not take your time. Take your time just say that okay I am let me think and do your math and just try to see what would be the time complexity. But today it looks like you get nervous as soon as I ask you that time complexity and space complexity. Right and one thing is the clean code like so never use the method so see when you are practicing on the platforms right. The you are using backtrack as a function name and all that's okay till you are practicing. But in actual real interviews right always write a method or code which like goes into the production. So let's say if I am hiring you for my company backtrack method doesn't hint anything right. So just give a method name like generate parenthesis generate something or find out like proper name. Backtrack is what right it doesn't say proper method name variable names are very important right. Another thing is there are certain clean code like proper coding if you see if you open after this you can check your if conditions. The first you have not given space between equals to equals to end and so generally if you compile it on entire J or eclipse or anywhere in the tool you will get compilation error right. So you have to write in a manner that it's a compileable code. So I can guarantee you if you take it and copy based on the this one it will not get compiled you will see a compilation error into the if condition because you haven't given any space between the end notation. Okay so one thing is I have to tell you you are using so many a fails condition and one mistake which you are doing is you are asking the interviewer can I do dry and are you okay. So see I was not okay that's why I haven't let you do the dry and I stop you at the first itself. Hey what about this what about this can you correct this all not after dry and ask I am done now do you still have any concern. So first run the dry and try to in the dry and try to make your code little bit more clean if you can right so many if unnecessary if the condition is also not good. So see unnecessary code can be removed right so here we can say that you know that many if it's condition is like you are very much scared every it happens in real when we are working in office right. So even if you are putting one new line of code you are putting if not a question all then I will write it shows that like you don't know what would be the flow and these are unnecessary conditions unnecessary checks validations present all of this thing and no no use right. So always go through like do you really need this if conditions are not right. Well it is your code make it little bit clean dry and yourself try to identify the bug yourself and then tell that yes now it will work right and I will tell you that can you little bit work on recursion kind of problems in a visualization of a tree wise. Yes right in here see we don't have to exactly make a tree you can still but have in different lines you can have okay I will choose open bracket here index to bracket you don't have to make an edges but in a separate line with spaces it will give you more clarity right. So always go for this one do dry run yourself don't let interview to know the bugs in your code. Yes sure so that's very thing and another thing is you are very confident in your thinking out loud that's I like very much right. So you it feel like you are enjoying the interview not very nervous right. So that's I like very much and I think you are a very good coder right the way you are coding very confidently. I think it's a little bit hard question not hard medium hard between somewhere but you tried really well but just take care of this minor minor thing so it will help you in near future."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so that's pretty much from my site and have a good day man."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Thank you for the feedback sir. Thank you."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Good luck my lady. Thank you. Let me stop my recording."
+  }
+]

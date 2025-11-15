@@ -1,0 +1,378 @@
+[
+  {
+    "speaker": "Candidate",
+    "text": "Hi guys, thank you Kiti for first of all for inviting me on your channel and like a few other nervous first time, there is a mock interview there. And so let's see how it goes."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let's see, I'm sure you will do much better than you think. So yeah, okay. So Nisha, I'm going to face the question now. Okay. So this is the question. Just go through it once and if you have any doubts tell me. Okay. So we are giving within array and space elements and each element is either a policeman or a thief. Let me just face an example also. It will make things easier for you. So this is the example. So this is the array and the value right now is 1. So the answer to this will be what according to you you think."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we need to find the maximum number of thieves can be caught. That can be caught. Okay. So we have to find the number of maximum number of thieves that can be caught. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Nisha, two things. One, so can you tell me answer to this? Okay. So just to make sure that you have understood. Sure. Sure. Sure. P-D-T-P-T. So this is the answer that you have to answer. Okay. So just to make sure that you have understood. Sure. Sure. Sure. P-D-T-P-T. In both the directions, yes."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So this means the answer should be 3 because P can catch the thief at the first index. Then the policeman at the third index can catch both the fourth and second index thief. So into the three things you can catch."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So if you see the conditions right, just read the second condition again."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Each policeman can catch only one thief. Okay. Okay. Sorry. Sorry. Sorry. Sorry. Sorry. Sorry. Sorry. Sorry. That will not change many of the problems. We can just keep a counter for each policeman. And as soon as he catches a thief, we can just... Okay. But it's not optimized, you know?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Very clear. because this is a more cantery right just for the words I hope you run. Sure, sure, sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we also have to like see if there's a possibility that if we have multiple policemen and there are overlapping thieves, there's a possibility that if we touch a thief from a single policeman, then that might like increase the total number of a policeman caught. So, what probably the answer to this question like that to the example?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "This will be two then because each of the policemen can only find one. So the maximum output that we can get in any case will be the number of policemen."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The maximum can be only the number of policemen and like minimum will depend on the position of each policeman. Okay. And what will be the answer to this case equal to two?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "If case equal to two then it will be one plus one plus one three because the policeman at the second position can cast the zero-th index three then the policeman at the third index can catch the first one and the last index can catch the second last one. Correct. And this way it will be maximum three."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So let's get on to the proof-per-solution now that you are saying can you explain that again like what exactly are you thinking in proof-per-s? So earlier when I thought about the solution I like skipped the second condition. So I have to like rethink about it because the second condition is also important that only one policeman can catch a single thief. Okay. So it's something like we just have to catch the farthest thief from a current policeman so that if we are moving forward or backward that will like no if we do that then that will not happen."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So what is the problem that you are facing in the proof-per-solution?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Nothing like proof-per-s just can be a recursive call in which we can just find all the possible outputs and we can just return the maximum."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So what will be the time for fixer here?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "That will be like how many thieves do we have. So it will be an exponential sort of algorithm. We are just doing a DFS in which if we find a thief, if we find a policeman we will just be calling in the left direction as the right direction and as soon as we like catch a thief we will just return to a market as proof. Then we will like do this in order to find the solution for that test case like if we are starting with the first policeman and we caught the first thief which is coming. For example if we are doing the recursive solution then first we will start from the second policeman and we will call in the left direction so we will be getting true in the first call only and we will market positive and then we will go to the next policeman that is at the third index. After like calculating all the answers we will have some answer with us and we will return back to the second policeman and then we will go back then we will traverse again till we reach a K like we will move back till we reach K and in this way we will have to like make all the possible cases."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so how is the complexity exponential that takes?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So what we are doing is for each index we are first taking if it is a policeman or a thief. If it is a policeman then we are like going back K times for each policeman and we are also like calculating all the possible cases."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so you are sort of doing DFS on the other side."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I will just do a basic DFS on this back tracking."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay okay do you think we can optimize this?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah we can optimize this so what is the problem we are doing again and again?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So instead of doing that again and again like what is it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah we can realize it but like we have to first think about what like what do we have to memorize?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so the first thing that you were doing right you are checking again and again whether it is a policeman or a thief. So can we first think about optimizing that part? Like you should not have to check again and again whether you are at a policeman or a thief. You think we can optimize that first."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "We can just tour the location of all the policemen in an array and we can call on that only. We do not have to like. We can just make a graph sort of where each policeman is the node and we have edges as the thieves. Like not exactly a graph but we can do that."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so okay let us take the first example. And form the sort of data structure that you are talking about and that we will see policeman like this and thieves around at like this. So let us try doing that in the safe we can optimize it."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure sure sure. Should I like start writing it and trying this on paper first?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so let us be clear idea of the data structure or that you want to use. So can you show me that on the screen?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So what I was thinking is I can just make a vector in which we can just tour the indexes of all the policemen."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay so the first one for the policemen how is it going to look? It is going to look."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So it will be 0 and 3 is it? Right. This will be something like 0 and 3 and this will be like 1, 2 and 4. Okay. And what we have to do is we just have to go to current indexes. If the current index of the police is I we just have to go k minus i minus k or i plus k. And this should be like less than or greater. It should be inside the constraints of the total array. Right. So what we can do is we can just form function. We can have a group where we will also answer and we can just call it. We can make a code here for school."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So I have made a function in which I have taken the vector, vector, vector, police and integer k that will that is telling about the k we are given. Then a value that what is the current like number of theks we are able to catch and we will also we can just remove the thief if we have caught it from the thief array. So we do not have to like make a visited array or something we can just save it and we can push it again. So are you coding in which language?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "C++."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we can just check if the size of the police is 0. Then we can just maximize our answer. We can just do this answer is equals to max of answer common value. And we can just return then that we have exhausted all our policeman and this is the maximum value that we have we can the maximum number of thieves we can catch. The other thing is if we have like the size of the thief is 0 that means we do not have any more thieves to catch and we will return from there. If we have caught all the thieves that means the answer should be the number of thieves we had. Okay. Yeah so that will be in our value and we will just update our value. So we can just make this a single statement then we can just do police dot size or thief dot size. Then if we have a policeman we will search for all the thieves in the given range. So we just have to do this."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "One side can we fix the formatting? Sure. Okay. So let's continue sorry about that so we have finally fixed the speed. Yeah let's continue from here."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So what I was thinking is we will be doing what are we doing is we will be removing all the like thieves and we will be incrementing our value which are in the range of cave. Okay. So that's why I am traversing in the thief array and like I have started from the 0th index and going to the size of the thief array and I will be taking if the absolute of index of the policeman that we are just taking the 0th policeman and as soon as we find any thief will remove the 0th policeman from the vector and we can call the DFS. Okay. So I am just taking the 0th policeman minus."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So what is this time please?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So in this variable I am just storing the current police and like thieves index so that I am removing it from the vector and I am calling it in the DFS so that they don't interfere again. And I will be I will be requiring them to like add these thief and police again after the call so that they are considered in each of the operations and then I will just add them back."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Before going ahead with the code do you want to like sort of dry run me for the example just to see how it is going to work?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. Because code is something I am sure you will be able to write just to make it up see how things will work. Okay. So currently we have our value as 0 or answer as 0. We are doing it for the second test case right? Not the first one."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Let us do for the second one."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Second one right? So we will update the police and thief with transbil so the police is art 2,3,5 and 3,5,3,3,1, and just for one, two, three, one, four. Okay. So just to like make sure and so that audience has no confusion and just marking the index is a bit. Okay. So value is currently 0, answer we have is currently 0 and case 2. We are starting under n is 5 and is 6 the size of the array we are given. Okay. So we actually do not require it but we will remove it if we do not need it. Okay. So first we are checking if the thief and the police vector is empty they are not so we will not be going in the if statement. Then we will be going in the for look and we will be what we will be doing is we will be checking if the index of the 0th and that is 2 minus 0 first is in the range of k that is 2. So it is in the range of k but we will be doing this we will be incrementing our value and we will be removing 0 and 2 from the vectors and we will be calling again. And then we will be checking for 3, 3 minus 1 is like 2 and 2 is also like k then we will be incrementing the value of 2. And we will be removing 3 and 1. Okay. Then we just have 5 and 4 to us. Okay. And this also do 5 minus 4 is also like 1 that is less than equal to k and then after that we will go inside the if look and we will update our answer as 3. But we can do is we can make a check here if we have like the answer is the number of the policeman we can just break out from here only we do not have to repair back because there is no need to like check because we have already found that we can find the mark. So you are going to be removing from both the vectors from police as well as from the this is the one we can do or we can just have to repair this I am J here. That will be like we will be using it will be incrementing it as soon as we like find both of them and here the condition will change we will just be checking if I is equals to the size of our police or J is of equals to the size of our thief. Then we will be just updating our answer and we will be talking because this is same as like removing the from the vector so this will not like increase the time complexity."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So you prefer this path of that because if we are doing that within vector it is something from vector will take some time and that's not like good. So you will be using variables I and J to make sure which police and which team are we considering right now."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So we can just rename them properly so we can rename this as police index and we can rename this as T index. So that sounds good. And this will be a temporary answer. Okay. So that it is easy to like condition. And this way you can just go again and check. Right. As soon as we if we find that the maximum has already reached we can just return that answer because we do not like."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. I have one question. So you are calling this function as a F S. So where exactly are we doing like this not exactly DFS right that you're doing now."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Like what we are doing is we are traveling all the possible places. It's okay. Because when we will be coming back we'll be decrymting our I and J as well and we'll be tying out all the thieves again for the police which is in the range of I minus K for that index. So in some way we are doing it DFS more of its it's more of like a backtracking we are going back and like checking if we have found the answer or not."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So we can just change the name of this function as fine marks. What marks are fine marks. Because this might confuse a lot of people with DFS actually like you have to form a tree or a graph to sort of backtracking you could say but okay now it should be more. Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Let's go ahead and write the for loop. Let's complete the code. So as you have changed the loop now we have put a syntax on T index. Let me check the code. Put a syntax. Next on T index. It should start from T index. What we are doing is we are going to be commanding the police index. We are going to be commanding the T index. We are going to be hard to do. We are going to be commanding the value and then we are just going to find marks. Keep with us. Okay. Okay. Can't want to do this. Then we just be commanding the number here. Okay."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Can you so I have a question now. So the indexes that you have saved, like in the new array that you have, police and thief. You must have saved them in an order from like the, so already like the police thief and the like police index and the thief index that you are going to consider is going to be the smallest. Right. So does that help in somehow optimizing it and can you avoid the for loop? Can you optimize it even more?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Because something was coming up in my mind like we can do it without like recursion. We can just use a for loop and in that we can, what we can do is we can just have two things. A index for the police and index for the thief. As soon as we like find a thief which is in the range of a police, we will just increment the answer and we will increment both the indexes. Right. And if we like and we will increment the, if we like find the answer, we just increment one of them and if we don't find the answer, we will just take which one is smaller and the smaller one will be incremented. And that's and we will come out of the loop as soon as we have like exhausted any one of the thief or the police and we will just be returning the answer which we have."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So why this is happening is because we are anyway going to have the indexes from the starting. So there's no point in looking like on the other direction again. So what we can do is we can just have an index. We already have the index police. We will just go here from here. So we will start as soon as the index is construed 0 and also the size 0. Then we will be going in one of them. This is the perlostock size. And. We just, we, I'm just naming this them as the I and J for the millions of. Yeah. In the code in the talk."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. It's okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "I and. What is I and they can just say once."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So I and the index in for which we will be tossing the police. I and J is and they are just what do we call them variables to like travels. I think that's okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Yeah. I'm just writing it in the comments. Okay. Right. Yes. Yes. Then this absolute of. This is the. This is the. This is the. This thing. I work again. We're doing it. The. The answer. The. The. I. I. I. I. I. I. I. The. Talk. The. Yeah. Police of. I. Is there. She. He.eria. So, this will work. Okay, can we try it out for the second trial?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Sure, sure, sure."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, we have these plus and the factors just are the two, two, three and five. For this, we have the zero, one and two. Okay. So, let's take one and J of zero currently, we are in the active value, then what we are doing is we are checking if two minus zero is less than K. Yes, it is. So, we'll be just incrementing our answer. We'll be incrementing I and J. So, I and J will be one. Okay. And this will be one. Okay. Then we'll go inside the value again. We'll check if I will then post dot size it is and J is the post dot size. Then we will check if three minus one is less than equal to K. Three minus one is less than equal to K. We'll increment our answer again. Answer, you are incrementing answers. So, right now answer is one, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Right. So, let's have an answer."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, are you using this value anymore?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No, no. The function is of no use now, actually."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, our answer is two now. And that takes us out incrementing to two and two. Then we'll check again five minus four is less than equal to K. Yes, it is. Then we'll increment our answer. Then our answer will be three. I and J will be three. And J will be three. As I and J are greater than the size of the present three. So, it will just come out and return our answer. As we can see with answer is three. We will find out using that path, that is our issue."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. So, what is the time complexity now?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, it is just linear in our order. Order. Okay. Ns3 size of? So, if we have like in the first case, if we just have one policeman and we have like N minus one thief, then the vector, the time is N in the same way. If we have like N minus one thief, then we just have one policeman. And the size is like very large. The size is like very small, will not be able to, I am not able to like state it properly."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah, I got you. So, it is the worst case, it is the size of the."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Size of the area, right. Yes. Okay. And the space complexity is also the same, like if we just have a police or just have thief, then we will have a vector of size N. And this way, we will be having the space and time complexity as N. Even if they are half and half, then they will be N by 2 for both space and time. And we know that any constant which is multiplied to the time complexity, it is equal to 1 only. So, it is considered as order of N only. If it is order of N by 2, we just consider it as order of N. Any multiple is removed."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. So, that space and time is order of N."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. So, we have moved to the exponential solution to getting the solution."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yes. Okay. So, should we do one more question?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. Yeah. Go. Given an area, I am consisting of n positive and dators. Positive and dators, k is the task is to minimize the maximum element present in the area by splitting at most k arrays. k array is limited to 2 numbers equal to their value. Okay. So, for example, this is the array and k given to you. Okay. So, now what you can do is you can split 4 into 2 to the element 4. So, now it will become 2 to 2, 8 to 2. Then you can split 8 again, like into 2, 6, say, just for example. So, it will become 2 to 2, 6 to 2. Similarly, you can split 6 again to 2 to 4. Okay. Did you get the question?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "So, we can just split it into even, how can we split it exactly. If we have 8, we can split it into 4, 4, 6, 2, or 7 and 1. Or, is there a certain number?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Any two numbers. Any two numbers. And we just have to reduce the maximum number. Okay. Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "The maximum element present in the area is the maximum element present in the area by which we are doing it. element present in the universe, it is at most k times. It is at most k elements we have to split. Okay. So, first thing that comes to our advantage is we can just find the maximum element and we can just split it first. For example, 4, 2, 4, 8, 2 we have, we can split it into 2, 4, 4, 4, 2. Right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Then you can write that."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. So, what we can do is we can put it up to 4, 8 and 2. We can just split it into 2, 4, 4, 4, 2. Okay. We just try dividing it into half. Then we have 4 times, 3 times, 3 to us. But we can do it, we can just divide it all the force and we will be getting through 2, 2, 2, 2, 2, 2, 2, 2, 2. And the maximum element in this area is 2."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. So, you have split it to how many times?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "4 times. Yes, 10 times. As split it maximum 4 times. So, we have to split less than or equal to k, right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, the answer will be 2, correct? So, let us take another example. Harry is 7 and 17 and k value is 2. 7 and 17."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "17, okay. 17 and k value is 2. What will be the output? Maximum code will just divide it into 2 parts. It will be 7 and 17. How this 8, 8 and 9? You can do it like this. Then we could have calls to. If we do something like this, we can find the second maximum number. How? And if we remove the output, we can find the second maximum number. And if we remove the output, we can find the second maximum number. And if we remove that from the maximum number, like in this case, we will be getting 7 and 10. And this way, the final output will always be less than. Correct. That, right? If we have 10, then we also have one chance that we will just do 7 and 7, 5 and 5. So, the maximum will reduce to 7. Correct. If you could have just divided it into half, that would have been 7 and 9 and 8. And then in the maximum, we would have it with versus 8. Correct."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "So, we can just do this. We can have maximum and the second maximum with us. And using that, we can just divide it. So, how will you generalize it? Like right now, there were two elements. So, you just saw first and second. How are you going to generalize it?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "How I am going to generalize in what sense? Like what? Like what will be the solution? Okay. So, at each time, we can do this. We can have a priority. We can do with us. We have a priority. And then we will have more other numbers. And we can just forward to numbers at each time. We can compare it to the one we can do. We will be having three numbers after that. But we will be doing this. We will, for example, if we have A and B with us, we will just have A as 8. If we are taking the, for example, B as 4. So, then what we will be doing is we will be creating a number C. That will be A minus B. And we will be pushing A. We will be pushing B, B and C in the priority. And we will do this for K lines. And we will just determine the maximum, the power most element in the priority. Because at each time, what we wanted, if you want the maximum and the second mark, some ant priority queue will help us like in that. Because priority queue always have the top, the top of the tidy are the maximum element. If we are using a master RIT queue, we don't have to go order of N9 to find boxes minus K. This is a reduced, it is not a complexity, we do not log in."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Can you heard, Dryeran, and tell me why have you taken A minus B exactly?"
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Can you heard? Because as we can see here, but we have to do this, we have to reduce the maximum as much as we can. So, if we like, I cannot explain the intuition, but it just struck me that if we have the second maximum with us, we can just reduce the size, we can just reduce the maximum, march to the second maximum. And then we have another maximum with us. Like, within cases we have to, if we would have divided it into two and six, then there would have been six as the maximum with us. Okay. And then we have to divide it again."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "No. Since we don't have so much time, let's end it by dry running your approach to both of us."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Sure. So, we have the area two, four, eight and two. Okay. And the priority of the priority queue will have eight with us, eight and then we will be four. We will be creating a C that is same, minus B. And then we will be pushing it back to the priority queue. We will be pushing it to, it has to already to the end, to already it. Then we have to, then we will push four, four and four. Okay. Because we will be pushing B two times and C one. Because we have to subtract it and B from A. And that's how we have treated the numbers. Okay. Next time we will be having four as eight. And we will also be four. Right?"
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Yeah. So there is like no point of splitting it again."
+  },
+  {
+    "speaker": "Candidate",
+    "text": "Okay. Why is that? Why? In this, we have a problem. We will have to make all the unique elements with us so that we have the maximum and this is the maximum with us. Okay. Right? So what we can do is we can have a map with us and it will be storing, which are elements we have stored in the heap. So it will just be a map to take that. And then in this start, we will just start with two four eight. And after that, we will just start with two four, two and four. Okay. So, we will have to win."
+  },
+  {
+    "speaker": "Interviewer",
+    "text": "Okay. Let's do this. Since we don't have the time to really finish it and like I think we need some more amount of discussion to really come up with this solution. So let's get back to the feedback and write your own. Those things now. Right?"
+  }
+]
