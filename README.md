@@ -1,344 +1,222 @@
-# DSA Interviewer RAG System
+# DSA Interviewer Bot
 
-A complete Retrieval-Augmented Generation (RAG) pipeline for conducting realistic Data Structures and Algorithms technical interviews. This system provides an AI interviewer that can assess candidates, provide guidance, and deliver constructive feedback through natural conversation.
+AI-powered technical interview practice system using Retrieval-Augmented Generation (RAG) for realistic DSA interview simulation.
 
-## 🎯 System Overview
+[![CI/CD](https://github.com/yourusername/DSA-Interviewer-Bot/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/yourusername/DSA-Interviewer-Bot/actions)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This RAG system powers a mock DSA interviewer with:
+## 🚀 Features
 
-- **300+ DSA Questions** across all major topics and difficulty levels
-- **Comprehensive Solutions** with optimal and brute-force approaches
-- **Intelligent Conversation Flow** that adapts to candidate performance
-- **Real-time Assessment** using structured evaluation rubrics
-- **Natural Interview Experience** with realistic interviewer behavior
+- **AI-Powered Interviewer**: Uses Groq's Llama-3.3-70b for natural conversation
+- **RAG-Enhanced Responses**: Retrieves relevant context from knowledge base
+- **15+ DSA Problems**: Covering arrays, strings, trees, graphs, DP, and more
+- **Multi-Turn Conversations**: Maintains context throughout the interview
+- **RESTful API**: FastAPI backend with automatic documentation
+- **Docker Support**: Easy deployment with Docker Compose
+- **Comprehensive Testing**: Unit, integration, and E2E tests
+
+## 📋 Quick Start
+
+### Prerequisites
+- Python 3.9+
+- GROQ API key ([Get one here](https://console.groq.com))
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/DSA-Interviewer-Bot.git
+cd DSA-Interviewer-Bot
+
+# Setup environment
+make setup-env
+# Edit .env and add your GROQ_API_KEY
+
+# Install dependencies
+make install
+
+# Initialize vector database
+make init-db
+
+# Run application
+make run
+```
+
+Visit http://localhost:8000/docs for API documentation.
+
+### Docker Deployment
+
+```bash
+# Build and start services
+make docker-up
+
+# View logs
+make docker-logs
+
+# Stop services
+make docker-down
+```
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   User Input    │───▶│  RAG Retrieval  │───▶│   LLM Response  │
-│                 │    │     Engine      │    │   Generation    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────┐
-                    │  Vector Store   │
-                    │  (ChromaDB)     │
-                    └─────────────────┘
-                              │
-                              ▼
-                    ┌─────────────────┐
-                    │ Knowledge Base  │
-                    │ (300+ Problems) │
-                    └─────────────────┘
+┌─────────────┐
+│   Client    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│      FastAPI Backend            │
+│  ┌──────────┐  ┌─────────────┐ │
+│  │   API    │  │   Services  │ │
+│  │ Routes   │──│  - Groq LLM │ │
+│  └──────────┘  │  - RAG      │ │
+│                │  - Session  │ │
+│                └─────────────┘ │
+└─────────────────────────────────┘
+       │              │
+       ▼              ▼
+┌─────────────┐  ┌──────────────┐
+│  ChromaDB   │  │  Groq API    │
+│ Vector Store│  │ (Llama-3.3)  │
+└─────────────┘  └──────────────┘
 ```
+
+### Technology Stack
+
+- **Backend**: FastAPI, Uvicorn
+- **LLM**: Groq (Llama-3.3-70b-versatile)
+- **Vector DB**: ChromaDB
+- **Embeddings**: SentenceTransformer (all-MiniLM-L6-v2)
+- **Caching**: Redis (optional)
+- **Testing**: Pytest
+- **CI/CD**: GitHub Actions
 
 ## 📁 Project Structure
 
 ```
 DSA-Interviewer-Bot/
-├── rag_data/                          # Complete knowledge base
-│   ├── questions/                     # 300+ DSA problems
-│   ├── solutions/                     # Optimal solutions
-│   ├── brute_force/                   # Alternative approaches
-│   ├── concepts/                      # Algorithm concepts & patterns
-│   ├── transcripts/                   # Interview conversation examples
-│   ├── rubrics/                       # Evaluation criteria
-│   ├── feedback/                      # Feedback templates
-│   ├── interviewer_style/             # Conversation patterns
-│   └── metadata/                      # Configuration files
-├── vector_store_implementation.py     # Complete vector store system
-├── production_config.py               # Production configuration
-├── IMPLEMENTATION_BLUEPRINT.md        # Detailed implementation guide
-├── RAG_ARCHITECTURE.md               # System architecture documentation
-└── README.md                         # This file
+├── src/dsa_interviewer/       # Main application
+│   ├── api/                   # API endpoints
+│   ├── core/                  # Configuration & business logic
+│   ├── models/                # Pydantic models
+│   ├── services/              # External services
+│   └── utils/                 # Utilities
+├── data/
+│   ├── knowledge_base/        # RAG content (15 problems)
+│   ├── vector_store/          # ChromaDB database
+│   └── training_data/         # Interview transcripts
+├── tests/                     # Test suite
+│   ├── unit/                  # Unit tests
+│   ├── integration/           # Integration tests
+│   └── e2e/                   # End-to-end tests
+├── scripts/                   # CLI tools
+├── docs/                      # Documentation
+└── docker/                    # Docker configs
 ```
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.9+
-- OpenAI API key
-- Redis (for caching)
-- 8GB+ RAM recommended
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd DSA-Interviewer-Bot
-```
-
-2. **Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-3. **Set up environment**
-```bash
-# Create .env file
-echo "OPENAI_API_KEY=your_api_key_here" > .env
-echo "REDIS_URL=redis://localhost:6379" >> .env
-```
-
-4. **Initialize the knowledge base**
-```bash
-# Generate complete question set (if not already present)
-cd rag_data/questions
-python generate_questions.py
-cd ../..
-```
-
-5. **Build the vector store**
-```bash
-python vector_store_implementation.py
-```
-
-6. **Start the system**
-```bash
-python -m uvicorn api_server:app --host 0.0.0.0 --port 8000
-```
-
-## 📊 Knowledge Base Contents
-
-### Questions Database (300+ Problems)
-- **Arrays**: 50 problems (easy: 20, medium: 20, hard: 10)
-- **Strings**: 40 problems (easy: 15, medium: 15, hard: 10)
-- **Trees**: 45 problems (easy: 15, medium: 20, hard: 10)
-- **Graphs**: 40 problems (easy: 10, medium: 20, hard: 10)
-- **Dynamic Programming**: 35 problems (easy: 10, medium: 15, hard: 10)
-- **Linked Lists**: 25 problems (easy: 10, medium: 10, hard: 5)
-- **Stacks/Queues**: 20 problems (easy: 8, medium: 8, hard: 4)
-- **Heaps**: 15 problems (easy: 5, medium: 7, hard: 3)
-- **Tries**: 10 problems (easy: 3, medium: 5, hard: 2)
-- **Math/Bit Manipulation**: 20 problems (easy: 8, medium: 8, hard: 4)
-
-### Algorithm Concepts
-- **Patterns**: Sliding window, two pointers, binary search, DFS/BFS
-- **Techniques**: Dynamic programming, greedy algorithms, backtracking
-- **Data Structures**: Trees, graphs, heaps, tries, union-find
-- **Complexity Analysis**: Time/space complexity for all solutions
-
-### Interview Intelligence
-- **100+ Realistic Transcripts** covering various scenarios
-- **Adaptive Conversation Flow** based on candidate performance
-- **Comprehensive Evaluation Rubrics** for fair assessment
-- **Constructive Feedback Templates** for improvement guidance
 
 ## 🔧 Configuration
 
-### Basic Configuration
-```python
-# production_config.py
-config = ProductionConfig()
+Key environment variables (see `.env.example`):
 
-# Customize for your needs
-config.llm.model_name = "gpt-4"  # or "gpt-3.5-turbo" for cost savings
-config.api.max_concurrent_requests = 100
-config.cache.default_ttl = 3600  # 1 hour cache
-```
-
-### Advanced Configuration
-```python
-# Vector store optimization
-config.database.hnsw_ef_search = 100  # Higher = better accuracy, slower
-config.database.max_batch_size = 1000  # Batch size for embeddings
-
-# Performance tuning
-config.api.workers = 4  # Number of API workers
-config.llm.embedding_batch_size = 100  # Embedding batch size
-```
-
-## 🎯 Usage Examples
-
-### Basic Interview Session
-```python
-from vector_store_implementation import RAGRetriever, VectorStore
-from production_config import get_config
-
-# Initialize system
-config = get_config()
-retriever = RAGRetriever(VectorStore())
-
-# Start interview
-response = retriever.retrieve_for_interview_context(
-    user_message="I'm ready to start the interview",
-    conversation_history=[],
-    interview_phase="problem_introduction",
-    candidate_level="mid"
-)
-
-print("Interviewer:", response['primary_knowledge'][0]['content'])
-```
-
-### Custom Problem Selection
-```python
-# Get problems by topic and difficulty
-problems = retriever.get_problems_by_criteria(
-    topic="arrays",
-    difficulty="medium",
-    pattern="sliding_window"
-)
-
-# Start with specific problem
-interview_state = {
-    "current_problem": problems[0],
-    "phase": "problem_introduction",
-    "candidate_level": "senior"
-}
-```
-
-### Evaluation and Feedback
-```python
-# Get evaluation for completed interview
-evaluation = retriever.evaluate_interview_performance(
-    conversation_history=full_conversation,
-    problem_difficulty="medium",
-    candidate_responses=candidate_messages
-)
-
-print("Strengths:", evaluation['strengths'])
-print("Areas for improvement:", evaluation['improvements'])
-print("Overall score:", evaluation['overall_score'])
-```
-
-## 📈 Performance Metrics
-
-### System Performance
-- **Response Time**: < 2 seconds for 95% of requests
-- **Throughput**: 100+ concurrent users supported
-- **Accuracy**: 90%+ retrieval relevance score
-- **Uptime**: 99.9% availability target
-
-### Knowledge Base Coverage
-- **Topics**: 10+ major DSA categories
-- **Difficulty Levels**: Balanced across easy/medium/hard
-- **Solution Quality**: All solutions verified and optimized
-- **Interview Realism**: Based on real interview patterns
-
-## 🔍 Monitoring and Analytics
-
-### Health Monitoring
 ```bash
-# Check system health
-curl http://localhost:8000/health
-
-# Get performance metrics
-curl http://localhost:8000/metrics
-```
-
-### Performance Dashboard
-- Request latency and throughput
-- Cache hit rates and efficiency
-- Memory and CPU usage
-- Error rates and types
-
-## 🚀 Production Deployment
-
-### Docker Deployment
-```bash
-# Build and run with Docker Compose
-docker-compose up -d
-
-# Scale API servers
-docker-compose up -d --scale rag-api=3
-```
-
-### Kubernetes Deployment
-```yaml
-# k8s-deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: dsa-interviewer-rag
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: dsa-interviewer-rag
-  template:
-    metadata:
-      labels:
-        app: dsa-interviewer-rag
-    spec:
-      containers:
-      - name: rag-api
-        image: dsa-interviewer-rag:latest
-        ports:
-        - containerPort: 8000
-        env:
-        - name: OPENAI_API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: openai-secret
-              key: api-key
-```
-
-## 🧪 Testing
-
-### Unit Tests
-```bash
-# Run all tests
-python -m pytest tests/
-
-# Test specific components
-python -m pytest tests/test_retrieval.py
-python -m pytest tests/test_vector_store.py
-```
-
-### Integration Tests
-```bash
-# Test complete interview flow
-python -m pytest tests/test_interview_flow.py
-
-# Test performance benchmarks
-python -m pytest tests/test_performance.py
+GROQ_API_KEY=your_api_key_here
+API_PORT=8000
+DEBUG=false
+LOG_LEVEL=INFO
+RAG_TOP_K=5
+LLM_MODEL=llama-3.3-70b-versatile
 ```
 
 ## 📚 Documentation
 
-- **[RAG_ARCHITECTURE.md](RAG_ARCHITECTURE.md)**: Detailed system architecture
-- **[IMPLEMENTATION_BLUEPRINT.md](IMPLEMENTATION_BLUEPRINT.md)**: Step-by-step implementation guide
-- **[API Documentation](http://localhost:8000/docs)**: Interactive API documentation (when running)
+- [Setup Guide](docs/SETUP.md) - Detailed installation instructions
+- [API Documentation](docs/API.md) - API endpoints and usage
+- [Contributing Guide](docs/CONTRIBUTING.md) - Development guidelines
+- [RAG Architecture](docs/RAG_ARCHITECTURE.md) - System design details
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+make test
+
+# Run specific test suite
+pytest tests/unit/ -v
+pytest tests/integration/ -v
+
+# With coverage
+pytest --cov=src/dsa_interviewer --cov-report=html
+```
+
+## 🛠️ Development
+
+```bash
+# Format code
+make format
+
+# Run linting
+make lint
+
+# Clean build artifacts
+make clean
+```
+
+## 📊 Knowledge Base
+
+Current content:
+- **15 DSA Problems**: Easy (5), Medium (7), Hard (3)
+- **Topics**: Arrays, Strings, Trees, Graphs, DP, Linked Lists, Stacks
+- **4 Algorithm Concepts**: Sliding window, two pointers, DP, binary trees
+- **5 Interview Transcripts**: Real conversation examples
+- **Feedback Templates**: Positive and improvement suggestions
+
+## 🚀 Deployment
+
+### Docker Compose (Recommended)
+
+```bash
+docker-compose up -d
+```
+
+Includes:
+- API server (port 8000)
+- Redis cache (port 6379)
+- Nginx reverse proxy (port 80)
+
+### Manual Deployment
+
+```bash
+# Production server
+uvicorn dsa_interviewer.main:app --host 0.0.0.0 --port 8000 --workers 4
+```
 
 ## 🤝 Contributing
 
-### Adding New Problems
-1. Create problem JSON in `rag_data/questions/`
-2. Add optimal solution in `rag_data/solutions/`
-3. Add brute force approach in `rag_data/brute_force/`
-4. Update vector store: `python vector_store_implementation.py`
+Contributions welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) first.
 
-### Improving Interview Flow
-1. Add new transcripts in `rag_data/transcripts/`
-2. Update conversation patterns in `rag_data/interviewer_style/`
-3. Test with various candidate scenarios
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
 
-### Performance Optimization
-1. Monitor metrics via `/metrics` endpoint
-2. Identify bottlenecks in retrieval or generation
-3. Optimize chunking strategy or caching policies
+## 📝 License
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- OpenAI for GPT-4 and embedding models
-- ChromaDB for vector storage capabilities
-- The DSA community for problem inspiration and validation
+- Groq for fast LLM inference
+- ChromaDB for vector storage
+- FastAPI for the excellent web framework
+- SentenceTransformers for embeddings
 
-## 📞 Support
+## 📧 Contact
 
-For questions, issues, or contributions:
-
-1. **Issues**: Open a GitHub issue for bugs or feature requests
-2. **Discussions**: Use GitHub Discussions for questions and ideas
-3. **Documentation**: Check the implementation blueprint for detailed guidance
+For questions or support, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ for the developer community to practice and improve DSA interview skills.**
+**Note**: This is an educational project for interview practice. Actual interview performance may vary.

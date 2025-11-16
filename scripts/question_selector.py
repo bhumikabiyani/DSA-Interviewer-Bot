@@ -1,24 +1,41 @@
+"""Random question selector for CLI interviews."""
+
 import json
 import glob
 import random
+import sys
+from pathlib import Path
+from typing import Optional, Tuple
 
-def pick_random_question():
-    files = glob.glob("rag_data/questions/*.json")  # load JSON files
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+from dsa_interviewer.core.config import settings
+
+
+def pick_random_question() -> Tuple[Optional[str], Optional[str]]:
+    """Pick a random question from the knowledge base."""
+    questions_dir = Path(settings.KNOWLEDGE_BASE_PATH) / "questions"
+    files = list(questions_dir.glob("*.json"))
+    
     if not files:
         return None, None
 
     selected = random.choice(files)
-    with open(selected, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    
+    try:
+        with open(selected, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        print(f"Error loading question {selected}: {e}")
+        return None, None
 
-    # Extract question text nicely
-    title = data["content"].get("title", "")
-    description = data["content"].get("description", "")
-    constraints = data["content"].get("constraints", [])
-    examples = data["content"].get("examples", [])
-    hints = data["content"].get("hints", [])
+    content = data.get("content", {})
+    title = content.get("title", "Untitled Problem")
+    description = content.get("description", "")
+    constraints = content.get("constraints", [])
+    examples = content.get("examples", [])
+    hints = content.get("hints", [])
 
-    # build readable question text
     question_text = f"# {title}\n\n{description}\n\n"
 
     if constraints:
@@ -30,7 +47,10 @@ def pick_random_question():
     if examples:
         question_text += "### Examples:\n"
         for ex in examples:
-            question_text += f"- Input: {ex['input']}\n  Output: {ex['output']}\n  Explanation: {ex['explanation']}\n\n"
+            inp = ex.get("input", "")
+            out = ex.get("output", "")
+            exp = ex.get("explanation", "")
+            question_text += f"- Input: {inp}\n  Output: {out}\n  Explanation: {exp}\n\n"
 
     if hints:
         question_text += "### Hints:\n"
@@ -38,4 +58,4 @@ def pick_random_question():
             question_text += f"- {h}\n"
         question_text += "\n"
 
-    return selected, question_text
+    return str(selected), question_text
