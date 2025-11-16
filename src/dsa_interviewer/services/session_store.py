@@ -14,10 +14,31 @@ class SessionStore:
         session_id = str(uuid.uuid4())
         self.sessions[session_id] = {
             "question": question,
-            "history": []
+            "history": [],
+            "phase": "introduction"
         }
         logger.info(f"Created session {session_id}")
         return session_id
+    
+    def create_background_session(self) -> str:
+        session_id = str(uuid.uuid4())
+        self.sessions[session_id] = {
+            "question": None,
+            "history": [],
+            "phase": "background",
+            "background_summary": None
+        }
+        logger.info(f"Created background session {session_id}")
+        return session_id
+    
+    def transition_to_interview(self, session_id: str, question: str) -> None:
+        if session_id not in self.sessions:
+            logger.error(f"Session {session_id} not found")
+            raise KeyError(f"Session {session_id} not found")
+        
+        self.sessions[session_id]["question"] = question
+        self.sessions[session_id]["phase"] = "introduction"
+        logger.info(f"Transitioned session {session_id} to interview phase")
 
     def add_message(self, session_id: str, role: str, message: str) -> None:
         if session_id not in self.sessions:

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { startInterview } from "@/lib/api";
+import { startBackground } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
 export default function Home() {
   const router = useRouter();
@@ -14,11 +14,11 @@ export default function Home() {
     setError(null);
     reset();
     try {
-      const response = await startInterview();
-      setInitialQuestion(response.question);
-      router.push(`/interview/${response.session_id}`);
+      const response = await startBackground();
+      setInitialQuestion(response.message);
+      router.push(`/background/${response.session_id}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to start interview");
+      setError(err instanceof Error ? err.message : "Failed to start background session");
       setLoading(false);
     }
   };

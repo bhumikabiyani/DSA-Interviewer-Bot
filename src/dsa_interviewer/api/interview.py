@@ -24,29 +24,115 @@ Ask follow-up questions, never reveal full solutions.
 Focus on reasoning and edge-case understanding.
 """
 
+BACKGROUND_SYSTEM_PROMPT = """
+You are a friendly technical interviewer conducting the initial background assessment.
+Your goal is to understand the candidate's:
+- Educational background and current role
+- Programming experience and preferred languages
+- DSA knowledge level and areas of strength/weakness
+- Previous interview experiences
+- Goals for this mock interview
+
+Ask 3-5 conversational questions to gather this information.
+Be warm, encouraging, and professional.
+Once you have enough background, summarize their profile and ask if they're ready to proceed to the technical questions.
+"""
+
+INTERVIEWER_INTRODUCTION = """Hello! I'm your DSA mock interviewer today. I'll be guiding you through a coding problem and asking follow-up questions to understand your thought process.
+
+Feel free to think out loud, ask clarifying questions, and discuss your approach before coding. Let's begin!
+
+"""
+
 class UserMessage(BaseModel):
     session_id: str
     message: str
 
-@router.post("/start_interview")
-def start_interview():
+class BackgroundMessage(BaseModel):
+    session_id: str
+    message: str
+
+@router.post("/start_background")
+def start_background():
     try:
+        session_id = sessions.create_background_session()
+        
+        intro_msg = """Hello! Welcome to your DSA mock interview. Before we dive into the technical questions, I'd like to learn a bit about your background.
+
+Could you start by telling me about your educational background and current role?"""
+        
+        sessions.add_message(session_id, "interviewer", intro_msg)
+        
+        logger.info(f"Started background session {session_id}")
+        return {
+            "session_id": session_id,
+            "message": intro_msg
+        }
+    except Exception as e:
+        logger.error(f"Error starting background session: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/background_chat")
+def background_chat(payload: BackgroundMessage):
+    try:
+        if not sessions.session_exists(payload.session_id):
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        session = sessions.get_history(payload.session_id)
+        
+        if session.get("phase") != "background":
+            raise HTTPException(status_code=400, detail="Session is not in background phase")
+        
+        user_message = payload.message.strip()
+        history = session["history"]
+        
+        messages = [{"role": "system", "content": BACKGROUND_SYSTEM_PROMPT}]
+        
+        for turn in history:
+            role = "user" if turn["role"] == "candidate" else "assistant"
+            messages.append({"role": role, "content": turn["message"]})
+        
+        messages.append({"role": "user", "content": user_message})
+        
+        reply = llm.chat(messages)
+        
+        sessions.add_message(payload.session_id, "candidate", user_message)
+        sessions.add_message(payload.session_id, "interviewer", reply)
+        
+        return {"response": reply}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error in background chat: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/start_interview")
+def start_interview(payload: UserMessage):
+    try:
+        if not sessions.session_exists(payload.session_id):
+            raise HTTPException(status_code=404, detail="Session not found")
+        
+        session = sessions.get_history(payload.session_id)
+        
+        if session.get("phase") != "background":
+            raise HTTPException(status_code=400, detail="Must complete background phase first")
+        
         q_path, question_text = pick_random_question()
         
         if not question_text:
             raise HTTPException(status_code=500, detail="No questions available in knowledge base")
         
-        session_id = sessions.create_session(question_text)
+        sessions.transition_to_interview(payload.session_id, question_text)
 
-        # Save introduction message to history
         intro_msg = INTERVIEWER_INTRODUCTION + "\nAre you ready to begin?"
-        sessions.add_message(session_id, "interviewer", intro_msg)
+        sessions.add_message(payload.session_id, "interviewer", intro_msg)
 
-        logger.info(f"Started interview session {session_id} with question from {q_path}")
+        logger.info(f"Transitioned session {payload.session_id} to interview with question from {q_path}")
         return {
-            "session_id": session_id,
-            "question": question_text,
+            "session_id": payload.session_id,
+            "intro": intro_msg
         }
+
     except HTTPException:
         raise
     except Exception as e:
@@ -61,13 +147,40 @@ def interact(payload: UserMessage):
         
         session = sessions.get_history(payload.session_id)
         question = session["question"]
-        user_message = payload.message
-        if(user_message.strip().lower() == "babi"):
-            # end the session
+        phase = session["phase"]
+        user_message = payload.message.strip()
+
+        # END keyword
+        if user_message.lower() == "babi":
             sessions.delete_session(payload.session_id)
             return {"response": "Thanks for the Interview Babi!", "command": "end"}
-        history = session["history"]
 
+        # ──────────────── PHASE 1 → INTRO ────────────────
+        if phase == "introduction":
+            # send the actual DSA question
+            rag_context = rag.retrieve(question)
+            context_str = "\n".join(rag_context) if rag_context else ""
+
+            question_prompt = f"""
+                    Here is your interview question:
+
+                    {question}
+
+                    Before we begin, could you walk me through your initial understanding of the problem?
+
+                    Relevant Context:
+                    {context_str} """
+
+            sessions.add_message(payload.session_id, "candidate", user_message)
+            sessions.add_message(payload.session_id, "interviewer", question_prompt)
+
+            # move to interview phase
+            session["phase"] = "interview"
+
+            return {"response": question_prompt}
+
+        # ──────────────── PHASE 2 → NORMAL INTERVIEW ────────────────
+        history = session["history"]
         rag_context = rag.retrieve(question + "\n" + user_message)
         context_str = "\n".join(rag_context) if rag_context else ""
 
@@ -76,11 +189,15 @@ def interact(payload: UserMessage):
             {"role": "system", "content": f"Interview Question: {question}"},
         ]
 
+        # add full history
         for turn in history:
             role = "user" if turn["role"] == "candidate" else "assistant"
             messages.append({"role": role, "content": turn["message"]})
 
+        # new user message
         messages.append({"role": "user", "content": user_message})
+
+        # rag grounding
         messages.append({"role": "system", "content": f"Relevant Context:\n{context_str}"})
 
         reply = llm.chat(messages)
@@ -88,7 +205,6 @@ def interact(payload: UserMessage):
         sessions.add_message(payload.session_id, "candidate", user_message)
         sessions.add_message(payload.session_id, "interviewer", reply)
 
-        logger.debug(f"Interaction in session {payload.session_id}")
         return {"response": reply}
     except HTTPException:
         raise

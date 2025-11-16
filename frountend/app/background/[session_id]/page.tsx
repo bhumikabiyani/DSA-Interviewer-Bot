@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { useChatStore } from "@/lib/store";
-import { sendMessage } from "@/lib/api";
+import { sendBackgroundMessage, startInterview } from "@/lib/api";
 
-export default function InterviewPage() {
+export default function BackgroundPage() {
   const params = useParams();
   const router = useRouter();
   const sessionId = params.session_id as string;
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const [showTransitionButton, setShowTransitionButton] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
 
   const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion } =
     useChatStore();
@@ -24,32 +26,28 @@ export default function InterviewPage() {
       return;
     }
 
-    if (!initialized) {
-      initializeInterview();
-    }
-  }, [sessionId, initialized]);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const scrollToBottom = () => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }
-  };
-
-  const initializeInterview = async () => {
-    if (initialQuestion) {
+    if (!initialized && initialQuestion) {
       addMessage({
         role: "interviewer",
         content: initialQuestion,
         timestamp: new Date(),
       });
       setInitialized(true);
-    } else {
-      router.push("/");
-    } 
+    }
+  }, [sessionId, initialized, initialQuestion]);
+
+  useEffect(() => {
+    scrollToBottom();
+    
+    if (messages.length >= 6) {
+      setShowTransitionButton(true);
+    }
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
 
   const handleSendMessage = async (message: string) => {
@@ -62,30 +60,13 @@ export default function InterviewPage() {
     setLoading(true);
 
     try {
-      const response = await sendMessage(sessionId, message);
+      const response = await sendBackgroundMessage(sessionId, message);
       
-      // Check if the interview should end
-      if (response.command === "end") {
-        // Add final message if there is one
-        if (response.response) {
-          addMessage({
-            role: "interviewer",
-            content: response.response,
-            timestamp: new Date(),
-          });
-        }
-        // Wait a moment for the message to be visible, then redirect
-        setTimeout(() => {
-          router.push("/thankyou");
-        }, 1500);
-      } else {
-        // Normal message flow
-        addMessage({
-          role: "interviewer",
-          content: response.response,
-          timestamp: new Date(),
-        });
-      }
+      addMessage({
+        role: "interviewer",
+        content: response.response,
+        timestamp: new Date(),
+      });
     } catch (error) {
       addMessage({
         role: "interviewer",
@@ -94,6 +75,31 @@ export default function InterviewPage() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleStartInterview = async () => {
+    setTransitioning(true);
+    
+    try {
+      const response = await startInterview(sessionId);
+      
+      addMessage({
+        role: "interviewer",
+        content: response.intro,
+        timestamp: new Date(),
+      });
+      
+      setTimeout(() => {
+        router.push(`/interview/${sessionId}`);
+      }, 1000);
+    } catch (error) {
+      addMessage({
+        role: "interviewer",
+        content: "Sorry, I couldn't start the interview. Please try again.",
+        timestamp: new Date(),
+      });
+      setTransitioning(false);
     }
   };
 
@@ -122,10 +128,10 @@ export default function InterviewPage() {
           </button>
           <div>
             <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Technical Interview
+              Background Assessment
             </h1>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              DSA Problem Solving Session
+              Getting to know you before the technical interview
             </p>
           </div>
         </div>
@@ -139,7 +145,7 @@ export default function InterviewPage() {
         {messages.length === 0 && !isLoading && (
           <div className="flex items-center justify-center h-full">
             <p className="text-gray-500 dark:text-gray-400">
-              Initializing interview...
+              Initializing background session...
             </p>
           </div>
         )}
@@ -149,10 +155,49 @@ export default function InterviewPage() {
         ))}
 
         {isLoading && <LoadingIndicator />}
+
+        {showTransitionButton && !transitioning && (
+          <div className="flex justify-center pt-4">
+            <button
+              onClick={handleStartInterview}
+              className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+            >
+              Ready for Technical Interview →
+            </button>
+          </div>
+        )}
+
+        {transitioning && (
+          <div className="flex justify-center pt-4">
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <svg
+                className="animate-spin h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Starting technical interview...
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
-        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+        <ChatInput onSend={handleSendMessage} disabled={isLoading || transitioning} />
       </div>
     </div>
   );
