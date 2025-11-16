@@ -1,0 +1,78 @@
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse } from "./types";
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+export async function startBackground(): Promise<StartBackgroundResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/start_background`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to start background: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function sendBackgroundMessage(
+  sessionId: string,
+  message: string
+): Promise<BackgroundChatResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/background_chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      session_id: sessionId,
+      message: message,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to send background message: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function startInterview(sessionId: string): Promise<StartInterviewResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/start_interview`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ session_id: sessionId }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to start interview: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function sendMessage(
+  sessionId: string,
+  message: string
+): Promise<InteractResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/interact`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      session_id: sessionId,
+      message: message,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to send message: ${response.statusText}`);
+  }
+
+  return response.json();
+}
