@@ -128,7 +128,7 @@ export default function BackgroundPage() {
           </button>
           <div>
             <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Background Assessment
+              AI DSA Interviewer
             </h1>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Getting to know you before the technical interview
@@ -155,17 +155,6 @@ export default function BackgroundPage() {
         ))}
 
         {isLoading && <LoadingIndicator />}
-
-        {showTransitionButton && !transitioning && (
-          <div className="flex justify-center pt-4">
-            <button
-              onClick={handleStartInterview}
-              className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-            >
-              Ready for Technical Interview →
-            </button>
-          </div>
-        )}
 
         {transitioning && (
           <div className="flex justify-center pt-4">
