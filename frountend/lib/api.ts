@@ -1,4 +1,5 @@
 import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse } from "./types";
+import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -7,6 +8,7 @@ export async function startBackground(): Promise<StartBackgroundResponse> {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...getAuthHeaders(),
     },
   });
 
@@ -25,6 +27,7 @@ export async function sendBackgroundMessage(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...getAuthHeaders(),
     },
     body: JSON.stringify({
       session_id: sessionId,
@@ -44,6 +47,7 @@ export async function startInterview(sessionId: string): Promise<StartInterviewR
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...getAuthHeaders(),
     },
     body: JSON.stringify({ session_id: sessionId }),
   });
@@ -63,6 +67,7 @@ export async function sendMessage(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...getAuthHeaders(),
     },
     body: JSON.stringify({
       session_id: sessionId,

@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from dsa_interviewer.dependencies import get_current_user
+from dsa_interviewer.models.user import User
 from pydantic import BaseModel
 import logging
 import sys
@@ -91,7 +93,8 @@ class BackgroundMessage(BaseModel):
     message: str
 
 @router.post("/start_background")
-def start_background():
+def start_background(current_user: User = Depends(get_current_user)):
+# def start_background():
     try:
         session_id = sessions.create_background_session()
         
@@ -111,7 +114,8 @@ Could you start by telling me about your educational background and current role
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/background_chat")
-def background_chat(payload: BackgroundMessage):
+def background_chat(payload: BackgroundMessage, current_user: User = Depends(get_current_user)):
+# def background_chat(payload: BackgroundMessage):
     try:
         if not sessions.session_exists(payload.session_id):
             raise HTTPException(status_code=404, detail="Session not found")
@@ -145,7 +149,8 @@ def background_chat(payload: BackgroundMessage):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/start_interview")
-def start_interview(payload: UserMessage):
+def start_interview(payload: UserMessage, current_user: User = Depends(get_current_user)):
+# def start_interview(payload: UserMessage):
     try:
         if not sessions.session_exists(payload.session_id):
             raise HTTPException(status_code=404, detail="Session not found")
@@ -178,7 +183,8 @@ def start_interview(payload: UserMessage):
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/interact")
-def interact(payload: UserMessage):
+def interact(payload: UserMessage, current_user: User = Depends(get_current_user)):
+# def interact(payload: UserMessage):
     try:
         if not sessions.session_exists(payload.session_id):
             raise HTTPException(status_code=404, detail="Session not found")

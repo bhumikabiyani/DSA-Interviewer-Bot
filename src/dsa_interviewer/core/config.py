@@ -19,6 +19,10 @@ class Settings:
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
     LOG_FILE: Optional[str] = os.getenv("LOG_FILE")
     
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "super-secret-key")
+    ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://user:password@localhost/dbname")
     REDIS_URL: Optional[str] = os.getenv("REDIS_URL")
     CACHE_TTL: int = int(os.getenv("CACHE_TTL", "3600"))
     

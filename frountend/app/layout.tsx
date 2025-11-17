@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { AuthGuard } from "@/components/AuthGuard";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "AI Mock DSA Interviewer",
@@ -19,7 +20,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          {children}
+          <AuthGuard>{children}</AuthGuard>
         </ThemeProvider>
       </body>
     </html>
