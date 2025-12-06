@@ -96,7 +96,7 @@ class BackgroundMessage(BaseModel):
 def start_background(current_user: User = Depends(get_current_user)):
 # def start_background():
     try:
-        session_id = sessions.create_background_session()
+        session_id = sessions.create_background_session(current_user.id)
         
         intro_msg = """Hello! Welcome to your DSA mock interview. Before we dive into the technical questions, I'd like to learn a bit about your background.
 
