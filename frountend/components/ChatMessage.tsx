@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Message } from "@/lib/types";
 
 interface ChatMessageProps {
@@ -8,6 +9,30 @@ interface ChatMessageProps {
 
 export function ChatMessage({ message }: ChatMessageProps) {
   const isInterviewer = message.role === "interviewer";
+
+  // Speak interviewer messages using Chrome TTS
+  useEffect(() => {
+    if (!isInterviewer) return; // Only speak interviewer messages
+    if (!window.speechSynthesis) return; // Safety: not supported
+
+    const utter = new SpeechSynthesisUtterance(message.content);
+    utter.rate = 1;   // speaking speed
+    utter.pitch = 1;  // normal pitch
+    utter.volume = 1; // full volume
+
+    // optional: pick an English voice
+    const voices = window.speechSynthesis.getVoices();
+    const voice =
+      voices.find(v => v.lang.startsWith("en") && v.name.includes("Female")) ||
+      voices.find(v => v.lang.startsWith("en")) ||
+      voices[0];
+
+    if (voice) utter.voice = voice;
+
+    // Stop previous speech, then speak
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }, [message.content, isInterviewer]);
 
   return (
     <div
