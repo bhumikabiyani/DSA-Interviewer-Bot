@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { register } from "@/lib/auth";
 export function RegisterForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export function RegisterForm() {
       // TODO: Implement actual registration API call
       console.log("Registering with:", { username, email, password });
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await register({ username, email, password });
       
       // On successful registration, redirect to login or home
       router.push("/login"); 
