@@ -39,3 +39,15 @@ body {
 .dark .chat-container::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+.gutter {
+  background-color: #ccc;
+  background-clip: padding-box;
+}
+
+.gutter:hover {
+  background-color: #999;
+}
+
+.gutter.gutter-horizontal {
+  cursor: col-resize;
+}

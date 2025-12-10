@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-split-pane": "^0.1.10",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-split": "^2.0.14",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

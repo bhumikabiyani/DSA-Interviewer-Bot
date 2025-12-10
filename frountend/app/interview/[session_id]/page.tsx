@@ -1,5 +1,5 @@
 "use client";
-
+import Split from "react-split";
 import { useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -49,7 +49,7 @@ export default function InterviewPage() {
       setInitialized(true);
     } else {
       router.push("/");
-    } 
+    }
   };
 
   const handleSendMessage = async (message: string) => {
@@ -63,7 +63,7 @@ export default function InterviewPage() {
 
     try {
       const response = await sendMessage(sessionId, message);
-      
+
       // Check if the interview should end
       if (response.command === "end") {
         // Add final message if there is one
@@ -100,34 +100,54 @@ export default function InterviewPage() {
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => router.push("/")}
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+        <div className="flex-1">
+          <Split
+            sizes={[50, 50]}
+            minSize={200}
+            gutterSize={8}
+            direction="horizontal"
+            className="flex h-full"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            {/* LEFT SIDE — CHAT */}
+            <div
+              ref={chatContainerRef}
+              className="overflow-y-auto px-4 py-4 space-y-4 border-r border-gray-300 dark:border-gray-700 h-full"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              {messages.length === 0 && !isLoading && (
+                <div className="flex items-center justify-center h-full">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    Initializing interview...
+                  </p>
+                </div>
+              )}
+
+              {messages.map((message, index) => (
+                <ChatMessage key={index} message={message} />
+              ))}
+
+              {isLoading && <LoadingIndicator />}
+            </div>
+
+            {/* RIGHT SIDE — CODE EDITOR */}
+            <div className="bg-white dark:bg-gray-800 p-4 flex flex-col h-full">
+              <textarea
+                id="code-box"
+                className="flex-1 w-full p-3 font-mono text-sm rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none"
+                placeholder="Write your solution here..."
               />
-            </svg>
-          </button>
-          <div>
-            <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Technical Interview
-            </h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              DSA Problem Solving Session
-            </p>
-          </div>
+
+              <button
+                onClick={() => {
+                  const code = (document.getElementById("code-box") as HTMLTextAreaElement).value;
+                  handleSendMessage(code);
+                }}
+                disabled={isLoading}
+                className="mt-3 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:bg-blue-400"
+              >
+                Send Code
+              </button>
+            </div>
+          </Split>
         </div>
         <ThemeToggle />
       </header>
