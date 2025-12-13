@@ -13,7 +13,16 @@ export async function startBackground(): Promise<StartBackgroundResponse> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to start background: ${response.statusText}`);
+    // add an pop to show that your Session has expired and you need to login again
+    if (response.status === 401) {
+      
+      alert("Your session has expired. Please log in again.");
+      localStorage.removeItem("access_token");
+      window.location.href = "/login";
+    }
+    else {
+      throw new Error(`Failed to start background: ${response.statusText}`);
+    }
   }
 
   return response.json();

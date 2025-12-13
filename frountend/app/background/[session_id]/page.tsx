@@ -138,7 +138,7 @@ export default function BackgroundPage() {
         </div>
         <ThemeToggle />
       </header>
-      <div className="flex-1 flex flex-row">
+      <div className="flex-1 flex flex-row overflow-hidden">
         <div
           ref={chatContainerRef}
           className="v-1/2 flex-1 overflow-y-auto px-4 py-6 space-y-4 chat-container"
