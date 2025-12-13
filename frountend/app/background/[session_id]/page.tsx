@@ -9,6 +9,11 @@ import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { useChatStore } from "@/lib/store";
 import { sendBackgroundMessage, startInterview } from "@/lib/api";
 import { CodeInputBox } from "@/components/CodeInputBox";
+import {
+  Panel,
+  PanelGroup,
+  PanelResizeHandle,
+} from "react-resizable-panels";
 
 export default function BackgroundPage() {
   const params = useParams();
@@ -138,58 +143,70 @@ export default function BackgroundPage() {
         </div>
         <ThemeToggle />
       </header>
-      <div className="flex-1 flex flex-row overflow-hidden">
-        <div
-          ref={chatContainerRef}
-          className="v-1/2 flex-1 overflow-y-auto px-4 py-6 space-y-4 chat-container"
-        >
-          {messages.length === 0 && !isLoading && (
-            <div className="flex items-center justify-center h-full">
-              <p className="text-gray-500 dark:text-gray-400">
-                Initializing background session...
-              </p>
+      <div className="flex-1 overflow-hidden">
+        <PanelGroup direction="horizontal" className="h-full">
+
+          {/* LEFT: CHAT PANEL */}
+          <Panel defaultSize={55} minSize={30}>
+            <div
+              ref={chatContainerRef}
+              className="h-full overflow-y-auto px-4 py-6 space-y-4 chat-container no-scrollbar"
+            >
+              {messages.length === 0 && !isLoading && (
+                <div className="flex items-center justify-center h-full">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    Initializing background session...
+                  </p>
+                </div>
+              )}
+
+              {messages.map((message, index) => (
+                <ChatMessage key={index} message={message} />
+              ))}
+
+              {isLoading && <LoadingIndicator />}
+
+              {transitioning && (
+                <div className="flex justify-center pt-4">
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <svg
+                      className="animate-spin h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                      />
+                    </svg>
+                    Starting technical interview...
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </Panel>
 
-          {messages.map((message, index) => (
-            <ChatMessage key={index} message={message} />
-          ))}
+          {/* RESIZE HANDLE */}
+          <PanelResizeHandle className="w-1 bg-gray-200 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-500 cursor-col-resize transition-colors" />
 
-          {isLoading && <LoadingIndicator />}
-
-          {transitioning && (
-            <div className="flex justify-center pt-4">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <svg
-                  className="animate-spin h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Starting technical interview...
-              </div>
+          {/* RIGHT: CODE PANEL */}
+          <Panel defaultSize={45} minSize={25}>
+            <div className="h-full border-l border-gray-200 dark:border-gray-700">
+              <CodeInputBox onSend={handleSendMessage} />
             </div>
-          )}
-        </div>
-        <div className="v-1/2 flex-1 border-l border-gray-200 dark:border-gray-700">
-          <CodeInputBox
-            onSend={handleSendMessage}
-          />
-        </div>
+          </Panel>
+
+        </PanelGroup>
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
