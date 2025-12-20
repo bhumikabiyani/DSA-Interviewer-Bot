@@ -9,11 +9,14 @@ import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { useChatStore } from "@/lib/store";
 import { sendBackgroundMessage, startInterview } from "@/lib/api";
 import { CodeInputBox } from "@/components/CodeInputBox";
+import { Clock, User, Code2, Bot, Sun } from 'lucide-react';
+
 import {
   Panel,
   PanelGroup,
   PanelResizeHandle,
 } from "react-resizable-panels";
+import { useTheme } from "next-themes";
 
 export default function BackgroundPage() {
   const params = useParams();
@@ -21,10 +24,20 @@ export default function BackgroundPage() {
   const sessionId = params.session_id as string;
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [showTransitionButton, setShowTransitionButton] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const { theme } = useTheme();
 
   const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion } =
     useChatStore();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setElapsedTime((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!sessionId) {
@@ -67,7 +80,7 @@ export default function BackgroundPage() {
 
     try {
       const response = await sendBackgroundMessage(sessionId, message);
-      
+
       addMessage({
         role: "interviewer",
         content: response.response,
@@ -108,49 +121,97 @@ export default function BackgroundPage() {
       setTransitioning(false);
     }
   };
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between shadow-sm">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => router.push("/")}
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
-          </button>
-          <div>
-            <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-              AI DSA Interviewer
-            </h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              Getting to know you before the technical interview
-            </p>
+    <div className="flex flex-col h-screen bg-gray">
+      <header className="p-5 border-b transition-colors dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 border-gray-700 dark:text-white">
+        <div className="mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => router.push("/")}
+                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+              </button>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-emerald-500 to-teal-500">
+                <Code2 className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold">
+                  DSA Mock Interview
+                </h1>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700
+             dark:bg-gray-800 dark:text-emerald-400 border border-gray-700">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Live Session
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            {/* Timer */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border
+                  dark:bg-gray-800 border-gray-700 transition-colors">
+              <Clock className="h-5 w-5 dark:text-gray-300" />
+              <span className="font-mono text-lg font-semibold dark:text-gray-100">
+                {formatTime(elapsedTime)}
+              </span>
+            </div>
+
+            {/* User */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border
+                  dark:bg-gray-800 border-gray-700 transition-colors">
+              <User className="h-5 w-5 dark:text-gray-300" />
+              <span className="font-medium dark:text-gray-100">
+                Candidate
+              </span>
+            </div>
+            <ThemeToggle />
           </div>
         </div>
-        <ThemeToggle />
       </header>
       <div className="flex-1 overflow-hidden">
         <PanelGroup direction="horizontal" className="h-full">
 
           {/* LEFT: CHAT PANEL */}
           <Panel defaultSize={55} minSize={30}>
+            <div className="p-5 backdrop-blur-sm border-b shadow-sm transition-colors dark:bg-gray-900/80 border-gray-800">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-gradient-to-br from-emerald-600 to-teal-600" >
+                  <Bot className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h2 className="font-semibold dark:text-white">
+                    AI Interviewer
+                  </h2>
+                  <p className="text-sm text-emerald-400">
+                    Online • Ready to help
+                  </p>
+                </div>
+              </div>
+            </div>
             <div
               ref={chatContainerRef}
-              className="h-full overflow-y-auto px-4 py-6 space-y-4 chat-container no-scrollbar"
+              className="h-[90%] overflow-y-auto px-4 py-6 space-y-4 chat-container no-scrollbar dark:bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"
             >
               {messages.length === 0 && !isLoading && (
                 <div className="flex items-center justify-center h-full">
