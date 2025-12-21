@@ -7,9 +7,10 @@ import { speakInterviewerText } from "@/lib/api";
 
 interface ChatMessageProps {
   message: Message;
+  isLast?: boolean;
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
   const isInterviewer = message.role === "interviewer";
   const isCandidate = message.role === "candidate";
 
@@ -17,7 +18,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (!isInterviewer) return;
+    if (!isInterviewer || !isLast) return;
 
     let cancelled = false;
 
@@ -49,7 +50,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
         audioRef.current = null;
       }
     };
-  }, [message.message, isInterviewer]);
+  }, [message.message, isInterviewer, isLast]);
 
   return (
 

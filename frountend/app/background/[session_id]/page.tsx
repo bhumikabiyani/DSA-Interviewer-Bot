@@ -249,7 +249,11 @@ export default function BackgroundPage() {
                 )}
 
                 {messages.map((message, index) => (
-                  <ChatMessage key={index} message={message} />
+                  <ChatMessage 
+                    key={index} 
+                    message={message} 
+                    isLast={index === messages.length - 1}
+                  />
                 ))}
 
                 {isLoading && <LoadingIndicator />}
