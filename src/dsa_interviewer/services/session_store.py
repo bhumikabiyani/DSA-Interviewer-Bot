@@ -125,8 +125,19 @@ class SessionStore:
 
     def get_history(self, session_id: str) -> Dict:
         if session_id not in self.sessions:
-            logger.error(f"Session {session_id} not found")
-            raise KeyError(f"Session {session_id} not found")
+            db = SessionLocal()
+            interview = db.query(Interview).filter(Interview.session_id == session_id).one_or_none()
+            if interview:
+                self.sessions[session_id] = {
+                    "question": None,
+                    "history": json.loads(interview.interview_data),
+                    "phase": "unknown",
+                }
+                logger.info(f"Loaded session {session_id} from DB")
+            else:
+                logger.error(f"Session {session_id} not found")
+                raise KeyError(f"Session {session_id} not found")
+            db.close()
         return self.sessions[session_id]
 
     def session_exists(self, session_id: str) -> bool:

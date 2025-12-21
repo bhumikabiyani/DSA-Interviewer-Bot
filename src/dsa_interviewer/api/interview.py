@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from dsa_interviewer.dependencies import get_current_user
 from dsa_interviewer.core.database import get_db
@@ -18,15 +19,20 @@ from dsa_interviewer.services.session_store import SessionStore
 from question_selector import pick_random_question
 from math import ceil
 from sqlalchemy.orm import Session
+from dsa_interviewer.core.config import settings
 
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+
 polly = boto3.client(
     "polly",
-    region_name="us-east-1"  # or ap-south-1 later
+    region_name=settings.AWS_REGION,
+    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
 )
+
 rag = RagService()
 llm = GroqLLM()
 sessions = SessionStore()
@@ -127,14 +133,9 @@ Could you start by telling me about your educational background and current role
 def background_chat(payload: BackgroundMessage, current_user: User = Depends(get_current_user)):
 # def background_chat(payload: BackgroundMessage):
     try:
-        if not sessions.session_exists(payload.session_id):
-            raise HTTPException(status_code=404, detail="Session not found")
-        
+
         session = sessions.get_history(payload.session_id)
-        
-        if session.get("phase") != "background":
-            raise HTTPException(status_code=400, detail="Session is not in background phase")
-        
+
         user_message = payload.message.strip()
         history = session["history"]
         
@@ -158,112 +159,16 @@ def background_chat(payload: BackgroundMessage, current_user: User = Depends(get
         logger.error(f"Error in background chat: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/start_interview")
-def start_interview(payload: UserMessage):
-# def start_interview(payload: UserMessage):
+@router.post("/resume_interview/{session_id}")
+def resume_interview(session_id: str, current_user: User = Depends(get_current_user)):
+# def resume_interview(session_id: str):
     try:
-        if not sessions.session_exists(payload.session_id):
-            raise HTTPException(status_code=404, detail="Session not found")
-        
-        session = sessions.get_history(payload.session_id)
-        
-        if session.get("phase") != "background":
-            raise HTTPException(status_code=400, detail="Must complete background phase first")
-        
-        q_path, question_text = pick_random_question()
-        
-        if not question_text:
-            raise HTTPException(status_code=500, detail="No questions available in knowledge base")
-        
-        sessions.transition_to_interview(payload.session_id, question_text)
-
-        intro_msg = INTERVIEWER_INTRODUCTION + "\nAre you ready to begin?"
-        sessions.add_message(payload.session_id, "interviewer", intro_msg)
-
-        logger.info(f"Transitioned session {payload.session_id} to interview with question from {q_path}")
-        return {
-            "session_id": payload.session_id,
-            "intro": intro_msg
-        }
-
-    except HTTPException:
-        raise
+        interview = sessions.get_history(session_id)
+        return interview["history"]
     except Exception as e:
-        logger.error(f"Error starting interview: {e}")
+        logger.error(f"Error resuming interview for session {session_id}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-
-@router.post("/interact")
-def interact(payload: UserMessage, current_user: User = Depends(get_current_user)):
-    try:
-        if not sessions.session_exists(payload.session_id):
-            raise HTTPException(status_code=404, detail="Session not found")
-        
-        session = sessions.get_history(payload.session_id)
-        question = session["question"]
-        phase = session["phase"]
-        user_message = payload.message.strip()
-
-        # END keyword
-        if user_message.lower() == "babi":
-            sessions.delete_session(payload.session_id)
-            return {"response": "Thanks for the Interview Babi!", "command": "end"}
-
-        # ──────────────── PHASE 1 → INTRO ────────────────
-        if phase == "introduction":
-            # send the actual DSA question
-            rag_context = rag.retrieve(question)
-            context_str = "\n".join(rag_context) if rag_context else ""
-
-            question_prompt = f"""
-                    Here is your interview question:
-
-                    {question}
-
-                    Before we begin, could you walk me through your initial understanding of the problem?
-
-                    Relevant Context:
-                    {context_str} """
-
-            sessions.add_message(payload.session_id, "candidate", user_message)
-            sessions.add_message(payload.session_id, "interviewer", question_prompt)
-
-            # move to interview phase
-            session["phase"] = "interview"
-
-            return {"response": question_prompt}
-
-        # ──────────────── PHASE 2 → NORMAL INTERVIEW ────────────────
-        history = session["history"]
-        rag_context = rag.retrieve(question + "\n" + user_message)
-        context_str = "\n".join(rag_context) if rag_context else ""
-
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "system", "content": f"Interview Question: {question}"},
-        ]
-
-        # add full history
-        for turn in history:
-            role = "user" if turn["role"] == "candidate" else "assistant"
-            messages.append({"role": role, "content": turn["message"]})
-
-        # new user message
-        messages.append({"role": "user", "content": user_message})
-
-        # rag grounding
-        messages.append({"role": "system", "content": f"Relevant Context:\n{context_str}"})
-
-        reply = llm.chat(messages)
-
-        sessions.add_message(payload.session_id, "candidate", user_message)
-        sessions.add_message(payload.session_id, "interviewer", reply)
-
-        return {"response": reply}
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Error in interaction: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+            
 
 @router.post("/tts")
 def text_to_speech(

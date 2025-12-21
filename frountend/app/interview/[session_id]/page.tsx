@@ -43,7 +43,7 @@ export default function InterviewPage() {
     if (initialQuestion) {
       addMessage({
         role: "interviewer",
-        content: initialQuestion,
+        message: initialQuestion,
         timestamp: new Date(),
       });
       setInitialized(true);
@@ -55,7 +55,7 @@ export default function InterviewPage() {
   const handleSendMessage = async (message: string) => {
     addMessage({
       role: "candidate",
-      content: message,
+      message: message,
       timestamp: new Date(),
     });
 
@@ -70,7 +70,7 @@ export default function InterviewPage() {
         if (response.response) {
           addMessage({
             role: "interviewer",
-            content: response.response,
+            message: response.response,
             timestamp: new Date(),
           });
         }
@@ -82,14 +82,14 @@ export default function InterviewPage() {
         // Normal message flow
         addMessage({
           role: "interviewer",
-          content: response.response,
+          message: response.response,
           timestamp: new Date(),
         });
       }
     } catch (error) {
       addMessage({
         role: "interviewer",
-        content: "Sorry, I encountered an error. Please try again.",
+        message: "Sorry, I encountered an error. Please try again.",
         timestamp: new Date(),
       });
     } finally {

@@ -7,7 +7,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
 import { useChatStore } from "@/lib/store";
-import { sendBackgroundMessage, startInterview } from "@/lib/api";
+import { getBackgroundMessages, sendBackgroundMessage, startInterview } from "@/lib/api";
 import { CodeInputBox } from "@/components/CodeInputBox";
 import { Clock, User, Code2, Bot, Sun } from 'lucide-react';
 
@@ -31,7 +31,28 @@ export default function BackgroundPage() {
   const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion } =
     useChatStore();
 
+  const setHistory = async () => {
+    try {
+      let history = await getBackgroundMessages(sessionId);
+      console.log("History:", history);
+      history.forEach((msg) => {
+        addMessage({
+          role: msg.role,
+          message: msg.message,
+          timestamp: msg.timestamp ? new Date(msg.timestamp) : new Date(),
+        });
+      });
+    } catch (error) {
+      if((error as Error).message === "Unauthorized") {
+        console.error("Session expired. Redirecting to home.");
+        router.push("/");
+      } else {
+        console.error("Failed to fetch background messages:", error);
+      }
+    }
+  }
   useEffect(() => {
+    setHistory();
     const interval = setInterval(() => {
       setElapsedTime((prev) => prev + 1);
     }, 1000);
@@ -48,7 +69,7 @@ export default function BackgroundPage() {
     if (!initialized && initialQuestion) {
       addMessage({
         role: "interviewer",
-        content: initialQuestion,
+        message: initialQuestion,
         timestamp: new Date(),
       });
       setInitialized(true);
@@ -72,7 +93,7 @@ export default function BackgroundPage() {
   const handleSendMessage = async (message: string) => {
     addMessage({
       role: "candidate",
-      content: message,
+      message: message,
       timestamp: new Date(),
     });
 
@@ -83,13 +104,13 @@ export default function BackgroundPage() {
 
       addMessage({
         role: "interviewer",
-        content: response.response,
+        message: response.response,
         timestamp: new Date(),
       });
     } catch (error) {
       addMessage({
         role: "interviewer",
-        content: "Sorry, I encountered an error. Please try again.",
+        message: "Sorry, I encountered an error. Please try again.",
         timestamp: new Date(),
       });
     } finally {
@@ -105,7 +126,7 @@ export default function BackgroundPage() {
 
       addMessage({
         role: "interviewer",
-        content: response.intro,
+        message: response.intro,
         timestamp: new Date(),
       });
 
@@ -115,7 +136,7 @@ export default function BackgroundPage() {
     } catch (error) {
       addMessage({
         role: "interviewer",
-        content: "Sorry, I couldn't start the interview. Please try again.",
+        message: "Sorry, I couldn't start the interview. Please try again.",
         timestamp: new Date(),
       });
       setTransitioning(false);

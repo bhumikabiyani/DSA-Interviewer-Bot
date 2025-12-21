@@ -15,7 +15,6 @@ export default function Home() {
     reset();
     try {
       const response = await startBackground();
-      setInitialQuestion(response.message);
       router.push(`/background/${response.session_id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to start background session");

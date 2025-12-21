@@ -28,3 +28,4 @@ python-jose[cryptography]==3.3.0
 argon2_cffi
 email-validator
 python-multipart
+boto3

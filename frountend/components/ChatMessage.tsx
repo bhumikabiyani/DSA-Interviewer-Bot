@@ -29,7 +29,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
           audioRef.current = null;
         }
 
-        const audio = await speakInterviewerText(message.content);
+        const audio = await speakInterviewerText(message.message);
 
         if (cancelled) return;
 
@@ -49,7 +49,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
         audioRef.current = null;
       }
     };
-  }, [message.content, isInterviewer]);
+  }, [message.message, isInterviewer]);
 
   return (
 
@@ -72,10 +72,10 @@ export function ChatMessage({ message }: ChatMessageProps) {
             : 'bg-gray-800 border border-gray-700 text-gray-100 rounded-tl-sm'
             }`}
         >
-          <p className="text-sm leading-relaxed">{message.content}</p>
+          <p className="text-sm leading-relaxed">{message.message}</p>
         </div>
         <span className={`text-xs mt-1 px-2 ${isCandidate ? 'text-blue-400' : 'text-gray-500'}`}>
-          {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          {message.timestamp?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </span>
       </div>
     </div>

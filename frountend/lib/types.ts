@@ -1,7 +1,7 @@
 export interface Message {
   role: "interviewer" | "candidate";
-  content: string;
-  timestamp: Date;
+  message: string;
+  timestamp?: Date;
 }
 
 export interface StartBackgroundResponse {

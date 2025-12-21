@@ -1,4 +1,4 @@
-import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse } from "./types";
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, Message } from "./types";
 import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -22,6 +22,28 @@ export async function startBackground(): Promise<StartBackgroundResponse> {
     }
     else {
       throw new Error(`Failed to start background: ${response.statusText}`);
+    }
+  }
+
+  return response.json();
+}
+
+export async function getBackgroundMessages(sessionId: string): Promise<Message[]> {
+  const response = await fetch(`${API_BASE_URL}/api/resume_interview/${sessionId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    }
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      alert("Your session has expired. Please log in again.");
+      localStorage.removeItem("access_token");
+      window.location.href = "/login";
+    } else {
+      throw new Error(`Failed to get background messages: ${response.statusText}`);
     }
   }
 
