@@ -1,5 +1,6 @@
 "use client";
 
+import { Mic, Send } from "lucide-react";
 import { useState, KeyboardEvent, useEffect } from "react";
 
 interface ChatInputProps {
@@ -75,20 +76,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 
   return (
     <div className="flex gap-2 items-end max-w-4xl mx-auto">
-      <textarea
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={handleKeyPress}
-        disabled={disabled}
-        placeholder={disabled ? "Waiting for response..." : "Type your answer..."}
-        className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 min-h-[52px] max-h-32"
-        rows={1}
-        onInput={(e) => {
-          const target = e.target as HTMLTextAreaElement;
-          target.style.height = "auto";
-          target.style.height = Math.min(target.scrollHeight, 128) + "px";
-        }}
-      />
 
       {/* Mic Button */}
       <button
@@ -99,50 +86,64 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         onMouseLeave={isRecording ? stopListening : undefined}
         onTouchStart={startListening}
         onTouchEnd={stopListening}
-        className={`p-3 rounded-full transition 
-          ${
-            isRecording
-              ? "bg-red-500 text-white animate-pulse"
-              : "bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500"
+        className={`
+          inline-flex items-center justify-center
+          h-12 w-12 rounded-md
+          text-white
+          shadow-md
+          transition-all duration-200
+          hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-emerald-500/40
+          disabled:cursor-not-allowed
+          ${isRecording ? "animate-pulse bg-red-500 hover:bg-red-600 from-red-500 to-red-600" : "bg-gradient-to-r from-emerald-600 to-teal-600"}
+          `}
+      >
+        {/* className={`p-3 rounded-full transition 
+          ${isRecording
+            ? "bg-red-500 text-white animate-pulse"
+            : "bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500"
           }
           disabled:opacity-50 disabled:cursor-not-allowed`}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12 14a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3z" />
-          <path d="M19 11a1 1 0 10-2 0 5 5 0 11-10 0 1 1 0 10-2 0 7 7 0 0011 5.91V21h-4a1 1 0 100 2h6a1 1 0 100-2h-2v-4.09A7 7 0 0019 11z" />
-        </svg>
+      > */}
+        <Mic className="h-5 w-5" />
       </button>
+      <input
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder={disabled ? "Waiting for response..." : "Type your answer..."}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+          }
+        }}
+        data-slot="input"
+        className="
+          file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
+          focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]
+          aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive
+          flex-1 h-12 py-2 transition-colors dark:bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-emerald-500 focus:ring-emerald-500/20"
+      />
 
       {/* Send Button */}
       <button
         onClick={handleSend}
         disabled={disabled || !message.trim()}
-        className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 
-          dark:disabled:bg-gray-600 text-white font-medium rounded-lg transition-all 
-          duration-200 disabled:cursor-not-allowed shadow-sm hover:shadow-md 
-          disabled:shadow-none flex items-center gap-2"
+        className="
+          inline-flex items-center justify-center
+          h-12 w-12 rounded-md
+          bg-gradient-to-r from-emerald-600 to-teal-600
+          text-white
+          shadow-md
+          transition-all duration-200
+          hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-emerald-500/40
+          disabled:cursor-not-allowed
+          "
       >
-        <span>Send</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-          />
-        </svg>
+        <Send className="h-5 w-5" />
       </button>
+
     </div>
   );
 }

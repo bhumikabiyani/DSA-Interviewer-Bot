@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import { useTheme } from "next-themes";
-import { Code, RotateCcw } from "lucide-react";
+import { Code, RotateCcw, Send } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 interface CodeInputBoxProps {
@@ -24,7 +24,6 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
   const handleSend = () => {
     if (!code.trim()) return;
     onSend(code, language);
-    setCode("");
   };
   const handleReset = () => {
     setCode(languageTemplates[language]);
@@ -53,13 +52,12 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
           <Select value={language} onValueChange={handleLanguageChange}>
             {/* Trigger */}
             <SelectTrigger
-              className={`
-      w-[160px] transition-colors
-      ${theme === "dark"
+              className={`w-[160px] transition-colors
+                ${theme === "dark"
                   ? "bg-gray-800 border-gray-700 text-white data-[state=open]:bg-gray-700"
                   : "bg-white border-gray-300 text-gray-900 data-[state=open]:bg-gray-50"
                 }
-    `}
+              `}
             >
               <SelectValue placeholder="Language" />
             </SelectTrigger>
@@ -67,21 +65,21 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
             {/* Dropdown */}
             <SelectContent
               className={`
-      ${theme === "dark"
+                ${theme === "dark"
                   ? "bg-gray-800 border-gray-700 text-white"
                   : "bg-white border-gray-200 text-gray-900"
                 }
-    `}
+              `}
             >
               {/* JavaScript */}
               <SelectItem
                 value="javascript"
                 className={`
-        ${theme === "dark"
+                  ${theme === "dark"
                     ? "data-[highlighted]:bg-gray-700 data-[highlighted]:text-white"
                     : "data-[highlighted]:bg-gray-100 data-[highlighted]:text-gray-900"
                   }
-      `}
+                `}
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500" />
@@ -93,11 +91,11 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
               <SelectItem
                 value="python"
                 className={`
-        ${theme === "dark"
+                  ${theme === "dark"
                     ? "data-[highlighted]:bg-gray-700 data-[highlighted]:text-white"
                     : "data-[highlighted]:bg-gray-100 data-[highlighted]:text-gray-900"
                   }
-      `}
+                `}
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500" />
@@ -109,11 +107,11 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
               <SelectItem
                 value="java"
                 className={`
-        ${theme === "dark"
+                  ${theme === "dark"
                     ? "data-[highlighted]:bg-gray-700 data-[highlighted]:text-white"
                     : "data-[highlighted]:bg-gray-100 data-[highlighted]:text-gray-900"
                   }
-      `}
+                `}
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500" />
@@ -125,11 +123,11 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
               <SelectItem
                 value="cpp"
                 className={`
-        ${theme === "dark"
+                  ${theme === "dark"
                     ? "data-[highlighted]:bg-gray-700 data-[highlighted]:text-white"
                     : "data-[highlighted]:bg-gray-100 data-[highlighted]:text-gray-900"
                   }
-      `}
+                `}
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
@@ -143,7 +141,7 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
             onClick={handleReset}
             className="
               inline-flex items-center gap-2
-              h-8 px-3 rounded-md
+              h-9 px-3 rounded-md
               border border-gray-700
               dark:bg-gray-800 dark:text-white
               text-sm font-medium
@@ -155,6 +153,24 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
           >
             <RotateCcw className="h-4 w-4" />
             Reset
+          </button>
+          <button
+            onClick={handleSend}
+            disabled={disabled}
+            className="
+              inline-flex items-center gap-2
+              h-9 px-3 rounded-md
+              border border-gray-700
+              dark:bg-gray-800 dark:text-white
+              text-sm font-medium
+              transition-all
+              hover:bg-gray-700
+              disabled:pointer-events-none disabled:opacity-50
+              focus:outline-none focus:ring-2 focus:ring-emerald-500
+            "
+          >
+            <Send className="h-4 w-4" />
+            Send Code
           </button>
         </div>
 
@@ -177,15 +193,7 @@ export function CodeInputBox({ onSend, disabled }: CodeInputBoxProps) {
       </div>
 
       {/* BUTTONS */}
-      <div className="p-3 border-t border-gray-700 bg-gray-800 flex gap-2">
-
-        <button
-          onClick={handleSend}
-          disabled={disabled}
-          className="w-full py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium"
-        >
-          Add to Chat
-        </button>
+              <div className="h-20 backdrop-blur-sm border-t transition-colors dark:bg-gray-900/80 border-gray-500 elevation-5">
       </div>
     </div>
   );

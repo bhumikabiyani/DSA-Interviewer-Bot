@@ -209,51 +209,56 @@ export default function BackgroundPage() {
                 </div>
               </div>
             </div>
-            <div
-              ref={chatContainerRef}
-              className="h-[90%] overflow-y-auto px-4 py-6 space-y-4 chat-container no-scrollbar dark:bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"
-            >
-              {messages.length === 0 && !isLoading && (
-                <div className="flex items-center justify-center h-full">
-                  <p className="text-gray-500 dark:text-gray-400">
-                    Initializing background session...
-                  </p>
-                </div>
-              )}
-
-              {messages.map((message, index) => (
-                <ChatMessage key={index} message={message} />
-              ))}
-
-              {isLoading && <LoadingIndicator />}
-
-              {transitioning && (
-                <div className="flex justify-center pt-4">
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                    <svg
-                      className="animate-spin h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                      />
-                    </svg>
-                    Starting technical interview...
+            <div className="h-full flex flex-col border-t border-gray-200 dark:border-gray-700">
+              <div
+                ref={chatContainerRef}
+                className="h-[80%] overflow-y-auto px-4 pt-6 space-y-4 chat-container no-scrollbar dark:bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"
+              >
+                {messages.length === 0 && !isLoading && (
+                  <div className="flex items-center justify-center h-full">
+                    <p className="text-gray-500 dark:text-gray-400">
+                      Initializing background session...
+                    </p>
                   </div>
-                </div>
-              )}
+                )}
+
+                {messages.map((message, index) => (
+                  <ChatMessage key={index} message={message} />
+                ))}
+
+                {isLoading && <LoadingIndicator />}
+
+                {transitioning && (
+                  <div className="flex justify-center pt-4">
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <svg
+                        className="animate-spin h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                        />
+                      </svg>
+                      Starting technical interview...
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="p-4 backdrop-blur-sm border-t transition-colors dark:bg-gray-900/80 border-gray-800">
+                <ChatInput onSend={handleSendMessage} disabled={isLoading || transitioning} />
+              </div>
             </div>
           </Panel>
 
@@ -270,9 +275,6 @@ export default function BackgroundPage() {
         </PanelGroup>
       </div>
 
-      <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
-        <ChatInput onSend={handleSendMessage} disabled={isLoading || transitioning} />
-      </div>
     </div>
   );
 }
