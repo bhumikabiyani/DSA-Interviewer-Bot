@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-polly": "^3.956.0",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-select": "^2.2.6",
     "@types/react-split-pane": "^0.1.10",

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Message } from "@/lib/types";
 import { Bot, User } from "lucide-react";
+import { speakInterviewerText } from "@/lib/api";
 
 interface ChatMessageProps {
   message: Message;
@@ -12,28 +13,42 @@ export function ChatMessage({ message }: ChatMessageProps) {
   const isInterviewer = message.role === "interviewer";
   const isCandidate = message.role === "candidate";
 
-  // Speak interviewer messages using Chrome TTS
+  // Keep reference to currently playing audio
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   useEffect(() => {
-    if (!isInterviewer) return; // Only speak interviewer messages
-    if (!window.speechSynthesis) return; // Safety: not supported
+    if (!isInterviewer) return;
 
-    const utter = new SpeechSynthesisUtterance(message.content);
-    utter.rate = 1;   // speaking speed
-    utter.pitch = 1;  // normal pitch
-    utter.volume = 1; // full volume
+    let cancelled = false;
 
-    // optional: pick an English voice
-    const voices = window.speechSynthesis.getVoices();
-    const voice =
-      voices.find(v => v.lang.startsWith("en") && v.name.includes("Female")) ||
-      voices.find(v => v.lang.startsWith("en")) ||
-      voices[0];
+    async function playVoice() {
+      try {
+        // Stop any previous audio
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current = null;
+        }
 
-    if (voice) utter.voice = voice;
+        const audio = await speakInterviewerText(message.content);
 
-    // Stop previous speech, then speak
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utter);
+        if (cancelled) return;
+
+        audioRef.current = audio;
+        await audio.play();
+      } catch (err) {
+        console.error("Interviewer TTS failed:", err);
+      }
+    }
+
+    playVoice();
+
+    return () => {
+      cancelled = true;
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, [message.content, isInterviewer]);
 
   return (

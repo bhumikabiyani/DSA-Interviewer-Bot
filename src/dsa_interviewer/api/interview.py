@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import logging
 import sys
 from pathlib import Path
+import boto3
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent / "scripts"))
 
@@ -12,10 +13,16 @@ from dsa_interviewer.services.rag_service import RagService
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
 from question_selector import pick_random_question
+from fastapi.responses import StreamingResponse
+
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
+polly = boto3.client(
+    "polly",
+    region_name="us-east-1"  # or ap-south-1 later
+)
 rag = RagService()
 llm = GroqLLM()
 sessions = SessionStore()
@@ -78,11 +85,7 @@ Be warm, encouraging, and professional.
 Once you have enough background,  ask if they're ready to proceed to the technical questions.
 """
 
-INTERVIEWER_INTRODUCTION = """Hello! I'm your DSA mock interviewer today. I'll be guiding you through a coding problem and asking follow-up questions to understand your thought process.
-
-Feel free to think out loud, ask clarifying questions, and discuss your approach before coding. Let's begin!
-
-"""
+INTERVIEWER_INTRODUCTION = """Hello! """
 
 class UserMessage(BaseModel):
     session_id: str
@@ -91,6 +94,9 @@ class UserMessage(BaseModel):
 class BackgroundMessage(BaseModel):
     session_id: str
     message: str
+
+class TTSRequest(BaseModel):
+    text: str
 
 @router.post("/start_background")
 def start_background(current_user: User = Depends(get_current_user)):
@@ -256,3 +262,30 @@ def interact(payload: UserMessage, current_user: User = Depends(get_current_user
         logger.error(f"Error in interaction: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.post("/tts")
+def text_to_speech(
+    payload: TTSRequest,
+    current_user: User = Depends(get_current_user)
+):
+    try:
+        response = polly.synthesize_speech(
+            Text=payload.text,
+            OutputFormat="mp3",
+            VoiceId="Kajal",
+            Engine="neural",
+            LanguageCode="en-IN",
+        )
+
+        audio_stream = response.get("AudioStream")
+
+        if audio_stream is None:
+            raise HTTPException(status_code=500, detail="No audio stream returned")
+
+        return StreamingResponse(
+            audio_stream,
+            media_type="audio/mpeg"
+        )
+
+    except Exception as e:
+        logger.error(f"TTS error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))

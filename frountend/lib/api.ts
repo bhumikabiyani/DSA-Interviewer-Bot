@@ -90,3 +90,23 @@ export async function sendMessage(
 
   return response.json();
 }
+
+export async function speakInterviewerText(text: string): Promise<HTMLAudioElement> {
+  const response = await fetch(`${API_BASE_URL}/api/tts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify({ text }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to generate speech");
+  }
+
+  const audioBlob = await response.blob();
+  const audioUrl = URL.createObjectURL(audioBlob);
+
+  return new Audio(audioUrl);
+}
