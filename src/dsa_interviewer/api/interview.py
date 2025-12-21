@@ -1,6 +1,9 @@
 from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.orm import Session
 from dsa_interviewer.dependencies import get_current_user
+from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
+from dsa_interviewer.models.interview import Interview
 from pydantic import BaseModel
 import logging
 import sys
@@ -13,7 +16,8 @@ from dsa_interviewer.services.rag_service import RagService
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
 from question_selector import pick_random_question
-from fastapi.responses import StreamingResponse
+from math import ceil
+from sqlalchemy.orm import Session
 
 
 logger = logging.getLogger(__name__)
@@ -155,7 +159,7 @@ def background_chat(payload: BackgroundMessage, current_user: User = Depends(get
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/start_interview")
-def start_interview(payload: UserMessage, current_user: User = Depends(get_current_user)):
+def start_interview(payload: UserMessage):
 # def start_interview(payload: UserMessage):
     try:
         if not sessions.session_exists(payload.session_id):
@@ -190,7 +194,6 @@ def start_interview(payload: UserMessage, current_user: User = Depends(get_curre
 
 @router.post("/interact")
 def interact(payload: UserMessage, current_user: User = Depends(get_current_user)):
-# def interact(payload: UserMessage):
     try:
         if not sessions.session_exists(payload.session_id):
             raise HTTPException(status_code=404, detail="Session not found")
@@ -265,7 +268,6 @@ def interact(payload: UserMessage, current_user: User = Depends(get_current_user
 @router.post("/tts")
 def text_to_speech(
     payload: TTSRequest,
-    current_user: User = Depends(get_current_user)
 ):
     try:
         response = polly.synthesize_speech(
@@ -288,4 +290,66 @@ def text_to_speech(
 
     except Exception as e:
         logger.error(f"TTS error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/getInterviewSession")
+def get_interview_session(
+    page: int = 1,
+    page_size: int = 10,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    try:
+        if page < 1:
+            page = 1
+        if page_size < 1 or page_size > 50:
+            page_size = 10
+
+        base_query = (
+            db.query(Interview)
+            .filter(Interview.user_id == str(current_user.id))
+        )
+
+        total_count = base_query.count()
+
+        if total_count == 0:
+            return {
+                "interviews": [],
+                "total_count": 0,
+                "page": page,
+                "page_size": page_size,
+                "total_pages": 0,
+                "has_next": False,
+                "has_prev": False
+            }
+
+        total_pages = ceil(total_count / page_size)
+        offset = (page - 1) * page_size
+
+        interviews = (
+            base_query
+            .order_by(Interview.updated_at.desc())
+            .offset(offset)
+            .limit(page_size)
+            .all()
+        )
+
+        return {
+            "interviews": [
+                {
+                    "interview_id": i.id,
+                    "session_id": i.session_id
+                }
+                for i in interviews
+            ],
+            "total_count": total_count,
+            "page": page,
+            "page_size": page_size,
+            "total_pages": total_pages,
+            "has_next": page < total_pages,
+            "has_prev": page > 1
+        }
+
+    except Exception as e:
+        logger.error(f"Error fetching paginated interview sessions: {e}")
         raise HTTPException(status_code=500, detail=str(e))
