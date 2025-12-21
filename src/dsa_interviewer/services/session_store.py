@@ -24,32 +24,6 @@ class SessionStore:
     def __init__(self):
         self.sessions: Dict[str, Dict] = {}
 
-    def create_session(self, question: str, user_id: str) -> str:
-        session_id = str(uuid.uuid4())
-        self.sessions[session_id] = {
-            "question": question,
-            "history": [],
-            "phase": "introduction",
-        }
-
-        # Persist an Interview row (use session_id as user_id to keep mapping)
-        db = SessionLocal()
-        try:
-            interview = Interview(session_id=session_id, user_id=user_id, interview_data=json.dumps([]), metadata=None)
-            db.add(interview)
-            db.commit()
-            logger.info(f"Created session {session_id} and persisted Interview id={interview.id}")
-        except IntegrityError:
-            db.rollback()
-            logger.warning(f"Interview row for session {session_id} already exists")
-        except Exception as e:
-            db.rollback()
-            logger.error(f"Failed to create Interview row for session {session_id}: {e}")
-        finally:
-            db.close()
-
-        return session_id
-
     def create_background_session(self, user_id: str) -> str:
         session_id = str(uuid.uuid4())
         self.sessions[session_id] = {
@@ -57,12 +31,13 @@ class SessionStore:
             "history": [],
             "phase": "background",
             "background_summary": None,
+            "time_spent": 0,
         }
 
         # Persist Interview row for background session as well
         db = SessionLocal()
         try:
-            interview = Interview(session_id=session_id, user_id=user_id, interview_data=json.dumps([]), metadata=None)
+            interview = Interview(session_id=session_id, user_id=user_id, interview_data=json.dumps([]), metadata=json.dumps({"time_spent": 0}))
             db.add(interview)
             db.commit()
             logger.info(f"Created background session {session_id} and persisted Interview id={interview.id}")
@@ -86,7 +61,7 @@ class SessionStore:
         self.sessions[session_id]["phase"] = "introduction"
         logger.info(f"Transitioned session {session_id} to interview phase")
 
-    def add_message(self, session_id: str, role: str, message: str) -> None:
+    def add_message(self, user_id: int, session_id: str, role: str, message: str, message_timestamp: int, time_spent: int) -> None:
         if session_id not in self.sessions:
             logger.error(f"Session {session_id} not found")
             raise KeyError(f"Session {session_id} not found")
@@ -94,6 +69,7 @@ class SessionStore:
         self.sessions[session_id]["history"].append({
             "role": role,
             "message": message,
+            "timestamp": message_timestamp,
         })
 
         history = self.sessions[session_id]["history"]
@@ -108,12 +84,15 @@ class SessionStore:
             interview = db.query(Interview).filter(Interview.session_id == session_id).one_or_none()
             if interview:
                 interview.interview_data = json.dumps(self.sessions[session_id]["history"])
+                metadata = json.loads(interview.metadata_ or "{}")
+                metadata["time_spent"] = time_spent
+                interview.metadata_ = json.dumps(metadata)
                 db.add(interview)
                 db.commit()
                 logger.debug(f"Updated Interview (user_id={session_id}) interview_data with {len(self.sessions[session_id]['history'])} messages")
             else:
                 # If not found, create a new Interview row (defensive)
-                interview = Interview(user_id=session_id, interview_data=json.dumps(self.sessions[session_id]["history"]))
+                interview = Interview(user_id=user_id, session_id=session_id, interview_data=json.dumps(self.sessions[session_id]["history"]), metadata=json.dumps({"time_spent": time_spent}))
                 db.add(interview)
                 db.commit()
                 logger.info(f"Created Interview row for session {session_id} during add_message")
@@ -132,6 +111,8 @@ class SessionStore:
                     "question": None,
                     "history": json.loads(interview.interview_data),
                     "phase": "unknown",
+                    "background_summary": None,
+                    "time_spent": json.loads(interview.metadata_ or "{}").get("time_spent", 0),
                 }
                 logger.info(f"Loaded session {session_id} from DB")
             else:

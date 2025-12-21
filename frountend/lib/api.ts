@@ -1,4 +1,4 @@
-import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, Message, RecentInterviewsResponse } from "./types";
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, ResumeInterviewResponse, RecentInterviewsResponse } from "./types";
 import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -28,7 +28,7 @@ export async function startBackground(): Promise<StartBackgroundResponse> {
   return response.json();
 }
 
-export async function getBackgroundMessages(sessionId: string): Promise<Message[]> {
+export async function getBackgroundMessages(sessionId: string): Promise<ResumeInterviewResponse> {
   const response = await fetch(`${API_BASE_URL}/api/resume_interview/${sessionId}`, {
     method: "POST",
     headers: {
@@ -52,7 +52,9 @@ export async function getBackgroundMessages(sessionId: string): Promise<Message[
 
 export async function sendBackgroundMessage(
   sessionId: string,
-  message: string
+  message: string,
+  messageTimeStamp: number,
+  timeSpent: number
 ): Promise<BackgroundChatResponse> {
   const response = await fetch(`${API_BASE_URL}/api/background_chat`, {
     method: "POST",
@@ -63,6 +65,8 @@ export async function sendBackgroundMessage(
     body: JSON.stringify({
       session_id: sessionId,
       message: message,
+      message_timestamp: messageTimeStamp,
+      time_spent: timeSpent,
     }),
   });
 

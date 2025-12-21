@@ -1,3 +1,5 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
@@ -104,6 +106,8 @@ class UserMessage(BaseModel):
 class BackgroundMessage(BaseModel):
     session_id: str
     message: str
+    message_timestamp: int
+    time_spent: int
 
 class TTSRequest(BaseModel):
     text: str
@@ -117,8 +121,8 @@ def start_background(current_user: User = Depends(get_current_user)):
         intro_msg = """Hello! Welcome to your DSA mock interview. Before we dive into the technical questions, I'd like to learn a bit about your background.
 
 Could you start by telling me about your educational background and current role?"""
-        
-        sessions.add_message(session_id, "interviewer", intro_msg)
+
+        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, time_spent=0, message_timestamp=int(datetime.utcnow().timestamp()))
         
         logger.info(f"Started background session {session_id}")
         return {
@@ -149,10 +153,10 @@ def background_chat(payload: BackgroundMessage, current_user: User = Depends(get
         
         reply = llm.chat(messages)
         
-        sessions.add_message(payload.session_id, "candidate", user_message)
-        sessions.add_message(payload.session_id, "interviewer", reply)
+        sessions.add_message(current_user.id, payload.session_id, "candidate", user_message, payload.message_timestamp, payload.time_spent)
+        sessions.add_message(current_user.id, payload.session_id, "interviewer", reply, payload.message_timestamp, payload.time_spent)
         
-        return {"response": reply}
+        return {"response": reply, "message_timestamp": payload.message_timestamp}
     except HTTPException:
         raise
     except Exception as e:
@@ -164,7 +168,7 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
 # def resume_interview(session_id: str):
     try:
         interview = sessions.get_history(session_id)
-        return interview["history"]
+        return {"history": interview["history"], "time_spent": interview["time_spent"]}
     except Exception as e:
         logger.error(f"Error resuming interview for session {session_id}: {e}")
         raise HTTPException(status_code=500, detail=str(e))

@@ -33,9 +33,9 @@ export default function BackgroundPage() {
 
   const setHistory = async () => {
     try {
-      let history = await getBackgroundMessages(sessionId);
-      console.log("History:", history);
-      history.forEach((msg) => {
+      let interview = await getBackgroundMessages(sessionId);
+      setElapsedTime(interview.time_spent);
+      interview.history.forEach((msg) => {
         addMessage({
           role: msg.role,
           message: msg.message,
@@ -105,14 +105,21 @@ export default function BackgroundPage() {
     setLoading(true);
 
     try {
-      const response = await sendBackgroundMessage(sessionId, message);
+      let messageTimeStamp = Date.now();
+      const response = await sendBackgroundMessage(sessionId, message, messageTimeStamp, elapsedTime);
 
       addMessage({
         role: "interviewer",
         message: response.response,
-        timestamp: new Date(),
+        timestamp: new Date(response.message_timestamp),
       });
     } catch (error) {
+      if ((error as Error).message === "Unauthorized") {
+        console.error("Session expired. Redirecting to home.");
+        localStorage.removeItem("access_token");
+        router.push("/login");
+        return;
+      }
       addMessage({
         role: "interviewer",
         message: "Sorry, I encountered an error. Please try again.",

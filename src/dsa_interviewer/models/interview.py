@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import JSON, Column, Integer, String, DateTime
 from datetime import datetime
 
 # Use the project's shared declarative Base to avoid multiple metadata registries
@@ -14,7 +14,7 @@ class Interview(Base):
     interview_data = Column(String, nullable=False)
     # 'metadata' is a reserved attribute name on declarative classes; use attribute
     # name 'metadata_' but keep the DB column name as 'metadata' for backward compatibility.
-    metadata_ = Column("metadata", String, nullable=True)
+    metadata_ = Column("metadata", JSON, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

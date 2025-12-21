@@ -41,7 +41,12 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
       }
     }
 
-    playVoice();
+    // Only call if the ENV ENABLE_TTS is set to true
+  
+    if (process.env.NEXT_PUBLIC_ENABLE_TTS === "true"){
+      playVoice();
+    }
+    // playVoice();
 
     return () => {
       cancelled = true;

@@ -11,6 +11,7 @@ export interface StartBackgroundResponse {
 
 export interface BackgroundChatResponse {
   response: string;
+  message_timestamp: number;
 }
 
 export interface StartInterviewResponse {
@@ -55,4 +56,9 @@ export interface RecentInterviewsResponse {
   total_pages: number;
   has_next: boolean;
   has_prev: boolean;
+}
+
+export interface ResumeInterviewResponse {
+  history: Message[];
+  time_spent: number;
 }
