@@ -41,3 +41,18 @@ export interface Token {
   access_token: string;
   token_type: string;
 }
+
+export interface Interview {
+  interview_id: number;
+  session_id: string;
+}
+
+export interface RecentInterviewsResponse {
+  interviews: Interview[];
+  total_count: number;
+  page: number;
+  page_size: number;
+  total_pages: number;
+  has_next: boolean;
+  has_prev: boolean;
+}

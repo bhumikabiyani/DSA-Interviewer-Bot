@@ -1,4 +1,4 @@
-import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, Message } from "./types";
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, Message, RecentInterviewsResponse } from "./types";
 import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -131,4 +131,26 @@ export async function speakInterviewerText(text: string): Promise<HTMLAudioEleme
   const audioUrl = URL.createObjectURL(audioBlob);
 
   return new Audio(audioUrl);
+}
+
+export async function getRecentInterviews(page: number = 1, pageSize: number = 10): Promise<RecentInterviewsResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/getInterviewSession?page=${page}&page_size=${pageSize}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      alert("Your session has expired. Please log in again.");
+      localStorage.removeItem("access_token");
+      window.location.href = "/login";
+      throw new Error("Unauthorized");
+    }
+    throw new Error(`Failed to fetch recent interviews: ${response.statusText}`);
+  }
+
+  return response.json();
 }

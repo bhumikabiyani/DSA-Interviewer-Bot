@@ -28,7 +28,7 @@ export default function BackgroundPage() {
   const [transitioning, setTransitioning] = useState(false);
   const { theme } = useTheme();
 
-  const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion } =
+  const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion, reset } =
     useChatStore();
 
   const setHistory = async () => {
@@ -89,6 +89,11 @@ export default function BackgroundPage() {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
+
+  const handleBack = () => {
+    router.push("/")
+    reset()
+  }
 
   const handleSendMessage = async (message: string) => {
     addMessage({
@@ -155,7 +160,7 @@ export default function BackgroundPage() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <button
-                onClick={() => router.push("/")}
+                onClick={handleBack}
                 className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <svg
