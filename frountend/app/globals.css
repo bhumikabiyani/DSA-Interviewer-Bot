@@ -59,3 +59,8 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;                /* Chrome, Safari */
 }
+
+@keyframes meshMove {
+  from { transform: rotate(30deg) translateX(0); }
+  to   { transform: rotate(30deg) translateX(200px); }
+}
