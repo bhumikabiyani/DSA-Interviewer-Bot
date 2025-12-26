@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { getAccessToken } from "@/lib/auth";
+
 interface AuthGuardProps {
   children: React.ReactNode;
 }
-const publicPaths = ["/login", "/register"];
+const publicPaths = ["/login", "/register", "/auth/callback"];
 export function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
   const pathname = usePathname();

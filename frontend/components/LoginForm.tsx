@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/lib/auth"; // Import the login function
+import { GoogleAuthButton } from "@/components/GoogleAuthButton";
 
 export function LoginForm() {
   const [username, setUsername] = useState("");
@@ -18,9 +19,8 @@ export function LoginForm() {
       console.log("Logging in with:", { username, password });
       // Simulate API call
       await login({ username, password });
-      
       // On successful login, redirect to home or dashboard
-      router.push("/"); 
+      router.push("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
@@ -63,6 +63,14 @@ export function LoginForm() {
       >
         {loading ? "Logging in..." : "Login"}
       </button>
+      <div className="flex items-center my-6 gap-3">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <span className="text-sm text-gray-400 whitespace-nowrap">
+          Or continue with
+        </span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      </div>
+      <GoogleAuthButton text="Login with Google" />
     </form>
   );
 }

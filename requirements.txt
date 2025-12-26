@@ -29,3 +29,6 @@ argon2_cffi
 email-validator
 python-multipart
 boto3
+authlib==1.3.0
+itsdangerous==2.1.2
+httpx

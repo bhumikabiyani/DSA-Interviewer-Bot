@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { register } from "@/lib/auth";
+import { GoogleAuthButton } from "@/components/GoogleAuthButton";
 export function RegisterForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -18,9 +19,8 @@ export function RegisterForm() {
       console.log("Registering with:", { username, email, password });
       // Simulate API call
       await register({ username, email, password });
-      
       // On successful registration, redirect to login or home
-      router.push("/login"); 
+      router.push("/login");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed");
     } finally {
@@ -76,6 +76,14 @@ export function RegisterForm() {
       >
         {loading ? "Registering..." : "Register"}
       </button>
+      <div className="flex items-center my-6 gap-3">
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <span className="text-sm text-gray-400 whitespace-nowrap">
+          Or continue with
+        </span>
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      </div>
+      <GoogleAuthButton text="Sign up with Google" />
     </form>
   );
 }

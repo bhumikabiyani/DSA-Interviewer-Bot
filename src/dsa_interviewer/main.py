@@ -5,7 +5,9 @@ from fastapi.responses import JSONResponse
 
 from dsa_interviewer.api.interview import router as interview_router
 from dsa_interviewer.api.auth import router as auth_router
+from dsa_interviewer.api.google_auth import router as google_auth_router
 from dsa_interviewer.core.config import settings
+from starlette.middleware.sessions import SessionMiddleware
 from dsa_interviewer.core.database import create_db_and_tables
 from dsa_interviewer.models.user import User # Import User to ensure model is registered with Base.metadata
 
@@ -24,6 +26,8 @@ app = FastAPI(
     debug=settings.DEBUG
 )
 
+app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -34,6 +38,7 @@ app.add_middleware(
 
 app.include_router(interview_router, prefix="/api", tags=["interview"])
 app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+app.include_router(google_auth_router, prefix="/api/auth/google", tags=["auth"])
 
 @app.get("/health")
 async def health_check():
