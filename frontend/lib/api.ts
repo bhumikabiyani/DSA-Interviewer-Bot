@@ -1,4 +1,4 @@
-import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, ResumeInterviewResponse, RecentInterviewsResponse } from "./types";
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, ResumeInterviewResponse, RecentInterviewsResponse, UserProfile } from "./types";
 import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -154,6 +154,28 @@ export async function getRecentInterviews(page: number = 1, pageSize: number = 1
       throw new Error("Unauthorized");
     }
     throw new Error(`Failed to fetch recent interviews: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function getUserProfile(): Promise<UserProfile> {
+  const response = await fetch(`${API_BASE_URL}/api/auth/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      alert("Your session has expired. Please log in again.");
+      localStorage.removeItem("access_token");
+      window.location.href = "/login";
+      throw new Error("Unauthorized");
+    }
+    throw new Error(`Failed to fetch profile: ${response.statusText}`);
   }
 
   return response.json();

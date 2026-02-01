@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
+from dsa_interviewer.dependencies import get_current_user
 from fastapi.security import OAuth2PasswordRequestForm
 from dsa_interviewer.models.auth import UserCreate, UserLogin, UserResponse, Token
 from dsa_interviewer.utils.security import get_password_hash, verify_password
@@ -38,3 +39,14 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db:
         )
     access_token = create_access_token(data={"sub": user.username})
     return {"access_token": access_token, "token_type": "bearer"}
+
+@router.get("/profile")
+def get_current_user_profile(current_user: User = Depends(get_current_user)):
+    """Get the current user's profile information."""
+    return {
+        "id": current_user.id,
+        "username": current_user.username,
+        "email": current_user.email,
+        "created_at": current_user.created_at.isoformat() if current_user.created_at else None,
+        "updated_at": current_user.updated_at.isoformat() if current_user.updated_at else None,
+    }

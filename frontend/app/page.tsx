@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { startBackground, getRecentInterviews } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
 import { Interview } from "@/lib/types";
-import { Clock } from "lucide-react";
+import { Clock, User } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
@@ -49,10 +49,21 @@ export default function Home() {
     router.push(`/background/${sessionId}`);
   };
 
+  const handleGoToProfile = () => {
+    router.push("/profile");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4 flex items-center gap-3">
         <ThemeToggle />
+        <button
+          onClick={handleGoToProfile}
+          className="p-2 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 shadow-md hover:shadow-lg transition-all duration-200 text-white"
+          aria-label="Go to profile"
+        >
+          <User className="h-6 w-6" />
+        </button>
       </div>
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
@@ -168,7 +179,7 @@ export default function Home() {
               </div>
               <div className="text-center mt-8">
                 <button
-                  // onClick={() => router.push("/interviews")} # TODO: Add navigation to evaluation page
+                  onClick={handleGoToProfile}
                   className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors duration-200 underline underline-offset-4 hover:underline-offset-2"
                 >
                   Show More ...

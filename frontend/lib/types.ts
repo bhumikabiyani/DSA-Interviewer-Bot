@@ -62,3 +62,11 @@ export interface ResumeInterviewResponse {
   history: Message[];
   time_spent: number;
 }
+
+export interface UserProfile {
+  id: number;
+  username: string;
+  email: string;
+  created_at: string;
+  updated_at: string;
+}
