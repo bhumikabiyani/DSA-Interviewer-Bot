@@ -8,17 +8,20 @@ from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
 from dsa_interviewer.models.interview import Interview
 from pydantic import BaseModel
+from typing import Optional, List
 import logging
 import sys
 from pathlib import Path
 import boto3
+import json
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent / "scripts"))
 
 from dsa_interviewer.services.rag_service import RagService
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
-from question_selector import pick_random_question
+from dsa_interviewer.services.evaluation import get_evaluation_service
+from question_selector import pick_random_question, pick_two_questions
 from math import ceil
 from sqlalchemy.orm import Session
 from dsa_interviewer.core.config import settings
@@ -71,15 +74,46 @@ WHAT TO FOCUS ON:
 - Ask for tradeoffs.
 - Ask follow-up questions to test depth.
 
-RULES:
 - If the candidate directly rushes to code without discussion, pause them and ask them not to rush explain the approach first optimize it and in the end we will code.
 - Never output the entire question again.
 - Ask exactly ONE follow-up question per message.
 - Use retrieved context only to enhance your hint quality, not to restate information.
 - Maintain continuity and remember important points candidate said earlier.
-- If candidate’s answer is weak, push gently: “Can you reason about X?”
-- If candidate’s answer is strong, deepen the discussion: “Nice. Now what about Y?
-- If you feel that the candidate has tried hard enough and reached a good solution then stop and ask new question”
+- If candidate's answer is weak, push gently: "Can you reason about X?"
+- If candidate's answer is strong, deepen the discussion: "Nice. Now what about Y?"
+
+INTERVIEW FLOW:
+1. When the interview starts, you'll see the candidate's background info (student/professional, org, expectations).
+2. Begin by acknowledging their background and asking for a brief verbal introduction.
+3. After their introduction, present Question 1.
+4. For each question, follow this sequence:
+   - Problem understanding
+   - Approach discussion  
+   - Code (if they provide it)
+   - Time/Space complexity analysis (REQUIRED before marking complete)
+   - Edge cases discussion
+5. Only mark [QUESTION_COMPLETE] AFTER they discuss complexity.
+
+QUESTION COMPLETION DETECTION:
+A question is COMPLETE ONLY when ALL of these are satisfied:
+1. The candidate provides working or near-working code OR a correct verbal approach
+2. The candidate has discussed time AND space complexity
+3. You have asked about edge cases
+
+CRITICAL RULES FOR marking [QUESTION_COMPLETE]:
+- NEVER include [QUESTION_COMPLETE] if you are asking the candidate a question (e.g. "What is the time complexity?", "Can you explain edge cases?").
+- NEVER include [QUESTION_COMPLETE] in the same response where you ask for complexity or optimizations.
+- ONLY include [QUESTION_COMPLETE] when the candidate has *answered* your complexity/edge-case questions and you are ready to move on.
+- If you are saying "Now let's discuss complexity", you must NOT mark completion yet. Wait for their answer.
+
+When you detect completion (and are NOT asking a new question), include the special marker [QUESTION_COMPLETE] at the END of your response.
+
+WRAP-UP MODE:
+When told we're in wrap-up mode (less than 3 minutes remaining):
+- Acknowledge the time constraint gracefully
+- Allow the candidate to finish their current thought
+- Provide a brief summary of how they did
+- Do NOT start any new questions or deep discussions
 
 """
 
@@ -94,7 +128,11 @@ Your goal is to understand the candidate's:
 
 Ask 3-5 short conversational questions to gather this information.
 Be warm, encouraging, and professional.
-Once you have enough background,  ask if they're ready to proceed to the technical questions.
+
+IMPORTANT: Once you have gathered enough background information (after 3-5 exchanges), 
+include the special marker [START_TECHNICAL] at the END of your response.
+Before the marker, say something like "Great! I have a good understanding of your background now. Let's move on to the technical questions."
+Do NOT include [START_TECHNICAL] until you've gathered sufficient background.
 """
 
 INTERVIEWER_INTRODUCTION = """Hello! """
@@ -111,6 +149,29 @@ class BackgroundMessage(BaseModel):
 
 class TTSRequest(BaseModel):
     text: str
+
+class CandidateInfo(BaseModel):
+    type: str  # 'student' or 'professional'
+    currentRole: str  # Degree for student, Position for professional
+    organization: str  # University for student, Company for professional
+    expectations: str = ""
+
+class StartInterviewWithFormRequest(BaseModel):
+    candidate_info: CandidateInfo
+
+class StartInterviewRequest(BaseModel):
+    session_id: str
+
+class InteractRequest(BaseModel):
+    session_id: str
+    message: str
+
+class InteractResponse(BaseModel):
+    response: str
+    command: str  # 'continue', 'next_question', 'wrap_up', 'end'
+    time_remaining: int
+    current_question: int
+    question_text: Optional[str] = None
 
 @router.post("/start_background")
 def start_background(current_user: User = Depends(get_current_user)):
@@ -133,6 +194,72 @@ Could you start by telling me about your educational background and current role
         logger.error(f"Error starting background session: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
+@router.post("/start_interview_with_form")
+def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user)):
+    """Start an interview directly with candidate info from form (no background chat)."""
+    try:
+        candidate = payload.candidate_info
+        
+        # Create a new session
+        session_id = sessions.create_background_session(current_user.id)
+        
+        # Store candidate metadata in session
+        sessions.set_candidate_info(session_id, {
+            "type": candidate.type,
+            "current_role": candidate.currentRole,
+            "organization": candidate.organization,
+            "expectations": candidate.expectations,
+        })
+        
+        # Pick 2 questions for this interview
+        questions = pick_two_questions()
+        
+        if not questions:
+            raise HTTPException(status_code=500, detail="No questions available")
+        
+        # Start the interview with the selected questions
+        sessions.start_interview(session_id, questions)
+        
+        # Create personalized intro message
+        role_desc = f"{candidate.currentRole} at {candidate.organization}"
+        if candidate.type == "student":
+            greeting = f"Welcome! I see you're a {role_desc}. Great to have you here for this DSA practice session."
+        else:
+            greeting = f"Welcome! I see you're working as {role_desc}. Great to have you here for this DSA practice session."
+        
+        if candidate.expectations:
+            greeting += f"\n\nI understand you're looking to: {candidate.expectations}"
+        
+        intro_msg = f"""{greeting}
+
+We'll go through 2 DSA questions today, with about 50 minutes total. I'll guide you through each problem, so take your time to think.
+
+Before we start with the first question, please give me a brief verbal introduction about yourself - your background, experience with DSA, and anything else you'd like to share."""
+        
+        timestamp = int(datetime.utcnow().timestamp())
+        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp, 0)
+        
+        # Get Q1 ready but don't send yet
+        current_q = sessions.get_current_question(session_id)
+        time_remaining = sessions.get_time_remaining(session_id)
+        
+        logger.info(f"Started interview with form for session {session_id}")
+        
+        return {
+            "session_id": session_id,
+            "intro_message": intro_msg,
+            "current_question": 1,
+            "total_questions": len(questions),
+            "time_remaining": time_remaining,
+            "phase": "intro",  # New phase: waiting for intro
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error starting interview with form: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @router.post("/background_chat")
 def background_chat(payload: BackgroundMessage, current_user: User = Depends(get_current_user)):
 # def background_chat(payload: BackgroundMessage):
@@ -153,10 +280,58 @@ def background_chat(payload: BackgroundMessage, current_user: User = Depends(get
         
         reply = llm.chat(messages)
         
+        # Check if AI wants to start technical portion
+        start_technical = "[START_TECHNICAL]" in reply
+        if start_technical:
+            reply = reply.replace("[START_TECHNICAL]", "").strip()
+        
         sessions.add_message(current_user.id, payload.session_id, "candidate", user_message, payload.message_timestamp, payload.time_spent)
         sessions.add_message(current_user.id, payload.session_id, "interviewer", reply, payload.message_timestamp, payload.time_spent)
         
-        return {"response": reply, "message_timestamp": payload.message_timestamp}
+        # If transitioning to technical, start the interview and include first question
+        if start_technical:
+            questions = pick_two_questions()
+            
+            if questions:
+                sessions.start_interview(payload.session_id, questions)
+                current_q = sessions.get_current_question(payload.session_id)
+                
+                if current_q:
+                    q_num, q_text = current_q
+                    
+                    # Create intro message with first question
+                    intro = f"""
+
+I'll be asking you 2 DSA questions today. We have about 50 minutes, so take your time to think through each problem.
+
+Here's your first question:
+
+{q_text}
+
+Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
+                    
+                    full_response = reply + intro
+                    timestamp = int(datetime.utcnow().timestamp())
+                    sessions.add_message(current_user.id, payload.session_id, "interviewer", intro, timestamp, 0)
+                    
+                    time_remaining = sessions.get_time_remaining(payload.session_id)
+                    
+                    return {
+                        "response": full_response,
+                        "message_timestamp": payload.message_timestamp,
+                        "command": "start_technical",
+                        "current_question": 1,
+                        "total_questions": len(questions),
+                        "time_remaining": time_remaining,
+                        "phase": "q1",
+                    }
+        
+        return {
+            "response": reply, 
+            "message_timestamp": payload.message_timestamp,
+            "command": "continue",
+            "phase": session["phase"],
+        }
     except HTTPException:
         raise
     except Exception as e:
@@ -168,11 +343,289 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
 # def resume_interview(session_id: str):
     try:
         interview = sessions.get_history(session_id)
-        return {"history": interview["history"], "time_spent": interview["time_spent"]}
+        state = sessions.get_session_state(session_id)
+        return {
+            "history": interview["history"], 
+            "time_spent": interview["time_spent"],
+            "phase": state["phase"],
+            "current_question": state["current_question"],
+            "time_remaining": state["time_remaining"],
+            "evaluation": interview.get("evaluation") if state["phase"] == "ended" else None,
+        }
     except Exception as e:
         logger.error(f"Error resuming interview for session {session_id}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/start_interview")
+def start_interview(payload: StartInterviewRequest, current_user: User = Depends(get_current_user)):
+    """Start the technical interview with 2 questions."""
+    try:
+        session_id = payload.session_id
+        
+        # Pick 2 questions for this interview
+        questions = pick_two_questions()
+        
+        if not questions:
+            raise HTTPException(status_code=500, detail="No questions available")
+        
+        # Start the interview with the selected questions
+        sessions.start_interview(session_id, questions)
+        
+        # Get the first question
+        current_q = sessions.get_current_question(session_id)
+        if not current_q:
+            raise HTTPException(status_code=500, detail="Failed to get question")
+        
+        q_num, q_text = current_q
+        
+        # Create introduction message
+        intro = f"""Great! Let's begin the technical portion of the interview.
+
+I'll be asking you 2 DSA questions today. We have about 50 minutes, so take your time to think through each problem.
+
+Here's your first question:
+
+{q_text}
+
+Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
+
+        # Add the intro message to history
+        timestamp = int(datetime.utcnow().timestamp())
+        sessions.add_message(current_user.id, session_id, "interviewer", intro, timestamp, 0)
+        
+        time_remaining = sessions.get_time_remaining(session_id)
+        
+        logger.info(f"Started interview for session {session_id} with {len(questions)} questions")
+        
+        return {
+            "intro": intro,
+            "current_question": 1,
+            "total_questions": len(questions),
+            "time_remaining": time_remaining,
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error starting interview: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/interact", response_model=InteractResponse)
+def interact(payload: InteractRequest, current_user: User = Depends(get_current_user)):
+    """Handle candidate messages during the technical interview."""
+    try:
+        session_id = payload.session_id
+        user_message = payload.message.strip()
+        
+        session = sessions.get_history(session_id)
+        history = session["history"]
+        phase = session["phase"]
+        
+        # Check time status
+        time_status = sessions.check_time_status(session_id)
+        time_remaining = sessions.get_time_remaining(session_id)
+        current_q = sessions.get_current_question(session_id)
+        print("CURRENT QUESTION", current_q)
+        current_question_num = current_q[0] if current_q else 2
+        
+        # Handle force end
+        if time_status == "force_end":
+            sessions.end_interview(session_id)
+            return InteractResponse(
+                response="We've reached the end of our time. Thank you for participating in this interview! You'll receive a summary of your performance shortly.",
+                command="end",
+                time_remaining=0,
+                current_question=current_question_num,
+            )
+        
+        # Handle wrap-up mode
+        if time_status == "wrap_up":
+            # Check if final response is still allowed
+            can_respond = sessions.use_final_response(session_id)
             
+            if not can_respond:
+                # No more responses allowed, end the interview
+                sessions.end_interview(session_id)
+                return InteractResponse(
+                    response="Thank you for your response. We're out of time now. Great effort on both questions! You'll receive detailed feedback shortly.",
+                    command="end",
+                    time_remaining=time_remaining,
+                    current_question=current_question_num,
+                )
+            
+            # Allow one final response with wrap-up context
+            wrap_up_context = "\n\n[SYSTEM NOTE: We have less than 3 minutes remaining. Please acknowledge time constraints and wrap up gracefully. Allow candidate to finish their current thought.]"
+            
+            messages = _build_interview_messages(history, session.get("question", ""), user_message, wrap_up_context)
+            reply = llm.chat(messages)
+            
+            timestamp = int(datetime.utcnow().timestamp())
+            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
+            sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp, 0)
+            
+            return InteractResponse(
+                response=reply,
+                command="wrap_up",
+                time_remaining=time_remaining,
+                current_question=current_question_num,
+            )
+        
+        # Handle intro phase - after candidate introduction, present Q1
+        if phase == "intro":
+            # Add candidate's intro to history
+            timestamp = int(datetime.utcnow().timestamp())
+            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
+            
+            # Transition to Q1
+            q1_text = sessions.transition_to_q1(session_id)
+            
+            intro_response = f"""Thank you for sharing that! It's great to learn more about your background.
+
+Now let's get started with the technical questions.
+
+Here's your first question:
+
+{q1_text}
+
+Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
+            
+            sessions.add_message(current_user.id, session_id, "interviewer", intro_response, timestamp, 0)
+            
+            return InteractResponse(
+                response=intro_response,
+                command="continue",
+                time_remaining=time_remaining,
+                current_question=1,
+                question_text=q1_text,
+            )
+        
+        # Handle Q1 timeout - auto-transition to Q2
+        if time_status == "q1_timeout" and phase == "q1":
+            next_question = sessions.transition_to_next_question(session_id)
+            
+            if next_question:
+                transition_msg = f"""I appreciate your effort on that question. Let's move on to the second question to make sure we cover both.
+
+Here's your next question:
+
+{next_question}
+
+Take a moment to understand it, then share your initial thoughts."""
+                
+                timestamp = int(datetime.utcnow().timestamp())
+                sessions.add_message(current_user.id, session_id, "interviewer", transition_msg, timestamp, 0)
+                
+                return InteractResponse(
+                    response=transition_msg,
+                    command="next_question",
+                    time_remaining=time_remaining,
+                    current_question=2,
+                    question_text=next_question,
+                )
+        
+        # Normal interview flow
+        messages = _build_interview_messages(history, session.get("question", ""), user_message)
+        reply = llm.chat(messages)
+        
+        # Check if AI detected question completion
+        # question_complete = "[QUESTION_COMPLETE]" in reply
+        question_complete = True
+        if question_complete:
+            reply = reply.replace("[QUESTION_COMPLETE]", "").strip()
+        
+        # Add messages to history
+        timestamp = int(datetime.utcnow().timestamp())
+        sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
+        sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp, 0)
+        
+        # Handle question transition
+        if question_complete:
+            if phase == "q1":
+                # Check if we have time for Q2
+                if time_remaining > 180:  # More than 3 minutes left
+                    next_question = sessions.transition_to_next_question(session_id)
+                    
+                    if next_question:
+                        transition_msg = f"""
+
+Excellent work on that problem! Let's move on to the second question.
+
+{next_question}
+
+What are your initial thoughts?"""
+                        
+                        full_response = reply + transition_msg
+                        sessions.add_message(current_user.id, session_id, "interviewer", transition_msg, timestamp, 0)
+                        
+                        return InteractResponse(
+                            response=full_response,
+                            command="next_question",
+                            time_remaining=time_remaining,
+                            current_question=2,
+                            question_text=next_question,
+                        )
+                else:
+                    # Not enough time for Q2
+                    sessions.end_interview(session_id)
+                    return InteractResponse(
+                        response=reply + "\n\nGreat job! We don't have enough time for another question, so we'll wrap up here. You'll receive detailed feedback shortly.",
+                        command="end",
+                        time_remaining=time_remaining,
+                        current_question=current_question_num,
+                    )
+            elif phase == "q2":
+                # Q2 complete - end interview
+                sessions.end_interview(session_id)
+                return InteractResponse(
+                    response=reply + "\n\nExcellent! You've completed both questions. Great effort! You'll receive a detailed evaluation shortly.",
+                    command="end",
+                    time_remaining=time_remaining,
+                    current_question=current_question_num,
+                )
+        
+        return InteractResponse(
+            response=reply,
+            command="continue",
+            time_remaining=time_remaining,
+            current_question=current_question_num,
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error in interact: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def _build_interview_messages(history: list, question: str, user_message: str, extra_context: str = "") -> list:
+    """Build the message list for the LLM interview."""
+    system_content = SYSTEM_PROMPT
+    if question:
+        system_content += f"\n\nCURRENT QUESTION:\n{question}"
+    if extra_context:
+        system_content += extra_context
+    
+    messages = [{"role": "system", "content": system_content}]
+    
+    for turn in history:
+        role = "user" if turn["role"] == "candidate" else "assistant"
+        messages.append({"role": role, "content": turn["message"]})
+    
+    messages.append({"role": "user", "content": user_message})
+    
+    # Use RAG to enhance context
+    try:
+        query = f"{question}\n\n{user_message}" if question else user_message
+        chunks = rag.retrieve(query, n=3)
+        if chunks:
+            context = "\n\n".join(chunks)
+            messages[0]["content"] += f"\n\n[RELEVANT CONTEXT FOR HINTS - DO NOT REVEAL DIRECTLY]:\n{context}"
+    except Exception as e:
+        logger.warning(f"RAG retrieval failed: {e}")
+    
+    return messages
+
 
 @router.post("/tts")
 def text_to_speech(
@@ -243,14 +696,25 @@ def get_interview_session(
             .all()
         )
 
+        processed_interviews = []
+        for i in interviews:
+            meta = i.metadata_
+            if isinstance(meta, str):
+                try:
+                    meta = json.loads(meta)
+                except json.JSONDecodeError:
+                    meta = {}
+            elif meta is None:
+                meta = {}
+            
+            processed_interviews.append({
+                "interview_id": i.id,
+                "session_id": i.session_id,
+                "phase": meta.get("phase", "unknown")
+            })
+
         return {
-            "interviews": [
-                {
-                    "interview_id": i.id,
-                    "session_id": i.session_id
-                }
-                for i in interviews
-            ],
+            "interviews": processed_interviews,
             "total_count": total_count,
             "page": page,
             "page_size": page_size,
@@ -262,3 +726,111 @@ def get_interview_session(
     except Exception as e:
         logger.error(f"Error fetching paginated interview sessions: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class EvaluateRequest(BaseModel):
+    session_id: str
+
+
+@router.post("/evaluate")
+def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(get_current_user)):
+    """Evaluate a completed interview and generate scores."""
+    try:
+        session_id = payload.session_id
+        session = sessions.get_history(session_id)
+        
+        # Check if already evaluated (cache hit)
+        if session.get("evaluation"):
+            logger.info(f"Returning cached evaluation for {session_id}")
+            eval_service = get_evaluation_service()
+            return {
+                "session_id": session_id,
+                "evaluation": session["evaluation"],
+                "summary": eval_service.get_score_summary(session["evaluation"])
+            }
+        
+        # Check if interview has ended
+        if session["phase"] not in ["ended", "wrap_up"]:
+            raise HTTPException(
+                status_code=400, 
+                detail="Interview must be completed before evaluation"
+            )
+        
+        history = session["history"]
+        questions = session.get("questions", [])
+        
+        # Extract question texts
+        question_texts = [q[1] for q in questions] if questions else []
+        
+        # Get time spent on each question (if available)
+        question_times = None
+        if session.get("question_start_times"):
+            start_times = session["question_start_times"]
+            interview_start = session.get("interview_start_time")
+            if interview_start and start_times[0]:
+                # Estimate times based on when questions started
+                import time
+                current = time.time()
+                times = []
+                for i, start in enumerate(start_times):
+                    if start:
+                        # Get next start time or current time
+                        next_start = start_times[i + 1] if i + 1 < len(start_times) and start_times[i + 1] else current
+                        times.append(int(next_start - start))
+                    else:
+                        times.append(0)
+                question_times = times
+        
+        # Get evaluation service and evaluate
+        eval_service = get_evaluation_service()
+        evaluation = eval_service.evaluate_interview(
+            history=history,
+            questions=question_texts,
+            question_times=question_times
+        )
+        
+        # Store evaluation in session and DB
+        sessions.save_evaluation(session_id, evaluation)
+        
+        logger.info(f"Evaluated interview {session_id}: score={evaluation.get('overall_score')}")
+        
+        return {
+            "session_id": session_id,
+            "evaluation": evaluation,
+            "summary": eval_service.get_score_summary(evaluation)
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error evaluating interview: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/evaluation/{session_id}")
+def get_evaluation(session_id: str, current_user: User = Depends(get_current_user)):
+    """Get the evaluation for a completed interview."""
+    try:
+        session = sessions.get_history(session_id)
+        
+        evaluation = session.get("evaluation")
+        if not evaluation:
+            raise HTTPException(
+                status_code=404, 
+                detail="Evaluation not found. Please call /evaluate first."
+            )
+        
+        eval_service = get_evaluation_service()
+        
+        return {
+            "session_id": session_id,
+            "evaluation": evaluation,
+            "summary": eval_service.get_score_summary(evaluation)
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting evaluation: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+

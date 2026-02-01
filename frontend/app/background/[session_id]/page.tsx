@@ -6,10 +6,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
+import { InterviewTimer } from "@/components/InterviewTimer";
 import { useChatStore } from "@/lib/store";
-import { getBackgroundMessages, sendBackgroundMessage, startInterview } from "@/lib/api";
+import { getBackgroundMessages, sendBackgroundMessage, sendMessage } from "@/lib/api";
 import { CodeInputBox } from "@/components/CodeInputBox";
-import { Clock, User, Code2, Bot, Sun } from 'lucide-react';
+import { Clock, User, Code2, Bot } from 'lucide-react';
 
 import {
   Panel,
@@ -18,23 +19,50 @@ import {
 } from "react-resizable-panels";
 import { useTheme } from "next-themes";
 
-export default function BackgroundPage() {
+export default function InterviewPage() {
   const params = useParams();
   const router = useRouter();
   const sessionId = params.session_id as string;
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  const [showTransitionButton, setShowTransitionButton] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
   const { theme } = useTheme();
 
-  const { messages, isLoading, addMessage, setLoading, initialized, setInitialized, initialQuestion, reset } =
-    useChatStore();
+  const {
+    messages,
+    isLoading,
+    addMessage,
+    setLoading,
+    initialized,
+    setInitialized,
+    initialQuestion,
+    reset,
+    currentQuestion,
+    totalQuestions,
+    timeRemaining,
+    phase,
+    setInterviewState,
+    updateTimeRemaining,
+  } = useChatStore();
 
   const setHistory = async () => {
+    if (messages.length > 0) return; // Prevent duplicate loading if already loaded
+
     try {
       let interview = await getBackgroundMessages(sessionId);
+
       setElapsedTime(interview.time_spent);
+
+      // Set phase if it was saved
+      if (interview.phase && interview.phase !== "background") {
+        setInterviewState({ phase: interview.phase as any });
+      }
+
+      // Check if we need to redirect to technical interview page
+      if (interview.phase && interview.phase !== "background" && interview.phase !== "intro") {
+        router.push(`/interview/${sessionId}`);
+        return;
+      }
+
       interview.history.forEach((msg) => {
         addMessage({
           role: msg.role,
@@ -43,22 +71,33 @@ export default function BackgroundPage() {
         });
       });
     } catch (error) {
-      if((error as Error).message === "Unauthorized") {
+      if ((error as Error).message === "Unauthorized") {
         console.error("Session expired. Redirecting to home.");
         router.push("/");
       } else {
         console.error("Failed to fetch background messages:", error);
       }
     }
-  }
+  };
+
+  const fetchingRef = useRef(false);
+
   useEffect(() => {
-    setHistory();
+    if (!fetchingRef.current) {
+      fetchingRef.current = true;
+      setHistory();
+    }
+  }, [sessionId]); // Only run on mount/session change
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      setElapsedTime((prev) => prev + 1);
+      if (phase === "background") {
+        setElapsedTime((prev) => prev + 1);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [phase]);
 
   useEffect(() => {
     if (!sessionId) {
@@ -78,10 +117,6 @@ export default function BackgroundPage() {
 
   useEffect(() => {
     scrollToBottom();
-
-    if (messages.length >= 6) {
-      setShowTransitionButton(true);
-    }
   }, [messages]);
 
   const scrollToBottom = () => {
@@ -91,9 +126,9 @@ export default function BackgroundPage() {
   };
 
   const handleBack = () => {
-    router.push("/")
-    reset()
-  }
+    router.push("/");
+    reset();
+  };
 
   const handleSendMessage = async (message: string) => {
     addMessage({
@@ -105,14 +140,89 @@ export default function BackgroundPage() {
     setLoading(true);
 
     try {
-      let messageTimeStamp = Date.now();
-      const response = await sendBackgroundMessage(sessionId, message, messageTimeStamp, elapsedTime);
+      // Use different endpoint based on phase
+      if (phase === "background") {
+        const messageTimeStamp = Date.now();
+        const response = await sendBackgroundMessage(sessionId, message, messageTimeStamp, elapsedTime);
 
-      addMessage({
-        role: "interviewer",
-        message: response.response,
-        timestamp: new Date(response.message_timestamp),
-      });
+        // Check if we're transitioning to technical portion
+        if (response.command === "start_technical") {
+          addMessage({
+            role: "interviewer",
+            message: response.response,
+            timestamp: new Date(response.message_timestamp),
+          });
+
+          // Update state for technical interview
+          setInterviewState({
+            currentQuestion: response.current_question || 1,
+            totalQuestions: response.total_questions || 2,
+            timeRemaining: response.time_remaining || 3000,
+            phase: "q1",
+          });
+        } else {
+          addMessage({
+            role: "interviewer",
+            message: response.response,
+            timestamp: new Date(response.message_timestamp),
+          });
+        }
+      } else {
+        // Technical interview phase - use interact endpoint
+        const response = await sendMessage(sessionId, message);
+
+        // Update time from server
+        if (response.time_remaining !== undefined) {
+          updateTimeRemaining(response.time_remaining);
+        }
+
+        // Handle different commands
+        switch (response.command) {
+          case "end":
+            if (response.response) {
+              addMessage({
+                role: "interviewer",
+                message: response.response,
+                timestamp: new Date(),
+              });
+            }
+            setInterviewState({ phase: "ended" });
+            setTimeout(() => {
+              router.push(`/thankyou?session_id=${sessionId}`);
+            }, 2000);
+            break;
+
+          case "next_question":
+            addMessage({
+              role: "interviewer",
+              message: response.response,
+              timestamp: new Date(),
+            });
+            setInterviewState({
+              currentQuestion: response.current_question,
+              phase: "q2",
+            });
+            break;
+
+          case "wrap_up":
+            addMessage({
+              role: "interviewer",
+              message: response.response,
+              timestamp: new Date(),
+            });
+            setInterviewState({ phase: "wrap_up" });
+            break;
+
+          case "continue":
+          default:
+            addMessage({
+              role: "interviewer",
+              message: response.response,
+              timestamp: new Date(),
+            });
+            break;
+        }
+      }
     } catch (error) {
       if ((error as Error).message === "Unauthorized") {
         console.error("Session expired. Redirecting to home.");
@@ -130,35 +240,13 @@ export default function BackgroundPage() {
     }
   };
 
-  const handleStartInterview = async () => {
-    setTransitioning(true);
-
-    try {
-      const response = await startInterview(sessionId);
-
-      addMessage({
-        role: "interviewer",
-        message: response.intro,
-        timestamp: new Date(),
-      });
-
-      setTimeout(() => {
-        router.push(`/interview/${sessionId}`);
-      }, 1000);
-    } catch (error) {
-      addMessage({
-        role: "interviewer",
-        message: "Sorry, I couldn't start the interview. Please try again.",
-        timestamp: new Date(),
-      });
-      setTransitioning(false);
-    }
-  };
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
+
+  const isInTechnicalPhase = phase !== "background";
 
   return (
     <div className="flex flex-col h-screen bg-gray">
@@ -194,25 +282,36 @@ export default function BackgroundPage() {
                 </h1>
               </div>
             </div>
-            <span className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700
-             dark:bg-gray-800 dark:text-emerald-400 border border-gray-700">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Live Session
+            <span className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium border border-gray-700
+              ${isInTechnicalPhase
+                ? "bg-blue-50 text-blue-700 dark:bg-gray-800 dark:text-blue-400"
+                : "bg-emerald-50 text-emerald-700 dark:bg-gray-800 dark:text-emerald-400"
+              }`}>
+              <span className={`h-2 w-2 rounded-full animate-pulse ${isInTechnicalPhase ? "bg-blue-400" : "bg-emerald-400"}`}></span>
+              {isInTechnicalPhase ? "Technical Interview" : "Background"}
             </span>
           </div>
           <div className="flex items-center gap-3">
-            {/* Timer */}
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border
-                  dark:bg-gray-800 border-gray-700 transition-colors">
-              <Clock className="h-5 w-5 dark:text-gray-300" />
-              <span className="font-mono text-lg font-semibold dark:text-gray-100">
-                {formatTime(elapsedTime)}
-              </span>
-            </div>
+            {/* Show Timer for technical phase, or elapsed time for background */}
+            {isInTechnicalPhase ? (
+              <InterviewTimer
+                timeRemaining={timeRemaining}
+                currentQuestion={currentQuestion}
+                totalQuestions={totalQuestions}
+                phase={phase}
+                isWrapUp={phase === "wrap_up"}
+              />
+            ) : (
+              <div className="flex items-center gap-2 px-4 py-2 rounded-lg border dark:bg-gray-800 border-gray-700 transition-colors">
+                <Clock className="h-5 w-5 dark:text-gray-300" />
+                <span className="font-mono text-lg font-semibold dark:text-gray-100">
+                  {formatTime(elapsedTime)}
+                </span>
+              </div>
+            )}
 
             {/* User */}
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border
-                  dark:bg-gray-800 border-gray-700 transition-colors">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border dark:bg-gray-800 border-gray-700 transition-colors">
               <User className="h-5 w-5 dark:text-gray-300" />
               <span className="font-medium dark:text-gray-100">
                 Candidate
@@ -250,51 +349,24 @@ export default function BackgroundPage() {
                 {messages.length === 0 && !isLoading && (
                   <div className="flex items-center justify-center h-full">
                     <p className="text-gray-500 dark:text-gray-400">
-                      Initializing background session...
+                      Initializing session...
                     </p>
                   </div>
                 )}
 
                 {messages.map((message, index) => (
-                  <ChatMessage 
-                    key={index} 
-                    message={message} 
+                  <ChatMessage
+                    key={index}
+                    message={message}
                     isLast={index === messages.length - 1}
                   />
                 ))}
 
                 {isLoading && <LoadingIndicator />}
-
-                {transitioning && (
-                  <div className="flex justify-center pt-4">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <svg
-                        className="animate-spin h-5 w-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        />
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                        />
-                      </svg>
-                      Starting technical interview...
-                    </div>
-                  </div>
-                )}
               </div>
+
               <div className="p-4 backdrop-blur-sm border-t transition-colors dark:bg-gray-900/80 border-gray-800">
-                <ChatInput onSend={handleSendMessage} disabled={isLoading || transitioning} />
+                <ChatInput onSend={handleSendMessage} disabled={isLoading || phase === "ended"} />
               </div>
             </div>
           </Panel>

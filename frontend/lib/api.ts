@@ -1,4 +1,4 @@
-import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, InteractResponse, ResumeInterviewResponse, RecentInterviewsResponse, UserProfile } from "./types";
+import { StartBackgroundResponse, BackgroundChatResponse, StartInterviewResponse, StartInterviewWithFormResponse, InteractResponse, ResumeInterviewResponse, RecentInterviewsResponse, UserProfile, EvaluationResponse } from "./types";
 import { getAuthHeaders } from "./auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -94,6 +94,31 @@ export async function startInterview(sessionId: string): Promise<StartInterviewR
   return response.json();
 }
 
+export async function startInterviewWithForm(candidateInfo: {
+  type: string;
+  currentRole: string;
+  organization: string;
+  expectations: string;
+}): Promise<StartInterviewWithFormResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/start_interview_with_form`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify({ candidate_info: candidateInfo }),
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Unauthorized");
+    }
+    throw new Error(`Failed to start interview: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
 export async function sendMessage(
   sessionId: string,
   message: string
@@ -180,3 +205,41 @@ export async function getUserProfile(): Promise<UserProfile> {
 
   return response.json();
 }
+
+export async function evaluateInterview(sessionId: string): Promise<EvaluationResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/evaluate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify({ session_id: sessionId }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to evaluate interview: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function getEvaluation(sessionId: string): Promise<EvaluationResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/evaluation/${sessionId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 404) {
+      // Evaluation not found, trigger evaluation first
+      return evaluateInterview(sessionId);
+    }
+    throw new Error(`Failed to get evaluation: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
