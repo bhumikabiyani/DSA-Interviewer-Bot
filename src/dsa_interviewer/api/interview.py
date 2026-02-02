@@ -319,10 +319,12 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
             if not can_respond:
                 # No more responses allowed, end the interview
                 sessions.end_interview(session_id)
+                # Get time_remaining AFTER ending to get total_time_taken
+                final_time = sessions.get_time_remaining(session_id)
                 return InteractResponse(
                     response="Thank you for your response. We're out of time now. Great effort on both questions! You'll receive detailed feedback shortly.",
                     command="end",
-                    time_remaining=time_remaining,
+                    time_remaining=final_time,
                     current_question=current_question_num,
                 )
             
@@ -440,19 +442,23 @@ What are your initial thoughts?"""
                 else:
                     # Not enough time for Q2
                     sessions.end_interview(session_id)
+                    # Get time_remaining AFTER ending to get total_time_taken
+                    final_time = sessions.get_time_remaining(session_id)
                     return InteractResponse(
                         response=reply + "\n\nGreat job! We don't have enough time for another question, so we'll wrap up here. You'll receive detailed feedback shortly.",
                         command="end",
-                        time_remaining=time_remaining,
+                        time_remaining=final_time,
                         current_question=current_question_num,
                     )
             elif phase == "q2":
                 # Q2 complete - end interview
                 sessions.end_interview(session_id)
+                # Get time_remaining AFTER ending to get total_time_taken
+                final_time = sessions.get_time_remaining(session_id)
                 return InteractResponse(
                     response=reply + "\n\nExcellent! You've completed both questions. Great effort! You'll receive a detailed evaluation shortly.",
                     command="end",
-                    time_remaining=time_remaining,
+                    time_remaining=final_time,
                     current_question=current_question_num,
                 )
         
