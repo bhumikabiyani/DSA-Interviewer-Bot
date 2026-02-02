@@ -4,28 +4,6 @@ export interface Message {
   timestamp?: Date;
 }
 
-export interface StartBackgroundResponse {
-  session_id: string;
-  message: string;
-}
-
-export interface BackgroundChatResponse {
-  response: string;
-  message_timestamp: number;
-  command?: "continue" | "start_technical";
-  phase?: string;
-  current_question?: number;
-  total_questions?: number;
-  time_remaining?: number;
-}
-
-export interface StartInterviewResponse {
-  intro: string;
-  current_question: number;
-  total_questions: number;
-  time_remaining: number;
-}
-
 export interface CandidateInfo {
   type: "student" | "professional";
   currentRole: string;

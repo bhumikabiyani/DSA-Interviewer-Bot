@@ -15,6 +15,7 @@ class GroqLLM:
 
         self.api_key = settings.GROQ_API_KEY
         self.model = model or settings.LLM_MODEL
+        print("MODEL:", self.model)
         self.url = "https://api.groq.com/openai/v1/chat/completions"
         
         self.session = requests.Session()

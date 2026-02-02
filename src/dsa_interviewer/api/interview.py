@@ -23,7 +23,6 @@ from dsa_interviewer.services.session_store import SessionStore
 from dsa_interviewer.services.evaluation import get_evaluation_service
 from question_selector import pick_random_question, pick_two_questions
 from math import ceil
-from sqlalchemy.orm import Session
 from dsa_interviewer.core.config import settings
 
 
@@ -117,35 +116,9 @@ When told we're in wrap-up mode (less than 3 minutes remaining):
 
 """
 
-BACKGROUND_SYSTEM_PROMPT = """
-You are a friendly technical interviewer conducting the initial background assessment.
-Your goal is to understand the candidate's:
-- Educational background and current role
-- Programming experience and preferred languages
-- DSA knowledge level and areas of strength/weakness
-- Previous interview experiences
-- Goals for this mock interview
-
-Ask 3-5 short conversational questions to gather this information.
-Be warm, encouraging, and professional.
-
-IMPORTANT: Once you have gathered enough background information (after 3-5 exchanges), 
-include the special marker [START_TECHNICAL] at the END of your response.
-Before the marker, say something like "Great! I have a good understanding of your background now. Let's move on to the technical questions."
-Do NOT include [START_TECHNICAL] until you've gathered sufficient background.
-"""
-
-INTERVIEWER_INTRODUCTION = """Hello! """
-
 class UserMessage(BaseModel):
     session_id: str
     message: str
-
-class BackgroundMessage(BaseModel):
-    session_id: str
-    message: str
-    message_timestamp: int
-    time_spent: int
 
 class TTSRequest(BaseModel):
     text: str
@@ -172,28 +145,6 @@ class InteractResponse(BaseModel):
     time_remaining: int
     current_question: int
     question_text: Optional[str] = None
-
-@router.post("/start_background")
-def start_background(current_user: User = Depends(get_current_user)):
-# def start_background():
-    try:
-        session_id = sessions.create_background_session(current_user.id)
-        
-        intro_msg = """Hello! Welcome to your DSA mock interview. Before we dive into the technical questions, I'd like to learn a bit about your background.
-
-Could you start by telling me about your educational background and current role?"""
-
-        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, time_spent=0, message_timestamp=int(datetime.utcnow().timestamp()))
-        
-        logger.info(f"Started background session {session_id}")
-        return {
-            "session_id": session_id,
-            "message": intro_msg
-        }
-    except Exception as e:
-        logger.error(f"Error starting background session: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
 
 @router.post("/start_interview_with_form")
 def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user)):
@@ -258,84 +209,6 @@ Before we start with the first question, please give me a brief verbal introduct
         raise
     except Exception as e:
         logger.error(f"Error starting interview with form: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-@router.post("/background_chat")
-def background_chat(payload: BackgroundMessage, current_user: User = Depends(get_current_user)):
-# def background_chat(payload: BackgroundMessage):
-    try:
-
-        session = sessions.get_history(payload.session_id)
-
-        user_message = payload.message.strip()
-        history = session["history"]
-        
-        messages = [{"role": "system", "content": BACKGROUND_SYSTEM_PROMPT}]
-        
-        for turn in history:
-            role = "user" if turn["role"] == "candidate" else "assistant"
-            messages.append({"role": role, "content": turn["message"]})
-        
-        messages.append({"role": "user", "content": user_message})
-        
-        reply = llm.chat(messages)
-        
-        # Check if AI wants to start technical portion
-        start_technical = "[START_TECHNICAL]" in reply
-        if start_technical:
-            reply = reply.replace("[START_TECHNICAL]", "").strip()
-        
-        sessions.add_message(current_user.id, payload.session_id, "candidate", user_message, payload.message_timestamp, payload.time_spent)
-        sessions.add_message(current_user.id, payload.session_id, "interviewer", reply, payload.message_timestamp, payload.time_spent)
-        
-        # If transitioning to technical, start the interview and include first question
-        if start_technical:
-            questions = pick_two_questions()
-            
-            if questions:
-                sessions.start_interview(payload.session_id, questions)
-                current_q = sessions.get_current_question(payload.session_id)
-                
-                if current_q:
-                    q_num, q_text = current_q
-                    
-                    # Create intro message with first question
-                    intro = f"""
-
-I'll be asking you 2 DSA questions today. We have about 50 minutes, so take your time to think through each problem.
-
-Here's your first question:
-
-{q_text}
-
-Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
-                    
-                    full_response = reply + intro
-                    timestamp = int(datetime.utcnow().timestamp())
-                    sessions.add_message(current_user.id, payload.session_id, "interviewer", intro, timestamp, 0)
-                    
-                    time_remaining = sessions.get_time_remaining(payload.session_id)
-                    
-                    return {
-                        "response": full_response,
-                        "message_timestamp": payload.message_timestamp,
-                        "command": "start_technical",
-                        "current_question": 1,
-                        "total_questions": len(questions),
-                        "time_remaining": time_remaining,
-                        "phase": "q1",
-                    }
-        
-        return {
-            "response": reply, 
-            "message_timestamp": payload.message_timestamp,
-            "command": "continue",
-            "phase": session["phase"],
-        }
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Error in background chat: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/resume_interview/{session_id}")
@@ -426,7 +299,6 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
         time_status = sessions.check_time_status(session_id)
         time_remaining = sessions.get_time_remaining(session_id)
         current_q = sessions.get_current_question(session_id)
-        print("CURRENT QUESTION", current_q)
         current_question_num = current_q[0] if current_q else 2
         
         # Handle force end

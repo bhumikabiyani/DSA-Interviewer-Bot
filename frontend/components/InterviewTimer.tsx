@@ -26,7 +26,7 @@ export function InterviewTimer({
 
     // Client-side countdown (synced with server on each message)
     useEffect(() => {
-        if (phase === "ended" || phase === "background" || phase === "intro") return;
+        if (phase === "ended" || phase === "background") return;
 
         const interval = setInterval(() => {
             setDisplayTime((prev) => Math.max(0, prev - 1));
@@ -71,30 +71,36 @@ export function InterviewTimer({
         <div
             className={`
         flex items-center gap-4 px-4 py-2 rounded-lg backdrop-blur-sm
-        ${isCritical
-                    ? "bg-red-500/20 border border-red-500/50 animate-pulse"
-                    : isLowTime
-                        ? "bg-amber-500/20 border border-amber-500/50"
-                        : "bg-white/10 border border-white/20"
+        ${phase === "ended"
+                    ? "bg-green-500/20 border border-green-500/50"
+                    : isCritical
+                        ? "bg-red-500/20 border border-red-500/50 animate-pulse"
+                        : isLowTime
+                            ? "bg-amber-500/20 border border-amber-500/50"
+                            : "bg-white/10 border border-white/20"
                 }
       `}
         >
             {/* Timer */}
             <div className="flex items-center gap-2">
-                {isLowTime ? (
+                {phase === "ended" ? (
+                    <Clock className="w-5 h-5 text-green-400" />
+                ) : isLowTime ? (
                     <AlertTriangle className={`w-5 h-5 ${isCritical ? "text-red-400" : "text-amber-400"}`} />
                 ) : (
                     <Clock className="w-5 h-5 text-gray-300" />
                 )}
                 <span
-                    className={`text-lg font-mono font-semibold ${isCritical
-                        ? "text-red-400"
-                        : isLowTime
-                            ? "text-amber-400"
-                            : "text-white"
+                    className={`text-lg font-mono font-semibold ${phase === "ended"
+                        ? "text-green-400"
+                        : isCritical
+                            ? "text-red-400"
+                            : isLowTime
+                                ? "text-amber-400"
+                                : "text-white"
                         }`}
                 >
-                    {formatTime(displayTime)}
+                    {phase === "ended" ? `${formatTime(displayTime)} taken` : formatTime(displayTime)}
                 </span>
             </div>
 
