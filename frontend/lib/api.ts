@@ -30,6 +30,7 @@ export async function startInterviewWithForm(candidateInfo: {
   currentRole: string;
   organization: string;
   expectations: string;
+  difficulty: string;
 }): Promise<StartInterviewWithFormResponse> {
   const response = await fetch(`${API_BASE_URL}/api/start_interview_with_form`, {
     method: "POST",
@@ -132,6 +133,33 @@ export async function getUserProfile(): Promise<UserProfile> {
       throw new Error("Unauthorized");
     }
     throw new Error(`Failed to fetch profile: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function getLastInterviewInfo(): Promise<{
+  candidate_info: {
+    type: string;
+    current_role: string;
+    organization: string;
+    expectations: string;
+    difficulty: string;
+  } | null;
+}> {
+  const response = await fetch(`${API_BASE_URL}/api/last_interview_info`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Unauthorized");
+    }
+    throw new Error(`Failed to fetch last candidate info: ${response.statusText}`);
   }
 
   return response.json();

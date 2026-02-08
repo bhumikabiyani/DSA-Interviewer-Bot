@@ -1,8 +1,8 @@
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from fastapi import APIRouter, HTTPException, Depends
-from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
+from fastapi.responses import StreamingResponse
 from dsa_interviewer.dependencies import get_current_user
 from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
@@ -128,6 +128,7 @@ class CandidateInfo(BaseModel):
     currentRole: str  # Degree for student, Position for professional
     organization: str  # University for student, Company for professional
     expectations: str = ""
+    difficulty: str
 
 class StartInterviewWithFormRequest(BaseModel):
     candidate_info: CandidateInfo
@@ -146,6 +147,35 @@ class InteractResponse(BaseModel):
     current_question: int
     question_text: Optional[str] = None
 
+@router.get("/last_interview_info")
+def get_last_candidate_info(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Get candidate info from the user's most recent interview for form prefilling."""
+    try:
+        # Get the most recent interview for this user
+        last_interview = (
+            db.query(Interview)
+            .filter(Interview.user_id == str(current_user.id))
+            .order_by(Interview.created_at.desc())
+            .first()
+        )
+        
+        if not last_interview:
+            return {"candidate_info": None}
+        
+        # Parse metadata to get candidate_info
+        metadata = last_interview.metadata_
+        if isinstance(metadata, str):
+            import json
+            metadata = json.loads(metadata)
+        
+        candidate_info = metadata.get("candidate_info") if metadata else None
+        
+        return {"candidate_info": candidate_info}
+    except Exception as e:
+        logger.error(f"Error fetching last candidate info: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/start_interview_with_form")
 def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user)):
     """Start an interview directly with candidate info from form (no background chat)."""
@@ -161,6 +191,7 @@ def start_interview_with_form(payload: StartInterviewWithFormRequest, current_us
             "current_role": candidate.currentRole,
             "organization": candidate.organization,
             "expectations": candidate.expectations,
+            "difficulty": candidate.difficulty,
         })
         
         # Pick 2 questions for this interview

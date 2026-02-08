@@ -9,6 +9,7 @@ export interface CandidateInfo {
   currentRole: string;
   organization: string;
   expectations: string;
+  difficulty: "easy" | "medium" | "hard";
 }
 
 export interface StartInterviewWithFormResponse {
