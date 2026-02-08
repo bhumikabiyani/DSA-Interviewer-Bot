@@ -327,7 +327,8 @@ export default function InterviewPage() {
                   )}
                 </div>
               ) : (
-                <CodeInputBox onSend={(code, lang) => { void handleSendMessage(code); }} />
+                {/* Language parameter is ignored as the interviewer evaluates code independently of language choice */}
+                <CodeInputBox onSend={(code, _lang) => { void handleSendMessage(code); }} />
               )}
             </div>
           </Panel>
