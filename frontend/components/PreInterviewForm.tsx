@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { X, Loader2, User, Briefcase, Building2, Target, GraduationCap, Goal, Zap, Gauge, Flame } from "lucide-react";
+import { X, Loader2, User, Briefcase, Building2, GraduationCap, Goal, Zap, Gauge, Flame } from "lucide-react";
 import { CandidateInfo } from "@/lib/types";
 
 interface PreInterviewFormProps {
@@ -65,8 +65,6 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="p-6 space-y-4">
-
-                    {/* Helper function for input fields */}
                     <div className="space-y-4">
 
                         {/* Type Selection */}
@@ -81,7 +79,7 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
                                         name="type"
                                         value="student"
                                         checked={formData.type === 'student'}
-                                        onChange={(e) => setFormData({ ...formData, type: "student" as any })}
+                                        onChange={(e) => setFormData({ ...formData, type: "student" })}
                                         className="hidden"
                                     />
                                     <User className={`w-4 h-4 ${formData.type === 'student' ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400'}`} />
@@ -94,7 +92,7 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
                                         name="type"
                                         value="professional"
                                         checked={formData.type === 'professional'}
-                                        onChange={(e) => setFormData({ ...formData, type: "professional" as any })}
+                                        onChange={(e) => setFormData({ ...formData, type: "professional" })}
                                         className="hidden"
                                     />
                                     <Briefcase className={`w-4 h-4 ${formData.type === 'professional' ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400'}`} />

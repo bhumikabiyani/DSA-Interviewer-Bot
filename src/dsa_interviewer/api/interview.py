@@ -8,7 +8,7 @@ from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
 from dsa_interviewer.models.interview import Interview
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional
 import logging
 import sys
 from pathlib import Path
@@ -21,7 +21,7 @@ from dsa_interviewer.services.rag_service import RagService
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
 from dsa_interviewer.services.evaluation import get_evaluation_service
-from question_selector import pick_random_question, pick_two_questions
+from question_selector import pick_two_questions
 from math import ceil
 from dsa_interviewer.core.config import settings
 
@@ -73,7 +73,6 @@ WHAT TO FOCUS ON:
 - Ask for tradeoffs.
 - Ask follow-up questions to test depth.
 
-- If the candidate directly rushes to code without discussion, pause them and ask them not to rush explain the approach first optimize it and in the end we will code.
 - Never output the entire question again.
 - Ask exactly ONE follow-up question per message.
 - Use retrieved context only to enhance your hint quality, not to restate information.
@@ -222,8 +221,7 @@ Before we start with the first question, please give me a brief verbal introduct
         timestamp = int(datetime.utcnow().timestamp())
         sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp, 0)
         
-        # Get Q1 ready but don't send yet
-        current_q = sessions.get_current_question(session_id)
+        # Get time remaining
         time_remaining = sessions.get_time_remaining(session_id)
         
         logger.info(f"Started interview with form for session {session_id}")
@@ -407,6 +405,10 @@ Please start by explaining your understanding of the problem. What are the key c
         
         # Handle Q1 timeout - auto-transition to Q2
         if time_status == "q1_timeout" and phase == "q1":
+            # Add candidate's message to history before transitioning
+            timestamp = int(datetime.utcnow().timestamp())
+            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
+            
             next_question = sessions.transition_to_next_question(session_id)
             
             if next_question:
@@ -418,7 +420,6 @@ Here's your next question:
 
 Take a moment to understand it, then share your initial thoughts."""
                 
-                timestamp = int(datetime.utcnow().timestamp())
                 sessions.add_message(current_user.id, session_id, "interviewer", transition_msg, timestamp, 0)
                 
                 return InteractResponse(
@@ -434,8 +435,7 @@ Take a moment to understand it, then share your initial thoughts."""
         reply = llm.chat(messages)
         
         # Check if AI detected question completion
-        # question_complete = "[QUESTION_COMPLETE]" in reply
-        question_complete = True
+        question_complete = "[QUESTION_COMPLETE]" in reply
         if question_complete:
             reply = reply.replace("[QUESTION_COMPLETE]", "").strip()
         
