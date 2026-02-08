@@ -48,7 +48,7 @@ class SessionStore:
 
     def _save_metadata(self, interview: Interview, metadata: Dict, db) -> None:
         """Save metadata to interview."""
-        interview.metadata_ = metadata
+        interview.metadata_ = json.dumps(metadata)
         db.add(interview)
 
     def create_session(self, user_id: str) -> str:
@@ -71,8 +71,8 @@ class SessionStore:
             interview = Interview(
                 session_id=session_id,
                 user_id=user_id,
-                interview_data=[],
-                metadata_=metadata
+                interview_data=json.dumps([]),
+                metadata_=json.dumps(metadata)
             )
             db.add(interview)
             db.commit()
@@ -105,7 +105,7 @@ class SessionStore:
             metadata["questions"] = questions
             metadata["current_question_index"] = 0
             metadata["interview_start_time"] = time.time()
-            metadata["question_start_times"] = [None, None]
+            metadata["question_start_times"] = [time.time(), None]
             metadata["phase"] = "intro"
 
             self._save_metadata(interview, metadata, db)
@@ -408,7 +408,7 @@ class SessionStore:
                 logger.debug(f"Trimmed history for session {session_id}")
 
             # Save history
-            interview.interview_data = history
+            interview.interview_data = json.dumps(history)
 
             # Update metadata
             metadata = self._get_metadata(interview)
