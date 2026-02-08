@@ -76,7 +76,8 @@ export default function InterviewPage() {
       console.error("Failed to load session:", error);
       router.push("/");
     }
-  }, [sessionId, setInterviewState, addMessage, setInitialized, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId, router]);
 
   // Load session on mount
   useEffect(() => {
