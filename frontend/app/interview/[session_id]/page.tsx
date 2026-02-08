@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatMessage } from "@/components/ChatMessage";
@@ -46,7 +46,20 @@ export default function InterviewPage() {
 
   const fetchingRef = useRef(false);
 
-  const loadSession = useCallback(async () => {
+  // Load session on mount
+  useEffect(() => {
+    if (!sessionId) {
+      router.push("/");
+      return;
+    }
+
+    if (!initialized && !fetchingRef.current) {
+      fetchingRef.current = true;
+      loadSession();
+    }
+  }, [sessionId, initialized]);
+
+  const loadSession = async () => {
     try {
       const data = await getBackgroundMessages(sessionId);
 
@@ -76,20 +89,7 @@ export default function InterviewPage() {
       console.error("Failed to load session:", error);
       router.push("/");
     }
-  }, [sessionId, setInterviewState, addMessage, setInitialized, router]);
-
-  // Load session on mount
-  useEffect(() => {
-    if (!sessionId) {
-      router.push("/");
-      return;
-    }
-
-    if (!initialized && !fetchingRef.current) {
-      fetchingRef.current = true;
-      loadSession();
-    }
-  }, [sessionId, initialized, loadSession]);
+  };
 
   useEffect(() => {
     if (phase === "ended" && !evaluation) {
@@ -327,8 +327,7 @@ export default function InterviewPage() {
                   )}
                 </div>
               ) : (
-                {/* Language parameter is ignored as the interviewer evaluates code independently of language choice */}
-                <CodeInputBox onSend={(code, _lang) => { void handleSendMessage(code); }} />
+                <CodeInputBox onSend={handleSendMessage} />
               )}
             </div>
           </Panel>
