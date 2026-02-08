@@ -88,4 +88,7 @@ Desktop.ini
 # Backup files
 *.bak
 *.tmp
-*~
+*~# Frontend
+frontend/node_modules/
+frontend/package-lock.json
+frontend/.next/
