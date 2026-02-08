@@ -17,6 +17,7 @@ import {
     LogOut,
     Home,
     ArrowLeft,
+    CheckCircle,
 } from "lucide-react";
 
 export default function ProfilePage() {
@@ -70,7 +71,7 @@ export default function ProfilePage() {
 
     const handleResumeInterview = (sessionId: string) => {
         reset();
-        router.push(`/background/${sessionId}`);
+        router.push(`/interview/${sessionId}`);
     };
 
     const handleLogout = () => {
@@ -262,32 +263,60 @@ export default function ProfilePage() {
                     ) : (
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {interviews.map((interview, index) => (
-                                    <button
-                                        key={interview.interview_id}
-                                        onClick={() => handleResumeInterview(interview.session_id)}
-                                        className="group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-left border border-gray-100 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 transform hover:scale-[1.02] hover:-translate-y-1"
-                                        style={{ animationDelay: `${index * 50}ms` }}
-                                    >
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg shadow-lg group-hover:shadow-indigo-500/25">
-                                                <Clock className="h-5 w-5 text-white" />
+                                {interviews.map((interview, index) => {
+                                    const isEnded = interview.phase === "ended";
+                                    return (
+                                        <button
+                                            key={interview.interview_id}
+                                            onClick={() => handleResumeInterview(interview.session_id)}
+                                            className={`group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 text-left border border-gray-100 dark:border-gray-700 transform hover:scale-[1.02] hover:-translate-y-1 ${isEnded
+                                                ? "hover:border-emerald-500 dark:hover:border-emerald-500"
+                                                : "hover:border-indigo-500 dark:hover:border-indigo-500"
+                                                }`}
+                                            style={{ animationDelay: `${index * 50}ms` }}
+                                        >
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <div className={`p-2 rounded-lg shadow-lg ${isEnded
+                                                    ? "bg-gradient-to-br from-emerald-500 to-teal-500 group-hover:shadow-emerald-500/25"
+                                                    : "bg-gradient-to-br from-indigo-500 to-purple-500 group-hover:shadow-indigo-500/25"
+                                                    }`}>
+                                                    {isEnded ? (
+                                                        <CheckCircle className="h-5 w-5 text-white" />
+                                                    ) : (
+                                                        <Clock className="h-5 w-5 text-white" />
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <h3 className={`font-semibold transition-colors ${isEnded
+                                                        ? "text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+                                                        : "text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400"
+                                                        }`}>
+                                                        Interview #{interview.interview_id}
+                                                    </h3>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                                    Interview #{interview.interview_id}
-                                                </h3>
-                                            </div>
-                                        </div>
 
-                                        <div className="flex items-center justify-between">
-                                            <span className="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-1 rounded-full">
-                                                <Play className="h-3 w-3" />
-                                                Resume
-                                            </span>
-                                        </div>
-                                    </button>
-                                ))}
+                                            <div className="flex items-center justify-between">
+                                                <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full ${isEnded
+                                                    ? "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30"
+                                                    : "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30"
+                                                    }`}>
+                                                    {isEnded ? (
+                                                        <>
+                                                            <CheckCircle className="h-3 w-3" />
+                                                            Completed
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Play className="h-3 w-3" />
+                                                            Resume
+                                                        </>
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </button>
+                                    );
+                                })}
                             </div>
 
                             {/* Pagination */}
@@ -320,8 +349,8 @@ export default function ProfilePage() {
                                                     key={pageNum}
                                                     onClick={() => fetchInterviews(pageNum)}
                                                     className={`w-10 h-10 rounded-lg font-medium transition-all duration-200 ${currentPage === pageNum
-                                                            ? "bg-indigo-600 text-white shadow-lg"
-                                                            : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-md"
+                                                        ? "bg-indigo-600 text-white shadow-lg"
+                                                        : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-md"
                                                         }`}
                                                 >
                                                     {pageNum}

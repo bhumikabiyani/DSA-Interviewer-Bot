@@ -9,9 +9,9 @@ class Interview(Base):
     __tablename__ = "interviews"
     id = Column(Integer, primary_key=True, index=True)
     session_id = Column(String, unique=True, index=True, nullable=False)
-    user_id = Column(String, index=True, nullable=True)
-    user_id = Column(String, unique=True, index=True, nullable=False)
-    interview_data = Column(String, nullable=False)
+    user_id = Column(String, index=True, nullable=False)
+    interview_data = Column(JSON, nullable=False)
+    evaluation_summary = Column(JSON, nullable=True)
     # 'metadata' is a reserved attribute name on declarative classes; use attribute
     # name 'metadata_' but keep the DB column name as 'metadata' for backward compatibility.
     metadata_ = Column("metadata", JSON, nullable=True)

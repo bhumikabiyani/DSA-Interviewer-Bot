@@ -6,10 +6,23 @@ interface ChatState {
   isLoading: boolean;
   initialized: boolean;
   initialQuestion: string | null;
+  // Interview state
+  currentQuestion: number;
+  totalQuestions: number;
+  timeRemaining: number;
+  phase: "background" | "intro" | "q1" | "q2" | "wrap_up" | "ended";
+  // Actions
   addMessage: (message: Message) => void;
   setLoading: (loading: boolean) => void;
   setInitialized: (initialized: boolean) => void;
   setInitialQuestion: (question: string) => void;
+  setInterviewState: (state: {
+    currentQuestion?: number;
+    totalQuestions?: number;
+    timeRemaining?: number;
+    phase?: "background" | "intro" | "q1" | "q2" | "wrap_up" | "ended";
+  }) => void;
+  updateTimeRemaining: (seconds: number) => void;
   reset: () => void;
 }
 
@@ -18,6 +31,10 @@ export const useChatStore = create<ChatState>((set) => ({
   isLoading: false,
   initialized: false,
   initialQuestion: null,
+  currentQuestion: 1,
+  totalQuestions: 2,
+  timeRemaining: 3000, // 50 minutes in seconds
+  phase: "background",
   addMessage: (message) =>
     set((state) => ({
       messages: [...state.messages, message],
@@ -25,5 +42,23 @@ export const useChatStore = create<ChatState>((set) => ({
   setLoading: (loading) => set({ isLoading: loading }),
   setInitialized: (initialized) => set({ initialized }),
   setInitialQuestion: (question) => set({ initialQuestion: question }),
-  reset: () => set({ messages: [], isLoading: false, initialized: false, initialQuestion: null }),
+  setInterviewState: (newState) =>
+    set((state) => ({
+      currentQuestion: newState.currentQuestion ?? state.currentQuestion,
+      totalQuestions: newState.totalQuestions ?? state.totalQuestions,
+      timeRemaining: newState.timeRemaining ?? state.timeRemaining,
+      phase: newState.phase ?? state.phase,
+    })),
+  updateTimeRemaining: (seconds) => set({ timeRemaining: seconds }),
+  reset: () =>
+    set({
+      messages: [],
+      isLoading: false,
+      initialized: false,
+      initialQuestion: null,
+      currentQuestion: 1,
+      totalQuestions: 2,
+      timeRemaining: 3000,
+      phase: "background",
+    }),
 }));

@@ -4,24 +4,29 @@ export interface Message {
   timestamp?: Date;
 }
 
-export interface StartBackgroundResponse {
-  session_id: string;
-  message: string;
+export interface CandidateInfo {
+  type: "student" | "professional";
+  currentRole: string;
+  organization: string;
+  expectations: string;
+  difficulty: "easy" | "medium" | "hard";
 }
 
-export interface BackgroundChatResponse {
-  response: string;
-  message_timestamp: number;
-}
-
-export interface StartInterviewResponse {
+export interface StartInterviewWithFormResponse {
   session_id: string;
-  intro: string;
+  intro_message: string;
+  current_question: number;
+  total_questions: number;
+  time_remaining: number;
+  phase: string;
 }
 
 export interface InteractResponse {
   response: string;
-  command?: string;
+  command: "continue" | "next_question" | "wrap_up" | "end";
+  time_remaining: number;
+  current_question: number;
+  question_text?: string;
 }
 
 export interface UserCreate {
@@ -46,6 +51,7 @@ export interface Token {
 export interface Interview {
   interview_id: number;
   session_id: string;
+  phase?: string;
 }
 
 export interface RecentInterviewsResponse {
@@ -61,6 +67,10 @@ export interface RecentInterviewsResponse {
 export interface ResumeInterviewResponse {
   history: Message[];
   time_spent: number;
+  phase?: string;
+  current_question?: number;
+  time_remaining?: number;
+  evaluation?: Evaluation;
 }
 
 export interface UserProfile {
@@ -69,4 +79,37 @@ export interface UserProfile {
   email: string;
   created_at: string;
   updated_at: string;
+}
+
+// Evaluation types
+export interface QuestionScore {
+  question_title: string;
+  score: number;
+  completion_method: "code" | "verbal" | "incomplete";
+  time_taken_minutes: number;
+  criteria_scores: {
+    problem_understanding: number;
+    approach_algorithm: number;
+    code_quality: number | null;
+    complexity_analysis: number;
+    communication: number;
+    code_execution: number | null;
+  };
+  strengths: string[];
+  areas_for_improvement: string[];
+}
+
+export interface Evaluation {
+  overall_score: number;
+  recommendation: string;
+  questions: QuestionScore[];
+  overall_feedback: string;
+  technical_skills_summary?: string;
+  communication_skills_summary?: string;
+}
+
+export interface EvaluationResponse {
+  session_id: string;
+  evaluation: Evaluation;
+  summary: string;
 }

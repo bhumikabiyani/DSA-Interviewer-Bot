@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { startBackground, getRecentInterviews } from "@/lib/api";
+import { startInterviewWithForm, getRecentInterviews, getLastInterviewInfo } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
-import { Interview } from "@/lib/types";
+import { Interview, CandidateInfo } from "@/lib/types";
+import { PreInterviewForm } from "@/components/PreInterviewForm";
 import { Clock, User } from "lucide-react";
 
 export default function Home() {
@@ -13,10 +14,19 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [recentInterviews, setRecentInterviews] = useState<Interview[]>([]);
   const [loadingInterviews, setLoadingInterviews] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [lastCandidateInfo, setLastCandidateInfo] = useState<{
+    type?: string;
+    current_role?: string;
+    organization?: string;
+    expectations?: string;
+    difficulty?: string;
+  } | null>(null);
   const { reset } = useChatStore();
 
   useEffect(() => {
     fetchRecentInterviews();
+    fetchLastCandidateInfo();
   }, []);
 
   const fetchRecentInterviews = async () => {
@@ -31,22 +41,35 @@ export default function Home() {
     }
   };
 
-  const handleStartInterview = async () => {
+  const fetchLastCandidateInfo = async () => {
+    try {
+      const response = await getLastInterviewInfo();
+      setLastCandidateInfo(response.candidate_info);
+    } catch (err) {
+      console.error("Failed to fetch last candidate info:", err);
+    }
+  };
+
+  const handleStartInterview = () => {
+    setShowForm(true);
+  };
+
+  const handleFormSubmit = async (data: CandidateInfo) => {
     setLoading(true);
     setError(null);
     reset();
     try {
-      const response = await startBackground();
-      router.push(`/background/${response.session_id}`);
+      const response = await startInterviewWithForm(data);
+      router.push(`/interview/${response.session_id}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to start background session");
+      setError(err instanceof Error ? err.message : "Failed to start interview");
       setLoading(false);
     }
   };
 
   const handleResumeInterview = (sessionId: string) => {
     reset();
-    router.push(`/background/${sessionId}`);
+    router.push(`/interview/${sessionId}`);
   };
 
   const handleGoToProfile = () => {
@@ -189,6 +212,15 @@ export default function Home() {
           )}
         </div>
       </div>
-    </div>
+
+
+      <PreInterviewForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSubmit={handleFormSubmit}
+        loading={loading}
+        initialData={lastCandidateInfo}
+      />
+    </div >
   );
 }
