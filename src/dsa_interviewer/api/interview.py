@@ -15,13 +15,10 @@ from pathlib import Path
 import boto3
 import json
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent / "scripts"))
-
-from dsa_interviewer.services.rag_service import RagService
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
 from dsa_interviewer.services.evaluation import get_evaluation_service
-from question_selector import pick_random_question, pick_two_questions
+from dsa_interviewer.utils.interview import pick_random_question
 from math import ceil
 from dsa_interviewer.core.config import settings
 
@@ -37,7 +34,6 @@ polly = boto3.client(
     aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
 )
 
-rag = RagService()
 llm = GroqLLM()
 sessions = SessionStore()
 
@@ -84,14 +80,14 @@ WHAT TO FOCUS ON:
 INTERVIEW FLOW:
 1. When the interview starts, you'll see the candidate's background info (student/professional, org, expectations).
 2. Begin by acknowledging their background and asking for a brief verbal introduction.
-3. After their introduction, present Question 1.
+3. After their introduction, present the DSA Question.
 4. For each question, follow this sequence:
    - Problem understanding
    - Approach discussion  
    - Code (if they provide it)
    - Time/Space complexity analysis (REQUIRED before marking complete)
    - Edge cases discussion
-5. Only mark [QUESTION_COMPLETE] AFTER they discuss complexity.
+5. Only mark [QUESTION_COMPLETE] AFTER they discuss complexity and you are ready to wrap up.
 
 QUESTION COMPLETION DETECTION:
 A question is COMPLETE ONLY when ALL of these are satisfied:
@@ -114,6 +110,20 @@ When told we're in wrap-up mode (less than 3 minutes remaining):
 - Provide a brief summary of how they did
 - Do NOT start any new questions or deep discussions
 
+"""
+
+ELABORATION_PROMPT = """
+You are a technical content creator. Given the following DSA question metadata, generate an elaborative, FAANG-style problem statement.
+Include:
+1. A clear 'Problem Description'.
+2. A test cases section.
+
+QUESTION METADATA:
+Title: {title}
+Difficulty: {difficulty} (1=Easy, 2=Medium, 3=Hard)
+Topics: {topic_tag}
+
+Provide ONLY the final markdown text for the question. Ask user to understand the question and ask if they have any doubts.  
 """
 
 class UserMessage(BaseModel):
@@ -177,7 +187,7 @@ def get_last_candidate_info(current_user: User = Depends(get_current_user), db: 
 
 
 @router.post("/start_interview_with_form")
-def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user)):
+def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Start an interview directly with candidate info from form (no background chat)."""
     try:
         candidate = payload.candidate_info
@@ -194,13 +204,23 @@ def start_interview_with_form(payload: StartInterviewWithFormRequest, current_us
             "difficulty": candidate.difficulty,
         })
         
-        # Pick 2 questions for this interview
-        questions = pick_two_questions()
+        # Pick 1 question for this interview from DB
+        q_data = pick_random_question(db)
         
-        if not questions:
-            raise HTTPException(status_code=500, detail="No questions available")
+        if not q_data:
+            raise HTTPException(status_code=500, detail="No questions available in database")
         
-        # Start the interview with the selected questions
+        # Elaborate the question using Groq
+        elaboration_input = ELABORATION_PROMPT.format(
+            title=q_data['title'],
+            difficulty=q_data['difficulty'],
+            topic_tag=q_data['topic_tag']
+        )
+        elaborated_text = llm.chat([{"role": "user", "content": elaboration_input}])
+        
+        questions = [(str(q_data['id']), elaborated_text)]
+        
+        # Start the interview with the selected question
         sessions.start_interview(session_id, questions)
         
         # Create personalized intro message
@@ -215,9 +235,9 @@ def start_interview_with_form(payload: StartInterviewWithFormRequest, current_us
         
         intro_msg = f"""{greeting}
 
-We'll go through 2 DSA questions today, with about 50 minutes total. I'll guide you through each problem, so take your time to think.
+We'll go through 1 DSA question today, with about 50 minutes total. I'll guide you through the problem, so take your time to think.
 
-Before we start with the first question, please give me a brief verbal introduction about yourself - your background, experience with DSA, and anything else you'd like to share."""
+Before we start, please give me a brief verbal introduction about yourself - your background, experience with DSA, and anything else you'd like to share."""
         
         timestamp = int(datetime.utcnow().timestamp())
         sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp, 0)
@@ -262,18 +282,28 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
 
 
 @router.post("/start_interview")
-def start_interview(payload: StartInterviewRequest, current_user: User = Depends(get_current_user)):
+def start_interview(payload: StartInterviewRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     """Start the technical interview with 2 questions."""
     try:
         session_id = payload.session_id
         
-        # Pick 2 questions for this interview
-        questions = pick_two_questions()
+        # Pick 1 question for this interview from DB
+        q_data = pick_random_question(db)
         
-        if not questions:
-            raise HTTPException(status_code=500, detail="No questions available")
+        if not q_data:
+            raise HTTPException(status_code=500, detail="No questions available in database")
         
-        # Start the interview with the selected questions
+        # Elaborate the question using Groq
+        elaboration_input = ELABORATION_PROMPT.format(
+            title=q_data['title'],
+            difficulty=q_data['difficulty'],
+            topic_tag=q_data['topic_tag']
+        )
+        elaborated_text = llm.chat([{"role": "user", "content": elaboration_input}])
+        
+        questions = [(str(q_data['id']), elaborated_text)]
+        
+        # Start the interview with the selected question
         sessions.start_interview(session_id, questions)
         
         # Get the first question
@@ -286,9 +316,9 @@ def start_interview(payload: StartInterviewRequest, current_user: User = Depends
         # Create introduction message
         intro = f"""Great! Let's begin the technical portion of the interview.
 
-I'll be asking you 2 DSA questions today. We have about 50 minutes, so take your time to think through each problem.
+We have about 50 minutes, so take your time to think through the problem.
 
-Here's your first question:
+Here's your question:
 
 {q_text}
 
@@ -300,12 +330,12 @@ Please start by explaining your understanding of the problem. What are the key c
         
         time_remaining = sessions.get_time_remaining(session_id)
         
-        logger.info(f"Started interview for session {session_id} with {len(questions)} questions")
+        logger.info(f"Started interview for session {session_id} with 1 question")
         
         return {
             "intro": intro,
             "current_question": 1,
-            "total_questions": len(questions),
+            "total_questions": 1,
             "time_remaining": time_remaining,
         }
     except HTTPException:
@@ -405,29 +435,16 @@ Please start by explaining your understanding of the problem. What are the key c
                 question_text=q1_text,
             )
         
-        # Handle Q1 timeout - auto-transition to Q2
+        # Handle Q1 timeout (now only 1 question)
         if time_status == "q1_timeout" and phase == "q1":
-            next_question = sessions.transition_to_next_question(session_id)
-            
-            if next_question:
-                transition_msg = f"""I appreciate your effort on that question. Let's move on to the second question to make sure we cover both.
-
-Here's your next question:
-
-{next_question}
-
-Take a moment to understand it, then share your initial thoughts."""
-                
-                timestamp = int(datetime.utcnow().timestamp())
-                sessions.add_message(current_user.id, session_id, "interviewer", transition_msg, timestamp, 0)
-                
-                return InteractResponse(
-                    response=transition_msg,
-                    command="next_question",
-                    time_remaining=time_remaining,
-                    current_question=2,
-                    question_text=next_question,
-                )
+            sessions.end_interview(session_id)
+            final_time = sessions.get_time_remaining(session_id)
+            return InteractResponse(
+                response="We've reached the time limit for this question. Thank you for your efforts today! You'll receive a summary of your performance shortly.",
+                command="end",
+                time_remaining=final_time,
+                current_question=1,
+            )
         
         # Normal interview flow
         messages = _build_interview_messages(history, session.get("question", ""), user_message)
@@ -444,54 +461,17 @@ Take a moment to understand it, then share your initial thoughts."""
         sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
         sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp, 0)
         
-        # Handle question transition
+        # Handle interview end after the single question
         if question_complete:
-            if phase == "q1":
-                # Check if we have time for Q2
-                if time_remaining > 180:  # More than 3 minutes left
-                    next_question = sessions.transition_to_next_question(session_id)
-                    
-                    if next_question:
-                        transition_msg = f"""
-
-Excellent work on that problem! Let's move on to the second question.
-
-{next_question}
-
-What are your initial thoughts?"""
-                        
-                        full_response = reply + transition_msg
-                        sessions.add_message(current_user.id, session_id, "interviewer", transition_msg, timestamp, 0)
-                        
-                        return InteractResponse(
-                            response=full_response,
-                            command="next_question",
-                            time_remaining=time_remaining,
-                            current_question=2,
-                            question_text=next_question,
-                        )
-                else:
-                    # Not enough time for Q2
-                    sessions.end_interview(session_id)
-                    # Get time_remaining AFTER ending to get total_time_taken
-                    final_time = sessions.get_time_remaining(session_id)
-                    return InteractResponse(
-                        response=reply + "\n\nGreat job! We don't have enough time for another question, so we'll wrap up here. You'll receive detailed feedback shortly.",
-                        command="end",
-                        time_remaining=final_time,
-                        current_question=current_question_num,
-                    )
-            elif phase == "q2":
-                # Q2 complete - end interview
-                sessions.end_interview(session_id)
-                # Get time_remaining AFTER ending to get total_time_taken
-                final_time = sessions.get_time_remaining(session_id)
-                return InteractResponse(
-                    response=reply + "\n\nExcellent! You've completed both questions. Great effort! You'll receive a detailed evaluation shortly.",
-                    command="end",
-                    time_remaining=final_time,
-                    current_question=current_question_num,
-                )
+            sessions.end_interview(session_id)
+            # Get time_remaining AFTER ending to get total_time_taken
+            final_time = sessions.get_time_remaining(session_id)
+            return InteractResponse(
+                response=reply + "\n\nExcellent! You've completed the technical questions. Great effort! You'll receive a detailed evaluation shortly.",
+                command="end",
+                time_remaining=final_time,
+                current_question=1,
+            )
         
         return InteractResponse(
             response=reply,
@@ -522,16 +502,6 @@ def _build_interview_messages(history: list, question: str, user_message: str, e
         messages.append({"role": role, "content": turn["message"]})
     
     messages.append({"role": "user", "content": user_message})
-    
-    # Use RAG to enhance context
-    try:
-        query = f"{question}\n\n{user_message}" if question else user_message
-        chunks = rag.retrieve(query, n=3)
-        if chunks:
-            context = "\n\n".join(chunks)
-            messages[0]["content"] += f"\n\n[RELEVANT CONTEXT FOR HINTS - DO NOT REVEAL DIRECTLY]:\n{context}"
-    except Exception as e:
-        logger.warning(f"RAG retrieval failed: {e}")
     
     return messages
 

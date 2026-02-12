@@ -16,16 +16,8 @@ Rules:
 """
 
 
-def build_prompt(user_message: str, retrieved_chunks: Union[List[str], List[dict]], question_text: str = "") -> str:
-    """Build prompt from user message and retrieved context."""
-    if isinstance(retrieved_chunks, list) and len(retrieved_chunks) > 0:
-        if isinstance(retrieved_chunks[0], dict):
-            context = "\n\n---\n".join([c.get('text', str(c)) for c in retrieved_chunks])
-        else:
-            context = "\n\n---\n".join(retrieved_chunks)
-    else:
-        context = ""
-    
+def build_prompt(user_message: str, question_text: str = "") -> str:
+    """Build prompt from user message and question."""
     prompt = f"""
 ### CANDIDATE MESSAGE:
 {user_message}
@@ -33,13 +25,6 @@ def build_prompt(user_message: str, retrieved_chunks: Union[List[str], List[dict
     
     if question_text:
         prompt = f"### QUESTION:\n{question_text}\n\n" + prompt
-    
-    if context:
-        prompt += f"""
-
-### CONTEXT FROM KNOWLEDGE BASE:
-{context}
-"""
     
     prompt += """
 
