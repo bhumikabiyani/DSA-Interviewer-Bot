@@ -13,6 +13,8 @@ import { CodeInputBox } from "@/components/CodeInputBox";
 import { Code2, User, Bot, Loader2 } from 'lucide-react';
 import { Evaluation } from "@/lib/types";
 import { EvaluationViewer } from "@/components/EvaluationViewer";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import {
   Panel,
@@ -39,6 +41,8 @@ export default function InterviewPage() {
     phase,
     setInterviewState,
     updateTimeRemaining,
+    questionText,
+    setQuestionText,
   } = useChatStore();
 
   const [evaluation, setEvaluation] = useState<Evaluation | null>(null);
@@ -171,6 +175,7 @@ export default function InterviewPage() {
           });
           // Update phase if server indicates Q1 started
           if (response.question_text && phase === "intro") {
+            setQuestionText(response.question_text);
             setInterviewState({ phase: "q1" });
           }
           break;
@@ -311,7 +316,7 @@ export default function InterviewPage() {
 
           {/* Code Panel */}
           <Panel defaultSize={45} minSize={25}>
-            <div className={`h-full border-l border-gray-700 ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
+            <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
               {phase === "ended" ? (
                 <div className="p-6 h-full min-h-0">
                   {loadingEvaluation ? (
@@ -327,7 +332,39 @@ export default function InterviewPage() {
                   )}
                 </div>
               ) : (
-                <CodeInputBox onSend={handleSendMessage} />
+                <>
+                  {/* Question Display Panel */}
+                  {questionText && (
+                    <div className="border-b border-gray-700 overflow-y-auto" style={{ maxHeight: '45%' }}>
+                      <div className="p-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                        <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Current Question</span>
+                      </div>
+                      <div className="p-4 bg-gray-900/50
+                        prose prose-sm prose-invert max-w-none
+                        prose-headings:text-emerald-400 prose-headings:font-bold prose-headings:mt-3 prose-headings:mb-2
+                        prose-h2:text-base prose-h3:text-sm
+                        prose-p:text-gray-200 prose-p:leading-relaxed prose-p:my-1.5 prose-p:text-sm
+                        prose-strong:text-white prose-strong:font-semibold
+                        prose-code:text-emerald-300 prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-mono
+                        prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700 prose-pre:rounded-lg prose-pre:my-2
+                        prose-ul:my-2 prose-ul:space-y-0.5 prose-ol:my-2 prose-ol:space-y-0.5
+                        prose-li:text-gray-300 prose-li:text-sm
+                        prose-table:border-collapse prose-table:my-3
+                        prose-th:bg-gray-800 prose-th:text-gray-200 prose-th:px-3 prose-th:py-1.5 prose-th:text-xs prose-th:font-semibold prose-th:border prose-th:border-gray-700
+                        prose-td:px-3 prose-td:py-1.5 prose-td:text-xs prose-td:border prose-td:border-gray-700 prose-td:text-gray-300
+                      ">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {questionText}
+                        </ReactMarkdown>
+                      </div>
+                    </div>
+                  )}
+                  {/* Code Editor */}
+                  <div className="flex-1 min-h-0">
+                    <CodeInputBox onSend={handleSendMessage} />
+                  </div>
+                </>
               )}
             </div>
           </Panel>

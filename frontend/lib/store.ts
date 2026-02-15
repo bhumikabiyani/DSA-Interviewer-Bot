@@ -6,6 +6,7 @@ interface ChatState {
   isLoading: boolean;
   initialized: boolean;
   initialQuestion: string | null;
+  questionText: string | null;
   // Interview state
   currentQuestion: number;
   totalQuestions: number;
@@ -16,6 +17,7 @@ interface ChatState {
   setLoading: (loading: boolean) => void;
   setInitialized: (initialized: boolean) => void;
   setInitialQuestion: (question: string) => void;
+  setQuestionText: (text: string | null) => void;
   setInterviewState: (state: {
     currentQuestion?: number;
     totalQuestions?: number;
@@ -31,6 +33,7 @@ export const useChatStore = create<ChatState>((set) => ({
   isLoading: false,
   initialized: false,
   initialQuestion: null,
+  questionText: null,
   currentQuestion: 1,
   totalQuestions: 2,
   timeRemaining: 3000, // 50 minutes in seconds
@@ -42,6 +45,7 @@ export const useChatStore = create<ChatState>((set) => ({
   setLoading: (loading) => set({ isLoading: loading }),
   setInitialized: (initialized) => set({ initialized }),
   setInitialQuestion: (question) => set({ initialQuestion: question }),
+  setQuestionText: (text) => set({ questionText: text }),
   setInterviewState: (newState) =>
     set((state) => ({
       currentQuestion: newState.currentQuestion ?? state.currentQuestion,
@@ -56,6 +60,7 @@ export const useChatStore = create<ChatState>((set) => ({
       isLoading: false,
       initialized: false,
       initialQuestion: null,
+      questionText: null,
       currentQuestion: 1,
       totalQuestions: 2,
       timeRemaining: 3000,

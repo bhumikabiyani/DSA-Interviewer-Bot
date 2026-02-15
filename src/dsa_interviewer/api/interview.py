@@ -1,5 +1,4 @@
 from datetime import datetime
-from zoneinfo import ZoneInfo
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from fastapi.responses import StreamingResponse
@@ -10,8 +9,6 @@ from dsa_interviewer.models.interview import Interview
 from pydantic import BaseModel
 from typing import Optional, List
 import logging
-import sys
-from pathlib import Path
 import boto3
 import json
 
@@ -417,11 +414,9 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
             
             intro_response = f"""Thank you for sharing that! It's great to learn more about your background.
 
-Now let's get started with the technical questions.
+Now let's get started with the technical questions. Here's your first question!
 
-Here's your first question:
-
-{q1_text}
+Please review the problem statement carefully. Let me know if anything is unclear or if you have any doubts!
 
 Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
             
