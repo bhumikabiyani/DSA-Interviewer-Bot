@@ -7,8 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from dsa_interviewer.services.groq_llm import GroqLLM
-from dsa_interviewer.services.rag_service import RagService
-from question_selector import pick_random_question
+from dsa_interviewer.utils.interview import pick_random_question
+from dsa_interviewer.core.database import SessionLocal
 from prompts import SYSTEM_PROMPT, build_prompt
 
 
@@ -18,16 +18,17 @@ def main():
 
     try:
         llm = GroqLLM()
-        rag = RagService()
+        db = SessionLocal()
     except Exception as e:
         print(f"Error initializing services: {e}")
         return 1
 
-    q_path, q_text = pick_random_question()
-    if not q_path:
-        print("WARNING: No questions found in data/knowledge_base/questions/")
+    q_data = pick_random_question(db)
+    if not q_data:
+        print("WARNING: No questions found in the database.")
         return 1
 
+    q_text = q_data['title']
     print("\n=== INTERVIEW QUESTION ===")
     print(q_text)
     print("==========================\n")
@@ -46,10 +47,7 @@ def main():
             if not user_input:
                 continue
 
-            query = f"{q_text}\n\n{user_input}"
-            chunks = rag.retrieve(query, n=5)
-            
-            prompt = build_prompt(user_input, chunks, q_text)
+            prompt = build_prompt(user_input, q_text)
             conversation_history.append({"role": "user", "content": prompt})
 
             reply = llm.chat(conversation_history)
@@ -64,7 +62,8 @@ def main():
         except Exception as e:
             print(f"\nError: {e}")
             continue
-
+    
+    db.close()
     return 0
 
 
