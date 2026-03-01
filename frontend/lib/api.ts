@@ -42,6 +42,32 @@ export async function startInterviewWithForm(candidateInfo: {
   });
 
   if (!response.ok) {
+    throw new Error(`Failed to send background message: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
+export async function startInterview(topic: string | null, difficulty: number | null): Promise<{
+  session_id: string;
+  intro_message: string;
+  current_question: number;
+  total_questions: number;
+  time_remaining: number;
+}> {
+  const response = await fetch(`${API_BASE_URL}/api/start_interview`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify({
+      topic: topic || null,
+      difficulty: difficulty ?? null,
+    }),
+  });
+
+  if (!response.ok) {
     if (response.status === 401) {
       throw new Error("Unauthorized");
     }

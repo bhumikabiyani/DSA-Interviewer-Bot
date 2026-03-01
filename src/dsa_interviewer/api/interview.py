@@ -141,7 +141,13 @@ class StartInterviewWithFormRequest(BaseModel):
     candidate_info: CandidateInfo
 
 class StartInterviewRequest(BaseModel):
-    session_id: str
+    topic: Optional[str] = None      # comma-separated e.g. "Arrays,Two Pointer"
+    difficulty: Optional[int] = None  # 1=Easy, 2=Medium, 3=Hard, None=all
+    type: Optional[str] = "DSA"
+
+class QuickStartRequest(BaseModel):
+    topic: Optional[str] = None      # comma-separated e.g. "Arrays,Two Pointer"
+    difficulty: Optional[int] = None  # 1=Easy, 2=Medium, 3=Hard, None=all
 
 class InteractRequest(BaseModel):
     session_id: str
@@ -281,60 +287,64 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
 
 @router.post("/start_interview")
 def start_interview(payload: StartInterviewRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    """Start the technical interview with 2 questions."""
+    """Start an interview with optional topic and difficulty filters."""
     try:
-        session_id = payload.session_id
-        
-        # Pick 1 question for this interview from DB
-        q_data = pick_random_question(db)
-        
+        # Parse comma-separated topic string into a list of tags
+        topic_tags = None
+        if payload.topic:
+            topic_tags = [t.strip() for t in payload.topic.split(",") if t.strip()]
+
+        # Pick a question matching the filters
+        q_data = pick_random_question(db, difficulty=payload.difficulty, topic_tags=topic_tags)
+
         if not q_data:
-            raise HTTPException(status_code=500, detail="No questions available in database")
-        
+            raise HTTPException(status_code=404, detail="No questions found for the selected topic/difficulty")
+
+        # Create a new session
+        session_id = sessions.create_background_session(current_user.id)
+
+        # Store minimal candidate metadata
+        sessions.set_candidate_info(session_id, {
+            "type": "quick_start",
+            "current_role": "",
+            "organization": "",
+            "expectations": "",
+            "difficulty": str(payload.difficulty) if payload.difficulty else "all",
+        })
+
         # Elaborate the question using Groq
         elaboration_input = ELABORATION_PROMPT.format(
             title=q_data['title'],
             difficulty=q_data['difficulty'],
-            topic_tag=q_data['topic_tag']
+            topic_tag=q_data['topic_tag'],
         )
         elaborated_text = llm.chat([{"role": "user", "content": elaboration_input}])
-        
+
         questions = [(str(q_data['id']), elaborated_text)]
-        
-        # Start the interview with the selected question
+
+        # Start the interview
         sessions.start_interview(session_id, questions)
-        
-        # Get the first question
-        current_q = sessions.get_current_question(session_id)
-        if not current_q:
-            raise HTTPException(status_code=500, detail="Failed to get question")
-        
-        q_num, q_text = current_q
-        
-        # Create introduction message
-        intro = f"""Great! Let's begin the technical portion of the interview.
 
-We have about 50 minutes, so take your time to think through the problem.
+        intro_msg = (
+            "Welcome to your DSA practice session! We'll go through 1 question today.\n\n"
+            "Before we dive in, tell me a little about yourself — "
+            "your background and experience with data structures and algorithms."
+        )
 
-Here's your question:
-
-{q_text}
-
-Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
-
-        # Add the intro message to history
         timestamp = int(datetime.utcnow().timestamp())
-        sessions.add_message(current_user.id, session_id, "interviewer", intro, timestamp)
+        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp)
         
         time_remaining = sessions.get_time_remaining(session_id)
-        
-        logger.info(f"Started interview for session {session_id} with 1 question")
-        
+
+        logger.info(f"Started interview session {session_id} (topic={payload.topic}, difficulty={payload.difficulty})")
+
         return {
-            "intro": intro,
+            "session_id": session_id,
+            "intro_message": intro_msg,
             "current_question": 1,
-            "total_questions": 1,
+            "total_questions": len(questions),
             "time_remaining": time_remaining,
+            "phase": "intro",
         }
     except HTTPException:
         raise

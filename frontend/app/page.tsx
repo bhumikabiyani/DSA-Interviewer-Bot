@@ -2,14 +2,48 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { startInterviewWithForm, getRecentInterviews, getLastInterviewInfo } from "@/lib/api";
+import { getRecentInterviews, startInterview, getLastInterviewInfo, startInterviewWithForm } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
 import { Interview, CandidateInfo } from "@/lib/types";
 import { PreInterviewForm } from "@/components/PreInterviewForm";
 import { Clock, User } from "lucide-react";
 
+const DSA_TOPICS = [
+  "arrays",
+  "binary search",
+  "binary search tree",
+  "binary tree",
+  "bit manipulation",
+  "data-structure",
+  "dynamic programming",
+  "graph",
+  "greedy",
+  "hashing",
+  "heap",
+  "linked list",
+  "linked-list",
+  "maths",
+  "queue",
+  "recursion",
+  "sorting",
+  "stack",
+  "string",
+  "trie",
+  "two pointer",
+  "two-pointers"
+]
+
+const DIFFICULTIES = [
+  { label: "All", value: null },
+  { label: "Easy", value: 0 },
+  { label: "Medium", value: 1 },
+  { label: "Hard", value: 2 },
+] as const;
+
 export default function Home() {
   const router = useRouter();
+  const [selectedTopics, setSelectedTopics] = useState<Set<string>>(new Set());
+  const [selectedDifficulty, setSelectedDifficulty] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [recentInterviews, setRecentInterviews] = useState<Interview[]>([]);
@@ -33,7 +67,7 @@ export default function Home() {
     try {
       setLoadingInterviews(true);
       const response = await getRecentInterviews(1, 3);
-      setRecentInterviews(response.interviews);
+      setRecentInterviews(response.interviews.slice(0, 3));
     } catch (err) {
       console.error("Failed to fetch recent interviews:", err);
     } finally {
@@ -50,8 +84,30 @@ export default function Home() {
     }
   };
 
-  const handleStartInterview = () => {
-    setShowForm(true);
+  const toggleTopic = (topic: string) => {
+    setSelectedTopics((prev) => {
+      const next = new Set(prev);
+      if (next.has(topic)) {
+        next.delete(topic);
+      } else {
+        next.add(topic);
+      }
+      return next;
+    });
+  };
+
+  const handleQuickStart = async () => {
+    setLoading(true);
+    setError(null);
+    reset();
+    try {
+      const topicStr = selectedTopics.size > 0 ? Array.from(selectedTopics).join(",") : null;
+      const response = await startInterview(topicStr, selectedDifficulty);
+      router.push(`/interview/${response.session_id}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to start interview");
+      setLoading(false);
+    }
   };
 
   const handleFormSubmit = async (data: CandidateInfo) => {
@@ -90,20 +146,101 @@ export default function Home() {
       </div>
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
-          <div className="text-center space-y-8 max-w-2xl animate-fade-in">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
-                AI Mock DSA Interviewer
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-                Practice FAANG-style DSA interviews with AI
-              </p>
+          <div className="text-center space-y-3 max-w-2xl animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
+              AI Mock DSA Interviewer
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
+              Practice FAANG-style DSA interviews with AI
+            </p>
+          </div>
+
+          {/* Quick Start Card */}
+          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
+
+            {/* Difficulty Selector */}
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                Difficulty
+              </label>
+              <div className="flex gap-2 flex-wrap">
+                {DIFFICULTIES.map((d) => {
+                  const isSelected = selectedDifficulty === d.value;
+                  const colorMap: Record<string, string> = {
+                    All: "bg-indigo-600 text-white border-indigo-600",
+                    Easy: "bg-emerald-500 text-white border-emerald-500",
+                    Medium: "bg-amber-500 text-white border-amber-500",
+                    Hard: "bg-red-500 text-white border-red-500",
+                  };
+                  const defaultMap: Record<string, string> = {
+                    All: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400",
+                    Easy: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-emerald-400",
+                    Medium: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-amber-400",
+                    Hard: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-red-400",
+                  };
+                  return (
+                    <button
+                      key={d.label}
+                      onClick={() => setSelectedDifficulty(d.value)}
+                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-150 ${isSelected ? colorMap[d.label] : defaultMap[d.label]
+                        }`}
+                    >
+                      {d.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="space-y-4">
+
+            {/* Topic Selector */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                  Topic
+                </label>
+                {selectedTopics.size > 0 && (
+                  <button
+                    onClick={() => setSelectedTopics(new Set())}
+                    className="text-xs text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-200 transition-colors"
+                  >
+                    Clear ({selectedTopics.size} selected)
+                  </button>
+                )}
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                {/* "All" chip */}
+                <button
+                  onClick={() => setSelectedTopics(new Set())}
+                  className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 ${selectedTopics.size === 0
+                    ? "bg-indigo-600 text-white border-indigo-600"
+                    : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400"
+                    }`}
+                >
+                  All
+                </button>
+                {DSA_TOPICS.map((topic) => {
+                  const isSelected = selectedTopics.has(topic);
+                  return (
+                    <button
+                      key={topic}
+                      onClick={() => toggleTopic(topic)}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 ${isSelected
+                        ? "bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-500"
+                        : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300"
+                        }`}
+                    >
+                      {topic}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-3 pt-1">
               <button
-                onClick={handleStartInterview}
+                onClick={handleQuickStart}
                 disabled={loading}
-                className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 shadow-lg shadow-indigo-200 dark:shadow-none transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 text-lg"
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
