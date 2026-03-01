@@ -420,7 +420,7 @@ Please review the problem statement carefully. Let me know if anything is unclea
 
 Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
             
-            sessions.add_message(current_user.id, session_id, "interviewer", intro_response, timestamp, 0)
+            sessions.add_message(current_user.id, session_id, "interviewer", intro_response+"\n\n"+q1_text, timestamp, 0)
             
             return InteractResponse(
                 response=intro_response,
