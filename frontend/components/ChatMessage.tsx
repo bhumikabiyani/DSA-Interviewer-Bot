@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Message } from "@/lib/types";
-import { Bot, Check, Code2, Copy, User } from "lucide-react";
+import { Bot, Check, Code2, Copy, SquareX, User, Volume2 } from "lucide-react";
 import { speakInterviewerText } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -106,9 +106,12 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
   const isInterviewer = message.role === "interviewer";
   const isCandidate = message.role === "candidate";
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const ttsEnabled = process.env.NEXT_PUBLIC_ENABLE_TTS === "true";
 
   useEffect(() => {
-    if (!isInterviewer || !isLast) return;
+    if (!isInterviewer || !isLast || !ttsEnabled) return;
 
     let cancelled = false;
 
@@ -121,21 +124,20 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
         }
 
         const audio = await speakInterviewerText(message.message);
-
         if (cancelled) return;
 
         audioRef.current = audio;
+        setIsSpeaking(true);
+        audio.onended = () => setIsSpeaking(false);
+        audio.onpause = () => setIsSpeaking(false);
         await audio.play();
       } catch (err) {
         console.error("Interviewer TTS failed:", err);
+        setIsSpeaking(false);
       }
     }
 
-    // Only call if the ENV ENABLE_TTS is set to true
-
-    if (process.env.NEXT_PUBLIC_ENABLE_TTS === "true") {
-      playVoice();
-    }
+    playVoice();
 
     return () => {
       cancelled = true;
@@ -143,8 +145,17 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
         audioRef.current.pause();
         audioRef.current = null;
       }
+      setIsSpeaking(false);
     };
-  }, [message.message, isInterviewer, isLast]);
+  }, [message.message, isInterviewer, isLast, ttsEnabled]);
+
+  const handleSkipAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setIsSpeaking(false);
+  };
 
   const codeBlock = isCandidate ? parseCodeFence(message.message) : null;
 
@@ -200,9 +211,27 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
             </div>
           </div>
         )}
-        <span className={`text-xs mt-1 px-2 ${isCandidate ? "text-blue-400" : "text-gray-500"}`}>
-          {message.timestamp?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-        </span>
+
+        <div className={`flex items-center gap-2 mt-1 px-2 ${isCandidate ? "flex-row-reverse" : "flex-row"}`}>
+          <span className={`text-xs ${isCandidate ? "text-blue-400" : "text-gray-500"}`}>
+            {message.timestamp?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+          </span>
+          {isInterviewer && ttsEnabled && isSpeaking && (
+            <button
+              onClick={handleSkipAudio}
+              title="Stop speaking"
+              className="flex items-center gap-1 text-[11px] text-gray-500 hover:text-red-400 transition-colors px-1.5 py-0.5 rounded border border-gray-700 hover:border-red-500/50 bg-gray-800/60"
+            >
+              <SquareX className="h-3 w-3" />
+              Skip
+            </button>
+          )}
+          {isInterviewer && ttsEnabled && !isSpeaking && isLast && (
+            <span className="flex items-center gap-1 text-[11px] text-gray-600">
+              <Volume2 className="h-3 w-3" />
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

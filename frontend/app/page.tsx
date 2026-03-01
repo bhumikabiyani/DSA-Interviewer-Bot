@@ -1,12 +1,27 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { getRecentInterviews, startInterview, getLastInterviewInfo } from "@/lib/api";
+
+import { getRecentInterviews, startInterview, getLastInterviewInfo, getUserProfile } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
-import { Interview, CandidateInfo } from "@/lib/types";
+import { Interview, CandidateInfo, UserProfile } from "@/lib/types";
 import { PreInterviewForm } from "@/components/PreInterviewForm";
-import { Clock, User } from "lucide-react";
+import {
+  Clock,
+  User,
+  LogOut,
+  BookOpen,
+  Zap,
+  Trophy,
+  Code2,
+  Brain,
+  Target,
+  ChevronRight,
+  Sparkles,
+  BarChart3,
+  Github,
+} from "lucide-react";
+import { logout } from "@/lib/auth";
 
 const DSA_TOPICS = [
   "arrays",
@@ -21,7 +36,6 @@ const DSA_TOPICS = [
   "hashing",
   "heap",
   "linked list",
-  "linked-list",
   "maths",
   "queue",
   "recursion",
@@ -30,8 +44,7 @@ const DSA_TOPICS = [
   "string",
   "trie",
   "two pointer",
-  "two-pointers"
-]
+];
 
 const DIFFICULTIES = [
   { label: "All", value: null },
@@ -39,6 +52,33 @@ const DIFFICULTIES = [
   { label: "Medium", value: 1 },
   { label: "Hard", value: 2 },
 ] as const;
+
+const HOW_IT_WORKS = [
+  {
+    icon: Target,
+    title: "Pick Your Focus",
+    desc: "Select a DSA topic and difficulty level to tailor the interview to your skill level.",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: Brain,
+    title: "AI Interviews You",
+    desc: "Our AI interviewer asks FAANG-style questions and follows up just like a real interviewer.",
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: Code2,
+    title: "Code Your Solution",
+    desc: "Write and explain your solution live. The AI adapts to your approach and gives hints.",
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    icon: BarChart3,
+    title: "Get Evaluated",
+    desc: "Receive detailed feedback on correctness, complexity, code quality, and communication.",
+    color: "from-emerald-500 to-teal-500",
+  },
+];
 
 export default function Home() {
   const router = useRouter();
@@ -56,18 +96,31 @@ export default function Home() {
     expectations?: string;
     difficulty?: string;
   } | null>(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [totalInterviews, setTotalInterviews] = useState(0);
   const { reset } = useChatStore();
 
   useEffect(() => {
     fetchRecentInterviews();
     fetchLastCandidateInfo();
+    fetchProfile();
   }, []);
+
+  const fetchProfile = async () => {
+    try {
+      const data = await getUserProfile();
+      setProfile(data);
+    } catch (err) {
+      console.error("Failed to fetch profile:", err);
+    }
+  };
 
   const fetchRecentInterviews = async () => {
     try {
       setLoadingInterviews(true);
       const response = await getRecentInterviews(1, 3);
       setRecentInterviews(response.interviews.slice(0, 3));
+      setTotalInterviews(response.total_count ?? response.interviews.length);
     } catch (err) {
       console.error("Failed to fetch recent interviews:", err);
     } finally {
@@ -133,58 +186,135 @@ export default function Home() {
     router.push("/profile");
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-      <div className="absolute top-4 right-4 flex items-center gap-3">
-        <ThemeToggle />
-        <button
-          onClick={handleGoToProfile}
-          className="p-2 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 shadow-md hover:shadow-lg transition-all duration-200 text-white"
-          aria-label="Go to profile"
-        >
-          <User className="h-6 w-6" />
-        </button>
-      </div>
-      <div className="container mx-auto px-4 py-12">
-        <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
-          <div className="text-center space-y-3 max-w-2xl animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white">
-              AI Mock DSA Interviewer
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-              Practice FAANG-style DSA interviews with AI
-            </p>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-gray-100">
+
+      {/* ── HEADER ── */}
+      <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl bg-slate-950/60">
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+          {/* Logo + brand */}
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+              <Code2 className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <span className="font-bold text-lg text-white leading-none">Algo Mentor</span>
+              <span className="hidden sm:block text-[10px] text-indigo-400 leading-none tracking-wider uppercase">DSA Interview AI</span>
+            </div>
           </div>
 
-          {/* Quick Start Card */}
-          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6 space-y-6">
+          {/* Nav links */}
+          <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+            <a href="#start" className="px-3 py-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all">Practice</a>
+            <a href="#how-it-works" className="px-3 py-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all">How It Works</a>
+            <a href="#recent" className="px-3 py-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all">History</a>
+          </nav>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleGoToProfile}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 transition-all text-sm font-medium text-gray-200"
+            >
+              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-xs font-bold text-white">
+                {profile?.username?.charAt(0)?.toUpperCase() ?? <User className="h-3 w-3" />}
+              </div>
+              <span className="hidden sm:block">{profile?.username ?? "Profile"}</span>
+            </button>
+            <button
+              onClick={handleLogout}
+              className="p-2 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+              aria-label="Logout"
+            >
+              <LogOut className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="flex-1">
+
+        {/* Hero */}
+        <section className="relative overflow-hidden pt-16 pb-12">
+          {/* Ambient glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/20 rounded-full blur-3xl" />
+          </div>
+          <div className="relative max-w-6xl mx-auto px-4 text-center space-y-5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-sm font-medium">
+              <Sparkles className="h-3.5 w-3.5" />
+              AI-Powered Mock Interviews
+            </div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+              Ace Your{" "}
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                DSA Interview
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Practice real FAANG-style data structures &amp; algorithms interviews with an AI that adapts to your level, gives live hints, and provides detailed evaluations.
+            </p>
+
+            {/* Stats row */}
+            <div className="flex flex-wrap justify-center gap-6 pt-4">
+              {[
+                { icon: Trophy, label: "Your Interviews", value: totalInterviews },
+                { icon: BookOpen, label: "DSA Topics", value: DSA_TOPICS.length },
+                { icon: Zap, label: "AI-Powered", value: "Real-time" },
+              ].map(({ icon: Icon, label, value }) => (
+                <div key={label} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-5 py-3">
+                  <Icon className="h-5 w-5 text-indigo-400" />
+                  <div className="text-left">
+                    <div className="font-bold text-white text-lg leading-none">{value}</div>
+                    <div className="text-xs text-gray-500 mt-0.5">{label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Start Card */}
+        <section id="start" className="max-w-2xl mx-auto px-4 pb-16 scroll-mt-20">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl p-6 space-y-6">
+            <div className="space-y-1">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <Zap className="h-5 w-5 text-yellow-400" />
+                Quick Start
+              </h2>
+              <p className="text-sm text-gray-400">Choose your focus or leave both blank for a random challenge.</p>
+            </div>
 
             {/* Difficulty Selector */}
             <div className="space-y-2">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
                 Difficulty
               </label>
               <div className="flex gap-2 flex-wrap">
                 {DIFFICULTIES.map((d) => {
                   const isSelected = selectedDifficulty === d.value;
                   const colorMap: Record<string, string> = {
-                    All: "bg-indigo-600 text-white border-indigo-600",
-                    Easy: "bg-emerald-500 text-white border-emerald-500",
-                    Medium: "bg-amber-500 text-white border-amber-500",
-                    Hard: "bg-red-500 text-white border-red-500",
+                    All: "bg-indigo-600 text-white border-indigo-600 shadow-indigo-500/30",
+                    Easy: "bg-emerald-600 text-white border-emerald-600 shadow-emerald-500/30",
+                    Medium: "bg-amber-500 text-white border-amber-500 shadow-amber-500/30",
+                    Hard: "bg-red-600 text-white border-red-600 shadow-red-500/30",
                   };
-                  const defaultMap: Record<string, string> = {
-                    All: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400",
-                    Easy: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-emerald-400",
-                    Medium: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-amber-400",
-                    Hard: "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-red-400",
+                  const idleMap: Record<string, string> = {
+                    All: "bg-white/5 text-gray-300 border-white/10 hover:border-indigo-500/60",
+                    Easy: "bg-white/5 text-gray-300 border-white/10 hover:border-emerald-500/60",
+                    Medium: "bg-white/5 text-gray-300 border-white/10 hover:border-amber-500/60",
+                    Hard: "bg-white/5 text-gray-300 border-white/10 hover:border-red-500/60",
                   };
                   return (
                     <button
                       key={d.label}
                       onClick={() => setSelectedDifficulty(d.value)}
-                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-150 ${isSelected ? colorMap[d.label] : defaultMap[d.label]
-                        }`}
+                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-150 shadow-sm ${isSelected ? colorMap[d.label] + " shadow-lg" : idleMap[d.label]}`}
                     >
                       {d.label}
                     </button>
@@ -196,25 +326,24 @@ export default function Home() {
             {/* Topic Selector */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
                   Topic
                 </label>
                 {selectedTopics.size > 0 && (
                   <button
                     onClick={() => setSelectedTopics(new Set())}
-                    className="text-xs text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-200 transition-colors"
+                    className="text-xs text-indigo-400 hover:text-indigo-200 transition-colors"
                   >
                     Clear ({selectedTopics.size} selected)
                   </button>
                 )}
               </div>
               <div className="flex gap-2 flex-wrap">
-                {/* "All" chip */}
                 <button
                   onClick={() => setSelectedTopics(new Set())}
                   className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 ${selectedTopics.size === 0
                     ? "bg-indigo-600 text-white border-indigo-600"
-                    : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400"
+                    : "bg-white/5 text-gray-400 border-white/10 hover:border-indigo-500/60 hover:text-gray-200"
                     }`}
                 >
                   All
@@ -225,9 +354,9 @@ export default function Home() {
                     <button
                       key={topic}
                       onClick={() => toggleTopic(topic)}
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 ${isSelected
-                        ? "bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-500"
-                        : "bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300"
+                      className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 capitalize ${isSelected
+                        ? "bg-indigo-500/20 text-indigo-300 border-indigo-500"
+                        : "bg-white/5 text-gray-400 border-white/10 hover:border-indigo-500/60 hover:text-gray-200"
                         }`}
                     >
                       {topic}
@@ -237,120 +366,161 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-3 pt-1">
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-1">
+              <button
+                onClick={handleQuickStart}
+                disabled={loading}
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-200 disabled:opacity-50 text-base"
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Starting…
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-5 w-5" />
+                    Quick Start
+                  </>
+                )}
+              </button>
               <button
                 onClick={() => setShowForm(true)}
                 disabled={loading}
-                className="w-full px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 shadow-lg shadow-indigo-200 dark:shadow-none transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 text-lg"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/25 text-white font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 text-base"
               >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <svg
-                      className="animate-spin h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Starting Interview...
-                  </span>
-                ) : (
-                  "Start Interview"
-                )}
+                <User className="h-5 w-5 text-indigo-400" />
+                Personalized Start
               </button>
-              {error && (
-                <div className="text-red-600 dark:text-red-400 text-sm animate-slide-up">
-                  {error}
-                </div>
-              )}
             </div>
-            <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
-              <p>Get ready to tackle challenging data structures and algorithms questions</p>
-            </div>
-          </div>
-        </div>
 
-        {/* Recent Interviews Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Recent Interviews
-          </h2>
-          {loadingInterviews ? (
-            <div className="flex justify-center items-center py-12">
-              <svg
-                className="animate-spin h-8 w-8 text-indigo-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+            {error && (
+              <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2">
+                {error}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section id="how-it-works" className="max-w-6xl mx-auto px-4 pb-20 scroll-mt-20">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">How It Works</h2>
+            <p className="text-gray-400 mt-2">Four steps to sharpen your interview skills</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {HOW_IT_WORKS.map((step, i) => (
+              <div
+                key={step.title}
+                className="relative bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/8 hover:border-white/20 transition-all duration-200 group"
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-4 shadow-lg`}>
+                  <step.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="absolute top-4 right-5 text-4xl font-black text-white/5 select-none">{i + 1}</div>
+                <h3 className="font-semibold text-white mb-1 text-sm">{step.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Recent Interviews */}
+        <section id="recent" className="max-w-6xl mx-auto px-4 pb-24 scroll-mt-20">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Recent Interviews</h2>
+            <button
+              onClick={handleGoToProfile}
+              className="flex items-center gap-1 text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
+            >
+              View all <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          {loadingInterviews ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="h-28 bg-white/5 rounded-xl animate-pulse border border-white/10" />
+              ))}
             </div>
           ) : recentInterviews.length === 0 ? (
-            <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-              <Clock className="mx-auto h-12 w-12 mb-4 opacity-50" />
-              <p className="text-lg">No recent interviews yet</p>
-              <p className="text-sm mt-2">Start your first interview to see it here</p>
+            <div className="text-center py-16 bg-white/5 border border-white/10 rounded-2xl">
+              <Clock className="mx-auto h-12 w-12 mb-4 text-gray-600" />
+              <p className="text-lg font-medium text-gray-400">No interviews yet</p>
+              <p className="text-sm text-gray-500 mt-1">Complete your first interview to see it here</p>
             </div>
           ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {recentInterviews.map((interview) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {recentInterviews.map((interview) => {
+                const isEnded = interview.phase === "ended";
+                return (
                   <button
                     key={interview.interview_id}
                     onClick={() => handleResumeInterview(interview.session_id)}
-                    className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-left border border-gray-200 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 transform hover:scale-105"
+                    className="group p-5 bg-white/5 hover:bg-white/8 border border-white/10 hover:border-indigo-500/50 rounded-xl transition-all duration-200 text-left transform hover:scale-[1.02]"
                   >
                     <div className="flex items-center gap-3 mb-3">
-                      <Clock className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-                      <h3 className="font-semibold text-gray-900 dark:text-white">
-                        Interview #{interview.interview_id}
-                      </h3>
+                      <div className={`p-2 rounded-lg ${isEnded ? "bg-emerald-500/20" : "bg-indigo-500/20"}`}>
+                        {isEnded ? (
+                          <Trophy className={`h-5 w-5 text-emerald-400`} />
+                        ) : (
+                          <Clock className="h-5 w-5 text-indigo-400" />
+                        )}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-white text-sm group-hover:text-indigo-300 transition-colors">
+                          Interview #{interview.interview_id}
+                        </h3>
+                        <span className={`text-xs font-medium ${isEnded ? "text-emerald-400" : "text-indigo-400"}`}>
+                          {isEnded ? "Completed" : "In Progress"}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-xs text-indigo-600 dark:text-indigo-400 mt-3 font-medium">
-                      Click to resume →
-                    </p>
+                    <div className={`flex items-center gap-1 text-xs font-medium mt-2 ${isEnded ? "text-emerald-500" : "text-indigo-500"}`}>
+                      {isEnded ? "View results" : "Resume"} <ChevronRight className="h-3 w-3" />
+                    </div>
                   </button>
-                ))}
-              </div>
-              <div className="text-center mt-8">
-                <button
-                  onClick={handleGoToProfile}
-                  className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors duration-200 underline underline-offset-4 hover:underline-offset-2"
-                >
-                  Show More ...
-                </button>
-              </div>
-            </>
+                );
+              })}
+            </div>
           )}
-        </div>
-      </div>
+        </section>
+      </main>
 
+      {/* ── FOOTER ── */}
+      <footer className="border-t border-white/10 bg-slate-950/80 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <Code2 className="h-3.5 w-3.5 text-white" />
+            </div>
+            <span className="font-medium text-gray-400">Algo Mentor</span>
+            <span className="text-gray-600">— AI DSA Interview Practice</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <button
+              onClick={handleGoToProfile}
+              className="flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              <User className="h-4 w-4" />
+              Profile
+            </button>
+            <button
+              onClick={handleLogout}
+              className="text-gray-500 hover:text-red-400 transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+        <div className="text-center text-xs text-gray-700 pb-4">
+          © {new Date().getFullYear()} AlgoMentor. Built for interview preparation.
+        </div>
+      </footer>
 
       <PreInterviewForm
         isOpen={showForm}
@@ -359,6 +529,6 @@ export default function Home() {
         loading={loading}
         initialData={lastCandidateInfo}
       />
-    </div >
+    </div>
   );
 }
