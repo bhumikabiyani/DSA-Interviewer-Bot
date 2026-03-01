@@ -25,46 +25,35 @@ export async function getBackgroundMessages(sessionId: string): Promise<ResumeIn
   return response.json();
 }
 
-export async function startInterviewWithForm(candidateInfo: {
-  type: string;
-  currentRole: string;
-  organization: string;
-  expectations: string;
-  difficulty: string;
-}): Promise<StartInterviewWithFormResponse> {
-  const response = await fetch(`${API_BASE_URL}/api/start_interview_with_form`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getAuthHeaders(),
-    },
-    body: JSON.stringify({ candidate_info: candidateInfo }),
-  });
+export async function startInterview(
+  topic: string | null,
+  difficulty: number | null,
+  candidateInfo?: {
+    type: string;
+    currentRole: string;
+    organization: string;
+    expectations: string;
+  }
+): Promise<StartInterviewWithFormResponse> {
+  const body: Record<string, unknown> = {
+    topic: topic || null,
+    difficulty: difficulty ?? null,
+  };
 
-  if (!response.ok) {
-    throw new Error(`Failed to send background message: ${response.statusText}`);
+  if (candidateInfo) {
+    body.type = candidateInfo.type;
+    body.currentRole = candidateInfo.currentRole;
+    body.organization = candidateInfo.organization;
+    body.expectations = candidateInfo.expectations;
   }
 
-  return response.json();
-}
-
-export async function startInterview(topic: string | null, difficulty: number | null): Promise<{
-  session_id: string;
-  intro_message: string;
-  current_question: number;
-  total_questions: number;
-  time_remaining: number;
-}> {
   const response = await fetch(`${API_BASE_URL}/api/start_interview`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       ...getAuthHeaders(),
     },
-    body: JSON.stringify({
-      topic: topic || null,
-      difficulty: difficulty ?? null,
-    }),
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {

@@ -19,11 +19,20 @@ const LANG_META: Record<string, { label: string; dot: string }> = {
   cpp: { label: "C++", dot: "bg-gradient-to-r from-purple-500 to-pink-500" },
 };
 
-
 function parseCodeFence(text: string): { lang: string; code: string } | null {
-  const m = text.match(/^```(\w+)\n([\s\S]*?)\n?```\s*$/);
-  if (!m) return null;
-  return { lang: m[1], code: m[2] };
+  // Try markdown fence first
+  const fence = text.match(/^```(\w+)\n([\s\S]*?)\n?```\s*$/);
+  if (fence) {
+    return { lang: fence[1], code: fence[2] };
+  }
+
+  // Try custom format
+  const custom = text.match(/^\[CODE SUBMISSION - (\w+)\]:\s*([\s\S]*)$/);
+  if (custom) {
+    return { lang: custom[1].toLowerCase(), code: custom[2] };
+  }
+
+  return null;
 }
 
 function CodeSubmissionBubble({ lang, code }: { lang: string; code: string }) {

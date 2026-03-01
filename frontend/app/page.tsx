@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { getRecentInterviews, startInterview, getLastInterviewInfo, startInterviewWithForm } from "@/lib/api";
+import { getRecentInterviews, startInterview, getLastInterviewInfo } from "@/lib/api";
 import { useChatStore } from "@/lib/store";
 import { Interview, CandidateInfo } from "@/lib/types";
 import { PreInterviewForm } from "@/components/PreInterviewForm";
@@ -115,7 +115,8 @@ export default function Home() {
     setError(null);
     reset();
     try {
-      const response = await startInterviewWithForm(data);
+      const topicStr = selectedTopics.size > 0 ? Array.from(selectedTopics).join(",") : null;
+      const response = await startInterview(topicStr, selectedDifficulty, data);
       router.push(`/interview/${response.session_id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to start interview");
@@ -238,7 +239,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center gap-3 pt-1">
               <button
-                onClick={handleQuickStart}
+                onClick={() => setShowForm(true)}
                 disabled={loading}
                 className="w-full px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 shadow-lg shadow-indigo-200 dark:shadow-none transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 text-lg"
               >

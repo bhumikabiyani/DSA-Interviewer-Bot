@@ -22,7 +22,6 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
         type: "student",
         currentRole: "",
         organization: "",
-        difficulty: "easy",
         expectations: "",
     });
 
@@ -33,7 +32,6 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
                 type: (initialData.type as "student" | "professional") || "student",
                 currentRole: initialData.current_role || "",
                 organization: initialData.organization || "",
-                difficulty: (initialData.difficulty as "easy" | "medium" | "hard") || "easy",
                 expectations: initialData.expectations || "",
             });
         }
@@ -136,41 +134,6 @@ export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialDa
                                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                                     className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                                 />
-                            </div>
-                        </div>
-
-                        {/* Dificulty Level */}
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Dificulty Level <span className="text-red-500">*</span>
-                            </label>
-                            <div className="relative">
-                                <div className="flex gap-2">
-                                    <button
-                                        type="button"
-                                        onClick={() => setFormData({ ...formData, difficulty: "easy" })}
-                                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${formData.difficulty === "easy" ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20" : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"}`}
-                                    >
-                                        <Zap className={`w-4 h-4 ${formData.difficulty === "easy" ? "text-green-500" : "text-gray-400"}`} />
-                                        <span className={`font-medium ${formData.difficulty === "easy" ? "text-indigo-900 dark:text-indigo-300" : "text-gray-600 dark:text-gray-400"}`}>Easy</span>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => setFormData({ ...formData, difficulty: "medium" })}
-                                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${formData.difficulty === "medium" ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20" : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"}`}
-                                    >
-                                        <Gauge className={`w-4 h-4 ${formData.difficulty === "medium" ? "text-yellow-500" : "text-gray-400"}`} />
-                                        <span className={`font-medium ${formData.difficulty === "medium" ? "text-indigo-900 dark:text-indigo-300" : "text-gray-600 dark:text-gray-400"}`}>Medium</span>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => setFormData({ ...formData, difficulty: "hard" })}
-                                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 transition-all ${formData.difficulty === "hard" ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20" : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"}`}
-                                    >
-                                        <Flame className={`w-4 h-4 ${formData.difficulty === "hard" ? "text-red-500" : "text-gray-400"}`} />
-                                        <span className={`font-medium ${formData.difficulty === "hard" ? "text-indigo-900 dark:text-indigo-300" : "text-gray-600 dark:text-gray-400"}`}>Hard</span>
-                                    </button>
-                                </div>
                             </div>
                         </div>
 

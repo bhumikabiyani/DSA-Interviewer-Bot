@@ -170,24 +170,15 @@ class UserMessage(BaseModel):
 class TTSRequest(BaseModel):
     text: str
 
-class CandidateInfo(BaseModel):
-    type: str  # 'student' or 'professional'
-    currentRole: str  # Degree for student, Position for professional
-    organization: str  # University for student, Company for professional
-    expectations: str = ""
-    difficulty: str
-
-class StartInterviewWithFormRequest(BaseModel):
-    candidate_info: CandidateInfo
-
 class StartInterviewRequest(BaseModel):
-    topic: Optional[str] = None      # comma-separated e.g. "Arrays,Two Pointer"
-    difficulty: Optional[int] = None  # 1=Easy, 2=Medium, 3=Hard, None=all
-    type: Optional[str] = "DSA"
-
-class QuickStartRequest(BaseModel):
-    topic: Optional[str] = None      # comma-separated e.g. "Arrays,Two Pointer"
-    difficulty: Optional[int] = None  # 1=Easy, 2=Medium, 3=Hard, None=all
+    # Question filters (always optional)
+    topic: Optional[str] = None        # comma-separated e.g. "Arrays,Two Pointer"
+    difficulty: Optional[int] = None   # 1=Easy, 2=Medium, 3=Hard, None=all
+    # Candidate info (optional — provide for a personalised greeting)
+    type: Optional[str] = None         # 'student' | 'professional'
+    currentRole: Optional[str] = ""   # Degree / Job title
+    organization: Optional[str] = ""  # University / Company
+    expectations: Optional[str] = ""
 
 class InteractRequest(BaseModel):
     session_id: str
@@ -229,82 +220,6 @@ def get_last_candidate_info(current_user: User = Depends(get_current_user), db: 
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/start_interview_with_form")
-def start_interview_with_form(payload: StartInterviewWithFormRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    """Start an interview directly with candidate info from form (no background chat)."""
-    try:
-        candidate = payload.candidate_info
-        
-        # Create a new session
-        session_id = sessions.create_background_session(current_user.id)
-        
-        # Store candidate metadata in session
-        sessions.set_candidate_info(session_id, {
-            "type": candidate.type,
-            "current_role": candidate.currentRole,
-            "organization": candidate.organization,
-            "expectations": candidate.expectations,
-            "difficulty": candidate.difficulty,
-        })
-        
-        # Pick 1 question for this interview from DB
-        q_data = pick_random_question(db)
-        
-        if not q_data:
-            raise HTTPException(status_code=500, detail="No questions available in database")
-        
-        # Elaborate the question using Groq
-        elaboration_input = ELABORATION_PROMPT.format(
-            title=q_data['title'],
-            difficulty=q_data['difficulty'],
-            topic_tag=q_data['topic_tag']
-        )
-        elaborated_text = llm.chat([{"role": "user", "content": elaboration_input}])
-        
-        questions = [(str(q_data['id']), elaborated_text)]
-        
-        # Start the interview with the selected question
-        sessions.start_interview(session_id, questions)
-        
-        # Create personalized intro message
-        role_desc = f"{candidate.currentRole} at {candidate.organization}"
-        if candidate.type == "student":
-            greeting = f"Welcome! I see you're a {role_desc}. Great to have you here for this DSA practice session."
-        else:
-            greeting = f"Welcome! I see you're working as {role_desc}. Great to have you here for this DSA practice session."
-        
-        if candidate.expectations:
-            greeting += f"\n\nI understand you're looking to: {candidate.expectations}"
-        
-        intro_msg = f"""{greeting}
-
-We'll go through 1 DSA question today, with about 50 minutes total. I'll guide you through the problem, so take your time to think.
-
-Before we start, please give me a brief verbal introduction about yourself - your background, experience with DSA, and anything else you'd like to share."""
-        
-        timestamp = int(datetime.utcnow().timestamp())
-        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp)
-        
-        # Get Q1 ready but don't send yet
-        current_q = sessions.get_current_question(session_id)
-        time_remaining = sessions.get_time_remaining(session_id)
-        
-        logger.info(f"Started interview with form for session {session_id}")
-        
-        return {
-            "session_id": session_id,
-            "intro_message": intro_msg,
-            "current_question": 1,
-            "total_questions": len(questions),
-            "time_remaining": time_remaining,
-            "phase": "intro",  # New phase: waiting for intro
-        }
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Error starting interview with form: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-
 @router.post("/resume_interview/{session_id}")
 def resume_interview(session_id: str, current_user: User = Depends(get_current_user)):
 # def resume_interview(session_id: str):
@@ -326,57 +241,77 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
 
 
 @router.post("/start_interview")
-def start_interview(payload: StartInterviewRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    """Start an interview with optional topic and difficulty filters."""
+def start_interview(
+    payload: StartInterviewRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Unified endpoint: start an interview with optional topic/difficulty filters
+    and optional candidate profile info for a personalised greeting."""
     try:
-        # Parse comma-separated topic string into a list of tags
+        # ── Question selection ───────────────────────────────────────────────
         topic_tags = None
         if payload.topic:
             topic_tags = [t.strip() for t in payload.topic.split(",") if t.strip()]
 
-        # Pick a question matching the filters
         q_data = pick_random_question(db, difficulty=payload.difficulty, topic_tags=topic_tags)
-
         if not q_data:
             raise HTTPException(status_code=404, detail="No questions found for the selected topic/difficulty")
 
-        # Create a new session
+        # ── Session setup ────────────────────────────────────────────────────
         session_id = sessions.create_background_session(current_user.id)
 
-        # Store minimal candidate metadata
+        has_profile = bool(payload.type)  # True when candidate info was submitted
+
         sessions.set_candidate_info(session_id, {
-            "type": "quick_start",
-            "current_role": "",
-            "organization": "",
-            "expectations": "",
-            "difficulty": str(payload.difficulty) if payload.difficulty else "all",
+            "type": payload.type or "quick_start",
+            "current_role": payload.currentRole or "",
+            "organization": payload.organization or "",
+            "expectations": payload.expectations or "",
+            "difficulty": str(payload.difficulty) if payload.difficulty is not None else "all",
         })
 
-        # Elaborate the question using Groq
+        # ── Question elaboration ─────────────────────────────────────────────
         elaboration_input = ELABORATION_PROMPT.format(
             title=q_data['title'],
             difficulty=q_data['difficulty'],
             topic_tag=q_data['topic_tag'],
         )
         elaborated_text = llm.chat([{"role": "user", "content": elaboration_input}])
-
         questions = [(str(q_data['id']), elaborated_text)]
-
-        # Start the interview
         sessions.start_interview(session_id, questions)
 
-        intro_msg = (
-            "Welcome to your DSA practice session! We'll go through 1 question today.\n\n"
-            "Before we dive in, tell me a little about yourself — "
-            "your background and experience with data structures and algorithms."
-        )
+        # ── Intro message ────────────────────────────────────────────────────
+        if has_profile:
+            role_desc = f"{payload.currentRole} at {payload.organization}"
+            if payload.type == "student":
+                greeting = f"Welcome! I see you're a {role_desc}. Great to have you here for this DSA practice session."
+            else:
+                greeting = f"Welcome! I see you're working as {role_desc}. Great to have you here for this DSA practice session."
+            if payload.expectations:
+                greeting += f"\n\nI understand you're looking to: {payload.expectations}"
+            intro_msg = (
+                f"{greeting}\n\n"
+                "We'll go through 1 DSA question today, with about 50 minutes total. "
+                "I'll guide you through the problem, so take your time to think.\n\n"
+                "Before we start, please give me a brief verbal introduction about yourself — "
+                "your background, experience with DSA, and anything else you'd like to share!"
+            )
+        else:
+            intro_msg = (
+                "Welcome to your DSA practice session! We'll go through 1 question today.\n\n"
+                "Before we dive in, tell me a little about yourself — "
+                "your background and experience with data structures and algorithms."
+            )
 
         timestamp = int(datetime.utcnow().timestamp())
         sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp)
-        
         time_remaining = sessions.get_time_remaining(session_id)
 
-        logger.info(f"Started interview session {session_id} (topic={payload.topic}, difficulty={payload.difficulty})")
+        logger.info(
+            f"Started interview session {session_id} "
+            f"(topic={payload.topic}, difficulty={payload.difficulty}, profile={has_profile})"
+        )
 
         return {
             "session_id": session_id,
