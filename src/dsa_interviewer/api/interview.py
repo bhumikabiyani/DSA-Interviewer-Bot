@@ -237,7 +237,7 @@ We'll go through 1 DSA question today, with about 50 minutes total. I'll guide y
 Before we start, please give me a brief verbal introduction about yourself - your background, experience with DSA, and anything else you'd like to share."""
         
         timestamp = int(datetime.utcnow().timestamp())
-        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp, 0)
+        sessions.add_message(current_user.id, session_id, "interviewer", intro_msg, timestamp)
         
         # Get Q1 ready but don't send yet
         current_q = sessions.get_current_question(session_id)
@@ -267,10 +267,11 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
         state = sessions.get_session_state(session_id)
         return {
             "history": interview["history"], 
-            "time_spent": interview["time_spent"],
+            "total_time_taken": interview["total_time_taken"],
             "phase": state["phase"],
             "current_question": state["current_question"],
             "time_remaining": state["time_remaining"],
+            "question_text": interview.get("question"),
             "evaluation": interview.get("evaluation") if state["phase"] == "ended" else None,
         }
     except Exception as e:
@@ -323,7 +324,7 @@ Please start by explaining your understanding of the problem. What are the key c
 
         # Add the intro message to history
         timestamp = int(datetime.utcnow().timestamp())
-        sessions.add_message(current_user.id, session_id, "interviewer", intro, timestamp, 0)
+        sessions.add_message(current_user.id, session_id, "interviewer", intro, timestamp)
         
         time_remaining = sessions.get_time_remaining(session_id)
         
@@ -393,8 +394,8 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
             reply = llm.chat(messages)
             
             timestamp = int(datetime.utcnow().timestamp())
-            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
-            sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp, 0)
+            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
+            sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp)
             
             return InteractResponse(
                 response=reply,
@@ -407,7 +408,7 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
         if phase == "intro":
             # Add candidate's intro to history
             timestamp = int(datetime.utcnow().timestamp())
-            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
+            sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
             
             # Transition to Q1
             q1_text = sessions.transition_to_q1(session_id)
@@ -420,7 +421,7 @@ Please review the problem statement carefully. Let me know if anything is unclea
 
 Please start by explaining your understanding of the problem. What are the key constraints and edge cases you're thinking about?"""
             
-            sessions.add_message(current_user.id, session_id, "interviewer", intro_response+"\n\n"+q1_text, timestamp, 0)
+            sessions.add_message(current_user.id, session_id, "interviewer", intro_response, timestamp)
             
             return InteractResponse(
                 response=intro_response,
@@ -446,15 +447,14 @@ Please start by explaining your understanding of the problem. What are the key c
         reply = llm.chat(messages)
         
         # Check if AI detected question completion
-        # question_complete = "[QUESTION_COMPLETE]" in reply
-        question_complete = True
+        question_complete = "[QUESTION_COMPLETE]" in reply
         if question_complete:
             reply = reply.replace("[QUESTION_COMPLETE]", "").strip()
         
         # Add messages to history
         timestamp = int(datetime.utcnow().timestamp())
-        sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp, 0)
-        sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp, 0)
+        sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
+        sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp)
         
         # Handle interview end after the single question
         if question_complete:
@@ -640,17 +640,20 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
         question_times = None
         if session.get("question_start_times"):
             start_times = session["question_start_times"]
-            interview_start = session.get("interview_start_time")
-            if interview_start and start_times[0]:
+            total_time = session.get("total_time_taken", 0)
+            if start_times[0]:
                 # Estimate times based on when questions started
                 import time
-                current = time.time()
                 times = []
                 for i, start in enumerate(start_times):
                     if start:
-                        # Get next start time or current time
-                        next_start = start_times[i + 1] if i + 1 < len(start_times) and start_times[i + 1] else current
-                        times.append(int(next_start - start))
+                        # Get next start time or use proportional estimate
+                        next_start = start_times[i + 1] if i + 1 < len(start_times) and start_times[i + 1] else None
+                        if next_start:
+                            times.append(int(next_start - start))
+                        else:
+                            # Last question gets remaining time
+                            times.append(max(0, total_time - sum(times)))
                     else:
                         times.append(0)
                 question_times = times

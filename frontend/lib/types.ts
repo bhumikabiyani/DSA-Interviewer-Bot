@@ -66,10 +66,11 @@ export interface RecentInterviewsResponse {
 
 export interface ResumeInterviewResponse {
   history: Message[];
-  time_spent: number;
+  total_time_taken: number;
   phase?: string;
   current_question?: number;
   time_remaining?: number;
+  question_text?: string;
   evaluation?: Evaluation;
 }
 

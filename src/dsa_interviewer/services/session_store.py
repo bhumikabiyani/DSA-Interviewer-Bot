@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 MAX_INTERVIEW_DURATION = 3000  # 50 minutes
 WRAP_UP_THRESHOLD = 2820  # 47 minutes - start wrap up
 MAX_Q1_DURATION = 1500  # 25 minutes max for Q1
+MAX_IDLE_CAP = 300  # 5 minutes - max counted per idle gap
 
 
 class SessionStore:
@@ -57,13 +58,13 @@ class SessionStore:
         db = SessionLocal()
         try:
             metadata = {
-                "time_spent": 0,
+                "total_time_taken": 0,
+                "last_interaction_time": None,
                 "phase": "intro",
                 "current_question_index": 0,
                 "questions": [],
                 "question_start_times": [None, None],
                 "question_scores": [None, None],
-                "interview_start_time": None,
                 "wrap_up_started": False,
                 "final_response_allowed": True,
                 "candidate_info": None,
@@ -104,7 +105,7 @@ class SessionStore:
             metadata = self._get_metadata(interview)
             metadata["questions"] = questions
             metadata["current_question_index"] = 0
-            metadata["interview_start_time"] = time.time()
+            metadata["last_interaction_time"] = time.time()
             metadata["question_start_times"] = [time.time(), None]
             metadata["phase"] = "intro"
 
@@ -246,13 +247,12 @@ class SessionStore:
                 raise KeyError(f"Session {session_id} not found")
 
             metadata = self._get_metadata(interview)
-            interview_start_time = metadata.get("interview_start_time")
+            time_taken = metadata.get("total_time_taken")
 
-            if interview_start_time is None:
+            if time_taken is None:
                 return "ok"
 
-            elapsed = time.time() - interview_start_time
-            remaining = MAX_INTERVIEW_DURATION - elapsed
+            remaining = MAX_INTERVIEW_DURATION - time_taken
 
             if remaining <= 0:
                 return "force_end"
@@ -290,18 +290,17 @@ class SessionStore:
 
             metadata = self._get_metadata(interview)
             
-            # If interview has ended, return the time taken (stored when ended)
+            # If interview has ended, return the total time taken
             if metadata.get("phase") == "ended":
-                # Return negative of time taken to indicate it's elapsed time, not remaining
                 return metadata.get("total_time_taken", 0)
             
-            interview_start_time = metadata.get("interview_start_time")
+            total_time_taken = metadata.get("total_time_taken", 0)
 
-            if interview_start_time is None:
+            # If no interaction has happened yet, return full duration
+            if total_time_taken == 0 and metadata.get("last_interaction_time") is None:
                 return MAX_INTERVIEW_DURATION
 
-            elapsed = time.time() - interview_start_time
-            remaining = MAX_INTERVIEW_DURATION - elapsed
+            remaining = MAX_INTERVIEW_DURATION - total_time_taken
             return max(0, int(remaining))
         finally:
             db.close()
@@ -337,16 +336,18 @@ class SessionStore:
 
             metadata = self._get_metadata(interview)
             
-            # Calculate total time taken before ending
-            interview_start_time = metadata.get("interview_start_time")
-            if interview_start_time:
-                total_time_taken = int(time.time() - interview_start_time)
-            else:
-                total_time_taken = 0
+            # Do one final accumulation from last interaction
+            last_time = metadata.get("last_interaction_time")
+            if last_time is not None:
+                delta = time.time() - last_time
+                delta = min(delta, MAX_IDLE_CAP)
+                metadata["total_time_taken"] = metadata.get("total_time_taken", 0) + int(delta)
+            
+            total_time_taken = metadata.get("total_time_taken", 0)
             
             metadata["phase"] = "ended"
-            metadata["total_time_taken"] = total_time_taken
             metadata["end_time"] = time.time()
+            metadata["last_interaction_time"] = None  # Clear since interview is over
             self._save_metadata(interview, metadata, db)
             db.commit()
             logger.info(f"Session {session_id}: Interview ended after {total_time_taken}s")
@@ -378,8 +379,8 @@ class SessionStore:
         finally:
             db.close()
 
-    def add_message(self, user_id: int, session_id: str, role: str, message: str, message_timestamp: int, time_spent: int) -> None:
-        """Add a message to the interview history."""
+    def add_message(self, user_id: int, session_id: str, role: str, message: str, message_timestamp: int) -> None:
+        """Add a message to the interview history and accumulate active time."""
         db = SessionLocal()
         try:
             interview = db.query(Interview).filter(Interview.session_id == session_id).one_or_none()
@@ -410,9 +411,14 @@ class SessionStore:
             # Save history
             interview.interview_data = json.dumps(history)
 
-            # Update metadata
+            # Accumulate active time between interactions
             metadata = self._get_metadata(interview)
-            metadata["time_spent"] = time_spent
+            last_time = metadata.get("last_interaction_time")
+            if last_time is not None:
+                delta = time.time() - last_time
+                delta = min(delta, MAX_IDLE_CAP)  # Cap idle gaps
+                metadata["total_time_taken"] = metadata.get("total_time_taken", 0) + int(delta)
+            metadata["last_interaction_time"] = time.time()
             self._save_metadata(interview, metadata, db)
 
             db.commit()
@@ -447,11 +453,10 @@ class SessionStore:
                 "current_question_index": metadata.get("current_question_index", 0),
                 "question_start_times": metadata.get("question_start_times", [None, None]),
                 "question_scores": metadata.get("question_scores", [None, None]),
-                "interview_start_time": metadata.get("interview_start_time"),
+                "total_time_taken": metadata.get("total_time_taken", 0),
                 "phase": metadata.get("phase", "unknown"),
                 "question": metadata.get("questions", [[None, None]])[metadata.get("current_question_index", 0)][1] if metadata.get("questions") else None,
                 "history": history,
-                "time_spent": metadata.get("time_spent", 0),
                 "wrap_up_started": metadata.get("wrap_up_started", False),
                 "final_response_allowed": metadata.get("final_response_allowed", True),
                 "evaluation": interview.evaluation_summary,

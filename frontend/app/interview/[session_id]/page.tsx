@@ -88,6 +88,12 @@ export default function InterviewPage() {
         setEvaluation(data.evaluation);
       }
 
+      // Restore question text for the question panel (only when past intro)
+      const resumedPhase = data.phase || "intro";
+      if (data.question_text && resumedPhase !== "intro") {
+        setQuestionText(data.question_text);
+      }
+
       setInitialized(true);
     } catch (error) {
       console.error("Failed to load session:", error);
@@ -264,111 +270,168 @@ export default function InterviewPage() {
       </header>
 
       <div className="flex-1 overflow-hidden">
-        <PanelGroup direction="horizontal" className="h-full">
-          {/* Chat Panel */}
-          <Panel defaultSize={55} minSize={30}>
-            <div className="h-full flex flex-col bg-gray-900">
-              <div className="p-4 border-b border-gray-700 bg-gray-800/50">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
-                    <Bot className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="font-semibold text-white">AI Interviewer</h2>
-                    <p className="text-sm text-emerald-400">Online • Guiding your interview</p>
-                  </div>
+        {questionText ? (
+          /* 3-panel layout: Question | Chat | Code (nested groups for independent resize) */
+          <PanelGroup direction="horizontal" className="h-full">
+            {/* Question Panel - Left */}
+            <Panel defaultSize={25} minSize={15} maxSize={40}>
+              <div className="h-full flex flex-col border-r border-gray-700">
+                <div className="p-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Current Question</span>
+                </div>
+                <div className="flex-1 overflow-y-auto p-4 bg-gray-900/50
+                          prose prose-sm prose-invert max-w-none
+                          prose-headings:text-emerald-400 prose-headings:font-bold prose-headings:mt-3 prose-headings:mb-2
+                          prose-h2:text-base prose-h3:text-sm
+                          prose-p:text-gray-200 prose-p:leading-relaxed prose-p:my-1.5 prose-p:text-sm
+                          prose-strong:text-white prose-strong:font-semibold
+                          prose-code:text-emerald-300 prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-mono
+                          prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700 prose-pre:rounded-lg prose-pre:my-2
+                          prose-ul:my-2 prose-ul:space-y-0.5 prose-ol:my-2 prose-ol:space-y-0.5
+                          prose-li:text-gray-300 prose-li:text-sm
+                          prose-table:border-collapse prose-table:my-3
+                          prose-th:bg-gray-800 prose-th:text-gray-200 prose-th:px-3 prose-th:py-1.5 prose-th:text-xs prose-th:font-semibold prose-th:border prose-th:border-gray-700
+                          prose-td:px-3 prose-td:py-1.5 prose-td:text-xs prose-td:border prose-td:border-gray-700 prose-td:text-gray-300
+                        ">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {questionText}
+                  </ReactMarkdown>
                 </div>
               </div>
+            </Panel>
 
-              <div
-                ref={chatContainerRef}
-                className="flex-1 overflow-y-auto px-4 py-6 space-y-4"
-              >
-                {messages.length === 0 && !isLoading && (
-                  <div className="flex items-center justify-center h-full">
-                    <p className="text-gray-400">Loading interview...</p>
+            <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
+
+            {/* Chat + Code in nested group (so question resize doesn't affect code) */}
+            <Panel defaultSize={75}>
+              <PanelGroup direction="horizontal" className="h-full">
+                {/* Chat Panel */}
+                <Panel defaultSize={55} minSize={30}>
+                  <div className="h-full flex flex-col bg-gray-900">
+                    <div className="p-4 border-b border-gray-700 bg-gray-800/50">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
+                          <Bot className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <h2 className="font-semibold text-white">AI Interviewer</h2>
+                          <p className="text-sm text-emerald-400">Online • Guiding your interview</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+                      {messages.length === 0 && !isLoading && (
+                        <div className="flex items-center justify-center h-full">
+                          <p className="text-gray-400">Loading interview...</p>
+                        </div>
+                      )}
+                      {messages.map((message, index) => (
+                        <ChatMessage key={index} message={message} isLast={index === messages.length - 1} />
+                      ))}
+                      {isLoading && <LoadingIndicator />}
+                    </div>
+                    {phase !== "ended" && (
+                      <div className="p-4 border-t border-gray-700 bg-gray-800/50">
+                        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+                      </div>
+                    )}
+                  </div>
+                </Panel>
+
+                <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
+
+                {/* Code Panel */}
+                <Panel defaultSize={45} minSize={25}>
+                  <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
+                    {phase === "ended" ? (
+                      <div className="p-6 h-full min-h-0">
+                        {loadingEvaluation ? (
+                          <div className="flex h-full items-center justify-center">
+                            <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
+                          </div>
+                        ) : evaluation ? (
+                          <EvaluationViewer evaluation={evaluation} />
+                        ) : (
+                          <div className="flex h-full items-center justify-center text-gray-400">
+                            Failed to load evaluation.
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="h-full min-h-0">
+                        <CodeInputBox onSend={handleSendMessage} />
+                      </div>
+                    )}
+                  </div>
+                </Panel>
+              </PanelGroup>
+            </Panel>
+          </PanelGroup>
+        ) : (
+          /* 2-panel layout: Chat | Code (no question yet) */
+          <PanelGroup direction="horizontal" className="h-full">
+            {/* Chat Panel */}
+            <Panel defaultSize={55} minSize={30}>
+              <div className="h-full flex flex-col bg-gray-900">
+                <div className="p-4 border-b border-gray-700 bg-gray-800/50">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
+                      <Bot className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="font-semibold text-white">AI Interviewer</h2>
+                      <p className="text-sm text-emerald-400">Online • Guiding your interview</p>
+                    </div>
+                  </div>
+                </div>
+                <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+                  {messages.length === 0 && !isLoading && (
+                    <div className="flex items-center justify-center h-full">
+                      <p className="text-gray-400">Loading interview...</p>
+                    </div>
+                  )}
+                  {messages.map((message, index) => (
+                    <ChatMessage key={index} message={message} isLast={index === messages.length - 1} />
+                  ))}
+                  {isLoading && <LoadingIndicator />}
+                </div>
+                {phase !== "ended" && (
+                  <div className="p-4 border-t border-gray-700 bg-gray-800/50">
+                    <ChatInput onSend={handleSendMessage} disabled={isLoading} />
                   </div>
                 )}
-
-                {messages.map((message, index) => (
-                  <ChatMessage
-                    key={index}
-                    message={message}
-                    isLast={index === messages.length - 1}
-                  />
-                ))}
-
-                {isLoading && <LoadingIndicator />}
               </div>
+            </Panel>
 
-              {phase !== "ended" && (
-                <div className="p-4 border-t border-gray-700 bg-gray-800/50">
-                  <ChatInput
-                    onSend={handleSendMessage}
-                    disabled={isLoading}
-                  />
-                </div>
-              )}
-            </div>
-          </Panel>
+            <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
 
-          <PanelResizeHandle className="w-1 bg-gray-700 hover:bg-gray-500 cursor-col-resize transition-colors" />
-
-          {/* Code Panel */}
-          <Panel defaultSize={45} minSize={25}>
-            <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
-              {phase === "ended" ? (
-                <div className="p-6 h-full min-h-0">
-                  {loadingEvaluation ? (
-                    <div className="flex h-full items-center justify-center">
-                      <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
-                    </div>
-                  ) : evaluation ? (
-                    <EvaluationViewer evaluation={evaluation} />
-                  ) : (
-                    <div className="flex h-full items-center justify-center text-gray-400">
-                      Failed to load evaluation.
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <>
-                  {/* Question Display Panel */}
-                  {questionText && (
-                    <div className="border-b border-gray-700 overflow-y-auto" style={{ maxHeight: '45%' }}>
-                      <div className="p-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                        <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Current Question</span>
+            {/* Code Panel */}
+            <Panel defaultSize={45} minSize={25}>
+              <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
+                {phase === "ended" ? (
+                  <div className="p-6 h-full min-h-0">
+                    {loadingEvaluation ? (
+                      <div className="flex h-full items-center justify-center">
+                        <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
                       </div>
-                      <div className="p-4 bg-gray-900/50
-                        prose prose-sm prose-invert max-w-none
-                        prose-headings:text-emerald-400 prose-headings:font-bold prose-headings:mt-3 prose-headings:mb-2
-                        prose-h2:text-base prose-h3:text-sm
-                        prose-p:text-gray-200 prose-p:leading-relaxed prose-p:my-1.5 prose-p:text-sm
-                        prose-strong:text-white prose-strong:font-semibold
-                        prose-code:text-emerald-300 prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-mono
-                        prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700 prose-pre:rounded-lg prose-pre:my-2
-                        prose-ul:my-2 prose-ul:space-y-0.5 prose-ol:my-2 prose-ol:space-y-0.5
-                        prose-li:text-gray-300 prose-li:text-sm
-                        prose-table:border-collapse prose-table:my-3
-                        prose-th:bg-gray-800 prose-th:text-gray-200 prose-th:px-3 prose-th:py-1.5 prose-th:text-xs prose-th:font-semibold prose-th:border prose-th:border-gray-700
-                        prose-td:px-3 prose-td:py-1.5 prose-td:text-xs prose-td:border prose-td:border-gray-700 prose-td:text-gray-300
-                      ">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                          {questionText}
-                        </ReactMarkdown>
+                    ) : evaluation ? (
+                      <EvaluationViewer evaluation={evaluation} />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-gray-400">
+                        Failed to load evaluation.
                       </div>
-                    </div>
-                  )}
-                  {/* Code Editor */}
-                  <div className="flex-1 min-h-0">
+                    )}
+                  </div>
+                ) : (
+                  <div className="h-full min-h-0">
                     <CodeInputBox onSend={handleSendMessage} />
                   </div>
-                </>
-              )}
-            </div>
-          </Panel>
-        </PanelGroup>
+                )}
+              </div>
+            </Panel>
+          </PanelGroup>
+        )}
       </div>
     </div>
   );
