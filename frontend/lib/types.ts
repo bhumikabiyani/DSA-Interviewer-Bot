@@ -2,6 +2,7 @@ export interface Message {
   role: "interviewer" | "candidate";
   message: string;
   timestamp?: Date;
+  codeLanguage?: string;
 }
 
 export interface CandidateInfo {

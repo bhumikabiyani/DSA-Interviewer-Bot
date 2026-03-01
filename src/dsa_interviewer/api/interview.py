@@ -17,6 +17,7 @@ from dsa_interviewer.services.session_store import SessionStore
 from dsa_interviewer.services.evaluation import get_evaluation_service
 from dsa_interviewer.utils.interview import pick_random_question
 from math import ceil
+import re
 from dsa_interviewer.core.config import settings
 
 
@@ -80,11 +81,19 @@ INTERVIEW FLOW:
 3. After their introduction, present the DSA Question.
 4. For each question, follow this sequence:
    - Problem understanding
-   - Approach discussion  
-   - Code (if they provide it)
+   - Approach discussion
+   - **Code** – once the candidate has clearly explained their full approach and you are satisfied with it, explicitly ask them to write code: "Great explanation! Now go ahead and write/share the code for this approach."
    - Time/Space complexity analysis (REQUIRED before marking complete)
    - Edge cases discussion
 5. Only mark [QUESTION_COMPLETE] AFTER they discuss complexity and you are ready to wrap up.
+
+CODE REQUEST RULE:
+- Do NOT ask for code prematurely. Only ask the candidate to write code after they have:
+  1. Explained the problem correctly.
+  2. Outlined a clear and optimal (or near-optimal) approach.
+  3. Answered any approach-level follow-ups you had.
+- Once those are satisfied, say something like: "That sounds solid! Now please go ahead and code this up."
+- If the candidate provides code voluntarily before fully explaining, acknowledge it but still guide them through complexity and edge cases.
 
 QUESTION COMPLETION DETECTION:
 A question is COMPLETE ONLY when ALL of these are satisfied:
@@ -107,6 +116,11 @@ When told we're in wrap-up mode (less than 3 minutes remaining):
 - Provide a brief summary of how they did
 - Do NOT start any new questions or deep discussions
 
+
+BEHAVIOUR POLICY:
+- If the candidate uses abusive, offensive, or inappropriate language, immediately respond with exactly:
+  [INTERVIEW_TERMINATED] I'm sorry, but this interview has been terminated due to inappropriate behaviour. The platform owners have been notified.
+- Do not engage further after sending the termination message.
 """
 
 ELABORATION_PROMPT = """
@@ -122,6 +136,32 @@ Topics: {topic_tag}
 
 Provide ONLY the final markdown text for the question. Ask user to understand the question and ask if they have any doubts.  
 """
+
+# ---------------------------------------------------------------------------
+# Content moderation
+# ---------------------------------------------------------------------------
+_VIOLATION_PATTERNS = [
+    r"\bf+u+c+k\b", r"\bs+h+i+t\b", r"\bb+i+t+c+h\b", r"\ba+s+s+h+o+l+e\b",
+    r"\bc+u+n+t\b", r"\bd+i+c+k\b", r"\bb+a+s+t+a+r+d\b", r"\bw+h+o+r+e\b",
+    r"\bm+o+t+h+e+r+f+u+c+k\b", r"\bn+i+g+g+e+r\b", r"\bf+a+g+g+o+t\b",
+    r"\bk+i+l+l\s+y+o+u+r+s+e+l+f\b", r"\bs+t+u+p+i+d\s+b+o+t\b",
+    r"\bi\s+h+a+t+e\s+y+o+u\b",
+]
+_VIOLATION_RE = re.compile("|".join(_VIOLATION_PATTERNS), re.IGNORECASE)
+
+
+def _contains_violation(text: str) -> bool:
+    """Return True if the text contains abusive / inappropriate content."""
+    return bool(_VIOLATION_RE.search(text))
+
+
+_TERMINATION_RESPONSE = (
+    "⚠️ This interview has been immediately terminated due to the use of "
+    "inappropriate or violating language. The platform owners have been "
+    "notified of this incident. We take respectful communication very "
+    "seriously. Goodbye."
+)
+
 
 class UserMessage(BaseModel):
     session_id: str
@@ -359,7 +399,25 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
     try:
         session_id = payload.session_id
         user_message = payload.message.strip()
-        
+
+        # ── Content-moderation guard ─────────────────────────────────────────
+        if _contains_violation(user_message):
+            logger.warning(
+                f"Violation detected in session {session_id} by user {current_user.id}: '{user_message[:80]}'"
+            )
+            # End the session immediately
+            try:
+                sessions.end_interview(session_id)
+            except Exception:
+                pass  # best-effort; don't block the response
+            return InteractResponse(
+                response=_TERMINATION_RESPONSE,
+                command="end",
+                time_remaining=0,
+                current_question=1,
+            )
+        # ────────────────────────────────────────────────────────────────────
+
         session = sessions.get_history(session_id)
         history = session["history"]
         phase = session["phase"]

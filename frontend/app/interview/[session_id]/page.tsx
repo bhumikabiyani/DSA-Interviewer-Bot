@@ -198,6 +198,58 @@ export default function InterviewPage() {
     }
   };
 
+  const handleSendCode = async (code: string, lang: string) => {
+    // Format the code as a markdown fenced block for display
+    const fenced = `\`\`\`${lang}\n${code}\n\`\`\``;
+    // Add to local chat history with codeLanguage so ChatMessage can render it nicely
+    addMessage({
+      role: "candidate",
+      message: fenced,
+      timestamp: new Date(),
+      codeLanguage: lang,
+    });
+
+    setLoading(true);
+    try {
+      // Send the raw code to the backend (not the fenced string)
+      const response = await sendMessage(sessionId, `[CODE SUBMISSION - ${lang.toUpperCase()}]:\n${code}`);
+
+      if (response.time_remaining !== undefined) {
+        updateTimeRemaining(response.time_remaining);
+      }
+
+      switch (response.command) {
+        case "end":
+          if (response.response) {
+            addMessage({ role: "interviewer", message: response.response, timestamp: new Date() });
+          }
+          setInterviewState({ phase: "ended" });
+          break;
+        case "next_question":
+          addMessage({ role: "interviewer", message: response.response, timestamp: new Date() });
+          setInterviewState({ currentQuestion: response.current_question, phase: "q2" });
+          break;
+        case "wrap_up":
+          addMessage({ role: "interviewer", message: response.response, timestamp: new Date() });
+          setInterviewState({ phase: "wrap_up" });
+          break;
+        case "continue":
+        default:
+          addMessage({ role: "interviewer", message: response.response, timestamp: new Date() });
+          if (response.question_text && phase === "intro") {
+            setQuestionText(response.question_text);
+            setInterviewState({ phase: "q1" });
+          }
+          break;
+      }
+    } catch (error) {
+      console.error("Error sending code:", error);
+      addMessage({ role: "interviewer", message: "Sorry, I encountered an error. Please try again.", timestamp: new Date() });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleBack = () => {
     router.push("/");
   };
@@ -360,7 +412,7 @@ export default function InterviewPage() {
                       </div>
                     ) : (
                       <div className="h-full min-h-0">
-                        <CodeInputBox onSend={handleSendMessage} />
+                        <CodeInputBox onSend={handleSendCode} disabled={isLoading} />
                       </div>
                     )}
                   </div>
@@ -425,7 +477,7 @@ export default function InterviewPage() {
                   </div>
                 ) : (
                   <div className="h-full min-h-0">
-                    <CodeInputBox onSend={handleSendMessage} />
+                    <CodeInputBox onSend={handleSendCode} disabled={isLoading} />
                   </div>
                 )}
               </div>
