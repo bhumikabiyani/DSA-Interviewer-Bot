@@ -8,6 +8,7 @@ import json
 import os
 from datetime import datetime
 
+
 def create_question_template(id, title, description, topic, difficulty, pattern, tags, constraints, examples, hints, edge_cases, follow_ups, complexity, related_problems, evaluation_criteria):
     """Create a standardized question document"""
     return {
@@ -214,7 +215,7 @@ QUESTIONS_DB = {
 def generate_all_questions():
     """Generate all question files"""
     question_count = 0
-    
+
     for topic, difficulties in QUESTIONS_DB.items():
         for difficulty, questions in difficulties.items():
             for q in questions:
@@ -235,16 +236,16 @@ def generate_all_questions():
                     related_problems=[],  # Will be populated later
                     evaluation_criteria=["problem_understanding", "algorithm_choice", "implementation", "optimization", "edge_cases"]
                 )
-                
+
                 filename = f"{q['id']}.json"
                 filepath = os.path.join("rag_data", "questions", filename)
-                
+
                 with open(filepath, 'w') as f:
                     json.dump(question_doc, f, indent=2)
-                
+
                 question_count += 1
                 print(f"Generated: {filename}")
-    
+
     print(f"\nGenerated {question_count} questions")
     print("Note: This is a sample set. To reach 300 questions, expand each topic with more problems.")
     print("Consider adding: linked_lists, stacks, queues, heaps, tries, backtracking, greedy, etc.")

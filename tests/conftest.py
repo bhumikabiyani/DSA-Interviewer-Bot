@@ -1,11 +1,14 @@
-import pytest
 import sys
 from pathlib import Path
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from fastapi.testclient import TestClient
+
 from dsa_interviewer.main import app
+
 
 @pytest.fixture
 def client():

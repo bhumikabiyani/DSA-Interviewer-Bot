@@ -1,15 +1,15 @@
 import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.middleware.sessions import SessionMiddleware
 
-from dsa_interviewer.api.interview import router as interview_router
 from dsa_interviewer.api.auth import router as auth_router
 from dsa_interviewer.api.google_auth import router as google_auth_router
+from dsa_interviewer.api.interview import router as interview_router
 from dsa_interviewer.core.config import settings
-from starlette.middleware.sessions import SessionMiddleware
 from dsa_interviewer.core.database import create_db_and_tables
-from dsa_interviewer.models.user import User # Import User to ensure model is registered with Base.metadata
 
 logging.basicConfig(
     level=getattr(logging, settings.LOG_LEVEL),

@@ -6,10 +6,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
+from prompts import SYSTEM_PROMPT, build_prompt
+
+from dsa_interviewer.core.database import SessionLocal
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.utils.interview import pick_random_question
-from dsa_interviewer.core.database import SessionLocal
-from prompts import SYSTEM_PROMPT, build_prompt
 
 
 def main():
@@ -62,7 +63,7 @@ def main():
         except Exception as e:
             print(f"\nError: {e}")
             continue
-    
+
     db.close()
     return 0
 

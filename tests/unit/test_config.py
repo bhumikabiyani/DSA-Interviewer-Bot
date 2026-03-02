@@ -1,5 +1,5 @@
-import pytest
 from dsa_interviewer.core.config import settings
+
 
 def test_settings_exist():
     assert settings is not None

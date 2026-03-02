@@ -1,5 +1,5 @@
-import pytest
-from unittest.mock import patch, Mock
+from unittest.mock import patch
+
 
 def test_health_endpoint(client):
     response = client.get("/health")
@@ -21,7 +21,7 @@ def test_start_interview(mock_rag, mock_llm, mock_pick_question, client):
     )
     mock_rag.retrieve.return_value = ["Sample context"]
     mock_llm.chat.return_value = "Hello! Let's start the interview."
-    
+
     response = client.post("/api/start_interview")
     assert response.status_code == 200
     data = response.json()
@@ -41,7 +41,7 @@ def test_interact_endpoint(mock_sessions, mock_rag, mock_llm, client):
         "question": "Test question",
         "history": []
     }
-    
+
     response = client.post("/api/interact", json={
         "session_id": "test_session",
         "message": "I would use a hash map"

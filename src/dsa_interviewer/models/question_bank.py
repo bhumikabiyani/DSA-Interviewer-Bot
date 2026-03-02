@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Integer, String
+
 from dsa_interviewer.core.database import Base
+
 
 class QuestionBank(Base):
     __tablename__ = "question_bank"

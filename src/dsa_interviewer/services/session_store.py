@@ -1,8 +1,8 @@
-import uuid
-import logging
 import json
+import logging
 import time
-from typing import Dict, List, Optional, Tuple
+import uuid
+from typing import Optional
 
 from sqlalchemy.exc import IntegrityError
 
@@ -39,7 +39,7 @@ class SessionStore:
             if close_db:
                 db.close()
 
-    def _get_metadata(self, interview: Interview) -> Dict:
+    def _get_metadata(self, interview: Interview) -> dict:
         """Parse metadata from interview."""
         if interview.metadata_ is None:
             return {}
@@ -47,7 +47,7 @@ class SessionStore:
             return json.loads(interview.metadata_)
         return interview.metadata_
 
-    def _save_metadata(self, interview: Interview, metadata: Dict, db) -> None:
+    def _save_metadata(self, interview: Interview, metadata: dict, db) -> None:
         """Save metadata to interview."""
         interview.metadata_ = json.dumps(metadata)
         db.add(interview)
@@ -94,7 +94,7 @@ class SessionStore:
     def create_background_session(self, user_id: str) -> str:
         return self.create_session(user_id)
 
-    def start_interview(self, session_id: str, questions: List[Tuple[str, str]]) -> None:
+    def start_interview(self, session_id: str, questions: list[tuple[str, str]]) -> None:
         """Start the technical interview with questions."""
         db = SessionLocal()
         try:
@@ -169,7 +169,7 @@ class SessionStore:
             if questions:
                 return questions[0][1]
             return ""
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
@@ -207,13 +207,13 @@ class SessionStore:
 
             logger.info(f"Session {session_id}: Transitioned to Q2")
             return questions[1][1] if len(questions) > 1 else None
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
             db.close()
 
-    def get_current_question(self, session_id: str) -> Optional[Tuple[int, str]]:
+    def get_current_question(self, session_id: str) -> Optional[tuple[int, str]]:
         """Get current question index (1-based) and text."""
         db = SessionLocal()
         try:
@@ -274,7 +274,7 @@ class SessionStore:
                     return "q1_timeout"
 
             return "ok"
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
@@ -289,11 +289,11 @@ class SessionStore:
                 raise KeyError(f"Session {session_id} not found")
 
             metadata = self._get_metadata(interview)
-            
+
             # If interview has ended, return the total time taken
             if metadata.get("phase") == "ended":
                 return metadata.get("total_time_taken", 0)
-            
+
             total_time_taken = metadata.get("total_time_taken", 0)
 
             # If no interaction has happened yet, return full duration
@@ -320,7 +320,7 @@ class SessionStore:
                 db.commit()
                 return True
             return False
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
@@ -335,23 +335,23 @@ class SessionStore:
                 raise KeyError(f"Session {session_id} not found")
 
             metadata = self._get_metadata(interview)
-            
+
             # Do one final accumulation from last interaction
             last_time = metadata.get("last_interaction_time")
             if last_time is not None:
                 delta = time.time() - last_time
                 delta = min(delta, MAX_IDLE_CAP)
                 metadata["total_time_taken"] = metadata.get("total_time_taken", 0) + int(delta)
-            
+
             total_time_taken = metadata.get("total_time_taken", 0)
-            
+
             metadata["phase"] = "ended"
             metadata["end_time"] = time.time()
             metadata["last_interaction_time"] = None  # Clear since interview is over
             self._save_metadata(interview, metadata, db)
             db.commit()
             logger.info(f"Session {session_id}: Interview ended after {total_time_taken}s")
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
@@ -373,7 +373,7 @@ class SessionStore:
                 self._save_metadata(interview, metadata, db)
                 db.commit()
                 logger.info(f"Session {session_id}: Set score for Q{question_index + 1}")
-        except Exception as e:
+        except Exception:
             db.rollback()
             raise
         finally:
@@ -430,7 +430,7 @@ class SessionStore:
         finally:
             db.close()
 
-    def get_history(self, session_id: str) -> Dict:
+    def get_history(self, session_id: str) -> dict:
         """Get session data from database."""
         db = SessionLocal()
         try:
@@ -465,7 +465,7 @@ class SessionStore:
         finally:
             db.close()
 
-    def get_session_state(self, session_id: str) -> Dict:
+    def get_session_state(self, session_id: str) -> dict:
         """Get the session state including time info."""
         session = self.get_history(session_id)
         return {
@@ -500,7 +500,7 @@ class SessionStore:
         finally:
             db.close()
 
-    def save_evaluation(self, session_id: str, evaluation: Dict) -> None:
+    def save_evaluation(self, session_id: str, evaluation: dict) -> None:
         """Save evaluation result to DB."""
         db = SessionLocal()
         try:

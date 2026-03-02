@@ -1,6 +1,5 @@
 """Prompt templates for DSA interviewer."""
 
-from typing import List, Union
 
 SYSTEM_PROMPT = """
 You are a professional DSA interviewer.
@@ -22,16 +21,16 @@ def build_prompt(user_message: str, question_text: str = "") -> str:
 ### CANDIDATE MESSAGE:
 {user_message}
 """
-    
+
     if question_text:
         prompt = f"### QUESTION:\n{question_text}\n\n" + prompt
-    
+
     prompt += """
 
 ### INSTRUCTIONS:
 Respond as an interviewer. Ask a follow-up question or give a small hint.
 Do NOT give the solution.
 """
-    
+
     return prompt
 

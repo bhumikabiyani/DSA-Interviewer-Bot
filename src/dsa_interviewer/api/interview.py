@@ -1,25 +1,25 @@
-from datetime import datetime
-from fastapi import APIRouter, HTTPException, Depends
-from sqlalchemy.orm import Session
-from fastapi.responses import StreamingResponse
-from dsa_interviewer.dependencies import get_current_user
-from dsa_interviewer.core.database import get_db
-from dsa_interviewer.models.user import User
-from dsa_interviewer.models.interview import Interview
-from pydantic import BaseModel
-from typing import Optional, List
-import logging
-import boto3
 import json
+import logging
+import re
+from datetime import datetime
+from math import ceil
+from typing import Optional
 
+import boto3
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
+
+from dsa_interviewer.core.config import settings
+from dsa_interviewer.core.database import get_db
+from dsa_interviewer.dependencies import get_current_user
+from dsa_interviewer.models.interview import Interview
+from dsa_interviewer.models.user import User
+from dsa_interviewer.services.evaluation import get_evaluation_service
 from dsa_interviewer.services.groq_llm import GroqLLM
 from dsa_interviewer.services.session_store import SessionStore
-from dsa_interviewer.services.evaluation import get_evaluation_service
 from dsa_interviewer.utils.interview import pick_random_question
-from math import ceil
-import re
-from dsa_interviewer.core.config import settings
-
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +94,7 @@ Title: {title}
 Difficulty: {difficulty} (1=Easy, 2=Medium, 3=Hard)
 Topics: {topic_tag}
 
-Provide ONLY the final markdown text for the question. Ask user to understand the question and ask if they have any doubts.  
+Provide ONLY the final markdown text for the question. Ask user to understand the question and ask if they have any doubts.
 """
 
 # ---------------------------------------------------------------------------
@@ -136,7 +136,7 @@ class StartInterviewRequest(BaseModel):
     difficulty: Optional[int] = None   # 1=Easy, 2=Medium, 3=Hard, None=all
     # Candidate info (optional — provide for a personalised greeting)
     type: Optional[str] = None         # 'student' | 'professional'
-    currentRole: Optional[str] = ""   # Degree / Job title
+    current_role: Optional[str] = ""   # Degree / Job title
     organization: Optional[str] = ""  # University / Company
     expectations: Optional[str] = ""
 
@@ -162,18 +162,18 @@ def get_last_candidate_info(current_user: User = Depends(get_current_user), db: 
             .order_by(Interview.created_at.desc())
             .first()
         )
-        
+
         if not last_interview:
             return {"candidate_info": None}
-        
+
         # Parse metadata to get candidate_info
         metadata = last_interview.metadata_
         if isinstance(metadata, str):
             import json
             metadata = json.loads(metadata)
-        
+
         candidate_info = metadata.get("candidate_info") if metadata else None
-        
+
         return {"candidate_info": candidate_info}
     except Exception as e:
         logger.error(f"Error fetching last candidate info: {e}")
@@ -187,7 +187,7 @@ def resume_interview(session_id: str, current_user: User = Depends(get_current_u
         interview = sessions.get_history(session_id)
         state = sessions.get_session_state(session_id)
         return {
-            "history": interview["history"], 
+            "history": interview["history"],
             "total_time_taken": interview["total_time_taken"],
             "phase": state["phase"],
             "current_question": state["current_question"],
@@ -225,7 +225,7 @@ def start_interview(
 
         sessions.set_candidate_info(session_id, {
             "type": payload.type or "quick_start",
-            "current_role": payload.currentRole or "",
+            "current_role": payload.current_role or "",
             "organization": payload.organization or "",
             "expectations": payload.expectations or "",
             "difficulty": str(payload.difficulty) if payload.difficulty is not None else "all",
@@ -243,8 +243,7 @@ def start_interview(
 
         # ── Intro message ────────────────────────────────────────────────────
         if has_profile:
-            role_desc = f"{payload.currentRole} at {payload.organization}"
-            intro_msg = f"Welcome! Great to have you here. Tell me briefly about yourself and your DSA experience."
+            intro_msg = "Welcome! Great to have you here. Tell me briefly about yourself and your DSA experience."
         else:
             intro_msg = "Welcome! Let's get started. Tell me briefly about yourself and your DSA background."
 
@@ -300,13 +299,13 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
         session = sessions.get_history(session_id)
         history = session["history"]
         phase = session["phase"]
-        
+
         # Check time status
         time_status = sessions.check_time_status(session_id)
         time_remaining = sessions.get_time_remaining(session_id)
         current_q = sessions.get_current_question(session_id)
         current_question_num = current_q[0] if current_q else 2
-        
+
         # Handle force end
         if time_status == "force_end":
             sessions.end_interview(session_id)
@@ -316,12 +315,12 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
                 time_remaining=0,
                 current_question=current_question_num,
             )
-        
+
         # Handle wrap-up mode
         if time_status == "wrap_up":
             # Check if final response is still allowed
             can_respond = sessions.use_final_response(session_id)
-            
+
             if not can_respond:
                 # No more responses allowed, end the interview
                 sessions.end_interview(session_id)
@@ -333,37 +332,37 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
                     time_remaining=final_time,
                     current_question=current_question_num,
                 )
-            
+
             # Allow one final response with wrap-up context
             wrap_up_context = "\n\n[SYSTEM NOTE: We have less than 3 minutes remaining. Please acknowledge time constraints and wrap up gracefully. Allow candidate to finish their current thought.]"
-            
+
             messages = _build_interview_messages(history, session.get("question", ""), user_message, wrap_up_context)
             reply = llm.chat(messages)
-            
+
             timestamp = int(datetime.utcnow().timestamp())
             sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
             sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp)
-            
+
             return InteractResponse(
                 response=reply,
                 command="wrap_up",
                 time_remaining=time_remaining,
                 current_question=current_question_num,
             )
-        
+
         # Handle intro phase - after candidate introduction, present Q1
         if phase == "intro":
             # Add candidate's intro to history
             timestamp = int(datetime.utcnow().timestamp())
             sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
-            
+
             # Transition to Q1
             q1_text = sessions.transition_to_q1(session_id)
-            
+
             intro_response = "Thanks for sharing! Check out the question on the left — let me know if anything is unclear."
-            
+
             sessions.add_message(current_user.id, session_id, "interviewer", intro_response, timestamp)
-            
+
             return InteractResponse(
                 response=intro_response,
                 command="continue",
@@ -371,7 +370,7 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
                 current_question=1,
                 question_text=q1_text,
             )
-        
+
         # Handle Q1 timeout (now only 1 question)
         if time_status == "q1_timeout" and phase == "q1":
             sessions.end_interview(session_id)
@@ -382,21 +381,21 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
                 time_remaining=final_time,
                 current_question=1,
             )
-        
+
         # Normal interview flow
         messages = _build_interview_messages(history, session.get("question", ""), user_message)
         reply = llm.chat(messages)
-        
+
         # Check if AI detected question completion
         question_complete = "[QUESTION_COMPLETE]" in reply
         if question_complete:
             reply = reply.replace("[QUESTION_COMPLETE]", "").strip()
-        
+
         # Add messages to history
         timestamp = int(datetime.utcnow().timestamp())
         sessions.add_message(current_user.id, session_id, "candidate", user_message, timestamp)
         sessions.add_message(current_user.id, session_id, "interviewer", reply, timestamp)
-        
+
         # Handle interview end after the single question
         if question_complete:
             sessions.end_interview(session_id)
@@ -408,14 +407,14 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
                 time_remaining=final_time,
                 current_question=1,
             )
-        
+
         return InteractResponse(
             response=reply,
             command="continue",
             time_remaining=time_remaining,
             current_question=current_question_num,
         )
-        
+
     except HTTPException:
         raise
     except Exception as e:
@@ -430,15 +429,15 @@ def _build_interview_messages(history: list, question: str, user_message: str, e
         system_content += f"\n\nCURRENT QUESTION:\n{question}"
     if extra_context:
         system_content += extra_context
-    
+
     messages = [{"role": "system", "content": system_content}]
-    
+
     for turn in history:
         role = "user" if turn["role"] == "candidate" else "assistant"
         messages.append({"role": role, "content": turn["message"]})
-    
+
     messages.append({"role": "user", "content": user_message})
-    
+
     return messages
 
 
@@ -521,7 +520,7 @@ def get_interview_session(
                     meta = {}
             elif meta is None:
                 meta = {}
-            
+
             processed_interviews.append({
                 "interview_id": i.id,
                 "session_id": i.session_id,
@@ -553,7 +552,7 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
     try:
         session_id = payload.session_id
         session = sessions.get_history(session_id)
-        
+
         # Check if already evaluated (cache hit)
         if session.get("evaluation"):
             logger.info(f"Returning cached evaluation for {session_id}")
@@ -563,20 +562,20 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
                 "evaluation": session["evaluation"],
                 "summary": eval_service.get_score_summary(session["evaluation"])
             }
-        
+
         # Check if interview has ended
         if session["phase"] not in ["ended", "wrap_up"]:
             raise HTTPException(
-                status_code=400, 
+                status_code=400,
                 detail="Interview must be completed before evaluation"
             )
-        
+
         history = session["history"]
         questions = session.get("questions", [])
-        
+
         # Extract question texts
         question_texts = [q[1] for q in questions] if questions else []
-        
+
         # Get time spent on each question (if available)
         question_times = None
         if session.get("question_start_times"):
@@ -584,7 +583,6 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
             total_time = session.get("total_time_taken", 0)
             if start_times[0]:
                 # Estimate times based on when questions started
-                import time
                 times = []
                 for i, start in enumerate(start_times):
                     if start:
@@ -598,7 +596,7 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
                     else:
                         times.append(0)
                 question_times = times
-        
+
         # Get evaluation service and evaluate
         eval_service = get_evaluation_service()
         evaluation = eval_service.evaluate_interview(
@@ -606,18 +604,18 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
             questions=question_texts,
             question_times=question_times
         )
-        
+
         # Store evaluation in session and DB
         sessions.save_evaluation(session_id, evaluation)
-        
+
         logger.info(f"Evaluated interview {session_id}: score={evaluation.get('overall_score')}")
-        
+
         return {
             "session_id": session_id,
             "evaluation": evaluation,
             "summary": eval_service.get_score_summary(evaluation)
         }
-        
+
     except HTTPException:
         raise
     except Exception as e:
@@ -630,22 +628,22 @@ def get_evaluation(session_id: str, current_user: User = Depends(get_current_use
     """Get the evaluation for a completed interview."""
     try:
         session = sessions.get_history(session_id)
-        
+
         evaluation = session.get("evaluation")
         if not evaluation:
             raise HTTPException(
-                status_code=404, 
+                status_code=404,
                 detail="Evaluation not found. Please call /evaluate first."
             )
-        
+
         eval_service = get_evaluation_service()
-        
+
         return {
             "session_id": session_id,
             "evaluation": evaluation,
             "summary": eval_service.get_score_summary(evaluation)
         }
-        
+
     except HTTPException:
         raise
     except Exception as e:

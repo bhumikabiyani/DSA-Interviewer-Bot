@@ -2,7 +2,7 @@
 
 import json
 import logging
-from typing import Dict, List, Optional
+from typing import Optional
 
 from dsa_interviewer.services.groq_llm import GroqLLM
 
@@ -64,24 +64,24 @@ Provide your evaluation in the following JSON format ONLY (no other text):
 
 class EvaluationService:
     """Service for evaluating interview performance using LLM."""
-    
+
     def __init__(self):
         self.llm = GroqLLM()
-    
+
     def evaluate_interview(
-        self, 
-        history: List[Dict], 
-        questions: List[str],
-        question_times: Optional[List[int]] = None
-    ) -> Dict:
+        self,
+        history: list[dict],
+        questions: list[str],
+        question_times: Optional[list[int]] = None
+    ) -> dict:
         """
         Evaluate an interview based on conversation history.
-        
+
         Args:
             history: List of conversation messages with 'role' and 'message' keys
             questions: List of question texts that were asked
             question_times: Optional list of time spent on each question in seconds
-            
+
         Returns:
             Evaluation dictionary with scores and feedback
         """
@@ -89,46 +89,46 @@ class EvaluationService:
             # Format interview data for the prompt
             interview_data = self._format_interview_data(history)
             questions_text = self._format_questions(questions, question_times)
-            
+
             # Build the evaluation prompt
             prompt = EVALUATION_PROMPT.format(
                 interview_data=interview_data,
                 questions=questions_text
             )
-            
+
             # Get evaluation from LLM
             messages = [
                 {"role": "system", "content": "You are an expert technical interview evaluator. Respond only with valid JSON."},
                 {"role": "user", "content": prompt}
             ]
-            
+
             response = self.llm.chat(messages)
-            
+
             # Parse the JSON response
             evaluation = self._parse_evaluation_response(response)
-            
+
             logger.info(f"Evaluation completed: overall_score={evaluation.get('overall_score')}")
             return evaluation
-            
+
         except Exception as e:
             logger.error(f"Error evaluating interview: {e}")
             return self._get_default_evaluation(str(e))
-    
-    def _format_interview_data(self, history: List[Dict]) -> str:
+
+    def _format_interview_data(self, history: list[dict]) -> str:
         """Format conversation history for the evaluation prompt."""
         formatted = []
         for msg in history:
             role = msg.get("role", "unknown")
             message = msg.get("message", "")
-            
+
             if role == "interviewer":
                 formatted.append(f"INTERVIEWER: {message}")
             elif role == "candidate":
                 formatted.append(f"CANDIDATE: {message}")
-        
+
         return "\n\n".join(formatted)
-    
-    def _format_questions(self, questions: List[str], times: Optional[List[int]]) -> str:
+
+    def _format_questions(self, questions: list[str], times: Optional[list[int]]) -> str:
         """Format questions list for the evaluation prompt."""
         formatted = []
         for i, q in enumerate(questions):
@@ -136,12 +136,12 @@ class EvaluationService:
             if times and i < len(times) and times[i]:
                 minutes = times[i] // 60
                 time_info = f" (Time spent: ~{minutes} minutes)"
-            
+
             formatted.append(f"Question {i + 1}{time_info}:\n{q}")
-        
+
         return "\n\n---\n\n".join(formatted)
-    
-    def _parse_evaluation_response(self, response: str) -> Dict:
+
+    def _parse_evaluation_response(self, response: str) -> dict:
         """Parse the LLM response into a structured evaluation."""
         # Try to extract JSON from the response
         try:
@@ -150,25 +150,25 @@ class EvaluationService:
                 response = response.split("```json")[1].split("```")[0]
             elif "```" in response:
                 response = response.split("```")[1].split("```")[0]
-            
+
             evaluation = json.loads(response.strip())
-            
+
             # Validate required fields
             required_fields = ["overall_score", "recommendation", "questions", "overall_feedback"]
             for field in required_fields:
                 if field not in evaluation:
                     evaluation[field] = self._get_default_value(field)
-            
+
             # Ensure overall_score is within bounds
             evaluation["overall_score"] = max(0, min(100, evaluation.get("overall_score", 50)))
-            
+
             return evaluation
-            
+
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse evaluation JSON: {e}")
             logger.debug(f"Raw response: {response}")
             return self._get_default_evaluation(f"Failed to parse evaluation: {e}")
-    
+
     def _get_default_value(self, field: str):
         """Get default values for missing fields."""
         defaults = {
@@ -180,8 +180,8 @@ class EvaluationService:
             "communication_skills_summary": "Not available",
         }
         return defaults.get(field)
-    
-    def _get_default_evaluation(self, error_msg: str) -> Dict:
+
+    def _get_default_evaluation(self, error_msg: str) -> dict:
         """Return a default evaluation when the process fails."""
         return {
             "overall_score": 0,
@@ -192,38 +192,38 @@ class EvaluationService:
             "communication_skills_summary": "Not available",
             "error": error_msg
         }
-    
-    def get_score_summary(self, evaluation: Dict) -> str:
+
+    def get_score_summary(self, evaluation: dict) -> str:
         """Generate a human-readable summary of the evaluation."""
         if "error" in evaluation:
             return f"Evaluation Error: {evaluation['error']}"
-        
+
         summary_parts = [
             f"Overall Score: {evaluation.get('overall_score', 'N/A')}/100",
             f"Recommendation: {evaluation.get('recommendation', 'N/A')}",
             "",
             "Questions:",
         ]
-        
+
         for i, q in enumerate(evaluation.get("questions", [])):
             summary_parts.append(
                 f"  Q{i + 1}: {q.get('question_title', 'Unknown')} - "
                 f"Score: {q.get('score', 'N/A')}/5 ({q.get('completion_method', 'unknown')})"
             )
-            
+
             strengths = q.get("strengths", [])
             if strengths:
                 summary_parts.append(f"    Strengths: {', '.join(strengths)}")
-            
+
             improvements = q.get("areas_for_improvement", [])
             if improvements:
                 summary_parts.append(f"    Areas to improve: {', '.join(improvements)}")
-        
+
         summary_parts.extend([
             "",
             f"Feedback: {evaluation.get('overall_feedback', 'No feedback available')}",
         ])
-        
+
         return "\n".join(summary_parts)
 
 

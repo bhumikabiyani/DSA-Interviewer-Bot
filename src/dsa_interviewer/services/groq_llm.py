@@ -1,5 +1,6 @@
 import logging
-from typing import List, Dict, Optional
+from typing import Optional
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -17,7 +18,7 @@ class GroqLLM:
         self.model = model or settings.LLM_MODEL
         print("MODEL:", self.model)
         self.url = "https://api.groq.com/openai/v1/chat/completions"
-        
+
         self.session = requests.Session()
         retry_strategy = Retry(
             total=3,
@@ -26,7 +27,7 @@ class GroqLLM:
         )
         adapter = HTTPAdapter(max_retries=retry_strategy)
         self.session.mount("https://", adapter)
-        
+
         logger.info(f"GroqLLM initialized with model: {self.model}")
 
     def generate(self, system_msg: str, user_msg: str) -> str:
@@ -35,7 +36,7 @@ class GroqLLM:
             {"role": "user", "content": user_msg}
         ])
 
-    def chat(self, messages: List[Dict[str, str]], temperature: Optional[float] = None, max_tokens: Optional[int] = None) -> str:
+    def chat(self, messages: list[dict[str, str]], temperature: Optional[float] = None, max_tokens: Optional[int] = None) -> str:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
@@ -52,17 +53,17 @@ class GroqLLM:
             logger.debug(f"Sending request to Groq API with {len(messages)} messages")
             response = self.session.post(self.url, headers=headers, json=payload, timeout=30)
             response.raise_for_status()
-            
+
             result = response.json()["choices"][0]["message"]["content"]
             logger.debug(f"Received response from Groq API ({len(result)} chars)")
             return result
-            
+
         except requests.exceptions.RequestException as e:
             logger.error(f"Groq API request failed: {e}")
             if hasattr(e, 'response') and e.response is not None:
                 logger.error(f"Response: {e.response.text}")
             raise
-    
+
     def __del__(self):
         if hasattr(self, 'session'):
             self.session.close()

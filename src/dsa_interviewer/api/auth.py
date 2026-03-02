@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
-from dsa_interviewer.core.database import get_db
-from dsa_interviewer.models.user import User
-from dsa_interviewer.dependencies import get_current_user
 from fastapi.security import OAuth2PasswordRequestForm
-from dsa_interviewer.models.auth import UserCreate, UserLogin, UserResponse, Token
-from dsa_interviewer.utils.security import get_password_hash, verify_password
+from sqlalchemy.orm import Session
+
+from dsa_interviewer.core.database import get_db
+from dsa_interviewer.dependencies import get_current_user
+from dsa_interviewer.models.auth import Token, UserCreate, UserResponse
+from dsa_interviewer.models.user import User
 from dsa_interviewer.utils.jwt import create_access_token
+from dsa_interviewer.utils.security import get_password_hash, verify_password
 
 router = APIRouter()
 
@@ -15,7 +16,7 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.email == user.email).first()
     if db_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
-    
+
     db_user = db.query(User).filter(User.username == user.username).first()
     if db_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username already taken")

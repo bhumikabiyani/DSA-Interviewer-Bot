@@ -1,9 +1,11 @@
 from datetime import datetime
+
 import httpx
-from fastapi import APIRouter, Depends, HTTPException, status, Body
+from fastapi import APIRouter, Body, Depends, HTTPException
 from sqlalchemy.orm import Session
-from dsa_interviewer.core.database import get_db
+
 from dsa_interviewer.core.config import settings
+from dsa_interviewer.core.database import get_db
 from dsa_interviewer.models.user import User
 from dsa_interviewer.utils.jwt import create_access_token
 
@@ -23,8 +25,8 @@ def get_login_url():
         "redirect_uri": FRONTEND_REDIRECT_URI,
         "response_type": "code",
         "scope": "openid email profile",
-        "access_type": "offline", 
-        "prompt": "consent" 
+        "access_type": "offline",
+        "prompt": "consent"
     }
     # Construct URL manually
     query_string = "&".join([f"{k}={v}" for k, v in params.items()])
@@ -46,19 +48,19 @@ async def verify_google_code(code: str = Body(..., embed=True), db: Session = De
 
     async with httpx.AsyncClient() as client:
         response = await client.post(token_url, data=data)
-        
+
         if response.status_code != 200:
             raise HTTPException(status_code=400, detail=f"Failed to exchange code: {response.text}")
-        
+
         token_data = response.json()
-        id_token = token_data.get("id_token")
+        token_data.get("id_token")
         access_token = token_data.get("access_token") # Google access token, not ours
 
         # Get User Info
         user_info_resp = await client.get("https://www.googleapis.com/oauth2/v3/userinfo", headers={"Authorization": f"Bearer {access_token}"})
         if user_info_resp.status_code != 200:
              raise HTTPException(status_code=400, detail="Failed to get user info from Google")
-        
+
         user_info = user_info_resp.json()
 
     # Process User
@@ -73,7 +75,7 @@ async def verify_google_code(code: str = Body(..., embed=True), db: Session = De
         # Uniqueness check
         if db.query(User).filter(User.username == username).first():
             username = f"{username}_{int(datetime.utcnow().timestamp())}"
-            
+
         print(f"Creating new Google user (Verification Flow): {username}, {email}")
         db_user = User(
             username=username,
@@ -86,5 +88,5 @@ async def verify_google_code(code: str = Body(..., embed=True), db: Session = De
 
     # Issue our JWT
     our_access_token = create_access_token(data={"sub": db_user.username})
-    
+
     return {"access_token": our_access_token, "token_type": "bearer"}

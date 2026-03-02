@@ -1,5 +1,6 @@
-from sqlalchemy import JSON, Column, Integer, String, DateTime
 from datetime import datetime
+
+from sqlalchemy import JSON, Column, DateTime, Integer, String
 
 # Use the project's shared declarative Base to avoid multiple metadata registries
 from dsa_interviewer.core.database import Base
