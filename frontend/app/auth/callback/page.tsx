@@ -16,7 +16,7 @@ function CallbackContent() {
         console.log("Auth Callback - Params:", { code: !!code, error });
 
         if (code) {
-            console.log("Code found in URL",searchParams);
+            console.log("Code found in URL", searchParams);
             setStatus("Verifying with server...");
 
             // Verify code with backend
@@ -54,10 +54,10 @@ function CallbackContent() {
             verifyCode();
 
         } else if (error) {
-            console.log("Error found in URL",searchParams);
+            console.log("Error found in URL", searchParams);
             setStatus(`Authentication error: ${error}`);
         } else {
-            console.log("No code or error found in URL",searchParams);
+            console.log("No code or error found in URL", searchParams);
             // Check if we maybe already have a token in URL (fallback for old flow?)
             const token = searchParams.get("token");
             if (token) {
@@ -105,7 +105,7 @@ function CallbackContent() {
     );
 }
 
-export default function () {
+export default function AuthCallbackPage() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <CallbackContent />
