@@ -1,0 +1,23 @@
+name: Keep Alive – Ping Render API
+
+on:
+  schedule:
+    # Runs every 15 minutes, 24/7
+    - cron: "*/15 * * * *"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  ping:
+    name: Ping Render API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping https://dsa-interviewer-bot.onrender.com/
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://dsa-interviewer-bot.onrender.com/)
+          echo "Response status: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 400 ]; then
+            echo "✅ API is alive (HTTP $STATUS)"
+          else
+            echo "⚠️  Unexpected response: HTTP $STATUS"
+            exit 1
+          fi
