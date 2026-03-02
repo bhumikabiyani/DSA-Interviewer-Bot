@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatMessage } from "@/components/ChatMessage";
@@ -43,6 +43,7 @@ export default function InterviewPage() {
     updateTimeRemaining,
     questionText,
     setQuestionText,
+    reset,
   } = useChatStore();
 
   const [evaluation, setEvaluation] = useState<Evaluation | null>(null);
@@ -50,20 +51,7 @@ export default function InterviewPage() {
 
   const fetchingRef = useRef(false);
 
-  // Load session on mount
-  useEffect(() => {
-    if (!sessionId) {
-      router.push("/");
-      return;
-    }
-
-    if (!initialized && !fetchingRef.current) {
-      fetchingRef.current = true;
-      loadSession();
-    }
-  }, [sessionId, initialized]);
-
-  const loadSession = async () => {
+  const loadSession = useCallback(async () => {
     try {
       const data = await getBackgroundMessages(sessionId);
 
@@ -97,9 +85,22 @@ export default function InterviewPage() {
       setInitialized(true);
     } catch (error) {
       console.error("Failed to load session:", error);
-      router.push("/");
+      router.push("/dashboard");
     }
-  };
+  }, [sessionId, router, setInterviewState, addMessage, setEvaluation, setQuestionText, setInitialized]);
+
+  // Load session on mount
+  useEffect(() => {
+    if (!sessionId) {
+      router.push("/");
+      return;
+    }
+
+    if (!initialized && !fetchingRef.current) {
+      fetchingRef.current = true;
+      loadSession();
+    }
+  }, [sessionId, initialized, loadSession, router]);
 
   useEffect(() => {
     if (phase === "ended" && !evaluation) {
@@ -251,7 +252,8 @@ export default function InterviewPage() {
   };
 
   const handleBack = () => {
-    router.push("/");
+    reset();
+    router.push("/dashboard");
   };
 
   const isInTechnicalPhase = phase !== "intro" && phase !== "background";

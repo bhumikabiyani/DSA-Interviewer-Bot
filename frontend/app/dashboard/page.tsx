@@ -130,7 +130,7 @@ export default function DashboardPage() {
       const response = await startInterview(topicStr, selectedDifficulty);
       router.push(`/interview/${response.session_id}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to start interview");
+      setError("Failed to start interview, no questions found for this selection.");
       setLoading(false);
     }
   };

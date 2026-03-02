@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import { useCallback, useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { evaluateInterview } from "@/lib/api";
@@ -173,15 +173,7 @@ function ThankYouContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (sessionId) {
-      fetchEvaluation();
-    } else {
-      setLoading(false);
-    }
-  }, [sessionId]);
-
-  const fetchEvaluation = async () => {
+  const fetchEvaluation = useCallback(async () => {
     try {
       const response = await evaluateInterview(sessionId!);
       setEvaluation(response.evaluation);
@@ -191,7 +183,15 @@ function ThankYouContent() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [sessionId]);
+
+  useEffect(() => {
+    if (sessionId) {
+      fetchEvaluation();
+    } else {
+      setLoading(false);
+    }
+  }, [sessionId, fetchEvaluation]);
 
   const getRecommendationStyle = (rec: string) => {
     const upper = rec.toUpperCase();
