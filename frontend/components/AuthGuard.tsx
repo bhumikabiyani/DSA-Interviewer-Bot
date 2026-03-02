@@ -6,7 +6,7 @@ import { getAccessToken } from "@/lib/auth";
 interface AuthGuardProps {
   children: React.ReactNode;
 }
-const publicPaths = ["/login", "/register", "/auth/callback"];
+const publicPaths = ["/", "/login", "/register", "/auth/callback"];
 export function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -20,8 +20,8 @@ export function AuthGuard({ children }: AuthGuardProps) {
     const isPublicPath = publicPaths.includes(pathname);
     if (!token && !isPublicPath) {
       router.push("/login");
-    } else if (token && isPublicPath && pathname !== "/") { // Redirect authenticated users from login/register to home
-      router.push("/");
+    } else if (token && (pathname === "/login" || pathname === "/register")) {
+      router.push("/dashboard");
     }
   }, [isClient, pathname, router]);
   if (!isClient) {

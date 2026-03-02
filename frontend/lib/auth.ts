@@ -58,8 +58,7 @@ export async function register(userData: UserCreate): Promise<UserResponse> {
 
 export function logout() {
   removeAccessToken();
-  // Optionally redirect to login page
-  window.location.href = "/login"; 
+  window.location.href = "/";
 }
 
 export function getAuthHeaders(): HeadersInit {

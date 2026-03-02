@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/lib/auth"; // Import the login function
 import { GoogleAuthButton } from "@/components/GoogleAuthButton";
 
@@ -10,6 +10,7 @@ export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -19,8 +20,8 @@ export function LoginForm() {
       console.log("Logging in with:", { username, password });
       // Simulate API call
       await login({ username, password });
-      // On successful login, redirect to home or dashboard
-      router.push("/");
+      const redirectTo = searchParams.get("redirect") || "/dashboard";
+      router.push(redirectTo);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
