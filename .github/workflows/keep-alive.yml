@@ -3,7 +3,7 @@ name: Keep Alive – Ping Render API
 on:
   schedule:
     # Runs every 15 minutes, 24/7
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
