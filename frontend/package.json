@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-polly": "^3.956.0",
+    "@formspree/react": "^3.0.0",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-select": "^2.2.6",
     "@tailwindcss/typography": "^0.5.19",

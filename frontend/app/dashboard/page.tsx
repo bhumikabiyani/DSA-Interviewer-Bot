@@ -14,13 +14,11 @@ import {
   Zap,
   Trophy,
   Code2,
-  Brain,
-  Target,
   ChevronRight,
   Sparkles,
-  BarChart3,
 } from "lucide-react";
 import { logout } from "@/lib/auth";
+import FeedbackForm from "@/components/FeedbackForm";
 
 const DSA_TOPICS = [
   "arrays",
@@ -438,6 +436,22 @@ export default function DashboardPage() {
               })}
             </div>
           )}
+        </section>
+
+        {/* Feedback */}
+        <section id="feedback" className="max-w-6xl mx-auto px-4 pb-24 scroll-mt-20">
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
+              Share Your Feedback
+            </h2>
+            <p className="text-gray-400 text-sm mt-2">
+              Tell us what’s working well and what we can improve.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <FeedbackForm />
+          </div>
         </section>
       </main>
 
