@@ -72,7 +72,8 @@ class EvaluationService:
         self,
         history: list[dict],
         questions: list[str],
-        question_times: Optional[list[int]] = None
+        question_times: Optional[list[int]] = None,
+        terminated_reason: Optional[str] = None
     ) -> dict:
         """
         Evaluate an interview based on conversation history.
@@ -81,11 +82,40 @@ class EvaluationService:
             history: List of conversation messages with 'role' and 'message' keys
             questions: List of question texts that were asked
             question_times: Optional list of time spent on each question in seconds
+            terminated_reason: Optional reason why the interview ended
 
         Returns:
             Evaluation dictionary with scores and feedback
         """
         try:
+            # Handle special termination reasons
+            if terminated_reason == "violation":
+                return {
+                    "overall_score": 0,
+                    "recommendation": "No Hire",
+                    "questions": [
+                        {
+                            "question_title": "Interview Terminated",
+                            "score": 0,
+                            "completion_method": "incomplete",
+                            "time_taken_minutes": 0,
+                            "criteria_scores": {
+                                "problem_understanding": 0,
+                                "approach_algorithm": 0,
+                                "code_quality": 0,
+                                "complexity_analysis": 0,
+                                "communication": 0,
+                                "code_execution": 0
+                            },
+                            "strengths": [],
+                            "areas_for_improvement": ["Inappropriate behavior/language leads to immediate disqualification."]
+                        }
+                    ],
+                    "overall_feedback": "This interview was terminated immediately due to a violation of our code of conduct (inappropriate language). Professionalism is a core requirement for all candidates.",
+                    "technical_skills_summary": "Not evaluated due to termination.",
+                    "communication_skills_summary": "Unprofessional communication detected.",
+                }
+
             # Format interview data for the prompt
             interview_data = self._format_interview_data(history)
             questions_text = self._format_questions(questions, question_times)

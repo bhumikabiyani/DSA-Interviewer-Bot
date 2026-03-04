@@ -68,6 +68,7 @@ class SessionStore:
                 "wrap_up_started": False,
                 "final_response_allowed": True,
                 "candidate_info": None,
+                "terminated_reason": None,
             }
             interview = Interview(
                 session_id=session_id,
@@ -326,8 +327,13 @@ class SessionStore:
         finally:
             db.close()
 
-    def end_interview(self, session_id: str) -> None:
-        """Mark interview as ended and save total time taken."""
+    def end_interview(self, session_id: str, reason: Optional[str] = None) -> None:
+        """Mark interview as ended and save total time taken.
+        
+        Args:
+            session_id: The session ID to end.
+            reason: Optional reason for ending (e.g., 'violation', 'timeout')
+        """
         db = SessionLocal()
         try:
             interview = db.query(Interview).filter(Interview.session_id == session_id).one_or_none()
@@ -348,9 +354,13 @@ class SessionStore:
             metadata["phase"] = "ended"
             metadata["end_time"] = time.time()
             metadata["last_interaction_time"] = None  # Clear since interview is over
+            
+            if reason:
+                metadata["terminated_reason"] = reason
+                
             self._save_metadata(interview, metadata, db)
             db.commit()
-            logger.info(f"Session {session_id}: Interview ended after {total_time_taken}s")
+            logger.info(f"Session {session_id}: Interview ended after {total_time_taken}s, reason: {reason or 'normal'}")
         except Exception:
             db.rollback()
             raise
@@ -461,6 +471,7 @@ class SessionStore:
                 "final_response_allowed": metadata.get("final_response_allowed", True),
                 "evaluation": interview.evaluation_summary,
                 "candidate_info": metadata.get("candidate_info"),
+                "terminated_reason": metadata.get("terminated_reason"),
             }
         finally:
             db.close()

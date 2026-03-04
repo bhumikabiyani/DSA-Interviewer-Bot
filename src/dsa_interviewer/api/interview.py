@@ -285,7 +285,7 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
             )
             # End the session immediately
             try:
-                sessions.end_interview(session_id)
+                sessions.end_interview(session_id, reason="violation")
             except Exception:
                 pass  # best-effort; don't block the response
             return InteractResponse(
@@ -602,7 +602,8 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
         evaluation = eval_service.evaluate_interview(
             history=history,
             questions=question_texts,
-            question_times=question_times
+            question_times=question_times,
+            terminated_reason=session.get("terminated_reason")
         )
 
         # Store evaluation in session and DB

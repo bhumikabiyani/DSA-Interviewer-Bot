@@ -43,6 +43,7 @@ export default function InterviewPage() {
     updateTimeRemaining,
     questionText,
     setQuestionText,
+    isSpeaking,
     reset,
   } = useChatStore();
 
@@ -306,11 +307,11 @@ export default function InterviewPage() {
 
           <div className="flex items-center gap-3">
 
-
+            {/* TODO: Add totalQuestions */}
             <InterviewTimer
               timeRemaining={timeRemaining}
               currentQuestion={currentQuestion}
-              totalQuestions={totalQuestions}
+              totalQuestions={1}
               phase={phase}
               isWrapUp={phase === "wrap_up"}
             />
@@ -387,7 +388,7 @@ export default function InterviewPage() {
                     </div>
                     {phase !== "ended" && (
                       <div className="p-4 border-t border-gray-700 bg-gray-800/50">
-                        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+                        <ChatInput onSend={handleSendMessage} disabled={isLoading || isSpeaking} />
                       </div>
                     )}
                   </div>
@@ -452,7 +453,7 @@ export default function InterviewPage() {
                 </div>
                 {phase !== "ended" && (
                   <div className="p-4 border-t border-gray-700 bg-gray-800/50">
-                    <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+                    <ChatInput onSend={handleSendMessage} disabled={isLoading || isSpeaking} />
                   </div>
                 )}
               </div>

@@ -14,6 +14,26 @@ export function RegisterForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    const validateEmail = (email: string) => {
+      return email.toLowerCase().endsWith("@gmail.com");
+    };
+
+    const validatePassword = (password: string) => {
+      return password.length >= 6;
+    };
+
+    if (!validateEmail(email)) {
+      setError("Please use a valid @gmail.com address");
+      setLoading(false);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 6 characters long");
+      setLoading(false);
+      return;
+    }
+
     try {
       // TODO: Implement actual registration API call
       console.log("Registering with:", { username, email, password });

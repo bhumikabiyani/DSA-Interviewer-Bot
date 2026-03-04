@@ -15,6 +15,16 @@ export function LoginForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    const validatePassword = (password: string) => {
+      return password.length >= 6;
+    };
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 6 characters long");
+      setLoading(false);
+      return;
+    }
+
     try {
       // TODO: Implement actual login API call
       console.log("Logging in with:", { username, password });

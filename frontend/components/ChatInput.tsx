@@ -154,7 +154,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm animate-pulse">
           <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
           <span className="italic truncate">
-            {interimText || "Listening, press send when you are done…"}
+            Listening, press send when you are done…
           </span>
         </div>
       )}
@@ -185,7 +185,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         {TEXT_INPUT_ENABLED && (
           <>
             <input
-              value={message + (interimText ? " " + interimText : "")}
+              value={message}
               onChange={(e) => {
                 setMessage(e.target.value);
                 setInterimText("");
@@ -234,7 +234,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
                 }`} />
               <span className="italic truncate flex-1">
                 {isRecording
-                  ? (interimText || "Listening... Press send when you are done")
+                  ? "Listening... Press send when you are done"
                   : "Click mic to speak…"}
               </span>
               {isRecording && timeLeft !== null && (

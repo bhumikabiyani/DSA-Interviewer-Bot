@@ -12,12 +12,14 @@ interface ChatState {
   totalQuestions: number;
   timeRemaining: number;
   phase: "background" | "intro" | "q1" | "q2" | "wrap_up" | "ended";
+  isSpeaking: boolean;
   // Actions
   addMessage: (message: Message) => void;
   setLoading: (loading: boolean) => void;
   setInitialized: (initialized: boolean) => void;
   setInitialQuestion: (question: string) => void;
   setQuestionText: (text: string | null) => void;
+  setIsSpeaking: (isSpeaking: boolean) => void;
   setInterviewState: (state: {
     currentQuestion?: number;
     totalQuestions?: number;
@@ -38,6 +40,7 @@ export const useChatStore = create<ChatState>((set) => ({
   totalQuestions: 2,
   timeRemaining: 3000, // 50 minutes in seconds
   phase: "background",
+  isSpeaking: false,
   addMessage: (message) =>
     set((state) => ({
       messages: [...state.messages, message],
@@ -46,6 +49,7 @@ export const useChatStore = create<ChatState>((set) => ({
   setInitialized: (initialized) => set({ initialized }),
   setInitialQuestion: (question) => set({ initialQuestion: question }),
   setQuestionText: (text) => set({ questionText: text }),
+  setIsSpeaking: (isSpeaking) => set({ isSpeaking }),
   setInterviewState: (newState) =>
     set((state) => ({
       currentQuestion: newState.currentQuestion ?? state.currentQuestion,
@@ -65,5 +69,6 @@ export const useChatStore = create<ChatState>((set) => ({
       totalQuestions: 2,
       timeRemaining: 3000,
       phase: "background",
+      isSpeaking: false,
     }),
 }));

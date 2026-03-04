@@ -112,11 +112,6 @@ export function InterviewTimer({
                 <span className="text-sm text-gray-300">
                     {getPhaseLabel()}
                 </span>
-                {phase !== "wrap_up" && phase !== "ended" && (
-                    <span className="text-xs text-gray-400">
-                        ({currentQuestion}/{totalQuestions})
-                    </span>
-                )}
             </div>
 
             {/* Wrap-up indicator */}

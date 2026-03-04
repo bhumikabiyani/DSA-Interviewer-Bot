@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Message } from "@/lib/types";
 import { Bot, Check, Code2, Copy, SquareX, User, Volume2 } from "lucide-react";
 import { speakInterviewerText } from "@/lib/api";
+import { useChatStore } from "@/lib/store";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -107,11 +108,15 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
   const isCandidate = message.role === "candidate";
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const setGlobalSpeaking = useChatStore((state) => state.setIsSpeaking);
 
   const ttsEnabled = process.env.NEXT_PUBLIC_ENABLE_TTS === "true";
 
   useEffect(() => {
-    if (!isInterviewer || !isLast || !ttsEnabled) return;
+    if (!isInterviewer || !isLast || !ttsEnabled) {
+      if (isLast && isInterviewer) setGlobalSpeaking(false);
+      return;
+    }
 
     let cancelled = false;
 
@@ -128,12 +133,21 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
 
         audioRef.current = audio;
         setIsSpeaking(true);
-        audio.onended = () => setIsSpeaking(false);
-        audio.onpause = () => setIsSpeaking(false);
+        setGlobalSpeaking(true);
+
+        audio.onended = () => {
+          setIsSpeaking(false);
+          setGlobalSpeaking(false);
+        };
+        audio.onpause = () => {
+          setIsSpeaking(false);
+          setGlobalSpeaking(false);
+        };
         await audio.play();
       } catch (err) {
         console.error("Interviewer TTS failed:", err);
         setIsSpeaking(false);
+        setGlobalSpeaking(false);
       }
     }
 
@@ -146,8 +160,9 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
         audioRef.current = null;
       }
       setIsSpeaking(false);
+      setGlobalSpeaking(false);
     };
-  }, [message.message, isInterviewer, isLast, ttsEnabled]);
+  }, [message.message, isInterviewer, isLast, ttsEnabled, setGlobalSpeaking]);
 
   const handleSkipAudio = () => {
     if (audioRef.current) {
@@ -155,6 +170,7 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
       audioRef.current = null;
     }
     setIsSpeaking(false);
+    setGlobalSpeaking(false);
   };
 
   const codeBlock = isCandidate ? parseCodeFence(message.message) : null;
