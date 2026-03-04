@@ -404,8 +404,14 @@ def interact(payload: InteractRequest, current_user: User = Depends(get_current_
             sessions.end_interview(session_id)
             # Get time_remaining AFTER ending to get total_time_taken
             final_time = sessions.get_time_remaining(session_id)
+            closing = (
+                "Excellent! You've completed the technical questions. "
+                "Great effort! You'll receive a detailed evaluation shortly."
+            )
+            closing_ts = int(datetime.utcnow().timestamp())
+            sessions.add_message(current_user.id, session_id, "interviewer", closing, closing_ts)
             return InteractResponse(
-                response=reply + "\n\nExcellent! You've completed the technical questions. Great effort! You'll receive a detailed evaluation shortly.",
+                response=closing,
                 command="end",
                 time_remaining=final_time,
                 current_question=1,
