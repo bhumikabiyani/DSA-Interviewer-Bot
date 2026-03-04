@@ -126,18 +126,59 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       recognitionRef.current?.stop();
       if (autoStopTimerRef.current) clearTimeout(autoStopTimerRef.current);
       if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+      if (sendBufferRef.current) clearTimeout(sendBufferRef.current);
     };
   }, []);
 
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    toastTimerRef.current = setTimeout(() => setToastMessage(null), 2000);
+  };
+
+  const [isSendBuffering, setIsSendBuffering] = useState(false);
+  const sendBufferRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const messageRef = useRef(message);
+  const interimRef = useRef(interimText);
+
+  // Keep refs in sync with state
+  useEffect(() => { messageRef.current = message; }, [message]);
+  useEffect(() => { interimRef.current = interimText; }, [interimText]);
+
   const handleSend = () => {
-    // If mic is recording, stop it and send whatever we have
-    if (isRecording) {
+    if (isSendBuffering || disabled) return;
+
+    const wasRecording = isRecording;
+    if (wasRecording) {
       stopRecording();
     }
-    const text = message.trim();
-    if (text && !disabled) {
-      onSend(text);
-      setMessage("");
+
+    // If the mic was active, wait 3 seconds for speech to finalize
+    if (wasRecording) {
+      setIsSendBuffering(true);
+      sendBufferRef.current = setTimeout(() => {
+        const text = (messageRef.current + (interimRef.current ? " " + interimRef.current : "")).trim();
+        setInterimText("");
+        setIsSendBuffering(false);
+        if (text) {
+          onSend(text);
+          setMessage("");
+        } else {
+          showToast("No message captured yet — please click Send again");
+        }
+      }, 2000);
+    } else {
+      const text = (message + (interimText ? " " + interimText : "")).trim();
+      setInterimText("");
+      if (text) {
+        onSend(text);
+        setMessage("");
+      } else {
+        showToast("No message captured yet — please click Send again");
+      }
     }
   };
 
@@ -149,7 +190,20 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   };
 
   return (
-    <div className="flex flex-col gap-2 max-w-4xl mx-auto w-full">
+    <div className="flex flex-col gap-2 max-w-4xl mx-auto w-full relative">
+      {toastMessage && (
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-amber-500/90 text-white text-xs font-medium shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200 whitespace-nowrap">
+          {toastMessage}
+        </div>
+      )}
+
+      {isSendBuffering && (
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm animate-pulse">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
+          <span className="italic">Sending</span>
+        </div>
+      )}
+
       {TEXT_INPUT_ENABLED && isRecording && (
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm animate-pulse">
           <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
@@ -204,7 +258,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 
             <button
               onClick={handleSend}
-              disabled={disabled || (!message.trim() && !interimText.trim())}
+              disabled={disabled || isSendBuffering || (!message.trim() && !interimText.trim())}
               title="Send message"
               className="
                 inline-flex items-center justify-center
@@ -246,7 +300,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 
             <button
               onClick={handleSend}
-              disabled={disabled || (!message.trim() && !interimText.trim())}
+              disabled={disabled || isSendBuffering || (!message.trim() && !interimText.trim())}
               title="Send spoken answer"
               className="
                 inline-flex items-center gap-2 px-4 h-10 rounded-md flex-shrink-0
