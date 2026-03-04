@@ -11,8 +11,11 @@ from dsa_interviewer.utils.jwt import create_access_token
 
 router = APIRouter()
 
-# Matches what you configured in Google Console
-FRONTEND_REDIRECT_URI = "http://localhost:3000/auth/callback"
+import os
+
+# Read from env so it works locally and in production
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+FRONTEND_REDIRECT_URI = f"{FRONTEND_URL}/auth/callback"
 
 @router.get("/login-url")
 def get_login_url():
