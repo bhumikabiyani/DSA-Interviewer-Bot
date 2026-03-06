@@ -7,7 +7,7 @@ from typing import Optional
 from sqlalchemy.exc import IntegrityError
 
 from dsa_interviewer.core.config import settings
-from dsa_interviewer.core.database import SessionLocal
+from dsa_interviewer.core.database import SessionLocal, with_db_retry
 from dsa_interviewer.models.interview import Interview
 
 logger = logging.getLogger(__name__)
@@ -52,6 +52,7 @@ class SessionStore:
         interview.metadata_ = json.dumps(metadata)
         db.add(interview)
 
+    @with_db_retry
     def create_session(self, user_id: str) -> str:
         """Create a new interview session in the DB."""
         session_id = str(uuid.uuid4())
@@ -95,6 +96,7 @@ class SessionStore:
     def create_background_session(self, user_id: str) -> str:
         return self.create_session(user_id)
 
+    @with_db_retry
     def start_interview(self, session_id: str, questions: list[tuple[str, str]]) -> None:
         """Start the technical interview with questions."""
         db = SessionLocal()
@@ -120,6 +122,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def set_candidate_info(self, session_id: str, info: dict) -> None:
         """Store candidate info from pre-interview form."""
         db = SessionLocal()
@@ -140,6 +143,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def get_candidate_info(self, session_id: str) -> Optional[dict]:
         """Get candidate info from session."""
         db = SessionLocal()
@@ -152,6 +156,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def transition_to_q1(self, session_id: str) -> str:
         """Transition from intro phase to Q1. Returns Q1 text."""
         db = SessionLocal()
@@ -176,6 +181,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def transition_to_next_question(self, session_id: str) -> Optional[str]:
         """Move from Q1 to Q2. Returns Q2 text or None if no more questions."""
         db = SessionLocal()
@@ -214,6 +220,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def get_current_question(self, session_id: str) -> Optional[tuple[int, str]]:
         """Get current question index (1-based) and text."""
         db = SessionLocal()
@@ -232,6 +239,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def check_time_status(self, session_id: str) -> str:
         """Check interview time status.
 
@@ -281,6 +289,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def get_time_remaining(self, session_id: str) -> int:
         """Get remaining interview time in seconds."""
         db = SessionLocal()
@@ -306,6 +315,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def use_final_response(self, session_id: str) -> bool:
         """Mark that the final response has been used during wrap-up."""
         db = SessionLocal()
@@ -327,6 +337,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def end_interview(self, session_id: str, reason: Optional[str] = None) -> None:
         """Mark interview as ended and save total time taken.
         
@@ -367,6 +378,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def set_question_score(self, session_id: str, question_index: int, score: dict) -> None:
         """Set the score for a specific question."""
         db = SessionLocal()
@@ -389,6 +401,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def add_message(self, user_id: int, session_id: str, role: str, message: str, message_timestamp: int) -> None:
         """Add a message to the interview history and accumulate active time."""
         db = SessionLocal()
@@ -440,6 +453,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def get_history(self, session_id: str) -> dict:
         """Get session data from database."""
         db = SessionLocal()
@@ -487,6 +501,7 @@ class SessionStore:
             "questions_count": len(session["questions"]),
         }
 
+    @with_db_retry
     def session_exists(self, session_id: str) -> bool:
         """Check if session exists in DB."""
         db = SessionLocal()
@@ -496,6 +511,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def delete_session(self, session_id: str) -> None:
         """Delete session from DB."""
         db = SessionLocal()
@@ -511,6 +527,7 @@ class SessionStore:
         finally:
             db.close()
 
+    @with_db_retry
     def save_evaluation(self, session_id: str, evaluation: dict) -> None:
         """Save evaluation result to DB."""
         db = SessionLocal()
