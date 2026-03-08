@@ -60,6 +60,14 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       console.error("Speech recognition error:", e.error);
       setIsRecording(false);
       setInterimText("");
+
+      if (e.error === "service-not-allowed") {
+        showToast("Speech service blocked. In Brave, enable 'Google Services for Speech' in settings.");
+      } else if (e.error === "not-allowed") {
+        showToast("Microphone permission denied. Please allow mic access.");
+      } else {
+        showToast("Mic error please use chrome browser");
+      }
     };
 
     recog.onend = () => {
