@@ -65,8 +65,8 @@ Provide your evaluation in the following JSON format ONLY (no other text):
 class EvaluationService:
     """Service for evaluating interview performance using LLM."""
 
-    def __init__(self):
-        self.llm = GroqLLM()
+    def __init__(self, user_id=None):
+        self.llm = GroqLLM(user_id=user_id)
 
     def evaluate_interview(
         self,
@@ -257,12 +257,6 @@ class EvaluationService:
         return "\n".join(summary_parts)
 
 
-# Singleton instance
-_evaluation_service = None
-
-def get_evaluation_service() -> EvaluationService:
-    """Get or create the singleton evaluation service."""
-    global _evaluation_service
-    if _evaluation_service is None:
-        _evaluation_service = EvaluationService()
-    return _evaluation_service
+def get_evaluation_service(user_id=None) -> EvaluationService:
+    """Create an evaluation service, optionally with a user-specific API key."""
+    return EvaluationService(user_id=user_id)

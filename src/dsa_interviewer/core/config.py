@@ -10,6 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 class Settings:
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
+    GROQ_API_KEY_2: str = os.getenv("GROQ_API_KEY_2", "")
+    GROQ_API_KEY_3: str = os.getenv("GROQ_API_KEY_3", "")
+    GROQ_API_KEY_4: str = os.getenv("GROQ_API_KEY_4", "")
 
     API_HOST: str = os.getenv("API_HOST", "0.0.0.0")
     API_PORT: int = int(os.getenv("API_PORT", "8000"))
@@ -36,5 +39,40 @@ class Settings:
 
     GOOGLE_CLIENT_ID: str = os.getenv("GOOGLE_CLIENT_ID", "")
     GOOGLE_CLIENT_SECRET: str = os.getenv("GOOGLE_CLIENT_SECRET", "")
+
+    def get_groq_api_key(self, user_id) -> str:
+        """Select a Groq API key based on user_id % 4.
+
+        Args:
+            user_id: Can be an int or a string (e.g. UUID).
+                     Strings are hashed to produce a stable integer.
+
+        Returns:
+            One of the four configured GROQ_API_KEY values.
+        """
+        keys = [
+            self.GROQ_API_KEY,
+            self.GROQ_API_KEY_2,
+            self.GROQ_API_KEY_3,
+            self.GROQ_API_KEY_4,
+        ]
+
+        # Convert user_id to a stable integer
+        try:
+            uid_int = int(user_id)
+        except (ValueError, TypeError):
+            uid_int = hash(str(user_id))
+
+        index = uid_int % 4
+        selected = keys[index]
+
+        # Fallback: if the selected key is empty, use the first non-empty key
+        if not selected:
+            for k in keys:
+                if k:
+                    return k
+            raise ValueError("No GROQ_API_KEY is configured")
+
+        return selected
 
 settings = Settings()

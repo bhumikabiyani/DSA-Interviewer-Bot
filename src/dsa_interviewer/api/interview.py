@@ -565,7 +565,7 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
         # Check if already evaluated (cache hit)
         if session.get("evaluation"):
             logger.info(f"Returning cached evaluation for {session_id}")
-            eval_service = get_evaluation_service()
+            eval_service = get_evaluation_service(user_id=current_user.id)
             return {
                 "session_id": session_id,
                 "evaluation": session["evaluation"],
@@ -607,7 +607,7 @@ def evaluate_interview(payload: EvaluateRequest, current_user: User = Depends(ge
                 question_times = times
 
         # Get evaluation service and evaluate
-        eval_service = get_evaluation_service()
+        eval_service = get_evaluation_service(user_id=current_user.id)
         evaluation = eval_service.evaluate_interview(
             history=history,
             questions=question_texts,
@@ -646,7 +646,7 @@ def get_evaluation(session_id: str, current_user: User = Depends(get_current_use
                 detail="Evaluation not found. Please call /evaluate first."
             )
 
-        eval_service = get_evaluation_service()
+        eval_service = get_evaluation_service(user_id=current_user.id)
 
         return {
             "session_id": session_id,

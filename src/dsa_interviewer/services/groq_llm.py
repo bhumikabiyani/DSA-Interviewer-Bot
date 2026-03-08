@@ -10,11 +10,14 @@ from dsa_interviewer.core.config import settings
 logger = logging.getLogger(__name__)
 
 class GroqLLM:
-    def __init__(self, model: Optional[str] = None):
-        if not settings.GROQ_API_KEY:
-            raise ValueError("GROQ_API_KEY missing in environment variables")
+    def __init__(self, model: Optional[str] = None, user_id=None):
+        if user_id is not None:
+            self.api_key = settings.get_groq_api_key(user_id)
+        else:
+            if not settings.GROQ_API_KEY:
+                raise ValueError("GROQ_API_KEY missing in environment variables")
+            self.api_key = settings.GROQ_API_KEY
 
-        self.api_key = settings.GROQ_API_KEY
         self.model = model or settings.LLM_MODEL
         print("MODEL:", self.model)
         self.url = "https://api.groq.com/openai/v1/chat/completions"
