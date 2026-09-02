@@ -7,7 +7,6 @@ from dsa_interviewer.core.config import settings
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
-    print("Creating access token with data:", data)
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
@@ -18,7 +17,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 def verify_token(token: str, credentials_exception):
-    print("Verifying token:", token)
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         username: str = payload.get("sub")

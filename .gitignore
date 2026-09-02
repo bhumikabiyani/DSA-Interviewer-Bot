@@ -52,8 +52,21 @@ logs/
 # Database
 *.db
 *.sqlite3
+dsadb_full_dump.sql
+*.sql.dump
+*.dump
 data/vector_store/
 chromadb/
+
+# Frontend
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Docker
 docker-compose.override.yml

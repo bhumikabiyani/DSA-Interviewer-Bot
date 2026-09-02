@@ -13,7 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ ./src/
 COPY data/ ./data/
 COPY scripts/ ./scripts/
-COPY .env .env
 
 ENV PYTHONPATH=/app/src
 ENV PYTHONUNBUFFERED=1

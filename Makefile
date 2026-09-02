@@ -55,4 +55,4 @@ setup-env:
 	@echo "Please edit .env and add your GROQ_API_KEY"
 
 init-db:
-	python scripts/embed_and_index.py
+	python -c "from dsa_interviewer.core.database import create_db_and_tables; create_db_and_tables(); print('Database tables created successfully.')"

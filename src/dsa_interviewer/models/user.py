@@ -1,9 +1,8 @@
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+from dsa_interviewer.core.database import Base
 
-Base = declarative_base()
+
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)

@@ -79,7 +79,6 @@ async def verify_google_code(code: str = Body(..., embed=True), db: Session = De
         if db.query(User).filter(User.username == username).first():
             username = f"{username}_{int(datetime.utcnow().timestamp())}"
 
-        print(f"Creating new Google user (Verification Flow): {username}, {email}")
         db_user = User(
             username=username,
             email=email,

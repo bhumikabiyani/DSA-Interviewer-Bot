@@ -1,163 +1,95 @@
 # DSA Interviewer Frontend
 
-Next.js frontend for the AI-powered DSA mock interviewer.
+Next.js 14 frontend for the AI-powered DSA mock interviewer platform.
 
-## 🎯 Three-Flow Interview Process
+## 🚀 Features
 
-### Flow 1: Background Assessment
-**Route:** `/background/[session_id]`
+- **Candidate Dashboard**: Overview of past interviews, performance summaries, and quick start options.
+- **Interactive Coding & Chat Interface**: Split-pane layout with Monaco editor (syntax highlighting, multiple languages) and real-time Socratic AI chat.
+- **Performance Evaluation**: Comprehensive evaluation reports with detailed rubric breakdown, strengths, areas for improvement, and hire recommendations.
+- **Authentication**: JWT token storage, user login/registration, and Google OAuth integration.
+- **Voice Synthesis**: Integrated text-to-speech for interview conversational experience.
+- **Dark / Light Mode**: Seamless theme switching with Tailwind CSS and Next Themes.
 
-- Gathers candidate information before technical questions
-- Asks about education, experience, DSA knowledge, and goals
-- 3-5 conversational questions
-- Shows "Ready for Technical Interview" button after sufficient conversation
+---
 
-### Flow 2: Interview Introduction
-**Transition:** Background → Interview
+## 🛠️ Getting Started
 
-- Automatically triggered when candidate clicks "Ready" button
-- Picks random DSA question from knowledge base
-- Provides interviewer introduction
-- Seamlessly transitions to technical interview
+### 1. Prerequisites
+- Node.js 18+
+- npm or yarn
 
-### Flow 3: Technical Interview
-**Route:** `/interview/[session_id]`
-
-- Interactive DSA problem solving
-- RAG-enhanced responses with relevant context
-- Multi-turn conversation with full history
-- Type "babi" to end interview
-
-## 🚀 Getting Started
+### 2. Installation
 
 ```bash
 # Install dependencies
 npm install
 
-# Run development server
+# Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
 ```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-```
-frountend/
-├── app/
-│   ├── page.tsx                    # Home page - starts background flow
-│   ├── background/
-│   │   └── [session_id]/
-│   │       └── page.tsx            # Background assessment chat
-│   ├── interview/
-│   │   └── [session_id]/
-│   │       └── page.tsx            # Technical interview chat
-│   └── thankyou/
-│       └── page.tsx                # End screen
-├── components/
-│   ├── ChatMessage.tsx             # Message bubble component
-│   ├── ChatInput.tsx               # Input field component
-│   ├── LoadingIndicator.tsx        # Loading animation
-│   └── ThemeToggle.tsx             # Dark/light mode toggle
-├── lib/
-│   ├── api.ts                      # API client functions
-│   ├── types.ts                    # TypeScript interfaces
-│   └── store.ts                    # Zustand state management
-└── README.md
-```
+---
 
-## 🔌 API Integration
+## 🔧 Environment Configuration
 
-### Background Flow APIs
-
-```typescript
-// Start background session
-const response = await startBackground();
-// Returns: { session_id: string, message: string }
-
-// Send background message
-const response = await sendBackgroundMessage(sessionId, message);
-// Returns: { response: string }
-```
-
-### Interview Flow APIs
-
-```typescript
-// Start technical interview (requires background session)
-const response = await startInterview(sessionId);
-// Returns: { session_id: string, intro: string }
-
-// Send interview message
-const response = await sendMessage(sessionId, message);
-// Returns: { response: string, command?: string }
-```
-
-## 🎨 Features
-
-- **Dark Mode Support** - Toggle between light and dark themes
-- **Real-time Chat** - Smooth message animations and auto-scroll
-- **Loading States** - Visual feedback during API calls
-- **Error Handling** - Graceful error messages and recovery
-- **Responsive Design** - Works on desktop and mobile
-- **Session Management** - Maintains conversation history
-- **Smart Transitions** - Automatic flow progression
-
-## 🔧 Configuration
-
-Environment variables (`.env.local`):
+Create a `.env.local` file in the `frontend` directory:
 
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-## 🎯 User Journey
+---
 
-1. **Landing Page** → Click "Start Interview"
-2. **Background Chat** → Answer 3-5 questions about yourself
-3. **Transition** → Click "Ready for Technical Interview"
-4. **Technical Interview** → Solve DSA problem with AI guidance
-5. **End** → Type "babi" to finish and see thank you page
+## 📁 Project Structure
 
-## 🛠️ Development
-
-```bash
-# Run linting
-npm run lint
-
-# Format code
-npm run format
-
-# Type checking
-npm run type-check
+```
+frontend/
+├── app/
+│   ├── auth/                       # Auth callback handlers
+│   ├── dashboard/                  # Candidate past interviews & metrics
+│   ├── interview/[session_id]/     # Active coding & interview room
+│   ├── login/                      # Login page
+│   ├── register/                   # Registration page
+│   ├── profile/                    # User profile settings
+│   ├── thankyou/                   # Post-interview completion screen
+│   ├── layout.tsx                  # Root layout & providers
+│   └── page.tsx                    # Landing & pre-interview setup
+├── components/
+│   ├── CodeInputBox.tsx            # Monaco code editor integration
+│   ├── ChatMessage.tsx             # Interview dialog bubbles
+│   ├── ChatInput.tsx               # Chat input & mic controls
+│   ├── EvaluationViewer.tsx        # Post-interview evaluation scorecard
+│   ├── GoogleAuthButton.tsx        # Google sign-in button
+│   ├── InterviewTimer.tsx          # Real-time interview timer
+│   └── ThemeToggle.tsx             # Dark / light mode switcher
+├── lib/
+│   ├── api.ts                      # FastAPI client functions
+│   ├── auth.ts                     # Auth helpers & token management
+│   ├── store.ts                    # Zustand application state store
+│   └── types.ts                    # TypeScript interfaces
+└── utils/
+    └── speech.ts                   # Web Speech API speech synthesis
 ```
 
-## 📦 Dependencies
+---
 
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Zustand** - State management
-- **React Markdown** - Message formatting
+## 📦 Scripts
+
+- `npm run dev` - Start local development server
+- `npm run build` - Build production bundle
+- `npm run start` - Run production server
+- `npm run lint` - Run ESLint checks
+
+---
 
 ## 🚀 Deployment
 
-```bash
-# Build optimized production bundle
-npm run build
+The frontend can be deployed directly to [Vercel](https://vercel.com/) or any platform supporting Next.js 14:
 
-# Start production server
-npm start
-```
-
-Deploy to Vercel, Netlify, or any Node.js hosting platform.
-
-## 📝 Notes
-
-- Session IDs are preserved across all three flows
-- Background conversation history is maintained during transition
-- Interview page expects `initialQuestion` from store (set during transition)
-- All API calls include proper error handling and loading states
+1. Connect the GitHub repository to Vercel.
+2. Set the Root Directory to `frontend`.
+3. Add the `NEXT_PUBLIC_API_URL` environment variable pointing to your deployed backend.
+4. Deploy!

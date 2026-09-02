@@ -48,7 +48,7 @@ async def health_check():
 async def root():
     return {"message": "DSA Interviewer API", "docs": "/docs"}
 
-if __name__ == "__main__":
+def main():
     import uvicorn
     uvicorn.run(
         "dsa_interviewer.main:app",
@@ -56,3 +56,7 @@ if __name__ == "__main__":
         port=settings.API_PORT,
         reload=settings.DEBUG
     )
+
+
+if __name__ == "__main__":
+    main()
