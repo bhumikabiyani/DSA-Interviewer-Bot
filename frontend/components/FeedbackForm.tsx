@@ -1,17 +1,16 @@
 import { useForm, ValidationError } from "@formspree/react";
 
-
 function FeedbackForm() {
   const [state, handleSubmit] = useForm("xlgwyvoq");
 
   if (state.succeeded) {
     return (
-      <div className="w-1/2 text-center py-12 bg-white/5 border border-white/10 rounded-2xl">
-        <div className="text-emerald-400 text-lg font-semibold">
-          Thank you for your feedback 💙
+      <div className="w-full max-w-xl text-center py-8 bg-[#121215] border border-zinc-800/80 rounded-md">
+        <div className="text-emerald-400 text-sm font-semibold">
+          Feedback Submitted
         </div>
-        <p className="text-gray-400 text-sm mt-2">
-          Your input helps us improve Algo Mentor.
+        <p className="text-zinc-400 text-xs mt-1">
+          Thank you for helping us improve Algo Mentor.
         </p>
       </div>
     );
@@ -22,19 +21,19 @@ function FeedbackForm() {
       action="https://formspree.io/f/xlgwyvoq"
       method="POST"
       onSubmit={handleSubmit}
-      className="w-1/2 bg-white/5 border border-white/10 p-8 rounded-2xl space-y-6"
+      className="w-full max-w-xl bg-[#121215] border border-zinc-800/80 p-6 rounded-md space-y-4"
     >
-      {/* Email */}
-      <div>
-        <label className="block text-sm text-gray-400 mb-2">
-          Email Address
+      <div className="space-y-1.5">
+        <label htmlFor="email" className="block text-xs font-medium text-zinc-400">
+          Your Email Address
         </label>
         <input
           id="email"
           type="email"
           name="email"
           required
-          className="w-full px-4 py-2 rounded-lg bg-black/30 border border-white/10 text-white focus:outline-none focus:border-indigo-500"
+          placeholder="name@example.com"
+          className="w-full px-3 py-2 text-xs rounded-md bg-[#18181b] border border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
         />
         <ValidationError
           prefix="Email"
@@ -44,17 +43,17 @@ function FeedbackForm() {
         />
       </div>
 
-      {/* Message */}
-      <div>
-        <label className="block text-sm text-gray-400 mb-2">
-          Your Feedback
+      <div className="space-y-1.5">
+        <label htmlFor="message" className="block text-xs font-medium text-zinc-400">
+          Feedback Details
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
+          rows={3}
           required
-          className="w-full px-4 py-2 rounded-lg bg-black/30 border border-white/10 text-white focus:outline-none focus:border-indigo-500"
+          placeholder="Share your experience or report an issue..."
+          className="w-full px-3 py-2 text-xs rounded-md bg-[#18181b] border border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500 resize-none"
         />
         <ValidationError
           prefix="Message"
@@ -64,15 +63,14 @@ function FeedbackForm() {
         />
       </div>
 
-      {/* Optional: Subject line in email */}
       <input type="hidden" name="_subject" value="New Feedback - Algo Mentor" />
 
       <button
         type="submit"
         disabled={state.submitting}
-        className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition-all disabled:opacity-50"
+        className="w-full py-2 bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold rounded-md transition-all disabled:opacity-50 active:scale-[0.98]"
       >
-        {state.submitting ? "Sending..." : "Send Feedback"}
+        {state.submitting ? "Submitting..." : "Submit Feedback"}
       </button>
     </form>
   );

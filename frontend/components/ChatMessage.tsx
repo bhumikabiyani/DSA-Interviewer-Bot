@@ -13,21 +13,19 @@ interface ChatMessageProps {
   isLast?: boolean;
 }
 
-const LANG_META: Record<string, { label: string; dot: string }> = {
-  python: { label: "Python", dot: "bg-gradient-to-r from-blue-500 to-cyan-500" },
-  javascript: { label: "JavaScript", dot: "bg-gradient-to-r from-yellow-400 to-orange-500" },
-  java: { label: "Java", dot: "bg-gradient-to-r from-red-500 to-orange-500" },
-  cpp: { label: "C++", dot: "bg-gradient-to-r from-purple-500 to-pink-500" },
+const LANG_META: Record<string, { label: string }> = {
+  python: { label: "Python" },
+  javascript: { label: "JavaScript" },
+  java: { label: "Java" },
+  cpp: { label: "C++" },
 };
 
 function parseCodeFence(text: string): { lang: string; code: string } | null {
-  // Try markdown fence first
   const fence = text.match(/^```(\w+)\n([\s\S]*?)\n?```\s*$/);
   if (fence) {
     return { lang: fence[1], code: fence[2] };
   }
 
-  // Try custom format
   const custom = text.match(/^\[CODE SUBMISSION - (\w+)\]:\s*([\s\S]*)$/);
   if (custom) {
     return { lang: custom[1].toLowerCase(), code: custom[2] };
@@ -38,7 +36,7 @@ function parseCodeFence(text: string): { lang: string; code: string } | null {
 
 function CodeSubmissionBubble({ lang, code }: { lang: string; code: string }) {
   const [copied, setCopied] = useState(false);
-  const meta = LANG_META[lang] ?? { label: lang.toUpperCase(), dot: "bg-gray-400" };
+  const meta = LANG_META[lang] ?? { label: lang.toUpperCase() };
   const lineCount = code.split("\n").length;
 
   const handleCopy = async () => {
@@ -46,58 +44,42 @@ function CodeSubmissionBubble({ lang, code }: { lang: string; code: string }) {
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch { }
+    } catch {}
   };
 
   return (
-    <div className="rounded-2xl rounded-tr-sm overflow-hidden shadow-lg border border-gray-600/60 bg-gray-850 max-w-full w-full">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-r from-gray-800 to-gray-800/80 border-b border-gray-700/70">
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-md flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
-            <Code2 className="h-3.5 w-3.5 text-white" />
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className={`w-2 h-2 rounded-full ${meta.dot}`} />
-            <span className="text-sm font-semibold text-white">{meta.label}</span>
-          </div>
-          <span className="text-xs text-gray-500 border-l border-gray-700 pl-2.5 ml-0.5">
+    <div className="rounded-md border border-zinc-800 bg-[#09090b] overflow-hidden max-w-full w-full">
+      <div className="flex items-center justify-between px-3 py-1.5 bg-[#121215] border-b border-zinc-800/80">
+        <div className="flex items-center gap-2">
+          <Code2 className="h-3.5 w-3.5 text-zinc-400" />
+          <span className="text-xs font-semibold text-zinc-200">{meta.label}</span>
+          <span className="text-[10px] text-zinc-500 font-mono">
             {lineCount} {lineCount === 1 ? "line" : "lines"}
           </span>
         </div>
         <button
           onClick={handleCopy}
           title="Copy code"
-          className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded-md hover:bg-gray-700/60"
+          className="flex items-center gap-1 text-[10px] text-zinc-400 hover:text-zinc-200 transition-colors px-1.5 py-0.5 rounded hover:bg-zinc-800"
         >
           {copied ? (
             <>
-              <Check className="h-3.5 w-3.5 text-emerald-400" />
-              <span className="text-emerald-400">Copied!</span>
+              <Check className="h-3 w-3 text-emerald-400" />
+              <span className="text-emerald-400">Copied</span>
             </>
           ) : (
             <>
-              <Copy className="h-3.5 w-3.5" />
+              <Copy className="h-3 w-3" />
               <span>Copy</span>
             </>
           )}
         </button>
       </div>
 
-      {/* Code body — rendered via ReactMarkdown so prism/highlight kicks in */}
-      <div
-        className="
-          overflow-x-auto text-sm
-          prose prose-sm prose-invert max-w-none
-          prose-pre:m-0 prose-pre:p-0 prose-pre:rounded-none prose-pre:bg-transparent prose-pre:border-0
-          prose-code:text-emerald-300 prose-code:bg-transparent prose-code:text-xs prose-code:font-mono
-        "
-      >
-        <div className="bg-gray-900/80 px-4 py-3">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {`\`\`\`${lang}\n${code}\n\`\`\``}
-          </ReactMarkdown>
-        </div>
+      <div className="overflow-x-auto text-xs p-3 font-mono text-zinc-300">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {`\`\`\`${lang}\n${code}\n\`\`\``}
+        </ReactMarkdown>
       </div>
     </div>
   );
@@ -122,7 +104,6 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
 
     async function playVoice() {
       try {
-        // Stop any previous audio
         if (audioRef.current) {
           audioRef.current.pause();
           audioRef.current = null;
@@ -177,50 +158,34 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
 
   return (
     <div
-      className={`flex gap-3 ${isCandidate ? "flex-row-reverse" : "flex-row"} animate-in fade-in slide-in-from-bottom-2 duration-300`}
+      className={`flex gap-2.5 ${isCandidate ? "flex-row-reverse" : "flex-row"} animate-in fade-in duration-200`}
     >
       <div
-        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm ${isCandidate
-          ? "bg-gradient-to-br from-blue-600 to-cyan-600"
-          : "bg-gradient-to-br from-emerald-600 to-teal-600"
-          }`}
+        className="w-7 h-7 rounded bg-zinc-800 border border-zinc-700/60 flex items-center justify-center flex-shrink-0 text-zinc-300"
       >
         {isCandidate ? (
-          <User className="h-4 w-4 text-white" />
+          <User className="h-3.5 w-3.5 text-zinc-300" />
         ) : (
-          <Bot className="h-4 w-4 text-white" />
+          <Bot className="h-3.5 w-3.5 text-zinc-300" />
         )}
       </div>
 
-      <div className={`flex flex-col ${isCandidate ? "items-end" : "items-start"} max-w-[80%]`}>
+      <div className={`flex flex-col ${isCandidate ? "items-end" : "items-start"} max-w-[85%]`}>
         {codeBlock ? (
           <>
-            <span className="text-[11px] font-medium text-blue-400 mb-1.5 flex items-center gap-1">
+            <span className="text-[10px] font-mono text-zinc-400 mb-1 flex items-center gap-1">
               <Code2 className="h-3 w-3" />
-              Code submitted from editor
+              Editor Code Submission
             </span>
             <CodeSubmissionBubble lang={codeBlock.lang} code={codeBlock.code} />
           </>
         ) : isCandidate ? (
-          <div className="rounded-2xl p-4 shadow-sm transition-all hover:shadow-md bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-tr-sm">
-            <p className="text-sm leading-relaxed">{message.message}</p>
+          <div className="rounded-md px-3.5 py-2.5 bg-[#18181b] border border-zinc-800 text-zinc-100 text-xs leading-relaxed">
+            <p>{message.message}</p>
           </div>
         ) : (
-          <div className="rounded-2xl p-4 shadow-sm transition-all hover:shadow-md bg-gray-800 border border-gray-700 text-gray-100 rounded-tl-sm">
-            <div className="prose prose-sm prose-invert max-w-none
-              prose-headings:text-emerald-400 prose-headings:font-bold prose-headings:mt-4 prose-headings:mb-2
-              prose-h2:text-lg prose-h3:text-base
-              prose-p:text-gray-100 prose-p:leading-relaxed prose-p:my-1.5
-              prose-strong:text-white prose-strong:font-semibold
-              prose-code:text-emerald-300 prose-code:bg-gray-900/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-mono
-              prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-600 prose-pre:rounded-lg prose-pre:my-3
-              prose-ul:my-2 prose-ul:space-y-1 prose-ol:my-2 prose-ol:space-y-1
-              prose-li:text-gray-200 prose-li:text-sm
-              prose-table:border-collapse prose-table:my-3
-              prose-th:bg-gray-700 prose-th:text-gray-200 prose-th:px-3 prose-th:py-1.5 prose-th:text-xs prose-th:font-semibold prose-th:border prose-th:border-gray-600
-              prose-td:px-3 prose-td:py-1.5 prose-td:text-xs prose-td:border prose-td:border-gray-600 prose-td:text-gray-300
-              prose-a:text-emerald-400 prose-a:underline
-            ">
+          <div className="rounded-md px-3.5 py-2.5 bg-[#121215] border border-zinc-800/80 text-zinc-200 text-xs leading-relaxed">
+            <div className="prose prose-sm prose-invert max-w-none text-xs text-zinc-200 leading-relaxed">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {message.message}
               </ReactMarkdown>
@@ -228,22 +193,22 @@ export function ChatMessage({ message, isLast = false }: ChatMessageProps) {
           </div>
         )}
 
-        <div className={`flex items-center gap-2 mt-1 px-2 ${isCandidate ? "flex-row-reverse" : "flex-row"}`}>
-          <span className={`text-xs ${isCandidate ? "text-blue-400" : "text-gray-500"}`}>
+        <div className={`flex items-center gap-2 mt-1 px-1 ${isCandidate ? "flex-row-reverse" : "flex-row"}`}>
+          <span className="text-[10px] font-mono text-zinc-500">
             {message.timestamp?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
           </span>
           {isInterviewer && ttsEnabled && isSpeaking && (
             <button
               onClick={handleSkipAudio}
               title="Stop speaking"
-              className="flex items-center gap-1 text-[11px] text-gray-500 hover:text-red-400 transition-colors px-1.5 py-0.5 rounded border border-gray-700 hover:border-red-500/50 bg-gray-800/60"
+              className="flex items-center gap-1 text-[10px] text-zinc-400 hover:text-red-400 transition-colors px-1 py-0.5 rounded border border-zinc-800 bg-zinc-900"
             >
               <SquareX className="h-3 w-3" />
-              Skip
+              Skip Audio
             </button>
           )}
           {isInterviewer && ttsEnabled && !isSpeaking && isLast && (
-            <span className="flex items-center gap-1 text-[11px] text-gray-600">
+            <span className="flex items-center gap-1 text-[10px] text-zinc-500">
               <Volume2 className="h-3 w-3" />
             </span>
           )}

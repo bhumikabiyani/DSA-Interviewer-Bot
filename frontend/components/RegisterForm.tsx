@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { register } from "@/lib/auth";
 import { GoogleAuthButton } from "@/components/GoogleAuthButton";
+
 export function RegisterForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -10,16 +11,14 @@ export function RegisterForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+
     const validateEmail = (email: string) => {
       return email.toLowerCase().endsWith("@gmail.com");
-    };
-
-    const validatePassword = (password: string) => {
-      return password.length >= 6;
     };
 
     if (!validateEmail(email)) {
@@ -28,18 +27,14 @@ export function RegisterForm() {
       return;
     }
 
-    if (!validatePassword(password)) {
+    if (password.length < 6) {
       setError("Password must be at least 6 characters long");
       setLoading(false);
       return;
     }
 
     try {
-      // TODO: Implement actual registration API call
-      console.log("Registering with:", { username, email, password });
-      // Simulate API call
       await register({ username, email, password });
-      // On successful registration, redirect to login or home
       router.push("/login");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed");
@@ -47,11 +42,17 @@ export function RegisterForm() {
       setLoading(false);
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      <div>
-        <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+      {error && (
+        <div className="p-3 text-xs text-red-400 bg-red-950/30 border border-red-900/50 rounded-md">
+          {error}
+        </div>
+      )}
+
+      <div className="space-y-1.5">
+        <label htmlFor="username" className="block text-xs font-medium text-zinc-400">
           Username
         </label>
         <input
@@ -60,12 +61,14 @@ export function RegisterForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          placeholder="choose username"
+          className="w-full px-3 py-2 text-xs rounded-md bg-[#18181b] border border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
         />
       </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-          Email
+
+      <div className="space-y-1.5">
+        <label htmlFor="email" className="block text-xs font-medium text-zinc-400">
+          Gmail Address
         </label>
         <input
           type="email"
@@ -73,11 +76,13 @@ export function RegisterForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          placeholder="you@gmail.com"
+          className="w-full px-3 py-2 text-xs rounded-md bg-[#18181b] border border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
         />
       </div>
-      <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+
+      <div className="space-y-1.5">
+        <label htmlFor="password" className="block text-xs font-medium text-zinc-400">
           Password
         </label>
         <input
@@ -86,23 +91,27 @@ export function RegisterForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          placeholder="••••••••"
+          className="w-full px-3 py-2 text-xs rounded-md bg-[#18181b] border border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
         />
       </div>
+
       <button
         type="submit"
         disabled={loading}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-2 px-4 rounded-md text-xs font-semibold text-zinc-950 bg-zinc-100 hover:bg-white transition-all shadow-sm active:scale-[0.98] disabled:opacity-50"
       >
-        {loading ? "Registering..." : "Register"}
+        {loading ? "Creating Account..." : "Create Account"}
       </button>
-      <div className="flex items-center my-6 gap-3">
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        <span className="text-sm text-gray-400 whitespace-nowrap">
-          Or continue with
+
+      <div className="flex items-center my-5 gap-3">
+        <div className="flex-1 h-px bg-zinc-800" />
+        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
+          or
         </span>
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="flex-1 h-px bg-zinc-800" />
       </div>
+
       <GoogleAuthButton text="Sign up with Google" />
     </form>
   );

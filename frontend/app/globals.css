@@ -1,66 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #09090b;
+  --foreground: #f4f4f5;
 }
+
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #09090b;
+  --foreground: #f4f4f5;
 }
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-/* Custom scrollbar */
-.chat-container::-webkit-scrollbar {
+
+/* Custom crisp dark scrollbar */
+::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
-.chat-container::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
-.chat-container::-webkit-scrollbar-thumb {
-  background: #888;
+::-webkit-scrollbar-thumb {
+  background: #27272a;
   border-radius: 3px;
 }
-.chat-container::-webkit-scrollbar-thumb:hover {
-  background: #555;
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
-.dark .chat-container::-webkit-scrollbar-thumb {
-  background: #555;
-}
-.dark .chat-container::-webkit-scrollbar-thumb:hover {
-  background: #888;
-}
+
+/* Split Pane Gutter */
 .gutter {
-  background-color: #ccc;
+  background-color: #18181b;
   background-clip: padding-box;
+  transition: background-color 0.15s ease;
 }
 
 .gutter:hover {
-  background-color: #999;
+  background-color: #27272a;
 }
 
 .gutter.gutter-horizontal {
   cursor: col-resize;
+  border-left: 1px solid #27272a;
+  border-right: 1px solid #27272a;
 }
+
 .no-scrollbar {
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE & Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;                /* Chrome, Safari */
-}
-
-@keyframes meshMove {
-  from { transform: rotate(30deg) translateX(0); }
-  to   { transform: rotate(30deg) translateX(200px); }
+  display: none;
 }

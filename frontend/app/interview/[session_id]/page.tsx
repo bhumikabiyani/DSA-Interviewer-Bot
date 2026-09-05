@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { LoadingIndicator } from "@/components/LoadingIndicator";
@@ -10,7 +9,7 @@ import { InterviewTimer } from "@/components/InterviewTimer";
 import { useChatStore } from "@/lib/store";
 import { sendMessage, getBackgroundMessages, evaluateInterview } from "@/lib/api";
 import { CodeInputBox } from "@/components/CodeInputBox";
-import { Code2, User, Bot, Loader2 } from 'lucide-react';
+import { Code2, User, Bot, Loader2, ArrowLeft } from "lucide-react";
 import { Evaluation } from "@/lib/types";
 import { EvaluationViewer } from "@/components/EvaluationViewer";
 import ReactMarkdown from "react-markdown";
@@ -36,7 +35,6 @@ export default function InterviewPage() {
     initialized,
     setInitialized,
     currentQuestion,
-    totalQuestions,
     timeRemaining,
     phase,
     setInterviewState,
@@ -56,14 +54,12 @@ export default function InterviewPage() {
     try {
       const data = await getBackgroundMessages(sessionId);
 
-      // Update phase and interview state from server
       setInterviewState({
-        phase: data.phase as any || "intro",
+        phase: (data.phase as any) || "intro",
         currentQuestion: data.current_question || 1,
         timeRemaining: data.time_remaining || 3000,
       });
 
-      // Add history messages
       data.history.forEach((msg: any) => {
         addMessage({
           role: msg.role,
@@ -72,12 +68,10 @@ export default function InterviewPage() {
         });
       });
 
-      // Set evaluation if present (optimization)
       if (data.evaluation) {
         setEvaluation(data.evaluation);
       }
 
-      // Restore question text for the question panel (only when past intro)
       const resumedPhase = data.phase || "intro";
       if (data.question_text && resumedPhase !== "intro") {
         setQuestionText(data.question_text);
@@ -90,7 +84,6 @@ export default function InterviewPage() {
     }
   }, [sessionId, router, setInterviewState, addMessage, setEvaluation, setQuestionText, setInitialized]);
 
-  // Load session on mount
   useEffect(() => {
     if (!sessionId) {
       router.push("/");
@@ -107,8 +100,8 @@ export default function InterviewPage() {
     if (phase === "ended" && !evaluation) {
       setLoadingEvaluation(true);
       evaluateInterview(sessionId)
-        .then(data => setEvaluation(data.evaluation))
-        .catch(err => console.error("Failed to load evaluation", err))
+        .then((data) => setEvaluation(data.evaluation))
+        .catch((err) => console.error("Failed to load evaluation", err))
         .finally(() => setLoadingEvaluation(false));
     }
   }, [phase, sessionId, evaluation]);
@@ -135,12 +128,10 @@ export default function InterviewPage() {
     try {
       const response = await sendMessage(sessionId, message);
 
-      // Update time from server
       if (response.time_remaining !== undefined) {
         updateTimeRemaining(response.time_remaining);
       }
 
-      // Handle different commands
       switch (response.command) {
         case "end":
           if (response.response) {
@@ -181,7 +172,6 @@ export default function InterviewPage() {
             message: response.response,
             timestamp: new Date(),
           });
-          // Update phase if server indicates Q1 started
           if (response.question_text && phase === "intro") {
             setQuestionText(response.question_text);
             setInterviewState({ phase: "q1" });
@@ -201,9 +191,7 @@ export default function InterviewPage() {
   };
 
   const handleSendCode = async (code: string, lang: string) => {
-    // Format the code as a markdown fenced block for display
     const fenced = `\`\`\`${lang}\n${code}\n\`\`\``;
-    // Add to local chat history with codeLanguage so ChatMessage can render it nicely
     addMessage({
       role: "candidate",
       message: fenced,
@@ -213,7 +201,6 @@ export default function InterviewPage() {
 
     setLoading(true);
     try {
-      // Send the raw code to the backend (not the fenced string)
       const response = await sendMessage(sessionId, `[CODE SUBMISSION - ${lang.toUpperCase()}]:\n${code}`);
 
       if (response.time_remaining !== undefined) {
@@ -260,95 +247,86 @@ export default function InterviewPage() {
   const isInTechnicalPhase = phase !== "intro" && phase !== "background";
 
   return (
-    <div className="flex flex-col h-screen bg-gray-900">
-      <header className="p-4 border-b border-gray-700 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handleBack}
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-            </button>
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-emerald-500 to-teal-500">
-              <Code2 className="h-6 w-6 text-white" />
+    <div className="flex flex-col h-screen bg-[#09090b] text-zinc-100">
+      {/* Header */}
+      <header className="px-4 h-13 py-2.5 border-b border-zinc-800/80 bg-[#09090b] flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleBack}
+            className="p-1 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60 transition-all"
+            aria-label="Back to Dashboard"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-zinc-800 border border-zinc-700/60 flex items-center justify-center text-zinc-200">
+              <Code2 className="h-3.5 w-3.5" />
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-white">DSA Interview</h1>
-            </div>
-            <span className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium border border-gray-600
-              ${phase === "ended"
-                ? "bg-gray-700 text-gray-400"
-                : isInTechnicalPhase
-                  ? "bg-blue-500/10 text-blue-400"
-                  : "bg-amber-500/10 text-amber-400"
-              }`}>
-              <span className={`h-2 w-2 rounded-full ${phase === "ended" ? "bg-gray-500" : "animate-pulse " + (isInTechnicalPhase ? "bg-blue-400" : "bg-amber-400")}`}></span>
-              {phase === "intro" ? "Introduction" :
-                phase === "q1" ? "Question 1" :
-                  phase === "q2" ? "Question 2" :
-                    phase === "wrap_up" ? "Wrapping Up" :
-                      phase === "ended" ? "Interview Ended" : "Interview"}
+            <span className="font-semibold text-xs tracking-tight text-zinc-100">
+              Interview Environment
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-
-            {/* TODO: Add totalQuestions */}
-            <InterviewTimer
-              timeRemaining={timeRemaining}
-              currentQuestion={currentQuestion}
-              totalQuestions={1}
-              phase={phase}
-              isWrapUp={phase === "wrap_up"}
+          <span
+            className={`inline-flex items-center gap-1.5 rounded px-2 py-0.5 text-[10px] font-mono border ${
+              phase === "ended"
+                ? "bg-zinc-900 text-zinc-400 border-zinc-800"
+                : isInTechnicalPhase
+                ? "bg-blue-950/40 text-blue-400 border-blue-900/60"
+                : "bg-amber-950/40 text-amber-400 border-amber-900/60"
+            }`}
+          >
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                phase === "ended"
+                  ? "bg-zinc-500"
+                  : "animate-pulse " + (isInTechnicalPhase ? "bg-blue-400" : "bg-amber-400")
+              }`}
             />
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-600 bg-gray-800">
-              <User className="h-4 w-4 text-gray-300" />
-              <span className="text-sm font-medium text-gray-100">Candidate</span>
-            </div>
-            <ThemeToggle />
+            {phase === "intro"
+              ? "Introduction"
+              : phase === "q1"
+              ? "Question 1"
+              : phase === "q2"
+              ? "Question 2"
+              : phase === "wrap_up"
+              ? "Wrapping Up"
+              : phase === "ended"
+              ? "Interview Completed"
+              : "Interview"}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <InterviewTimer
+            timeRemaining={timeRemaining}
+            currentQuestion={currentQuestion}
+            totalQuestions={1}
+            phase={phase}
+            isWrapUp={phase === "wrap_up"}
+          />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300">
+            <User className="h-3.5 w-3.5 text-zinc-400" />
+            <span>Candidate</span>
           </div>
         </div>
       </header>
 
+      {/* Main Split-Pane Workspace */}
       <div className="flex-1 overflow-hidden">
         {questionText ? (
-          /* 3-panel layout: Question | Chat | Code (nested groups for independent resize) */
           <PanelGroup direction="horizontal" className="h-full">
-            {/* Question Panel - Left */}
+            {/* Left: Question Panel */}
             <Panel defaultSize={25} minSize={15} maxSize={40}>
-              <div className="h-full flex flex-col border-r border-gray-700">
-                <div className="p-3 bg-gray-800/80 border-b border-gray-700 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                  <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Current Question</span>
+              <div className="h-full flex flex-col border-r border-zinc-800/80 bg-[#0c0c0e]">
+                <div className="px-3 py-2 bg-[#121215] border-b border-zinc-800/80 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+                    Question Statement
+                  </span>
                 </div>
-                <div className="flex-1 overflow-y-auto p-4 bg-gray-900/50
-                          prose prose-sm prose-invert max-w-none
-                          prose-headings:text-emerald-400 prose-headings:font-bold prose-headings:mt-3 prose-headings:mb-2
-                          prose-h2:text-base prose-h3:text-sm
-                          prose-p:text-gray-200 prose-p:leading-relaxed prose-p:my-1.5 prose-p:text-sm
-                          prose-strong:text-white prose-strong:font-semibold
-                          prose-code:text-emerald-300 prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:font-mono
-                          prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-700 prose-pre:rounded-lg prose-pre:my-2
-                          prose-ul:my-2 prose-ul:space-y-0.5 prose-ol:my-2 prose-ol:space-y-0.5
-                          prose-li:text-gray-300 prose-li:text-sm
-                          prose-table:border-collapse prose-table:my-3
-                          prose-th:bg-gray-800 prose-th:text-gray-200 prose-th:px-3 prose-th:py-1.5 prose-th:text-xs prose-th:font-semibold prose-th:border prose-th:border-gray-700
-                          prose-td:px-3 prose-td:py-1.5 prose-td:text-xs prose-td:border prose-td:border-gray-700 prose-td:text-gray-300
-                        ">
+                <div className="flex-1 overflow-y-auto p-4 prose prose-sm prose-invert max-w-none text-zinc-300 leading-relaxed text-xs">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {questionText}
                   </ReactMarkdown>
@@ -356,29 +334,29 @@ export default function InterviewPage() {
               </div>
             </Panel>
 
-            <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
+            <PanelResizeHandle className="w-1 bg-[#18181b] hover:bg-blue-600/50 cursor-col-resize transition-colors" />
 
-            {/* Chat + Code in nested group (so question resize doesn't affect code) */}
+            {/* Middle + Right Panels */}
             <Panel defaultSize={75}>
               <PanelGroup direction="horizontal" className="h-full">
                 {/* Chat Panel */}
-                <Panel defaultSize={55} minSize={30}>
-                  <div className="h-full flex flex-col bg-gray-900">
-                    <div className="p-4 border-b border-gray-700 bg-gray-800/50">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
-                          <Bot className="h-5 w-5 text-white" />
+                <Panel defaultSize={50} minSize={30}>
+                  <div className="h-full flex flex-col bg-[#09090b]">
+                    <div className="px-4 py-2.5 border-b border-zinc-800/80 bg-[#121215] flex items-center justify-between">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded bg-zinc-800 border border-zinc-700/60 flex items-center justify-center text-zinc-200">
+                          <Bot className="h-4 w-4" />
                         </div>
                         <div>
-                          <h2 className="font-semibold text-white">AI Interviewer</h2>
-                          <p className="text-sm text-emerald-400">Online • Guiding your interview</p>
+                          <h2 className="font-semibold text-xs text-zinc-100">AI Technical Interviewer</h2>
+                          <p className="text-[10px] text-zinc-400">Evaluating problem approach</p>
                         </div>
                       </div>
                     </div>
-                    <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+                    <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 no-scrollbar">
                       {messages.length === 0 && !isLoading && (
                         <div className="flex items-center justify-center h-full">
-                          <p className="text-gray-400">Loading interview...</p>
+                          <p className="text-xs text-zinc-500">Initializing conversation session...</p>
                         </div>
                       )}
                       {messages.map((message, index) => (
@@ -387,29 +365,30 @@ export default function InterviewPage() {
                       {isLoading && <LoadingIndicator />}
                     </div>
                     {phase !== "ended" && (
-                      <div className="p-4 border-t border-gray-700 bg-gray-800/50">
+                      <div className="p-3 border-t border-zinc-800/80 bg-[#121215]">
                         <ChatInput onSend={handleSendMessage} disabled={isLoading || isSpeaking} />
                       </div>
                     )}
                   </div>
                 </Panel>
 
-                <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
+                <PanelResizeHandle className="w-1 bg-[#18181b] hover:bg-blue-600/50 cursor-col-resize transition-colors" />
 
-                {/* Code Panel */}
-                <Panel defaultSize={45} minSize={25}>
-                  <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
+                {/* Right: Code Editor or Evaluation */}
+                <Panel defaultSize={50} minSize={30}>
+                  <div className="h-full border-l border-zinc-800/80 bg-[#09090b] flex flex-col">
                     {phase === "ended" ? (
-                      <div className="p-6 h-full min-h-0">
+                      <div className="p-4 h-full overflow-y-auto">
                         {loadingEvaluation ? (
-                          <div className="flex h-full items-center justify-center">
-                            <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
+                          <div className="flex h-full items-center justify-center gap-2 text-xs text-zinc-400">
+                            <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
+                            Generating rubric evaluation report...
                           </div>
                         ) : evaluation ? (
                           <EvaluationViewer evaluation={evaluation} />
                         ) : (
-                          <div className="flex h-full items-center justify-center text-gray-400">
-                            Failed to load evaluation.
+                          <div className="flex h-full items-center justify-center text-xs text-zinc-500">
+                            Failed to generate evaluation scorecard.
                           </div>
                         )}
                       </div>
@@ -424,26 +403,25 @@ export default function InterviewPage() {
             </Panel>
           </PanelGroup>
         ) : (
-          /* 2-panel layout: Chat | Code (no question yet) */
+          /* 2-Panel Layout: Chat + Code */
           <PanelGroup direction="horizontal" className="h-full">
-            {/* Chat Panel */}
-            <Panel defaultSize={55} minSize={30}>
-              <div className="h-full flex flex-col bg-gray-900">
-                <div className="p-4 border-b border-gray-700 bg-gray-800/50">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-600">
-                      <Bot className="h-5 w-5 text-white" />
+            <Panel defaultSize={50} minSize={30}>
+              <div className="h-full flex flex-col bg-[#09090b]">
+                <div className="px-4 py-2.5 border-b border-zinc-800/80 bg-[#121215] flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded bg-zinc-800 border border-zinc-700/60 flex items-center justify-center text-zinc-200">
+                      <Bot className="h-4 w-4" />
                     </div>
                     <div>
-                      <h2 className="font-semibold text-white">AI Interviewer</h2>
-                      <p className="text-sm text-emerald-400">Online • Guiding your interview</p>
+                      <h2 className="font-semibold text-xs text-zinc-100">AI Technical Interviewer</h2>
+                      <p className="text-[10px] text-zinc-400">Session initialization</p>
                     </div>
                   </div>
                 </div>
-                <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+                <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 no-scrollbar">
                   {messages.length === 0 && !isLoading && (
                     <div className="flex items-center justify-center h-full">
-                      <p className="text-gray-400">Loading interview...</p>
+                      <p className="text-xs text-zinc-500">Starting interview conversation...</p>
                     </div>
                   )}
                   {messages.map((message, index) => (
@@ -452,29 +430,29 @@ export default function InterviewPage() {
                   {isLoading && <LoadingIndicator />}
                 </div>
                 {phase !== "ended" && (
-                  <div className="p-4 border-t border-gray-700 bg-gray-800/50">
+                  <div className="p-3 border-t border-zinc-800/80 bg-[#121215]">
                     <ChatInput onSend={handleSendMessage} disabled={isLoading || isSpeaking} />
                   </div>
                 )}
               </div>
             </Panel>
 
-            <PanelResizeHandle className="w-1.5 bg-gray-700 hover:bg-emerald-500/50 active:bg-emerald-500 cursor-col-resize transition-colors" />
+            <PanelResizeHandle className="w-1 bg-[#18181b] hover:bg-blue-600/50 cursor-col-resize transition-colors" />
 
-            {/* Code Panel */}
-            <Panel defaultSize={45} minSize={25}>
-              <div className={`h-full border-l border-gray-700 flex flex-col ${phase === "ended" ? "bg-white dark:bg-gray-900 overflow-y-auto" : ""}`}>
+            <Panel defaultSize={50} minSize={30}>
+              <div className="h-full border-l border-zinc-800/80 bg-[#09090b] flex flex-col">
                 {phase === "ended" ? (
-                  <div className="p-6 h-full min-h-0">
+                  <div className="p-4 h-full overflow-y-auto">
                     {loadingEvaluation ? (
-                      <div className="flex h-full items-center justify-center">
-                        <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
+                      <div className="flex h-full items-center justify-center gap-2 text-xs text-zinc-400">
+                        <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
+                        Generating rubric evaluation report...
                       </div>
                     ) : evaluation ? (
                       <EvaluationViewer evaluation={evaluation} />
                     ) : (
-                      <div className="flex h-full items-center justify-center text-gray-400">
-                        Failed to load evaluation.
+                      <div className="flex h-full items-center justify-center text-xs text-zinc-500">
+                        Failed to generate evaluation scorecard.
                       </div>
                     )}
                   </div>

@@ -13,15 +13,14 @@ const TEXT_INPUT_ENABLED = process.env.NEXT_PUBLIC_ENABLE_TEXT_INPUT === "true";
 export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const [message, setMessage] = useState("");
   const [isRecording, setIsRecording] = useState(false);
-  const [interimText, setInterimText] = useState(""); // live transcript shown while recording
-  const [timeLeft, setTimeLeft] = useState<number | null>(null); // countdown in seconds
+  const [interimText, setInterimText] = useState("");
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const autoStopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const MAX_RECORD_SECONDS = 240; // 4 minutes
+  const MAX_RECORD_SECONDS = 240;
 
-  // Initialize speech recognition once (done lazily on first toggle)
   const getRecognition = (): SpeechRecognition | null => {
     if (recognitionRef.current) return recognitionRef.current;
 
@@ -35,9 +34,9 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
 
     const recog: SpeechRecognition = new SpeechRecognition();
     recog.lang = "en-US";
-    recog.interimResults = true;   // show live transcription
+    recog.interimResults = true;
     recog.maxAlternatives = 1;
-    recog.continuous = true;       // keep recording until user clicks Stop
+    recog.continuous = true;
 
     recog.onresult = (event: any) => {
       let interim = "";
@@ -62,20 +61,20 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       setInterimText("");
 
       if (e.error === "service-not-allowed") {
-        showToast("Speech service blocked. In Brave, enable 'Google Services for Speech' in settings.");
+        showToast("Speech service blocked. Please check browser permissions.");
       } else if (e.error === "not-allowed") {
-        showToast("Microphone permission denied. Please allow mic access.");
+        showToast("Microphone permission denied.");
       } else {
-        showToast("Mic error please use chrome browser");
+        showToast("Mic error encountered. Try typing or using Chrome.");
       }
     };
 
     recog.onend = () => {
-      // If recording was still marked as active (e.g., silence timeout), restart
       setIsRecording((prev) => {
         if (prev) {
-          // Browser auto-stopped; restart to keep continuous feel
-          try { recog.start(); } catch { }
+          try {
+            recog.start();
+          } catch {}
           return true;
         }
         return false;
@@ -92,8 +91,14 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
     setIsRecording(false);
     setInterimText("");
     setTimeLeft(null);
-    if (autoStopTimerRef.current) { clearTimeout(autoStopTimerRef.current); autoStopTimerRef.current = null; }
-    if (countdownIntervalRef.current) { clearInterval(countdownIntervalRef.current); countdownIntervalRef.current = null; }
+    if (autoStopTimerRef.current) {
+      clearTimeout(autoStopTimerRef.current);
+      autoStopTimerRef.current = null;
+    }
+    if (countdownIntervalRef.current) {
+      clearInterval(countdownIntervalRef.current);
+      countdownIntervalRef.current = null;
+    }
   };
 
   const toggleRecording = () => {
@@ -102,7 +107,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
     if (isRecording) {
       stopRecording();
     } else {
-      // Start recording
       const recog = getRecognition();
       if (!recog) return;
       try {
@@ -110,7 +114,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         setIsRecording(true);
         setTimeLeft(MAX_RECORD_SECONDS);
 
-        // Countdown display
         countdownIntervalRef.current = setInterval(() => {
           setTimeLeft((prev) => {
             if (prev === null || prev <= 1) return null;
@@ -118,7 +121,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           });
         }, 1000);
 
-        // Auto-stop after 4 minutes
         autoStopTimerRef.current = setTimeout(() => {
           stopRecording();
         }, MAX_RECORD_SECONDS * 1000);
@@ -128,7 +130,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
     }
   };
 
-  // Clean up on unmount
   useEffect(() => {
     return () => {
       recognitionRef.current?.stop();
@@ -144,7 +145,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const showToast = (msg: string) => {
     setToastMessage(msg);
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-    toastTimerRef.current = setTimeout(() => setToastMessage(null), 2000);
+    toastTimerRef.current = setTimeout(() => setToastMessage(null), 2500);
   };
 
   const [isSendBuffering, setIsSendBuffering] = useState(false);
@@ -152,9 +153,12 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   const messageRef = useRef(message);
   const interimRef = useRef(interimText);
 
-  // Keep refs in sync with state
-  useEffect(() => { messageRef.current = message; }, [message]);
-  useEffect(() => { interimRef.current = interimText; }, [interimText]);
+  useEffect(() => {
+    messageRef.current = message;
+  }, [message]);
+  useEffect(() => {
+    interimRef.current = interimText;
+  }, [interimText]);
 
   const handleSend = () => {
     if (isSendBuffering || disabled) return;
@@ -164,7 +168,6 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
       stopRecording();
     }
 
-    // If the mic was active, wait 3 seconds for speech to finalize
     if (wasRecording) {
       setIsSendBuffering(true);
       sendBufferRef.current = setTimeout(() => {
@@ -175,9 +178,9 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           onSend(text);
           setMessage("");
         } else {
-          showToast("No message captured yet — please click Send again");
+          showToast("No spoken text captured yet.");
         }
-      }, 2000);
+      }, 1800);
     } else {
       const text = (message + (interimText ? " " + interimText : "")).trim();
       setInterimText("");
@@ -185,7 +188,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         onSend(text);
         setMessage("");
       } else {
-        showToast("No message captured yet — please click Send again");
+        showToast("Please enter or speak a response first.");
       }
     }
   };
@@ -200,24 +203,15 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   return (
     <div className="flex flex-col gap-2 max-w-4xl mx-auto w-full relative">
       {toastMessage && (
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-amber-500/90 text-white text-xs font-medium shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200 whitespace-nowrap">
+        <div className="absolute -top-9 left-1/2 -translate-x-1/2 z-50 px-3 py-1 rounded bg-zinc-800 border border-zinc-700 text-zinc-200 text-xs font-mono shadow-md animate-in fade-in duration-150 whitespace-nowrap">
           {toastMessage}
         </div>
       )}
 
       {isSendBuffering && (
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm animate-pulse">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-          <span className="italic">Sending</span>
-        </div>
-      )}
-
-      {TEXT_INPUT_ENABLED && isRecording && (
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm animate-pulse">
-          <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
-          <span className="italic truncate">
-            Listening, press send when you are done…
-          </span>
+        <div className="flex items-center gap-2 px-3 py-1 rounded bg-blue-950/40 border border-blue-900/60 text-blue-400 text-xs animate-pulse font-mono">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+          <span>Finalizing audio transcript & sending...</span>
         </div>
       )}
 
@@ -226,25 +220,17 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
           type="button"
           disabled={disabled}
           onClick={toggleRecording}
-          title={isRecording ? `Click to stop recording (${timeLeft}s left)` : "Click to start recording"}
-          className={`
-            inline-flex items-center justify-center
-            h-10 w-10 rounded-md flex-shrink-0
-            text-white shadow-md
-            transition-all duration-200
-            focus:outline-none focus:ring-2 focus:ring-emerald-500/40
-            disabled:opacity-50 disabled:cursor-not-allowed
-            ${isRecording
-              ? "bg-red-500 hover:bg-red-600 ring-2 ring-red-400/40"
-              : "bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
-            }
-          `}
+          title={isRecording ? `Click to stop recording (${timeLeft}s left)` : "Toggle voice mic"}
+          className={`inline-flex items-center justify-center h-8 w-8 rounded flex-shrink-0 text-zinc-200 border transition-all text-xs focus:outline-none ${
+            isRecording
+              ? "bg-red-950/80 border-red-800 text-red-300 animate-pulse"
+              : "bg-[#18181b] hover:bg-zinc-800 border-zinc-800"
+          }`}
         >
-          {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+          {isRecording ? <MicOff className="h-3.5 w-3.5" /> : <Mic className="h-3.5 w-3.5" />}
         </button>
 
-        {/* Text input — only rendered when env flag is true */}
-        {TEXT_INPUT_ENABLED && (
+        {TEXT_INPUT_ENABLED ? (
           <>
             <input
               value={message}
@@ -252,55 +238,36 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
                 setMessage(e.target.value);
                 setInterimText("");
               }}
-              placeholder={disabled ? "Waiting for response…" : isRecording ? "Speak now — or type…" : "Type your answer…"}
+              placeholder={disabled ? "Processing AI response…" : isRecording ? "Listening to voice input…" : "Type your response or question..."}
               onKeyDown={handleKeyPress}
               disabled={disabled}
-              className="
-                flex-1 min-w-0 rounded-md border px-3 py-2 text-sm
-                bg-gray-800 border-gray-700 text-white placeholder:text-gray-500
-                transition-colors focus:outline-none
-                focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20
-                disabled:opacity-50 disabled:cursor-not-allowed
-              "
+              className="flex-1 min-w-0 rounded h-8 border px-3 text-xs bg-[#18181b] border-zinc-800 text-zinc-100 placeholder:text-zinc-500 transition-colors focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500 disabled:opacity-50"
             />
 
             <button
               onClick={handleSend}
               disabled={disabled || isSendBuffering || (!message.trim() && !interimText.trim())}
               title="Send message"
-              className="
-                inline-flex items-center justify-center
-                h-10 w-10 rounded-md flex-shrink-0
-                bg-gradient-to-r from-emerald-600 to-teal-600
-                text-white shadow-md
-                transition-all duration-200
-                hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg
-                focus:outline-none focus:ring-2 focus:ring-emerald-500/40
-                disabled:opacity-50 disabled:cursor-not-allowed
-              "
+              className="inline-flex items-center justify-center h-8 px-3 rounded flex-shrink-0 bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold transition-all active:scale-[0.98] disabled:opacity-50"
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-3 w-3" />
             </button>
           </>
-        )}
-
-        {/* When text input is hidden: inline listening indicator + Send button */}
-        {!TEXT_INPUT_ENABLED && (
+        ) : (
           <>
-            {/* Inline listening indicator — lives between mic and send */}
-            <div className={`flex-1 flex items-center gap-2 px-3 py-2 rounded-md border text-sm transition-all ${isRecording
-              ? "bg-red-500/10 border-red-500/30 text-red-300 animate-pulse"
-              : "bg-gray-800/40 border-gray-700/50 text-gray-600"
-              }`}>
-              <span className={`w-2 h-2 rounded-full flex-shrink-0 ${isRecording ? "bg-red-500" : "bg-gray-600"
-                }`} />
-              <span className="italic truncate flex-1">
-                {isRecording
-                  ? "Listening... Press send when you are done"
-                  : "Click mic to speak…"}
+            <div
+              className={`flex-1 flex items-center gap-2 px-3 h-8 rounded border text-xs transition-all ${
+                isRecording
+                  ? "bg-red-950/30 border-red-900/50 text-red-300 animate-pulse"
+                  : "bg-[#18181b] border-zinc-800 text-zinc-400"
+              }`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${isRecording ? "bg-red-500" : "bg-zinc-600"}`} />
+              <span className="truncate flex-1 font-mono text-[11px]">
+                {isRecording ? "Recording active — speak your answer clearly" : "Click microphone icon to begin voice input"}
               </span>
               {isRecording && timeLeft !== null && (
-                <span className="text-[11px] text-red-400/70 font-mono flex-shrink-0">
+                <span className="text-[10px] text-red-400 font-mono">
                   {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
                 </span>
               )}
@@ -310,29 +277,21 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
               onClick={handleSend}
               disabled={disabled || isSendBuffering || (!message.trim() && !interimText.trim())}
               title="Send spoken answer"
-              className="
-                inline-flex items-center gap-2 px-4 h-10 rounded-md flex-shrink-0
-                bg-gradient-to-r from-emerald-600 to-teal-600
-                text-white text-sm font-medium shadow-md
-                transition-all duration-200
-                hover:from-emerald-700 hover:to-teal-700 hover:shadow-lg
-                focus:outline-none focus:ring-2 focus:ring-emerald-500/40
-                disabled:opacity-50 disabled:cursor-not-allowed
-              "
+              className="inline-flex items-center gap-1 px-3 h-8 rounded flex-shrink-0 bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold transition-all active:scale-[0.98] disabled:opacity-50"
             >
-              <Send className="h-4 w-4" />
-              Send
+              <Send className="h-3 w-3" />
+              <span>Send</span>
             </button>
           </>
         )}
       </div>
 
-      <p className="text-[11px] text-gray-600 text-center">
+      <p className="text-[10px] text-zinc-500 text-center font-mono">
         {isRecording
-          ? "🔴 Recording — click the mic again to stop & send"
+          ? "Voice active — click mic to stop, or click Send to finalize"
           : TEXT_INPUT_ENABLED
-            ? "Click mic to speak, or type your answer and press Enter"
-            : "Click mic to start speaking, click again to stop & send"}
+          ? "Press Enter to submit response"
+          : "Voice input active"}
       </p>
     </div>
   );

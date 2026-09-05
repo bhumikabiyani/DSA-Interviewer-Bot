@@ -1,95 +1,35 @@
 "use client";
+
 import { RegisterForm } from "@/components/RegisterForm";
+import { Code2 } from "lucide-react";
 import Link from "next/link";
+
 export default function RegisterPage() {
   return (
-    <div
-      className="
-        relative min-h-screen overflow-hidden
-        flex items-center justify-center
-        bg-gradient-to-br from-blue-50 to-indigo-100
-        dark:from-gray-900 dark:to-gray-800
-      "
-    >
-      {/* 🌑 Vignette */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6) 85%)",
-        }}
-      />
-
-      {/* 🔲 Rotated Square Mesh */}
-      <div
-        aria-hidden
-        className="absolute inset-[-50%] pointer-events-none"
-        style={{
-          transform: "rotate(30deg) translateX(-10%)",
-          animation: "meshMove 60s linear infinite",
-          backgroundImage: `
-            linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)
-          `,
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      {/* 🌫️ Top light fade */}
-      <div
-        aria-hidden
-        className="
-          absolute inset-0 pointer-events-none
-          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_60%)]
-          dark:bg-[radial-gradient(circle_at_top,rgba(0,0,0,0.4),transparent_60%)]
-        "
-      />
-
-      {/* 🔐 Glass Login Card */}
-      <div
-        className="
-          relative z-10
-          w-full max-w-md
-          rounded-2xl
-          bg-[#1f2937]/70
-          backdrop-blur-xl
-          border border-white/20
-          shadow-[0_20px_60px_rgba(0,0,0,0.6)]
-          p-8
-        "
-      >
-        {/* ✨ Glass highlight */}
-        <div
-          aria-hidden
-          className="
-            absolute inset-0 rounded-2xl
-            bg-gradient-to-br from-white/10 via-white/5 to-transparent
-          "
-        />
-
-        {/* Content */}
-        <div className="relative z-10">
-          <h2 className="text-2xl font-bold text-center text-white mb-6">
-            Register
-          </h2>
-
-          <RegisterForm />
-
-          <p className="mt-4 text-center text-sm text-gray-300">
-            Already have an account?{" "}
-            <Link
-              href="/login"
-              className="
-                font-medium text-indigo-400
-                hover:text-indigo-300
-              "
-            >
-              Login here
-            </Link>
+    <div className="min-h-screen flex items-center justify-center bg-[#09090b] text-zinc-100 p-4">
+      <div className="w-full max-w-sm bg-[#121215] border border-zinc-800/80 rounded-md p-6 space-y-6">
+        <div className="text-center space-y-2">
+          <div className="w-8 h-8 rounded-md bg-zinc-800 border border-zinc-700/60 flex items-center justify-center text-zinc-100 mx-auto">
+            <Code2 className="h-4 w-4" />
+          </div>
+          <h1 className="text-lg font-semibold text-zinc-100 tracking-tight">
+            Create Account
+          </h1>
+          <p className="text-xs text-zinc-400">
+            Start your AI-powered technical interview prep
           </p>
         </div>
+
+        <RegisterForm />
+
+        <p className="text-center text-xs text-zinc-500 pt-2 border-t border-zinc-800/60">
+          Already registered?{" "}
+          <Link href="/login" className="text-zinc-200 hover:text-white font-medium">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
   );
 }
+

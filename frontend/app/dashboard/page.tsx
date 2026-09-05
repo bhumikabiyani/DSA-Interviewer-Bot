@@ -15,7 +15,9 @@ import {
   Trophy,
   Code2,
   ChevronRight,
-  Sparkles,
+  SlidersHorizontal,
+  ArrowRight,
+  Layers,
 } from "lucide-react";
 import { logout } from "@/lib/auth";
 import FeedbackForm from "@/components/FeedbackForm";
@@ -44,7 +46,7 @@ const DSA_TOPICS = [
 ];
 
 const DIFFICULTIES = [
-  { label: "All", value: null },
+  { label: "All Tiers", value: null },
   { label: "Easy", value: 0 },
   { label: "Medium", value: 1 },
   { label: "Hard", value: 2 },
@@ -88,8 +90,8 @@ export default function DashboardPage() {
   const fetchRecentInterviews = async () => {
     try {
       setLoadingInterviews(true);
-      const response = await getRecentInterviews(1, 3);
-      setRecentInterviews(response.interviews.slice(0, 3));
+      const response = await getRecentInterviews(1, 6);
+      setRecentInterviews(response.interviews.slice(0, 6));
       setTotalInterviews(response.total_count ?? response.interviews.length);
     } catch (err) {
       console.error("Failed to fetch recent interviews:", err);
@@ -128,7 +130,7 @@ export default function DashboardPage() {
       const response = await startInterview(topicStr, selectedDifficulty);
       router.push(`/interview/${response.session_id}`);
     } catch (err) {
-      setError("Failed to start interview please try again now or try with different selection.");
+      setError("Failed to start interview. Please try again or refine your filter selection.");
       setLoading(false);
     }
   };
@@ -142,7 +144,7 @@ export default function DashboardPage() {
       const response = await startInterview(topicStr, selectedDifficulty, data);
       router.push(`/interview/${response.session_id}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to start interview please try again now or try with different selection.");
+      setError(err instanceof Error ? err.message : "Failed to start interview.");
       setLoading(false);
     }
   };
@@ -161,328 +163,313 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-gray-100">
-
+    <div className="min-h-screen flex flex-col bg-[#09090b] text-zinc-100 selection:bg-blue-500/20 selection:text-blue-200">
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur-xl bg-slate-950/60">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          {/* Logo + brand */}
+      <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-[#09090b]/80 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <button onClick={() => router.push("/")} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-                <Code2 className="h-5 w-5 text-white" />
+            <button onClick={() => router.push("/")} className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+              <div className="w-7 h-7 rounded-md bg-zinc-800 border border-zinc-700/60 flex items-center justify-center text-zinc-100">
+                <Code2 className="h-4 w-4" />
               </div>
-              <div>
-                <span className="font-bold text-lg text-white leading-none">Algo Mentor</span>
-                <span className="hidden sm:block text-[10px] text-indigo-400 leading-none tracking-wider uppercase">DSA Interview AI</span>
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-sm tracking-tight text-zinc-100">Algo Mentor</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">
+                  Workspace
+                </span>
               </div>
             </button>
           </div>
 
-          {/* Nav links */}
-          <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
-            <a href="#start" className="px-3 py-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all">Practice</a>
-            <a href="#recent" className="px-3 py-1.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all">History</a>
+          <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-zinc-400">
+            <a href="#configure" className="hover:text-zinc-100 transition-colors">Configure Session</a>
+            <a href="#history" className="hover:text-zinc-100 transition-colors">History</a>
           </nav>
 
-          {/* Right controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={handleGoToProfile}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 transition-all text-sm font-medium text-gray-200"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-md bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 transition-all text-xs font-medium text-zinc-200"
             >
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-xs font-bold text-white">
+              <div className="w-4 h-4 rounded-full bg-zinc-700 flex items-center justify-center text-[10px] font-bold text-zinc-200">
                 {profile?.username?.charAt(0)?.toUpperCase() ?? <User className="h-3 w-3" />}
               </div>
-              <span className="hidden sm:block">{profile?.username ?? "Profile"}</span>
+              <span className="hidden sm:inline text-zinc-300">{profile?.username ?? "Account"}</span>
             </button>
             <button
               onClick={handleLogout}
-              className="p-2 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+              className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900 transition-all"
               aria-label="Logout"
             >
-              <LogOut className="h-4 w-4" />
+              <LogOut className="h-3.5 w-3.5" />
             </button>
           </div>
         </div>
       </header>
 
       {/* ── MAIN CONTENT ── */}
-      <main className="flex-1">
-
-        {/* Hero */}
-        <section className="relative overflow-hidden pt-16 pb-12">
-          {/* Ambient glow */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/20 rounded-full blur-3xl" />
-          </div>
-          <div className="relative max-w-6xl mx-auto px-4 text-center space-y-5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-sm font-medium">
-              <Sparkles className="h-3.5 w-3.5" />
-              {profile?.username ? `Welcome back, ${profile.username}! 👋` : "AI-Powered Mock Interviews"}
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
-              Ace Your{" "}
-              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                DSA Interview
-              </span>
+      <main className="flex-1 max-w-6xl mx-auto px-6 py-10 w-full space-y-10">
+        {/* Top Header / Metrics Row */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-zinc-800/80 pb-8">
+          <div>
+            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
+              {profile?.username ? `Candidate: ${profile.username}` : "Interview Control Center"}
+            </span>
+            <h1 className="text-2xl font-semibold tracking-tight text-zinc-100 mt-1">
+              Technical Assessment Setup
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Pick a topic and difficulty, then jump into a live mock interview.
-            </p>
+          </div>
 
-            {/* Stats row */}
-            <div className="flex flex-wrap justify-center gap-6 pt-4">
-              {[
-                { icon: Trophy, label: "Your Interviews", value: totalInterviews },
-                { icon: BookOpen, label: "DSA Topics", value: DSA_TOPICS.length },
-                { icon: Zap, label: "AI-Powered", value: "Real-time" },
-              ].map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-5 py-3">
-                  <Icon className="h-5 w-5 text-indigo-400" />
-                  <div className="text-left">
-                    <div className="font-bold text-white text-lg leading-none">{value}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">{label}</div>
-                  </div>
-                </div>
-              ))}
+          <div className="flex items-center gap-3">
+            <div className="bg-[#121215] border border-zinc-800/80 rounded-md px-4 py-2 text-left min-w-[120px]">
+              <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider">Total Completed</div>
+              <div className="text-lg font-semibold text-zinc-100">{totalInterviews}</div>
+            </div>
+            <div className="bg-[#121215] border border-zinc-800/80 rounded-md px-4 py-2 text-left min-w-[120px]">
+              <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider">Topics Pool</div>
+              <div className="text-lg font-semibold text-zinc-100">{DSA_TOPICS.length}</div>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Quick Start Card */}
-        <section id="start" className="max-w-2xl mx-auto px-4 pb-16 scroll-mt-20">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl p-6 space-y-6">
-            <div className="space-y-1">
-              <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                <Zap className="h-5 w-5 text-yellow-400" />
-                Quick Start
-              </h2>
-              <p className="text-sm text-gray-400">Choose your focus or leave both blank for a random challenge.</p>
-            </div>
-
-            {/* Difficulty Selector */}
-            <div className="space-y-2">
-              <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Difficulty
-              </label>
-              <div className="flex gap-2 flex-wrap">
-                {DIFFICULTIES.map((d) => {
-                  const isSelected = selectedDifficulty === d.value;
-                  const colorMap: Record<string, string> = {
-                    All: "bg-indigo-600 text-white border-indigo-600 shadow-indigo-500/30",
-                    Easy: "bg-emerald-600 text-white border-emerald-600 shadow-emerald-500/30",
-                    Medium: "bg-amber-500 text-white border-amber-500 shadow-amber-500/30",
-                    Hard: "bg-red-600 text-white border-red-600 shadow-red-500/30",
-                  };
-                  const idleMap: Record<string, string> = {
-                    All: "bg-white/5 text-gray-300 border-white/10 hover:border-indigo-500/60",
-                    Easy: "bg-white/5 text-gray-300 border-white/10 hover:border-emerald-500/60",
-                    Medium: "bg-white/5 text-gray-300 border-white/10 hover:border-amber-500/60",
-                    Hard: "bg-white/5 text-gray-300 border-white/10 hover:border-red-500/60",
-                  };
-                  return (
-                    <button
-                      key={d.label}
-                      onClick={() => setSelectedDifficulty(d.value)}
-                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-150 shadow-sm ${isSelected ? colorMap[d.label] + " shadow-lg" : idleMap[d.label]}`}
-                    >
-                      {d.label}
-                    </button>
-                  );
-                })}
+        {/* Configure Session Form */}
+        <section id="configure" className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-[#121215] border border-zinc-800/80 rounded-md p-6 space-y-6">
+              <div className="flex items-center justify-between border-b border-zinc-800/60 pb-4">
+                <div className="flex items-center gap-2">
+                  <SlidersHorizontal className="h-4 w-4 text-zinc-400" />
+                  <h2 className="text-sm font-semibold text-zinc-100 tracking-tight">
+                    Parameters & Filters
+                  </h2>
+                </div>
+                <span className="text-xs text-zinc-500 font-mono">
+                  {selectedTopics.size > 0 ? `${selectedTopics.size} Topic(s) Selected` : "Random Topics"}
+                </span>
               </div>
-            </div>
 
-            {/* Topic Selector */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  Topic
+              {/* Difficulty Selection */}
+              <div className="space-y-3">
+                <label className="block text-xs font-medium text-zinc-400">
+                  Target Difficulty Tier
                 </label>
-                {selectedTopics.size > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {DIFFICULTIES.map((d) => {
+                    const isSelected = selectedDifficulty === d.value;
+                    return (
+                      <button
+                        key={d.label}
+                        onClick={() => setSelectedDifficulty(d.value)}
+                        className={`px-3 py-2 rounded-md text-xs font-medium border transition-all text-center ${
+                          isSelected
+                            ? "bg-zinc-800 text-zinc-100 border-zinc-600 shadow-sm"
+                            : "bg-[#18181b] text-zinc-400 border-zinc-800/80 hover:text-zinc-200 hover:border-zinc-700"
+                        }`}
+                      >
+                        {d.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Topic Pills */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-medium text-zinc-400">
+                    Data Structure & Algorithm Topics
+                  </label>
+                  {selectedTopics.size > 0 && (
+                    <button
+                      onClick={() => setSelectedTopics(new Set())}
+                      className="text-xs text-blue-400 hover:underline"
+                    >
+                      Clear Selection
+                    </button>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-1.5 max-h-48 overflow-y-auto pr-1 no-scrollbar">
                   <button
                     onClick={() => setSelectedTopics(new Set())}
-                    className="text-xs text-indigo-400 hover:text-indigo-200 transition-colors"
-                  >
-                    Clear ({selectedTopics.size} selected)
-                  </button>
-                )}
-              </div>
-              <div className="flex gap-2 flex-wrap">
-                <button
-                  onClick={() => setSelectedTopics(new Set())}
-                  className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 ${selectedTopics.size === 0
-                    ? "bg-indigo-600 text-white border-indigo-600"
-                    : "bg-white/5 text-gray-400 border-white/10 hover:border-indigo-500/60 hover:text-gray-200"
+                    className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-all ${
+                      selectedTopics.size === 0
+                        ? "bg-zinc-800 text-zinc-100 border-zinc-600"
+                        : "bg-[#18181b] text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-zinc-200"
                     }`}
-                >
-                  All
-                </button>
-                {DSA_TOPICS.map((topic) => {
-                  const isSelected = selectedTopics.has(topic);
-                  return (
-                    <button
-                      key={topic}
-                      onClick={() => toggleTopic(topic)}
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-150 capitalize ${isSelected
-                        ? "bg-indigo-500/20 text-indigo-300 border-indigo-500"
-                        : "bg-white/5 text-gray-400 border-white/10 hover:border-indigo-500/60 hover:text-gray-200"
+                  >
+                    Any Topic
+                  </button>
+                  {DSA_TOPICS.map((topic) => {
+                    const isSelected = selectedTopics.has(topic);
+                    return (
+                      <button
+                        key={topic}
+                        onClick={() => toggleTopic(topic)}
+                        className={`px-2.5 py-1 rounded-md text-xs font-medium border transition-all capitalize ${
+                          isSelected
+                            ? "bg-zinc-800 text-zinc-100 border-zinc-600"
+                            : "bg-[#18181b] text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-zinc-200"
                         }`}
-                    >
-                      {topic}
-                    </button>
-                  );
-                })}
+                      >
+                        {topic}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Error Alert */}
+              {error && (
+                <div className="text-xs text-red-400 bg-red-950/30 border border-red-900/50 rounded-md px-3.5 py-2.5">
+                  {error}
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-zinc-800/60">
+                <button
+                  onClick={handleQuickStart}
+                  disabled={loading}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-100 hover:bg-white text-zinc-950 font-semibold rounded-md text-xs transition-all shadow-sm active:scale-[0.98] disabled:opacity-50"
+                >
+                  {loading ? (
+                    <span>Initializing Session…</span>
+                  ) : (
+                    <>
+                      <Zap className="h-3.5 w-3.5" />
+                      Instant Start Session
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={() => setShowForm(true)}
+                  disabled={loading}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 font-medium rounded-md text-xs transition-all disabled:opacity-50"
+                >
+                  <User className="h-3.5 w-3.5 text-zinc-400" />
+                  Customize Candidate Profile
+                </button>
               </div>
             </div>
+          </div>
 
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-1">
-              <button
-                onClick={handleQuickStart}
-                disabled={loading}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-200 disabled:opacity-50 text-base"
-              >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    Starting…
-                  </>
-                ) : (
-                  <>
-                    <Zap className="h-5 w-5" />
-                    Quick Start
-                  </>
-                )}
-              </button>
-              <button
-                onClick={() => setShowForm(true)}
-                disabled={loading}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/25 text-white font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 text-base"
-              >
-                <User className="h-5 w-5 text-indigo-400" />
-                Personalized Start
-              </button>
+          {/* Quick Context Sidebar */}
+          <div className="space-y-6">
+            <div className="bg-[#121215] border border-zinc-800/80 rounded-md p-6 space-y-4">
+              <h3 className="text-sm font-semibold text-zinc-100 flex items-center gap-2">
+                <Layers className="h-4 w-4 text-zinc-400" />
+                Assessment Environment
+              </h3>
+              <ul className="text-xs text-zinc-400 space-y-2.5 list-disc list-inside leading-relaxed">
+                <li>Real-time Monaco code editor supporting multiple languages.</li>
+                <li>Socratic AI interviewer providing live feedback & edge-case prompts.</li>
+                <li>Integrated timer & comprehensive evaluation scorecards upon completion.</li>
+              </ul>
             </div>
-
-            {error && (
-              <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2">
-                {error}
-              </div>
-            )}
           </div>
         </section>
 
-        {/* Recent Interviews */}
-        <section id="recent" className="max-w-6xl mx-auto px-4 pb-24 scroll-mt-20">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Recent Interviews</h2>
+        {/* Recent Interviews / History Section */}
+        <section id="history" className="space-y-4 scroll-mt-14 pt-4 border-t border-zinc-800/80">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-semibold text-zinc-100 tracking-tight">
+                Recent Interview Logs
+              </h2>
+              <p className="text-xs text-zinc-400">Review past transcripts, performance scores, or resume open sessions.</p>
+            </div>
             <button
               onClick={handleGoToProfile}
-              className="flex items-center gap-1 text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium"
+              className="text-xs font-medium text-zinc-400 hover:text-zinc-100 flex items-center gap-1 transition-colors"
             >
-              View all <ChevronRight className="h-4 w-4" />
+              All Records <ChevronRight className="h-3.5 w-3.5" />
             </button>
           </div>
 
           {loadingInterviews ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="h-28 bg-white/5 rounded-xl animate-pulse border border-white/10" />
+                <div key={i} className="h-20 bg-[#121215] border border-zinc-800/60 rounded-md animate-pulse" />
               ))}
             </div>
           ) : recentInterviews.length === 0 ? (
-            <div className="text-center py-16 bg-white/5 border border-white/10 rounded-2xl">
-              <Clock className="mx-auto h-12 w-12 mb-4 text-gray-600" />
-              <p className="text-lg font-medium text-gray-400">No interviews yet</p>
-              <p className="text-sm text-gray-500 mt-1">Complete your first interview to see it here</p>
+            <div className="text-center py-12 bg-[#121215] border border-zinc-800/80 rounded-md">
+              <Clock className="mx-auto h-8 w-8 mb-2 text-zinc-600" />
+              <p className="text-sm font-medium text-zinc-300">No session history recorded</p>
+              <p className="text-xs text-zinc-500 mt-1">Start your first technical interview session above.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {recentInterviews.map((interview) => {
                 const isEnded = interview.phase === "ended";
                 return (
-                  <button
+                  <div
                     key={interview.interview_id}
                     onClick={() => handleResumeInterview(interview.session_id)}
-                    className="group p-5 bg-white/5 hover:bg-white/8 border border-white/10 hover:border-indigo-500/50 rounded-xl transition-all duration-200 text-left transform hover:scale-[1.02]"
+                    className="group bg-[#121215] hover:bg-[#18181b] border border-zinc-800/80 hover:border-zinc-700 rounded-md p-4 transition-all cursor-pointer flex flex-col justify-between"
                   >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className={`p-2 rounded-lg ${isEnded ? "bg-emerald-500/20" : "bg-indigo-500/20"}`}>
-                        {isEnded ? (
-                          <Trophy className={`h-5 w-5 text-emerald-400`} />
-                        ) : (
-                          <Clock className="h-5 w-5 text-indigo-400" />
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-white text-sm group-hover:text-indigo-300 transition-colors">
-                          Interview #{interview.interview_id}
-                        </h3>
-                        <span className={`text-xs font-medium ${isEnded ? "text-emerald-400" : "text-indigo-400"}`}>
-                          {isEnded ? "Completed" : "In Progress"}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center text-zinc-300">
+                          {isEnded ? <Trophy className="h-3.5 w-3.5" /> : <Clock className="h-3.5 w-3.5" />}
+                        </div>
+                        <span className="font-semibold text-xs text-zinc-200">
+                          Session #{interview.interview_id}
                         </span>
                       </div>
+
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                          isEnded
+                            ? "bg-emerald-950/40 text-emerald-400 border-emerald-900/60"
+                            : "bg-blue-950/40 text-blue-400 border-blue-900/60"
+                        }`}
+                      >
+                        {isEnded ? "Completed" : "Active"}
+                      </span>
                     </div>
-                    <div className={`flex items-center gap-1 text-xs font-medium mt-2 ${isEnded ? "text-emerald-500" : "text-indigo-500"}`}>
-                      {isEnded ? "View results" : "Resume"} <ChevronRight className="h-3 w-3" />
+
+                    <div className="flex items-center justify-between text-xs text-zinc-400 pt-2 border-t border-zinc-800/40">
+                      <span>{isEnded ? "Evaluation Ready" : "In Progress"}</span>
+                      <span className="group-hover:text-zinc-100 flex items-center gap-1 font-medium text-xs transition-colors">
+                        {isEnded ? "View Report" : "Resume Workspace"}
+                        <ArrowRight className="h-3 w-3" />
+                      </span>
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </div>
           )}
         </section>
 
-        {/* Feedback */}
-        <section id="feedback" className="max-w-6xl mx-auto px-4 pb-24 scroll-mt-20">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Share Your Feedback
+        {/* Feedback Component */}
+        <section id="feedback" className="pt-8 border-t border-zinc-800/80 space-y-4">
+          <div className="text-left">
+            <h2 className="text-sm font-semibold text-zinc-100">
+              Product Feedback
             </h2>
-            <p className="text-gray-400 text-sm mt-2">
-              Tell us what’s working well and what we can improve.
+            <p className="text-xs text-zinc-400">
+              Help us refine the interviewer prompt engine and rubric scoring algorithms.
             </p>
           </div>
-
-          <div className="flex justify-center">
+          <div className="max-w-xl">
             <FeedbackForm />
           </div>
         </section>
       </main>
 
       {/* ── FOOTER ── */}
-      <footer className="border-t border-white/10 bg-slate-950/80 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <footer className="border-t border-zinc-800/80 bg-[#09090b] mt-12">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between text-xs text-zinc-500">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <Code2 className="h-3.5 w-3.5 text-white" />
-            </div>
-            <span className="font-medium text-gray-400">Algo Mentor</span>
-            <span className="text-gray-600">— AI DSA Interview Practice</span>
+            <span className="font-medium text-zinc-300">Algo Mentor</span>
+            <span>— Candidate Dashboard</span>
           </div>
-          <div className="flex items-center gap-6">
-            <button
-              onClick={handleGoToProfile}
-              className="flex items-center gap-1.5 text-gray-500 hover:text-gray-300 transition-colors"
-            >
-              <User className="h-4 w-4" />
-              Profile
-            </button>
-            <button
-              onClick={handleLogout}
-              className="text-gray-500 hover:text-red-400 transition-colors"
-            >
-              Logout
-            </button>
+          <div className="flex items-center gap-4">
+            <button onClick={handleGoToProfile} className="hover:text-zinc-300 transition-colors">Profile</button>
+            <button onClick={handleLogout} className="hover:text-zinc-300 transition-colors">Logout</button>
           </div>
-        </div>
-        <div className="text-center text-xs text-gray-700 pb-4">
-          © {new Date().getFullYear()} AlgoMentor. Built for interview preparation.
         </div>
       </footer>
 
@@ -496,3 +483,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+

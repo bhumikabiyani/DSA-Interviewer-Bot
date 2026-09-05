@@ -1,188 +1,197 @@
 "use client";
 import { useState, useEffect } from "react";
-import { X, Loader2, User, Briefcase, Building2, Target, GraduationCap, Goal, Zap, Gauge, Flame } from "lucide-react";
+import { X, Loader2, User, Briefcase, Building2, GraduationCap, Goal } from "lucide-react";
 import { CandidateInfo } from "@/lib/types";
 
 interface PreInterviewFormProps {
-    isOpen: boolean;
-    onClose: () => void;
-    onSubmit: (data: CandidateInfo) => void;
-    loading: boolean;
-    initialData?: {
-        type?: string;
-        current_role?: string;
-        organization?: string;
-        expectations?: string;
-        difficulty?: string;
-    } | null;
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (data: CandidateInfo) => void;
+  loading: boolean;
+  initialData?: {
+    type?: string;
+    current_role?: string;
+    organization?: string;
+    expectations?: string;
+    difficulty?: string;
+  } | null;
 }
 
 export function PreInterviewForm({ isOpen, onClose, onSubmit, loading, initialData }: PreInterviewFormProps) {
-    const [formData, setFormData] = useState<CandidateInfo>({
-        type: "student",
-        currentRole: "",
-        organization: "",
-        expectations: "",
-    });
+  const [formData, setFormData] = useState<CandidateInfo>({
+    type: "student",
+    currentRole: "",
+    organization: "",
+    expectations: "",
+  });
 
-    // Prefill form when initialData is provided
-    useEffect(() => {
-        if (initialData) {
-            setFormData({
-                type: (initialData.type as "student" | "professional") || "student",
-                currentRole: initialData.current_role || "",
-                organization: initialData.organization || "",
-                expectations: initialData.expectations || "",
-            });
-        }
-    }, [initialData]);
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        type: (initialData.type as "student" | "professional") || "student",
+        currentRole: initialData.current_role || "",
+        organization: initialData.organization || "",
+        expectations: initialData.expectations || "",
+      });
+    }
+  }, [initialData]);
 
-    if (!isOpen) return null;
+  if (!isOpen) return null;
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        onSubmit(formData);
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-lg overflow-hidden animate-scale-up">
-                {/* Header */}
-                <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-800">
-                    <div>
-                        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Interview Setup</h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Tell us a bit about yourself</p>
-                    </div>
-                    <button
-                        onClick={onClose}
-                        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                    >
-                        <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                    </button>
-                </div>
-
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="p-6 space-y-4">
-
-                    {/* Helper function for input fields */}
-                    <div className="space-y-4">
-
-                        {/* Type Selection */}
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Are you a Student or Professional ? <span className="text-red-500">*</span>
-                            </label>
-                            <div className="flex gap-4">
-                                <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all ${formData.type === 'student' ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'}`}>
-                                    <input
-                                        type="radio"
-                                        name="type"
-                                        value="student"
-                                        checked={formData.type === 'student'}
-                                        onChange={(e) => setFormData({ ...formData, type: "student" as any })}
-                                        className="hidden"
-                                    />
-                                    <User className={`w-4 h-4 ${formData.type === 'student' ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400'}`} />
-                                    <span className={`font-medium ${formData.type === 'student' ? 'text-indigo-900 dark:text-indigo-300' : 'text-gray-600 dark:text-gray-400'}`}>Student</span>
-                                </label>
-
-                                <label className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border-2 cursor-pointer transition-all ${formData.type === 'professional' ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'}`}>
-                                    <input
-                                        type="radio"
-                                        name="type"
-                                        value="professional"
-                                        checked={formData.type === 'professional'}
-                                        onChange={(e) => setFormData({ ...formData, type: "professional" as any })}
-                                        className="hidden"
-                                    />
-                                    <Briefcase className={`w-4 h-4 ${formData.type === 'professional' ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400'}`} />
-                                    <span className={`font-medium ${formData.type === 'professional' ? 'text-indigo-900 dark:text-indigo-300' : 'text-gray-600 dark:text-gray-400'}`}>Professional</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        {/* Current Role */}
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {formData.type === 'student' ? "Degree & Study Year" : "Current Role"} <span className="text-red-500">*</span>
-                            </label>
-                            <div className="relative">
-                                {formData.type === 'student' ? <GraduationCap className="absolute left-3 top-3 w-4 h-4 text-gray-400" /> : <Briefcase className="absolute left-3 top-3 w-4 h-4 text-gray-400" />}
-                                <input
-                                    type="text"
-                                    required
-                                    placeholder={formData.type === 'student' ? "B.Tech 3rd Year CSE" : "SDE 1, Frontend Dev, etc."}
-                                    value={formData.currentRole}
-                                    onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
-                                    className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Organization */}
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {formData.type === 'student' ? "University Name" : "Company Name"} <span className="text-red-500">*</span>
-                            </label>
-                            <div className="relative">
-                                <Building2 className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <input
-                                    type="text"
-                                    required
-                                    placeholder={formData.type === 'student' ? "IIT Madras" : "Microsoft"}
-                                    value={formData.organization}
-                                    onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                                    className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Expectations */}
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                What are your goal for this interview?
-                            </label>
-                            <div className="relative">
-                                <Goal className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <textarea
-                                    rows={3}
-                                    placeholder="Prepare for a technical interview"
-                                    value={formData.expectations}
-                                    onChange={(e) => setFormData({ ...formData, expectations: e.target.value })}
-                                    className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white resize-none"
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className="pt-4 flex justify-end gap-3">
-                        <button
-                            type="button"
-                            onClick={onClose}
-                            disabled={loading}
-                            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            type="submit"
-                            disabled={loading || !formData.currentRole || !formData.organization}
-                            className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white text-sm font-medium rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
-                        >
-                            {loading ? (
-                                <>
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    Generating...
-                                </>
-                            ) : (
-                                "Start Interview"
-                            )}
-                        </button>
-                    </div>
-
-                </form>
-            </div>
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+      <div className="bg-[#121215] border border-zinc-800/80 rounded-md shadow-2xl w-full max-w-md overflow-hidden text-zinc-100">
+        {/* Header */}
+        <div className="px-5 py-3.5 border-b border-zinc-800/80 flex items-center justify-between bg-[#121215]">
+          <div>
+            <h2 className="text-sm font-semibold text-zinc-100">Candidate Setup Profile</h2>
+            <p className="text-xs text-zinc-400">Personalize interviewer context and baseline prompts</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1 rounded text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
-    );
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="p-5 space-y-4">
+          {/* Type Selection */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium text-zinc-400">
+              Candidate Background <span className="text-red-400">*</span>
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <label
+                className={`flex items-center justify-center gap-2 p-2.5 rounded-md border text-xs cursor-pointer transition-all ${
+                  formData.type === "student"
+                    ? "bg-zinc-800 border-zinc-600 text-zinc-100 font-semibold"
+                    : "bg-[#18181b] border-zinc-800 text-zinc-400 hover:text-zinc-200"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="type"
+                  value="student"
+                  checked={formData.type === "student"}
+                  onChange={() => setFormData({ ...formData, type: "student" as any })}
+                  className="hidden"
+                />
+                <User className="w-3.5 h-3.5" />
+                <span>Student / Scholar</span>
+              </label>
+
+              <label
+                className={`flex items-center justify-center gap-2 p-2.5 rounded-md border text-xs cursor-pointer transition-all ${
+                  formData.type === "professional"
+                    ? "bg-zinc-800 border-zinc-600 text-zinc-100 font-semibold"
+                    : "bg-[#18181b] border-zinc-800 text-zinc-400 hover:text-zinc-200"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="type"
+                  value="professional"
+                  checked={formData.type === "professional"}
+                  onChange={() => setFormData({ ...formData, type: "professional" as any })}
+                  className="hidden"
+                />
+                <Briefcase className="w-3.5 h-3.5" />
+                <span>Industry Engineer</span>
+              </label>
+            </div>
+          </div>
+
+          {/* Current Role */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium text-zinc-400">
+              {formData.type === "student" ? "Degree Program & Year" : "Current Engineering Title"} <span className="text-red-400">*</span>
+            </label>
+            <div className="relative">
+              {formData.type === "student" ? (
+                <GraduationCap className="absolute left-3 top-2.5 w-3.5 h-3.5 text-zinc-500" />
+              ) : (
+                <Briefcase className="absolute left-3 top-2.5 w-3.5 h-3.5 text-zinc-500" />
+              )}
+              <input
+                type="text"
+                required
+                placeholder={formData.type === "student" ? "B.Tech Computer Science 3rd Year" : "Senior Software Engineer"}
+                value={formData.currentRole}
+                onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
+                className="w-full pl-9 pr-3 py-2 bg-[#18181b] border border-zinc-800 text-zinc-100 text-xs rounded-md placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          {/* Organization */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium text-zinc-400">
+              {formData.type === "student" ? "University / Institute" : "Current Organization"} <span className="text-red-400">*</span>
+            </label>
+            <div className="relative">
+              <Building2 className="absolute left-3 top-2.5 w-3.5 h-3.5 text-zinc-500" />
+              <input
+                type="text"
+                required
+                placeholder={formData.type === "student" ? "Stanford University" : "Stripe"}
+                value={formData.organization}
+                onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                className="w-full pl-9 pr-3 py-2 bg-[#18181b] border border-zinc-800 text-zinc-100 text-xs rounded-md placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          {/* Expectations */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-medium text-zinc-400">
+              Session Objective (Optional)
+            </label>
+            <div className="relative">
+              <Goal className="absolute left-3 top-2.5 w-3.5 h-3.5 text-zinc-500" />
+              <textarea
+                rows={2}
+                placeholder="Simulate Staff-level algorithms interview..."
+                value={formData.expectations}
+                onChange={(e) => setFormData({ ...formData, expectations: e.target.value })}
+                className="w-full pl-9 pr-3 py-2 bg-[#18181b] border border-zinc-800 text-zinc-100 text-xs rounded-md placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-blue-500 resize-none"
+              />
+            </div>
+          </div>
+
+          <div className="pt-3 border-t border-zinc-800/80 flex justify-end gap-2">
+            <button
+              type="button"
+              onClick={onClose}
+              disabled={loading}
+              className="px-3.5 py-1.5 text-xs font-medium text-zinc-400 hover:text-zinc-200 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={loading || !formData.currentRole || !formData.organization}
+              className="px-4 py-1.5 bg-zinc-100 hover:bg-white disabled:opacity-50 text-zinc-950 text-xs font-semibold rounded-md transition-all flex items-center gap-1.5 active:scale-[0.98]"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  Building Prompt...
+                </>
+              ) : (
+                "Launch Session"
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
+

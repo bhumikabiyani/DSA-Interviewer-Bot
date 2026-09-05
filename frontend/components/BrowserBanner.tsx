@@ -59,7 +59,7 @@ export function BrowserBanner() {
             <p className="text-white text-sm font-medium">
               {isBrave ? (
                 <>
-                  Brave user? Please enable <span className="font-bold underline">"Google Services for Push Messaging and Speech"</span> in settings.
+                  Brave user? Please enable <span className="font-bold underline">&quot;Google Services for Push Messaging and Speech&quot;</span> in settings.
                 </>
               ) : (
                 <>
