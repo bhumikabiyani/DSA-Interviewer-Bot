@@ -13,7 +13,7 @@ def test_groq_api_key_loaded():
 def test_default_values():
     assert settings.API_HOST == "0.0.0.0"
     assert settings.API_PORT == 8000
-    assert settings.LLM_MODEL == "llama-3.3-70b-versatile"
+    assert settings.LLM_MODEL == "openai/gpt-oss-120b"
     assert settings.SECRET_KEY is not None
     assert settings.ALGORITHM == "HS256"
 

@@ -5,7 +5,7 @@ import requests
 
 
 class GroqLLM:
-    def __init__(self, api_key=None, model="llama-3.3-70b-versatile"):
+    def __init__(self, api_key=None, model="openai/gpt-oss-120b"):
         self.api_key = api_key or os.environ.get("GROQ_API_KEY")
         if not self.api_key:
             raise ValueError("Set GROQ_API_KEY env var")

@@ -105,7 +105,7 @@ DSA-Interviewer-Bot/
 | `LOG_LEVEL` | INFO | Logging level |
 | `REDIS_URL` | - | Redis connection URL (optional) |
 | `RAG_TOP_K` | 5 | Number of RAG results to retrieve |
-| `LLM_MODEL` | llama-3.3-70b-versatile | Groq model to use |
+| `LLM_MODEL` | openai/gpt-oss-120b | Groq model to use |
 | `LLM_TEMPERATURE` | 0.7 | LLM temperature |
 | `LLM_MAX_TOKENS` | 1024 | Max tokens per response |
 
