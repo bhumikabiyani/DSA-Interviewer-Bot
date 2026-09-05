@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from sqlalchemy import Column, DateTime, Integer, String
+
 from dsa_interviewer.core.database import Base
 
 
